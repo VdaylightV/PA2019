@@ -29,17 +29,26 @@ typedef struct {
    * in PA2 able to directly access these registers.
    */
   rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
- /*
-  eax = gpr[0]._32;
-  ecx = gpr[1]._32;
-  edx = gpr[2]._32;
-  ebx = gpr[3]._32;
-  esp = gpr[4]._32;
-  ebp = gpr[5]._32;
-  esi = gpr[6]._32;
-  edi = gpr[7]._32; */
-
-
+/*
+  __attribute__ (rtlreg_t eax) = gpr[0]._32;
+  __attribute__ (rtlreg_t ecx) = gpr[1]._32;
+  __attribute__ (rtlreg_t edx) = gpr[2]._32;
+  __attribute__ (rtlreg_t ebx) = gpr[3]._32;
+  __attribute__ (rtlreg_t esp) = gpr[4]._32;
+  __attribute__ (rtlreg_t ebp) = gpr[5]._32;
+  __attribute__ (rtlreg_t esi) = gpr[6]._32;
+  __attribute__ (rtlreg_t edi) = gpr[7]._32; 
+*/
+/*
+ rtlreg_t eax = R_EAX;
+ rtlreg_t ecx = R_ECX;
+ rtlreg_t edx = R_EDX;
+ rtlreg_t ebx = R_EBX;
+ rtlreg_t esp = R_ESP;
+ rtlreg_t ebp = R_EBP;
+ rtlreg_t esi = R_ESI;
+ rtlreg_t edi = R_EDI;
+ */
   vaddr_t pc;
 
 } CPU_state;

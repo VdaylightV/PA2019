@@ -96,15 +96,15 @@ static int cmd_si(char *args) {
   if (arg == NULL) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
-		  cpu_exec(cpu.pc);
+	//	  cpu_exec(cpu.pc);
 	      printf("Hi\n");
 		}
   }
 
   else {
-    for (i = 0; i < *args; i ++) {
-	  cpu_exec(pmem[i]);
-	  printf(args);
+    for (i = 0; i < *arg; i ++) {
+	//  cpu_exec(pmem[i]);
+	  printf(arg);
 	}
 
   }

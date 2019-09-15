@@ -90,13 +90,18 @@ static int cmd_si(char *args) {
 
   if (arg == NULL) {
 	  /* no argument given */
-	  for (i = 0; i < 1; i ++)
+	  for (i = 0; i < 1; i ++) {
 	    exec_once();
+//		printf(cpu.pc);
+	  }
   }
 
   else {
-    for (i = 0; i < *args; i ++)
+    for (i = 0; i < *args; i ++) {
 	  exec_once();
+//	  printf(cpu.pc);
+	}
+
   }
   return 0;
 }

@@ -9,6 +9,8 @@
 
 void cpu_exec(uint64_t);
 
+vaddr_t exec_once(void);
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -38,6 +40,8 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+static int cmd_si(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -46,6 +50,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  { "si [N]", "Make the computer execuate N pieces of instructions, then stop. If N is omitted, use the default N=1", cmd_si },
 
   /* TODO: Add more commands */
 
@@ -72,6 +77,24 @@ static int cmd_help(char *args) {
       }
     }
     printf("Unknown command '%s'\n", arg);
+  }
+  return 0;
+}
+
+static int cmd_si(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  int i;
+
+  if (arg == NULL) {
+	  /* no argument given */
+	  for (i = 0; i < 1; i ++)
+	    exec_once();
+  }
+
+  else {
+    for (i = 0; i < *args; i ++)
+	  exec_once();
   }
   return 0;
 }

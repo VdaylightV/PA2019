@@ -53,7 +53,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Make the computer execuate N pieces of instructions, then stop. If N is omitted, use the default N=1", cmd_si },
-
+ // { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
+ // { "x", "scan the contents of the internal memory", cmd_x }, 
   /* TODO: Add more commands */
 
 };
@@ -97,10 +98,9 @@ static int cmd_si(char *args) {
   }
 
   else {
-    for (i = 0; i < (int)*args; i ++) {
+    for (i = 0; i < *args; i ++) {
 	  cpu_exec(pmem[i]);
 	  printf(args);
-	  printf(" ");
 	}
 
   }

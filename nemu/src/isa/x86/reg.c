@@ -41,7 +41,7 @@ void reg_test() {
 }
 
 void isa_reg_display() {
-	printf("Register_id    Hexadecimal    Decimal");
+	printf("Register_id    Hexadecimal    Decimal\n");
 	printf(("eax:    0x%08x    %012dD\n"),cpu.eax,cpu.eax);
 	printf(("ecx:    0x%08x    %012dD\n"),cpu.ecx,cpu.ecx);
     printf(("edx:    0x%08x    %012dD\n"),cpu.edx,cpu.edx);

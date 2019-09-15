@@ -9,6 +9,8 @@
 
 void cpu_exec(uint64_t);
 
+void isa_reg_display();
+
 void isa_exec(vaddr_t *pc);
 
 vaddr_t exec_once(void);
@@ -44,6 +46,8 @@ static int cmd_help(char *args);
 
 static int cmd_si(char *args);
 
+static int cmd_info(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -53,7 +57,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Make the computer execuate N pieces of instructions, then stop. If N is omitted, use the default N=1", cmd_si },
- // { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
+  { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
  // { "x", "scan the contents of the internal memory", cmd_x }, 
   /* TODO: Add more commands */
 
@@ -105,6 +109,19 @@ static int cmd_si(char *args) {
 
   }
   return 0;
+}
+
+static int cmd_info(char *args) {
+  /* extract the first argument */
+  char *arg = strtok(NULL, " ");
+  
+/*  if ( *arg == 'r' ) {
+     isa_reg_display();
+  }
+*/
+  printf(arg);
+  return 0;
+
 }
 
 void ui_mainloop(int is_batch_mode) {

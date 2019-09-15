@@ -101,12 +101,8 @@ static int cmd_si(char *args) {
 	  cpu_exec(1);
   }
 
-  else {/*
-      for (i = 0; i < (*arg - '0'); i ++) {
-	      exec_once();
-	}*/
-	  cpu_exec(*arg - '0');
-
+  else {
+	  cpu_exec(*arg -'\0');
   }
   return 0;
 }

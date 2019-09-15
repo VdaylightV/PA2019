@@ -97,7 +97,7 @@ static int cmd_si(char *args) {
   }
 
   else {
-    for (i = 0; i < *args; i ++) {
+    for (i = 0; i < (int)*args; i ++) {
 	  cpu_exec(pmem[i]);
 	  printf(args);
 	  printf("\n");

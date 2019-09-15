@@ -127,7 +127,9 @@ static int cmd_x(char *args) {
    char *add = strtok(NULL," ");
 
    printf(arg);
+   printf("Hi\n");
    printf(add);
+   printf("Hi\n");
 
    return 0;
 }

@@ -92,7 +92,7 @@ static int cmd_si(char *args) {
   if (arg == NULL) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
-		  cpu_exec(-1);
+		  cpu_exec(cpu.pc);
 	      printf("Hi\n");
 		}
   }

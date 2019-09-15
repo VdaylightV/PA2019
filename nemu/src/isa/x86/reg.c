@@ -41,7 +41,7 @@ void reg_test() {
 }
 
 void isa_reg_display() {
-	printf(("eax:%u"),cpu.eax);
+	printf(("eax:%x"),cpu.eax);
 
 
 }

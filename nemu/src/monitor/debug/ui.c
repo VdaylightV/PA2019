@@ -118,8 +118,12 @@ static int cmd_info(char *args) {
   if ( *arg == 'r' ) {
 	  printf(arg);
   }
-  return 0;
+  
+  else if ( *arg == 'x' ) {
+      printf(arg); 
+  }
 
+  return 0;
 }
 
 void ui_mainloop(int is_batch_mode) {

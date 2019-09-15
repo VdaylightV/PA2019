@@ -112,11 +112,10 @@ static int cmd_info(char *args) {
   char *arg = strtok(NULL, " ");
   
   if ( *arg == 'r' ) {
-	  printf(arg);
+     isa_reg_display();
   }
   
-  else if ( *arg == 'x' ) {
-      printf(arg); 
+  else if ( *arg == 'w' ) {
   }
 
   return 0;

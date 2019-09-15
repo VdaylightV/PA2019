@@ -129,11 +129,11 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
    /* extract the first argument */
-   char *arg = strtok(NULL," ");
- //  char *add = strtok(NULL," ");
+   char *arg = strtok(args," ");
+   char *add = strtok(NULL," ");
 
    printf(arg);
- //  printf(add);
+   printf(add);
 
    return 0;
 }

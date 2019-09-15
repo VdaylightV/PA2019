@@ -92,8 +92,8 @@ static int cmd_si(char *args) {
   if (arg == NULL) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
-//		  cpu_exec(register_pmem(0x00000000));
-//	      printf(register_pmem(0x00000000));
+		  cpu_exec(-1);
+	      printf("Hi\n");
 		}
   }
 

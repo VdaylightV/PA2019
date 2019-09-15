@@ -91,15 +91,15 @@ static int cmd_si(char *args) {
   if (arg == NULL) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
-		  cpu_exec(pmem[i]);
-	      printf("Hi\n");
+//		  cpu_exec(register_pmem(0x00000000));
+//	      printf(register_pmem(0x00000000));
 		}
   }
 
   else {
     for (i = 0; i < *args; i ++) {
 	  cpu_exec(pmem[i]);
-	 // printf(*args);
+	  printf(args);
 	}
 
   }

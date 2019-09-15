@@ -93,18 +93,18 @@ static int cmd_si(char *args) {
   char *arg = strtok(NULL, " ");
   int i;
 
+
   if (arg == NULL) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
-	//	  cpu_exec(cpu.pc);
-	      printf("Hi\n");
+		  exec_once();
 		}
   }
 
   else {
-    for (i = 0; i < 3; i ++) {
-	//  cpu_exec(pmem[i]);
-	  printf(arg);
+      for (i = 0; i < (*arg - '0'); i ++) {
+	      exec_once();
+		  printf("Hi");
 	}
 
   }

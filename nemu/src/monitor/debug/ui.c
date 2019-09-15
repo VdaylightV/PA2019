@@ -48,6 +48,8 @@ static int cmd_si(char *args);
 
 static int cmd_info(char *args);
 
+static int cmd_x(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -58,7 +60,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "si", "Make the computer execuate N pieces of instructions, then stop. If N is omitted, use the default N=1", cmd_si },
   { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
- // { "x", "scan the contents of the internal memory", cmd_x }, 
+  { "x", "scan the contents of the internal memory", cmd_x }, 
   /* TODO: Add more commands */
 
 };
@@ -104,7 +106,6 @@ static int cmd_si(char *args) {
   else {
       for (i = 0; i < (*arg - '0'); i ++) {
 	      exec_once();
-		  printf("Hi");
 	}
 
   }
@@ -124,6 +125,17 @@ static int cmd_info(char *args) {
   }
 
   return 0;
+}
+
+static int cmd_x(char *args) {
+   /* extract the first argument */
+   char *arg = strtok(NULL," ");
+   char *add = strtok(NULL," ");
+
+   printf(arg);
+   printf(add);
+
+   return 0;
 }
 
 void ui_mainloop(int is_batch_mode) {

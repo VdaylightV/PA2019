@@ -48,8 +48,8 @@ void isa_reg_display() {
 	printf(("    ebx:       0x%08x      %012dD\n"),cpu.ebx,cpu.ebx);
     printf(("    esp:       0x%08x      %012dD\n"),cpu.esp,cpu.esp);
 	printf(("    ebp:       0x%08x      %012dD\n"),cpu.ebp,cpu.ebp);
-	printf(("esi:    0x%08x    %012dD\n"),cpu.esi,cpu.esi);
-	printf(("edi:    0x%08x    %012dD\n"),cpu.edi,cpu.edi);
+	printf(("    esi:       0x%08x      %012dD\n"),cpu.esi,cpu.esi);
+	printf(("    edi:       0x%08x      %012dD\n"),cpu.edi,cpu.edi);
 }
 
 uint32_t isa_reg_str2val(const char *s, bool *success) {

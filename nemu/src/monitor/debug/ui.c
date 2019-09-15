@@ -93,20 +93,19 @@ static int cmd_help(char *args) {
 static int cmd_si(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
-  int i;
+ // int i;
 
 
   if (arg == NULL) {
 	  /* no argument given */
-	  for (i = 0; i < 1; i ++) {
-		  exec_once();
-		}
+	  cpu_exec(1);
   }
 
-  else {
+  else {/*
       for (i = 0; i < (*arg - '0'); i ++) {
 	      exec_once();
-	}
+	}*/
+	  cpu_exec(*arg - '0');
 
   }
   return 0;

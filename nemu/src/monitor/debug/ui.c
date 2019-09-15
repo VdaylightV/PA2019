@@ -128,7 +128,7 @@ static int cmd_x(char *args) {
 
    printf(arg);
    printf("Hi\n");
-   printf(add);
+   printf(add-'0');
    printf("Hi\n");
 
    return 0;

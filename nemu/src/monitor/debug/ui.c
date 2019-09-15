@@ -90,10 +90,8 @@ static int cmd_si(char *args) {
 
   if (arg == NULL) {
 	  /* no argument given */
-	  for (i = 0; i < 1; i ++) {
-	    exec_once();
-//		printf(cpu.pc);
-	  }
+	  for (i = 0; i < 1; i ++) 
+		  cpu_exec(0x00000000);
   }
 
   else {

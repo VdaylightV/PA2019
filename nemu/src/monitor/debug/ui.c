@@ -9,6 +9,8 @@
 
 void cpu_exec(uint64_t);
 
+void isa_exec(vaddr_t *pc);
+
 vaddr_t exec_once(void);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */

@@ -92,14 +92,14 @@ static int cmd_si(char *args) {
 	  /* no argument given */
 	  for (i = 0; i < 1; i ++) {
 		  cpu_exec(pmem[i]);
-	      printf("Hi");
+	      printf("Hi\n");
 		}
   }
 
   else {
     for (i = 0; i < *args; i ++) {
 	  cpu_exec(pmem[i]);
-	  printf("Hi");
+	 // printf(*args);
 	}
 
   }

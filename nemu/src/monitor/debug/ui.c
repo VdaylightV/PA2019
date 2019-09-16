@@ -166,6 +166,7 @@ static int cmd_x(char *args) {
    for (i = 0; i < numbers; i ++)
 	   printf("Hi! ");
    unsigned int addr  = str_to_hex(add);
+   printf(("%08u:"),addr);
    isa_vaddr_read(addr, 0);
    return 0;
 }

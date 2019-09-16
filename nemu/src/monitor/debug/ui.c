@@ -145,7 +145,8 @@ static int cmd_x(char *args) {
  //  char *add = strtok(NULL," ");
    
    int i;
-   for (i = 0; i < *arg-'0'; i ++)
+   int numbers = str_to_int(arg);
+   for (i = 0; i < numbers; i ++)
 	   printf("Hi! ");
    isa_vaddr_read(pmem[0x1234], 1);
    return 0;

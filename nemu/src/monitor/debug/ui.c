@@ -13,6 +13,8 @@ uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
 uint32_t vaddr_read(vaddr_t addr, int len);
 
+static int str_to_int(char *args);
+
 void isa_reg_display();
 
 void isa_exec(vaddr_t *pc);
@@ -94,6 +96,18 @@ static int cmd_help(char *args) {
   return 0;
 }
 
+static int str_to_int(char *args) {
+	int sum = 0;
+	while(*args != '\0')
+	{
+		sum = sum*10 + (*args-'0');
+	    args ++;
+	}
+
+	return sum;
+
+}
+
 static int cmd_si(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
@@ -106,7 +120,7 @@ static int cmd_si(char *args) {
   }
 
   else {
-	  cpu_exec(*arg -'\0');
+	  cpu_exec(str_to_int(arg));
   }
   return 0;
 }

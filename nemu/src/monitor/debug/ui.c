@@ -131,7 +131,7 @@ static int cmd_x(char *args) {
  //  char *add = strtok(NULL," ");
    
    int i;
-   for (i = 0; i < *arg-'\0'; i ++)
+   for (i = 0; i < *arg-'0'; i ++)
 	   printf("Hi! ");
    isa_vaddr_read(pmem[0x1234], 1);
    return 0;

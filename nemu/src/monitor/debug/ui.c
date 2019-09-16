@@ -15,6 +15,8 @@ uint32_t vaddr_read(vaddr_t addr, int len);
 
 static int str_to_int(char *args);
 
+static int str_to_hex(char *args);
+
 void isa_reg_display();
 
 void isa_exec(vaddr_t *pc);
@@ -105,7 +107,20 @@ static int str_to_int(char *args) {
 	}
 
 	return sum;
+}
 
+static int str_to_hex(char *args) {
+    int bit_count = 0;
+	args ++;
+	args ++;
+
+	while(*args != '\0')
+	{
+		bit_count ++;
+		args ++;
+	}
+
+	return bit_count;
 }
 
 static int cmd_si(char *args) {
@@ -142,13 +157,15 @@ static int cmd_info(char *args) {
 static int cmd_x(char *args) {
    /* extract the first argument */
    char *arg = strtok(args," ");
- //  char *add = strtok(NULL," ");
+   char *add = strtok(NULL," ");
    
    int i;
    int numbers = str_to_int(arg);
    for (i = 0; i < numbers; i ++)
 	   printf("Hi! ");
-   isa_vaddr_read(pmem[0x1234], 1);
+   int bit_count = str_to_hex(add);
+   printf(("bit_count:%d"),bit_count);
+  // isa_vaddr_read(pmem[0x1234], 1);
    return 0;
 }
 

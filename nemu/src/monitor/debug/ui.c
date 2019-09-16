@@ -125,14 +125,14 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
    /* extract the first argument */
-   char *arg = strtok(args," ");
-   char *add = strtok(NULL," ");
+//   char *arg = strtok(args," ");
+//   char *add = strtok(NULL," ");
 
-   printf(arg);
-   printf("Hi\n");
-   printf(add);
-   printf("Hi\n");
-   paddr_read(0x00000000, 4);
+  // printf(arg);
+  // printf("Hi\n");
+  // printf(add);
+  // printf("Hi\n");
+   paddr_read(0x00000000, 1);
    return 0;
 }
 

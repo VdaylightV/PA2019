@@ -116,7 +116,7 @@ static unsigned int str_to_hex(char *args) {
 
 	while(*args != '\0')
 	{   
-		if((*args >= 0) && (*args <= 9)) {
+		if((*args >= '0') && (*args <= '9')) {
      		result = result*16+(*args-'0');
 	    	args ++;
 		}

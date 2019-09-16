@@ -111,16 +111,18 @@ static int str_to_int(char *args) {
 
 static int str_to_hex(char *args) {
     int bit_count = 0;
+	int result = 0;
 	args ++;
 	args ++;
 
 	while(*args != '\0')
-	{
+	{   
+		result = result*10+(*args-'0');
 		bit_count ++;
 		args ++;
 	}
 
-	return bit_count;
+	return result;
 }
 
 static int cmd_si(char *args) {

@@ -127,14 +127,11 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
    /* extract the first argument */
-//   char *arg = strtok(args," ");
-//   char *add = strtok(NULL," ");
+   char *arg = strtok(args," ");
+   char *add = strtok(NULL," ");
 
-  // printf(arg);
-  // printf("Hi\n");
-  // printf(add);
-  // printf("Hi\n");
- //  printf(pmem[0x1234]);
+   printf(arg-'0');
+   printf(add);
    isa_vaddr_read(pmem[0x1234], 1);
    return 0;
 }

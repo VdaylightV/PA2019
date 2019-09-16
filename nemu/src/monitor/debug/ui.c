@@ -183,16 +183,16 @@ static int cmd_x(char *args) {
    
    int i;
    int numbers = str_to_uint(arg);
-   unsigned int addr = str_to_hex(add);
+ //  unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
-       printf(("0x%08x:      "),addr);
-	   printf(("%u\n"),isa_vaddr_read(addr, 4));
-       addr += 4;
+  //     printf(("0x%08x:      "),addr);
+	//   printf(("%u\n"),isa_vaddr_read(addr, 4));
+      // addr += 4;
    }
- /*printf("end\n");
+   printf("end\n");
    unsigned int addr  = str_to_hex(add);
    printf(("0x%08x:      "),addr);
-   printf(("%u\n"),isa_vaddr_read(addr, 4));*/
+   printf(("%u\n"),isa_vaddr_read(addr, 4));
    return 0;
 }
 

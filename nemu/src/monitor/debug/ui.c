@@ -134,7 +134,7 @@ static int cmd_x(char *args) {
    printf("Hi\n");
    printf(add);
    printf("Hi\n");
-   register_pmem(0x00000000);
+   register_pmem(0x00000005);
   // paddr_read(0x100000, 4);
    return 0;
 }

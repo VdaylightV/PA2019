@@ -13,9 +13,9 @@ uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
 uint32_t vaddr_read(vaddr_t addr, int len);
 
-static int str_to_int(char *args);
+static unsigned int str_to_uint(char *args);
 
-static int str_to_hex(char *args);
+//static int str_to_hex(char *args);
 
 void isa_reg_display();
 
@@ -98,8 +98,8 @@ static int cmd_help(char *args) {
   return 0;
 }
 
-static int str_to_int(char *args) {
-	int sum = 0;
+static unsigned int str_to_uint(char *args) {
+	unsigned int sum = 0;
 	while(*args != '\0')
 	{
 		sum = sum*10 + (*args-'0');
@@ -109,9 +109,9 @@ static int str_to_int(char *args) {
 	return sum;
 }
 
-static int str_to_hex(char *args) {
+static unsigned int str_to_hex(char *args) {
     int bit_count = 0;
-	int result = 0;
+	unsigned int result = 0;
 	args ++;
 	args ++;
 
@@ -137,7 +137,7 @@ static int cmd_si(char *args) {
   }
 
   else {
-	  cpu_exec(str_to_int(arg));
+	  cpu_exec(str_to_uint(arg));
   }
   return 0;
 }
@@ -162,11 +162,11 @@ static int cmd_x(char *args) {
    char *add = strtok(NULL," ");
    
    int i;
-   int numbers = str_to_int(arg);
+   int numbers = str_to_uint(arg);
    for (i = 0; i < numbers; i ++)
 	   printf("Hi! ");
-   int bit_count = str_to_hex(add);
-   isa_vaddr_read(pmem[bit_count], 4);
+   unsigned int addr  = str_to_hex(add);
+   isa_vaddr_read(addr, 4);
    return 0;
 }
 

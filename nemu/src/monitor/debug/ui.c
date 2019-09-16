@@ -186,8 +186,8 @@ static int cmd_x(char *args) {
    unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
        printf(("0x%08x:      "),addr);
-	   printf(("%u\n"),isa_vaddr_read(addr, 2));
-       addr += 4;
+	   printf(("%u\n"),isa_vaddr_read(addr, 1));
+       addr += 5;
    }
 /*   printf("end\n");
    unsigned int addr  = str_to_hex(add);

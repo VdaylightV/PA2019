@@ -133,7 +133,7 @@ static int cmd_x(char *args) {
   // printf(add);
   // printf("Hi\n");
  //  printf(pmem[0x1234]);
-   vaddr_read(0x00000000, 1);
+   vaddr_read(pmem[0x1234], 1);
    return 0;
 }
 

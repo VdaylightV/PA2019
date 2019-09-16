@@ -9,6 +9,8 @@
 
 void cpu_exec(uint64_t);
 
+void register_pmem(paddr_t base);
+
 uint32_t paddr_read(paddr_t addr, int len);
 
 void isa_reg_display();
@@ -132,8 +134,8 @@ static int cmd_x(char *args) {
    printf("Hi\n");
    printf(add);
    printf("Hi\n");
-
-   paddr_read(0x100000, 4);
+   register_pmem(0x00000000);
+  // paddr_read(0x100000, 4);
    return 0;
 }
 

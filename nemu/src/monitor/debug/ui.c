@@ -9,7 +9,7 @@
 
 void cpu_exec(uint64_t);
 
-uint32_t vaddr_read(vaddr_t addr, int len);
+uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
 void isa_reg_display();
 

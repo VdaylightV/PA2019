@@ -166,8 +166,7 @@ static int cmd_x(char *args) {
    for (i = 0; i < numbers; i ++)
 	   printf("Hi! ");
    int bit_count = str_to_hex(add);
-   printf(("bit_count:%d"),bit_count);
-  // isa_vaddr_read(pmem[0x1234], 1);
+   isa_vaddr_read(pmem[bit_count], 4);
    return 0;
 }
 

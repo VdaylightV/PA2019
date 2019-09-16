@@ -11,6 +11,8 @@ void cpu_exec(uint64_t);
 
 uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
+uint32_t vaddr_read(vaddr_t addr, int len);
+
 void isa_reg_display();
 
 void isa_exec(vaddr_t *pc);
@@ -133,7 +135,7 @@ static int cmd_x(char *args) {
   // printf(add);
   // printf("Hi\n");
  //  printf(pmem[0x1234]);
-   vaddr_read(pmem[0x1234], 1);
+   isa_vaddr_read(pmem[0x1234], 1);
    return 0;
 }
 

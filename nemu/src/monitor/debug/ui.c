@@ -110,16 +110,36 @@ static unsigned int str_to_uint(char *args) {
 }
 
 static unsigned int str_to_hex(char *args) {
-    int bit_count = 0;
 	unsigned int result = 0;
 	args ++;
 	args ++;
 
 	while(*args != '\0')
 	{   
-		result = result*10+(*args-'0');
-		bit_count ++;
-		args ++;
+		if((*args >= 0) && (*args <= 9)) {
+     		result = result*16+(*args-'0');
+	    	args ++;
+		}
+
+		else 
+		{
+			int condition = *args - '0';
+			switch(condition) {
+				case 17 : result = result*16+10;break;
+				case -15: result = result*16+10;break;
+				case 18 : result = result*16+11;break;
+				case -14: result = result*16+11;break;
+				case 19 : result = result*16+12;break;
+				case -13: result = result*16+12;break;
+				case 20 : result = result*16+13;break;
+				case -12: result = result*16+13;break;
+				case 21 : result = result*16+14;break;
+				case -11: result = result*16+14;break;
+				case 22 : result = result*16+15;break;
+				case -10: result = result*16+15;break;
+			}
+			args ++;
+		}
 	}
 
 	return result;

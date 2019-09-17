@@ -28,6 +28,8 @@ static struct rule {
   {"\\-", '-'},          // minus
   {"\\*", '*' },         //multiply
   {"\\/", '/'},          //divide
+  {"\\(", '('},          //left_bracket
+  {"\\)", ')'}           //right_bracket
   
 };
 

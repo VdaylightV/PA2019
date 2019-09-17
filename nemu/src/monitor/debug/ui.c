@@ -98,6 +98,7 @@ static int cmd_help(char *args) {
   return 0;
 }
 
+// The following function turns the string to unsigned int;
 static unsigned int str_to_uint(char *args) {
 	unsigned int sum = 0;
 	while(*args != '\0')
@@ -114,6 +115,7 @@ static unsigned int str_to_hex(char *args) {
 	unsigned int result = 0;
 	args ++;
 	args ++;
+//Considering the condition that the address starts with "0x", it is necessary to shift the pointer 2 steps forward
 
 	while(*args != '\0')
 	{   
@@ -121,7 +123,7 @@ static unsigned int str_to_hex(char *args) {
      		result = result*16+(*args-'0');
 	    	args ++;
 		}
-
+// To change "A/a","B/b","C/c","D/d","E/e" and "F/f" to the integers them represents.
 		else 
 		{
 			int condition = *args - '0';
@@ -187,7 +189,7 @@ static int cmd_x(char *args) {
    unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
        printf(("0x%08x:      "),addr);
-	   printf(("%-8u      "),isa_vaddr_read(addr, 1));
+	   printf(("%-8u      "),isa_vaddr_read(addr, 1));//1 means 8 bits(1 byte),so 2 means 2 bytes, 3 means 3 bytes and so on.
 	   printf(("0x%08x\n"),isa_vaddr_read(addr, 1 ));
        addr += 1;
    }

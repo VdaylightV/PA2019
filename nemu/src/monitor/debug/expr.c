@@ -27,7 +27,7 @@ static struct rule {
   {"==", TK_EQ},         // equal
   {"\\-", '-'},          // minus
   {"\\*", '*' },         //multiply
-  {"\\/", '/'},          //divide
+  {"/", '/'},            //divide
   {"\\(", '('},          //left_bracket
   {"\\)", ')'}           //right_bracket
   

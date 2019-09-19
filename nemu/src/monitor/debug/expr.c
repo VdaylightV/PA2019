@@ -33,7 +33,7 @@ static struct rule {
   
 };
 
-#define ADD_TO_TOKENS (tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str;) 
+#define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str)  
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 static regex_t re[NR_REGEX] = {};
 
@@ -95,14 +95,14 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-			case TK_NOTYPE: { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; } 
-			case '+': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; }
-			case TK_EQ: { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break;  } 
-			case '-': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; }
-			case '*': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; } 
-			case '/': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; } 
-			case '(': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; } 
-			case ')': { tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str); nr_token++; break; } 
+			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; break; } 
+			case '+': { ADD_TO_TOKENS; nr_token++; break; }
+			case TK_EQ: { ADD_TO_TOKENS; nr_token++; break;  } 
+			case '-': { ADD_TO_TOKENS; nr_token++; break; }
+			case '*': { ADD_TO_TOKENS; nr_token++; break; } 
+			case '/': { ADD_TO_TOKENS; nr_token++; break; } 
+			case '(': { ADD_TO_TOKENS; nr_token++; break; } 
+			case ')': { ADD_TO_TOKENS; nr_token++; break; } 
           default: TODO();
         }
 

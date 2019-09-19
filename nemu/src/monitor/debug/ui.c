@@ -212,7 +212,7 @@ void show_array(Token *array) {
    for ( i = 0; i < 3; i++,array++) {
        int j = 0;
 	   while (array->str[j] != '\0') {
-	       printf("%c",array->str[j]);
+	       printf("%d",array->str[j]);
 		   j++;
 	   }
 	   printf("\n");

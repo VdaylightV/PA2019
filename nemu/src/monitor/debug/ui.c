@@ -58,6 +58,8 @@ static int cmd_info(char *args);
 
 static int cmd_x(char *args);
 
+static int cmd_p(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -69,6 +71,7 @@ static struct {
   { "si", "Make the computer execuate N pieces of instructions, then stop. If N is omitted, use the default N=1", cmd_si },
   { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
   { "x", "scan the contents of the internal memory", cmd_x }, 
+  { "p", "caculate the value of the expression", cmd_p },
   /* TODO: Add more commands */
 
 };
@@ -198,6 +201,11 @@ static int cmd_x(char *args) {
    printf(("0x%08x:      "),addr);
    printf(("%u\n"),isa_vaddr_read(addr, 4));*/
    return 0;
+}
+
+static int cmd_p(char *args) {
+  
+	return 1;
 }
 
 void ui_mainloop(int is_batch_mode) {

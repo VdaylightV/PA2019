@@ -13,6 +13,17 @@ enum {
 
 };
 
+static int str_to_uint(char *args) {
+    unsigned int sum = 0;
+	while(*args != ' ')
+	{
+		sum = sum*10 + (*args-'0');
+		args ++;
+	}
+
+	return sum;
+}
+
 static struct rule {
   char *regex;
   int token_type;
@@ -105,6 +116,7 @@ static bool make_token(char *e) {
 			case '/': { ADD_TO_TOKENS; nr_token++; break; } 
 			case '(': { ADD_TO_TOKENS; nr_token++; break; } 
 			case ')': { ADD_TO_TOKENS; nr_token++; break; } 
+            case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: TODO();
         }
 

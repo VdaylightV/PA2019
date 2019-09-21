@@ -222,10 +222,10 @@ static int cmd_p(char *args) {
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL," ");
-	bool success = false;
+	bool success = true;
 	int result = expr(arg,&success);
 	if(success) {
-	    printf("%x\n",result);
+	    printf("%d\n",result);
 	}
 	else {
 	    printf("failed");

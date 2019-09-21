@@ -68,9 +68,11 @@ typedef struct token {
   char str[32];
 } Token;
 
+//static?
 static Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
 static int nr_token __attribute__((used))  = 0;
 
+//static?
 static bool make_token(char *e) {
   int position = 0;
   int i;
@@ -119,14 +121,107 @@ static bool make_token(char *e) {
   return true;
 }
 
+char *find_end(char *args) {
+    char *end = args;
+	while ( *end != '\0') {
+	    end ++;
+	}
+	end --;
+	return end;
+}
+
+int return_end_index(char *args) {
+    int i = 0;
+   	char *ptr = args;
+	while ( ptr[i] != '\0' ) {
+	    i ++;
+	}
+	i --;
+	return i;
+}
+
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-
-  /* TODO: Insert codes to evaluate the expression. */
-  TODO();
-
   return 0;
 }
+
+
+  /* TODO: Insert codes to evaluate the expression. */
+//  TODO();
+/*char *ptr_to_tokens_end = &tokens[0];
+int p = 0;
+int q = return_end_index(*ptr_to_tokens_end);
+
+bool check_parentheses(int p, int q, Token *tokens[0]) {
+    float weight = 0.0;
+	if ( tokens[p]->type == '(' && tokens[q]->type == ')') {
+		int left = p + 1;
+		int right = q - 1;
+		
+		for ( left; left <= right; left ++ ) {
+			
+            if (weight < 0) {
+			    return false;
+			}
+
+			else if (tokens[left]->type == '(') {
+			    weight += 0.5;
+			}
+
+			else if (tokens[left]->type == ')') {
+			    weight -= 0.5;
+				
+			}
+	    }		
+
+		if (weight > 0) {
+		    return false;
+		}
+	
+	}
+
+	else {
+	    return false;
+	}
+   
+}*/
+
+/*
+
+uint32_t eval(int p, int q) {
+    if ( p > q ) {
+	    printf("Bad Expression!");
+	}
+
+	else if ( p == q ) {
+	    return 
+	}
+
+	else if ( check_parentheses(p,q) == true ) {
+        return eval(p+1, q-1);
+	
+	
+	
+	
+	    return eval( p + 1, q - 1 );
+	}
+
+	else {
+	    op = 
+	    val1 = eval(p, op - 1);
+		val2 = eval(op+1, q);
+
+		switch () {
+		    case '+': return val1 + val2;
+		    case '-': return val1 - val2;
+		    case '*': return val1 * val2;
+            case '/': return val1 / val2;
+		    default: assert(0);
+		
+		}
+	}
+}
+*/

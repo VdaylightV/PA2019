@@ -225,7 +225,7 @@ static int cmd_p(char *args) {
 	bool success = true;
 	int result = expr(arg,&success);
 	if(success) {
-	    printf("%d\n",result);
+	    printf("%x\n",result);
 	}
 	else {
 	    printf("failed");

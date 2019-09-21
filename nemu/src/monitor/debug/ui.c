@@ -218,8 +218,9 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-//    Token *ptr = &tokens[0];
+//  Token *ptr = &tokens[0];
 //	show_array(ptr);
+//  make_token(args);
 	printf("Hi\n");
 	return 1;
 }

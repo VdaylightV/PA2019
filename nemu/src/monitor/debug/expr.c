@@ -164,7 +164,8 @@ uint32_t expr(char *e, bool *success) {
 
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
-/*char *ptr_to_tokens_end = &tokens[0];
+/*
+char *ptr_to_tokens_end = &tokens[0];
 int p = 0;
 int q = return_end_index(*ptr_to_tokens_end);
 
@@ -200,9 +201,8 @@ bool check_parentheses(int p, int q, Token *tokens[0]) {
 	    return false;
 	}
    
-}*/
+}
 
-/*
 
 uint32_t eval(int p, int q) {
     if ( p > q ) {

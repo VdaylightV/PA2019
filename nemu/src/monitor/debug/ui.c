@@ -2,17 +2,12 @@
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
 #include "nemu.h"
-#include "expr.c"
 
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
-extern Token tokens[32];
-
 void cpu_exec(uint64_t);
-
-void show_array(Token*);
 
 uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
@@ -207,6 +202,8 @@ static int cmd_x(char *args) {
    printf(("%u\n"),isa_vaddr_read(addr, 4));*/
    return 0;
 }
+
+/*
 void show_array(Token *array) {
    int i;
    for ( i = 0; i < 3; i++,array++) {
@@ -218,10 +215,11 @@ void show_array(Token *array) {
 	   printf("\n");
    }
 }
+*/
 
 static int cmd_p(char *args) {
-    Token *ptr = &tokens[0];
-	show_array(ptr);
+//    Token *ptr = &tokens[0];
+//	show_array(ptr);
 	return 1;
 }
 

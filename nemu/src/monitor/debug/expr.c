@@ -13,6 +13,7 @@ enum {
 
 };
 
+/*
 static int str_to_uint(char *args) {
     unsigned int sum = 0;
 	while(*args != ' ')
@@ -23,6 +24,7 @@ static int str_to_uint(char *args) {
 
 	return sum;
 }
+*/
 
 static struct rule {
   char *regex;
@@ -115,8 +117,9 @@ static bool make_token(char *e) {
 			case '*': { ADD_TO_TOKENS; nr_token++; break; } 
 			case '/': { ADD_TO_TOKENS; nr_token++; break; } 
 			case '(': { ADD_TO_TOKENS; nr_token++; break; } 
-			case ')': { ADD_TO_TOKENS; nr_token++; break; } 
-            case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
+			case ')': { ADD_TO_TOKENS; nr_token++; break; }
+			case TK_NUM: { ADD_TO_TOKENS; nr_token++; break; } 
+//            case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: TODO();
         }
 

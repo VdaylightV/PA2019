@@ -221,7 +221,7 @@ static int cmd_p(char *args) {
 //  Token *ptr = &tokens[0];
 //	show_array(ptr);
 //  make_token(args);
-    char *arg = strtok(NULL," ");
+    char *arg = strtok(NULL,"$");
 	bool success = true;
 	int result = expr(arg,&success);
 	if(success) {

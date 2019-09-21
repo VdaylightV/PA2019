@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ 
+  TK_NOTYPE = 256, TK_EQ, TK_NUM
 
   /* TODO: Add more token types */
 
@@ -29,8 +29,8 @@ static struct rule {
   {"\\*", '*' },         //multiply
   {"/", '/'},            //divide
   {"\\(", '('},          //left_bracket
-  {"\\)", ')'}           //right_bracket
-  
+  {"\\)", ')'},          //right_bracket
+  {"[0-9]+",TK_NUM}        //number
 };
 
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str)  

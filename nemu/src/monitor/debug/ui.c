@@ -221,7 +221,7 @@ static int cmd_p(char *args) {
 //  Token *ptr = &tokens[0];
 //	show_array(ptr);
 //  make_token(args);
-    char *arg = strtok(NULL,"$");
+    char *arg = strtok(NULL," ");
 	bool success = true;
 	int result = expr(arg,&success);
 	if(success) {
@@ -231,8 +231,8 @@ static int cmd_p(char *args) {
 	    printf("failed");
 	}
 	return 0;
-	printf("Hi\n");
-	return 1;
+/*	printf("Hi\n");
+	return 1;   */
 }
 
 void ui_mainloop(int is_batch_mode) {

@@ -98,9 +98,6 @@ static bool make_token(char *e) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-            i, rules[i].regex, position, substr_len, substr_len, substr_start);
-        position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
@@ -116,9 +113,13 @@ static bool make_token(char *e) {
 			case '/': { ADD_TO_TOKENS; nr_token++; break; } 
 			case '(': { ADD_TO_TOKENS; nr_token++; break; } 
 			case ')': { ADD_TO_TOKENS; nr_token++; break; } 
-            case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
+            case TK_NUM: { char *str = &e[position]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: TODO();
         }
+
+        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s,and the product is %d",
+            i, rules[i].regex, position, substr_len, substr_len, substr_start, tokens[nr_token].type);
+        position += substr_len;
 
         break;
       }

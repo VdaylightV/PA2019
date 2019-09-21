@@ -220,6 +220,7 @@ void show_array(Token *array) {
 static int cmd_p(char *args) {
 //    Token *ptr = &tokens[0];
 //	show_array(ptr);
+	printf("Hi");
 	return 1;
 }
 

@@ -13,8 +13,7 @@ enum {
 
 };
 
-/*
-static int str_to_uint(char *args) {
+static uint32_t str_to_uint(char *args) {
     unsigned int sum = 0;
 	while(*args != ' ')
 	{
@@ -24,7 +23,6 @@ static int str_to_uint(char *args) {
 
 	return sum;
 }
-*/
 
 static struct rule {
   char *regex;
@@ -84,7 +82,7 @@ typedef struct token {
 //static?
 Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
 static int nr_token __attribute__((used))  = 0;
-
+static int q = 0;
 //static?
 static bool make_token(char *e) {
   int position = 0;
@@ -92,6 +90,7 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
+  q = 0;
 
   while (e[position] != '\0') {
     /* Try all rules one by one. */
@@ -110,15 +109,15 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; break; } 
-			case '+': { ADD_TO_TOKENS; nr_token++; break; }
-			case TK_EQ: { ADD_TO_TOKENS; nr_token++; break;  } 
-			case '-': { ADD_TO_TOKENS; nr_token++; break; }
-			case '*': { ADD_TO_TOKENS; nr_token++; break; } 
-			case '/': { ADD_TO_TOKENS; nr_token++; break; } 
-			case '(': { ADD_TO_TOKENS; nr_token++; break; } 
-			case ')': { ADD_TO_TOKENS; nr_token++; break; }
-	    	case TK_NUM: { ADD_TO_TOKENS; nr_token++; break; } 
+			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; q++;  break; } 
+			case '+': { ADD_TO_TOKENS; nr_token++; q++;  break; }
+			case TK_EQ: { ADD_TO_TOKENS; nr_token++; q++;  break;  } 
+			case '-': { ADD_TO_TOKENS; nr_token++; q++; break; }
+			case '*': { ADD_TO_TOKENS; nr_token++; q++; break; } 
+			case '/': { ADD_TO_TOKENS; nr_token++; q++; break; } 
+			case '(': { ADD_TO_TOKENS; nr_token++; q++; break; } 
+			case ')': { ADD_TO_TOKENS; nr_token++; q++; break; }
+	    	case TK_NUM: { ADD_TO_TOKENS; nr_token++; q++; break; } 
         //    case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: TODO();
         }
@@ -146,15 +145,17 @@ char *find_end(char *args) {
 	return end;
 }
 
-int return_end_index(char *args) {
-    int i = 0;
-   	char *ptr = args;
+/*
+uint32_t return_end_index(Token *args) {
+    uint32_t i = 0;
+   	Token *ptr = args;
 	while ( ptr[i] != '\0' ) {
 	    i ++;
 	}
 	i --;
 	return i;
 }
+*/
 
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
@@ -167,72 +168,161 @@ uint32_t expr(char *e, bool *success) {
 
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();
-/*
-char *ptr_to_tokens_end = &tokens[0];
-int p = 0;
-int q = return_end_index(*ptr_to_tokens_end);
 
-bool check_parentheses(int p, int q, Token *tokens[0]) {
+//char *ptr_to_tokens_end = &tokens[0];
+uint32_t p = 0;
+//uint32_t q = *(&nr_token); 
+//there exist a cast from int to uinr32_t, because the nr_token was originally "int", now I turn it to "uint32_t";
+//Don't forget that the "Token *token" was a pointer, whose type is "Token" and name is "token"!!!!!!!
+uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
     float weight = 0.0;
-	if ( tokens[p]->type == '(' && tokens[q]->type == ')') {
-		int left = p + 1;
-		int right = q - 1;
+	float weight_min = weight;
+    uint32_t i = p;
+
+	for ( ; i <= q; i ++ ) {
+	    if ( token[i].type == '(' ) {
+		    weight += 0.5;
+		}
+	    
+		else if ( token[i].type == ')' ) {
+		    weight -= 0.5; 
+			if ( weight < weight_min ) {
+			    weight = weight_min;
+			}
+		}
+	}
+
+	if ( weight != 0.0 ) {
+	    return -1;
+	}
+
+	else if ( weight_min < 0.0 ) {
+	    return -1;
+	}
+	
+	else if ( token[p].type == '(' && token[q].type == ')') {
+		uint32_t left = p + 1;
+		uint32_t right = q - 1;
 		
-		for ( left; left <= right; left ++ ) {
+		for ( ; left <= right; left ++ ) {
 			
             if (weight < 0) {
-			    return false;
+			    return 0;
 			}
 
-			else if (tokens[left]->type == '(') {
+			else if (token[left].type == '(') {
 			    weight += 0.5;
 			}
 
-			else if (tokens[left]->type == ')') {
+			else if (token[left].type == ')') {
 			    weight -= 0.5;
 				
 			}
-	    }		
-
-		if (weight > 0) {
-		    return false;
-		}
+	    }
+        return 1;		
+	}
 	
-	}
-
-	else {
-	    return false;
-	}
+	return 2;
    
 }
 
+/*
+uint32_t find bracket(uint32_t p, uin32_t q, Token *tokens) {
+    uint32_t index = p;
+}
+*/
 
-uint32_t eval(int p, int q, Token *tokens) {
+uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
+    uint32_t i = p;
+    uint32_t j = q;
+    uint32_t index = p;
+
+    while ( token[j].type != '*' && token[j].type != '/' && token[j].type != '-' && token[j].type != '+' ) {
+	    if ( token[j].type == ')' ) {
+		    while ( token[j].type != '(' ) {
+			    j --;
+			}
+
+			while ( token[j].type == '(' ) {
+			    j --;
+			}
+
+		}
+		else if ( token[j].type == TK_NUM ) {
+		    j --;
+		}
+	}	
+
+	if ( token[j].type == '+' || token[j].type == '-' ) {
+	    return j;
+	}
+
+    while ( token[i].type != '*' && token[i].type != '/' && token[i].type != '-' && token[i].type != '+' ) {
+	    if ( token[i].type == '(' ) {
+		    while ( token[i].type != ')' ) {
+			    i ++;
+			}
+
+			while ( token[i].type == ')' ) {
+	            i ++;		   
+			}
+		 }
+		else if ( token[i].type == TK_NUM ) {
+		    i ++;
+			}
+	}
+            
+	if ( i == j ) {
+	    return i;
+	}
+
+	else if ( token[i].type == '+' || token[i].type == '-' ) {
+	    return find_op( i, j-1, token );
+    }
+
+	else if ( token[i].type == '*' || token[i].type == '/' ) {
+		index = j;
+	    if ( find_op( i, j-1, token ) == i  ) {
+		    return index;
+        }
+		else if ( find_op ( i, j-1, token ) != i ) {
+			return find_op ( i, j-1, token );
+		}
+	}
+
+	assert(0);
+	return -1;
+
+
+}
+
+
+uint32_t eval(uint32_t p,uint32_t q, Token *token) {
     if ( p > q ) {
-	    printf("Bad Expression!");
+		return -1;
 	}
 
 	else if ( p == q ) {
-	    return 
+	    return str_to_uint(&(token[p].str[0]));
 	}
 
-	else if ( check_parentheses(p,q) == true ) {
-	    return eval( p + 1, q - 1 );
+	else if ( check_parentheses( p, q, token ) == 1 ) {
+	    return eval( p + 1, q - 1, token );
 	}
 
 	else {
-	    op = 
-	    val1 = eval(p, op - 1);
-		val2 = eval(op+1, q);
+	    uint32_t op = find_op( p, q, token );
+	    uint32_t val1 = eval( p, op - 1, token );
+		uint32_t val2 = eval( op + 1, q, token );
 
-		switch () {
+		switch ( token[op].type ) {
 		    case '+': return val1 + val2;
 		    case '-': return val1 - val2;
 		    case '*': return val1 * val2;
             case '/': return val1 / val2;
-		    default: assert(0);
+		    default: assert(0); return -1;
 		
 		}
 	}
 }
-*/
+

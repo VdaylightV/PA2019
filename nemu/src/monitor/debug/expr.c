@@ -57,9 +57,7 @@ void copy_char_array(char *a, char b[], int substr_len) {
 	for (i = 0; i < substr_len; i ++) {
 	    b[i] = a[i];
 	}
-    for ( ; i <=31; i++ ) {
-	    b[i] = '\0';
-	}
+    b[i] = '\0';
 }
 
 void init_regex() {
@@ -142,7 +140,13 @@ static bool make_token(char *e) {
 	  while ( tokens[i].str[j] != '\0' ) {
 	      tokens_copy[i].str[j] = tokens[i].str[j];
 		  j ++;
+	  while ( j <= 31 ) {
+	      tokens_copy[i].str[j] = '\0';
+		  j ++;
 	  }
+
+	  }
+
   }
 
   return true;

@@ -207,11 +207,11 @@ uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
 	}
 
 	if ( weight != 0.0 ) {
-	    return -1;
+	    return 3;
 	}
 
 	else if ( weight_min < 0.0 ) {
-	    return -1;
+	    return 3;
 	}
 	
 	else if ( token[p].type == '(' && token[q].type == ')') {
@@ -239,6 +239,7 @@ uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
 	return 2;
    
 }
+//According to the check_parentheses, if return 3,it means illegeal brackets, if return 0, it means no big brackets surrounding the whole expression but the beginning and end of the expression are brackets, then if it return 1, it means there is a big pair of brackets surrounding the expression, last if it return 2, it means there is no brackets surrounding the expression and the beginning and end of the expression are not brackets.
 
 /*
 uint32_t find bracket(uint32_t p, uin32_t q, Token *tokens) {

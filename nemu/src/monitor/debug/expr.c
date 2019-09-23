@@ -57,7 +57,9 @@ void copy_char_array(char *a, char b[], int substr_len) {
 	for (i = 0; i < substr_len; i ++) {
 	    b[i] = a[i];
 	}
-	b[i] = '\0';
+    for ( ; i <=31; i++ ) {
+	    b[i] = '\0';
+	}
 }
 
 void init_regex() {

@@ -262,7 +262,7 @@ static int cmd_p(char *args) {
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);
-	for ( int i = 0; i < last_token; i ++ ) {
+	for ( int i = 0; i <= last_token; i ++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);

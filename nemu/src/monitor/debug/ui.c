@@ -252,7 +252,7 @@ static int cmd_p(char *args) {
     Token *pointer = &tokens[0];
 	printf("length:%u\n",token_end);
 //	int j = 0;
-	printf("content:");
+	printf("content:\n");
 /*	while ( pointer[1].str[j] != '\0' && pointer ) {
 	    printf("%c",pointer[1].str[j]);
 		j ++;

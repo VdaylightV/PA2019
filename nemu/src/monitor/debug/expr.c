@@ -81,6 +81,8 @@ typedef struct token {
 
 //static?
 static Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
+//I choose to copy a copy of the tokens
+Token tokens_copy[32];
 static int nr_token __attribute__((used))  = 0;
 uint32_t token_end = 0;
 //static?
@@ -131,6 +133,14 @@ static bool make_token(char *e) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
+  }
+  for ( int i = 0; i <= nr_token; i ++ ) {
+      tokens_copy[i].type = tokens[i].type;
+      int j = 0;
+	  while ( tokens[i].str[j] != '\0' ) {
+	      tokens_copy[i].str[j] = tokens[i].str[j];
+		  j ++;
+	  }
   }
 
   return true;

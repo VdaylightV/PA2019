@@ -249,7 +249,7 @@ static int cmd_p(char *args) {
 	}
     
   //  uint32_t product = eval(0, token_end, ptr);
-    Token *pointer = &tokens[0];
+    Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);
 //	int j = 0;
 	printf("content:\n");

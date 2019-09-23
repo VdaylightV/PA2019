@@ -12,7 +12,7 @@ typedef struct token {
 
 uint32_t expr(char *, bool *);
 
-extern Token tokens[32];
+extern Token tokens_copy[32];
 
 char *find_end(char *args);
 

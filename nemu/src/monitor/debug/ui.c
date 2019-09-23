@@ -249,15 +249,15 @@ static int cmd_p(char *args) {
 	}
 //      uint32_t bracket = check_parentheses(0, token_end, ptr);  
 //    uint32_t product = eval(0, token_end, ptr);
-//    Token *pointer = &tokens_copy[0];
+    Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);
-//	int j = 0;
+	int j = 0;
 	printf("content:\n");
-/*	while ( pointer[1].str[j] != '\0' && pointer ) {
+	while ( pointer[1].str[j] != '\0' && pointer ) {
 	    printf("%c",pointer[1].str[j]);
 		j ++;
 	}
-*/
+
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);

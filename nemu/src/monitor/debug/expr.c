@@ -252,16 +252,30 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
     uint32_t j = q;
     uint32_t index = p;
 
-    while ( token[j].type != '*' && token[j].type != '/' && token[j].type != '-' && token[j].type != '+' ) {
+    while ( token[j].type != '*' && token[j].type != '/' && token[j].type != '-' && token[j].type != '+' ) { 
+		float weight = 0.0;
 	    if ( token[j].type == ')' ) {
+			weight += 0.5;
+			j --;
+			while ( token[j].type == ')' ) {
+			    weight += 0.5;
+				j --;
+			}
 		    while ( token[j].type != '(' ) {
 			    j --;
 			}
 
 			while ( token[j].type == '(' ) {
 			    j --;
+				weight -= 0.5;
 			}
-
+            while ( weight != 0.0 ) {
+			    j --;
+				if ( token[j].type == '(' ) {
+				    weight -= 0.5;
+				}
+			}
+			j --;
 		}
 		else if ( token[j].type == TK_NUM ) {
 		    j --;
@@ -273,14 +287,29 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 	}
 
     while ( token[i].type != '*' && token[i].type != '/' && token[i].type != '-' && token[i].type != '+' ) {
+		float weight = 0.0;
 	    if ( token[i].type == '(' ) {
+			weight += 0.5;
+			i ++;
+			while ( token[i].type == '(' ) {
+			    weight += 0.5;
+				i ++;
+			}
 		    while ( token[i].type != ')' ) {
 			    i ++;
 			}
 
 			while ( token[i].type == ')' ) {
-	            i ++;		   
+	            i ++;	
+		        weight -= 0.5;		
 			}
+			while ( weight != 0.0 ) {
+			    i ++;
+				if ( token[i].type == ')' ) {
+				    weight -= 0.5;
+				}
+			}
+		    i ++;
 		 }
 		else if ( token[i].type == TK_NUM ) {
 		    i ++;

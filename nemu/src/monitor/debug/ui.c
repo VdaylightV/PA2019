@@ -264,8 +264,8 @@ static int cmd_p(char *args) {
 	for ( int i = 0; i <= token_end; i++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
-	     	printf("%c\n", pointer[i].str[j]);
-			printf("index:%d\n",j);
+	     	printf("%c", pointer[i].str[j]);
+		//	printf("index:%d\n",j);
 			j++;
 		}
 	}

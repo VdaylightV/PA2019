@@ -54,7 +54,7 @@ static regex_t re[NR_REGEX] = {};
 
 void copy_char_array(char *a, char b[], int substr_len) {
     int i;
-	for (i = 0; i <= substr_len; i ++) {
+	for (i = 0; i < substr_len; i ++) {
 	    b[i] = a[i];
 	}
 	b[i] = '\0';

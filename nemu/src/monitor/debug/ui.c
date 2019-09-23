@@ -235,7 +235,7 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-//    Token *ptr = &tokens_copy[0];
+    Token *ptr = &tokens_copy[0];
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL,"$");
@@ -248,8 +248,8 @@ static int cmd_p(char *args) {
 	    printf("failed");
 	}
     
-//    uint32_t product = eval(0, token_end, ptr);
-    Token *pointer = &tokens_copy[0];
+    uint32_t product = eval(0, token_end, ptr);
+//    Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);
 //	int j = 0;
 	printf("content:\n");
@@ -261,7 +261,7 @@ static int cmd_p(char *args) {
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);
-	for ( int i = 0; i < token_end; i ++ ) {
+/*	for ( int i = 0; i < token_end; i ++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);
@@ -270,12 +270,8 @@ static int cmd_p(char *args) {
 		}
 		printf("\n");
 	}
-
-//	printf("%u\n", product);
-
-
-
-
+*/ //To print the results that was recorded in the tokens
+	printf("%u\n", product);
 
 	return 0;
 /*	printf("Hi\n");

@@ -247,7 +247,7 @@ static int cmd_p(char *args) {
 	else {
 	    printf("failed");
 	}
-      uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
+      uint32_t bracket = check_parentheses(0, token_end, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
 //    Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);

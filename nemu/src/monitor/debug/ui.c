@@ -249,6 +249,7 @@ static int cmd_p(char *args) {
 	}
     uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
 //    uint32_t product = eval(0, token_end, ptr);
+    uint32_t op = find_op(0, token_end-1, ptr);
     Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);
 //	int j = 0;
@@ -272,7 +273,8 @@ static int cmd_p(char *args) {
 	}
 	
 //To print the results that was recorded in the tokens
-	printf("%u\n", bracket);
+	printf("bracket:%u\n", bracket);
+	printf("op:%u\n", op);
 
 	return 0;
 /*	printf("Hi\n");

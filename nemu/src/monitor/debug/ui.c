@@ -251,17 +251,17 @@ static int cmd_p(char *args) {
 //    uint32_t product = eval(0, token_end, ptr);
     Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",token_end);
-	int j = 0;
+//	int j = 0;
 	printf("content:\n");
-	while ( pointer[1].str[j] != '\0' && pointer ) {
+/*	while ( pointer[1].str[j] != '\0' && pointer ) {
 	    printf("%c",pointer[1].str[j]);
 		j ++;
 	}
-
+*/
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);
-/*	for ( int i = 0; i <= last_token; i ++ ) {
+	for ( int i = 0; i < token_end; i ++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);
@@ -270,7 +270,7 @@ static int cmd_p(char *args) {
 		}
 		printf("\n");
 	}
-*/	
+	
 //To print the results that was recorded in the tokens
 //	printf("%u\n", bracket);
 

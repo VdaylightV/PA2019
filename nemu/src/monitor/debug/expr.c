@@ -320,6 +320,10 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 	    return i;
 	}
 
+	if ( i > j ) {
+	    return 100;
+	}
+
 	else if ( token[i].type == '+' || token[i].type == '-' ) {
 	    return find_op( i, j-1, token );
     }

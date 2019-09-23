@@ -3,12 +3,12 @@
 
 #include "common.h"
 
-/*
+
 typedef struct token {
     int type;
 	char str[32];
-};
-*/
+} Token;
+
 
 uint32_t expr(char *, bool *);
 

@@ -235,7 +235,6 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-    uint32_t last_token= token_end - 1;
 //	Token *ptr = &tokens_copy[0];
 //	show_array(ptr);
 //  make_token(args);
@@ -248,10 +247,10 @@ static int cmd_p(char *args) {
 	else {
 	    printf("failed");
 	}
-//      uint32_t bracket = check_parentheses(0, last_token, ptr);  
-//    uint32_t product = eval(0, token_end-1, ptr);
+//      uint32_t bracket = check_parentheses(0, token_end, ptr);  
+//    uint32_t product = eval(0, token_end, ptr);
 //    Token *pointer = &tokens_copy[0];
-	printf("length:%u\n",last_token);
+	printf("length:%u\n",token_end);
 //	int j = 0;
 	printf("content:\n");
 /*	while ( pointer[1].str[j] != '\0' && pointer ) {

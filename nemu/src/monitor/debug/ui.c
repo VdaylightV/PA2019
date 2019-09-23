@@ -250,8 +250,8 @@ static int cmd_p(char *args) {
     
   //  uint32_t product = eval(0, token_end, ptr);
     Token *pointer = &tokens[0];
-	printf("%u",token_end);
-	printf("%d",pointer[0].type);
+	printf("length:%u\n",token_end);
+	printf("begin type:%d\n",pointer[0].type);
 /*	for ( int i = 0; i <= token_end; i++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {

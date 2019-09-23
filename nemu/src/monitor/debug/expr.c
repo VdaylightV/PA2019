@@ -140,13 +140,11 @@ static bool make_token(char *e) {
 	  while ( tokens[i].str[j] != '\0' ) {
 	      tokens_copy[i].str[j] = tokens[i].str[j];
 		  j ++;
+	  }
 	  while ( j <= 31 ) {
 	      tokens_copy[i].str[j] = '\0';
 		  j ++;
 	  }
-
-	  }
-
   }
 
   return true;

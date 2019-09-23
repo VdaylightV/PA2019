@@ -235,7 +235,7 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-//	Token *ptr = &tokens_copy[0];
+	Token *ptr = &tokens_copy[0];
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL,"$");
@@ -247,7 +247,7 @@ static int cmd_p(char *args) {
 	else {
 	    printf("failed");
 	}
-//    uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
+    uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
 //    uint32_t op = find_op(0, token_end-1, ptr);
     Token *pointer = &tokens_copy[0];
@@ -273,7 +273,7 @@ static int cmd_p(char *args) {
 	}
 	
 //To print the results that was recorded in the tokens
-//	printf("bracket:%u\n", bracket);
+	printf("bracket:%u\n", bracket);
 //	printf("op:%u\n", op);
 //	printf("product:%u\n",product);
 

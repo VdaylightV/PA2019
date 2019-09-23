@@ -134,7 +134,7 @@ static bool make_token(char *e) {
       return false;
     }
   }
-  for ( int i = 0; i <= nr_token; i ++ ) {
+  for ( int i = 0; i < nr_token; i ++ ) {
       tokens_copy[i].type = tokens[i].type;
       int j = 0;
 	  while ( tokens[i].str[j] != '\0' ) {

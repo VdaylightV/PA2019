@@ -235,7 +235,7 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-    Token *ptr = &tokens[0];
+//    Token *ptr = &tokens[0];
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL,"$");
@@ -248,7 +248,7 @@ static int cmd_p(char *args) {
 	    printf("failed");
 	}
     
-    uint32_t product = eval(0, token_end, ptr);
+  //  uint32_t product = eval(0, token_end, ptr);
     Token *pointer = &tokens[0];
 	for ( int i = 0; i <= token_end; i++ ) {
 	    int j = 0;
@@ -258,7 +258,7 @@ static int cmd_p(char *args) {
 		printf("\n");	
 	}
 
-	printf("%u\n", product);
+	//printf("%u\n", product);
 
 
 

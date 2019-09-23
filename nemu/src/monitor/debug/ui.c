@@ -7,11 +7,15 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+extern uint32_t token_end;
+
 void cpu_exec(uint64_t);
 
 uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
 uint32_t vaddr_read(vaddr_t addr, int len);
+
+uint32_t find_end_str(char *args);
 
 static unsigned int str_to_uint(char *args);
 
@@ -151,6 +155,19 @@ static unsigned int str_to_hex(char *args) {
 	return result;
 }
 
+uint32_t find_end_str(char *args) {
+    uint32_t count = 0;
+    while ( *args != '\0' ) {
+        args ++;
+		count ++;
+    }
+    count --;
+	args --;
+
+   return count;
+}
+
+
 static int cmd_si(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
@@ -218,7 +235,7 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-//  Token *ptr = &tokens[0];
+    Token *ptr = &tokens[0];
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL,"$");
@@ -231,6 +248,21 @@ static int cmd_p(char *args) {
 	    printf("failed");
 	}
     
+    uint32_t product = eval(0, token_end, ptr);
+    Token *pointer = &tokens[0];
+	for ( int i = 0; i <= token_end; i++ ) {
+	    int j = 0;
+		while ( pointer[i].str[j] != '\0' ) {
+	     	printf("%c", pointer[i].str[j]);
+		}
+		printf("\n");	
+	}
+
+	return product;
+
+
+
+
 
 	return 0;
 /*	printf("Hi\n");

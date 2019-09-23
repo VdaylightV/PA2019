@@ -13,7 +13,7 @@ enum {
 
 };
 
-static uint32_t str_to_uint(char *args) {
+uint32_t str_to_uint_expression(char *args) {
     unsigned int sum = 0;
 	while(*args != ' ')
 	{
@@ -82,7 +82,7 @@ typedef struct token {
 //static?
 Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
 static int nr_token __attribute__((used))  = 0;
-static int q = 0;
+uint32_t token_end = 0;
 //static?
 static bool make_token(char *e) {
   int position = 0;
@@ -90,7 +90,7 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
-  q = 0;
+  token_end = 0;
 
   while (e[position] != '\0') {
     /* Try all rules one by one. */
@@ -109,17 +109,17 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; q++;  break; } 
-			case '+': { ADD_TO_TOKENS; nr_token++; q++;  break; }
-			case TK_EQ: { ADD_TO_TOKENS; nr_token++; q++;  break;  } 
-			case '-': { ADD_TO_TOKENS; nr_token++; q++; break; }
-			case '*': { ADD_TO_TOKENS; nr_token++; q++; break; } 
-			case '/': { ADD_TO_TOKENS; nr_token++; q++; break; } 
-			case '(': { ADD_TO_TOKENS; nr_token++; q++; break; } 
-			case ')': { ADD_TO_TOKENS; nr_token++; q++; break; }
-	    	case TK_NUM: { ADD_TO_TOKENS; nr_token++; q++; break; } 
+			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case '+': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
+			case TK_EQ: { ADD_TO_TOKENS; nr_token++; token_end ++; break;  } 
+			case '-': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
+			case '*': { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case '/': { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case '(': { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case ')': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
+	    	case TK_NUM: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
         //    case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
-          default: TODO();
+          default: assert(0);
         }
 
 
@@ -170,7 +170,7 @@ uint32_t expr(char *e, bool *success) {
 //  TODO();
 
 //char *ptr_to_tokens_end = &tokens[0];
-uint32_t p = 0;
+//uint32_t p = 0;
 //uint32_t q = *(&nr_token); 
 //there exist a cast from int to uinr32_t, because the nr_token was originally "int", now I turn it to "uint32_t";
 //Don't forget that the "Token *token" was a pointer, whose type is "Token" and name is "token"!!!!!!!
@@ -303,7 +303,7 @@ uint32_t eval(uint32_t p,uint32_t q, Token *token) {
 	}
 
 	else if ( p == q ) {
-	    return str_to_uint(&(token[p].str[0]));
+	    return str_to_uint_expression(&(token[p].str[0]));
 	}
 
 	else if ( check_parentheses( p, q, token ) == 1 ) {

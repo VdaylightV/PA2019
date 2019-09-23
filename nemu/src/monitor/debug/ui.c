@@ -250,7 +250,7 @@ static int cmd_p(char *args) {
 	}
 //      uint32_t bracket = check_parentheses(0, last_token, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
-    Token *pointer = &tokens_copy[0];
+//    Token *pointer = &tokens_copy[0];
 	printf("length:%u\n",last_token);
 //	int j = 0;
 	printf("content:\n");
@@ -262,7 +262,7 @@ static int cmd_p(char *args) {
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);
-	for ( int i = 0; i <= last_token; i ++ ) {
+/*	for ( int i = 0; i <= last_token; i ++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);
@@ -271,6 +271,7 @@ static int cmd_p(char *args) {
 		}
 		printf("\n");
 	}
+*/	
 //To print the results that was recorded in the tokens
 //	printf("%u\n", bracket);
 

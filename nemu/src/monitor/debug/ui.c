@@ -258,7 +258,7 @@ static int cmd_p(char *args) {
 		printf("\n");	
 	}
 
-	return product;
+	printf("%u\n", product);
 
 
 

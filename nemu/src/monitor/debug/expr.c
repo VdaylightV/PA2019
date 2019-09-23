@@ -357,7 +357,7 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 	}
 
 	if ( i > j ) {
-	    return 100;
+	    assert(0);
 	}
 
 	else if ( token[i].type == '+' || token[i].type == '-' ) {

@@ -80,7 +80,7 @@ typedef struct token {
 } Token;
 
 //static?
-Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
+static Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
 static int nr_token __attribute__((used))  = 0;
 uint32_t token_end = 0;
 //static?

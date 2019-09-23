@@ -15,7 +15,7 @@ enum {
 
 uint32_t str_to_uint_expression(char *args) {
     unsigned int sum = 0;
-	while(*args != ' ')
+	while(*args != '\0')
 	{
 		sum = sum*10 + (*args-'0');
 		args ++;

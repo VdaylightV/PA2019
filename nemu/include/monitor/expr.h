@@ -22,4 +22,6 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token);
 
 uint32_t eval(uint32_t p, uint32_t q, Token *token);
 
+uint32_t str_to_uint_expression(char *args);
+
 #endif

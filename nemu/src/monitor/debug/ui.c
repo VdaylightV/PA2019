@@ -267,7 +267,6 @@ static int cmd_p(char *args) {
 	     	printf("%c", pointer[i].str[j]);
 			j++;
 		}
-		printf("\n");	
 	}
 
 	//printf("%u\n", product);

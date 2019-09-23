@@ -256,6 +256,7 @@ static int cmd_p(char *args) {
 	    printf("%c",pointer[0].str[j]);
 		j ++;
 	}
+	printf("\n");
 //	printf("begin type:%d\n",pointer[0].type);
 /*	for ( int i = 0; i <= token_end; i++ ) {
 	    int j = 0;

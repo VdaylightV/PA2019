@@ -235,7 +235,8 @@ void show_array(Token *array) {
 */
 
 static int cmd_p(char *args) {
-    Token *ptr = &tokens_copy[0];
+    uint32_t last_token= token_end - 1;
+//	Token *ptr = &tokens_copy[0];
 //	show_array(ptr);
 //  make_token(args);
     char *arg = strtok(NULL,"$");
@@ -247,10 +248,10 @@ static int cmd_p(char *args) {
 	else {
 	    printf("failed");
 	}
-      uint32_t bracket = check_parentheses(0, token_end, ptr);  
+//      uint32_t bracket = check_parentheses(0, last_token, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
-//    Token *pointer = &tokens_copy[0];
-	printf("length:%u\n",token_end);
+    Token *pointer = &tokens_copy[0];
+	printf("length:%u\n",last_token);
 //	int j = 0;
 	printf("content:\n");
 /*	while ( pointer[1].str[j] != '\0' && pointer ) {
@@ -261,7 +262,7 @@ static int cmd_p(char *args) {
 //	printf("\n");
 
 //	printf("begin type:%d\n",pointer[0].type);
-/*	for ( int i = 0; i < token_end; i ++ ) {
+	for ( int i = 0; i < last_token; i ++ ) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);
@@ -270,8 +271,8 @@ static int cmd_p(char *args) {
 		}
 		printf("\n");
 	}
-*/ //To print the results that was recorded in the tokens
-	printf("%u\n", bracket);
+//To print the results that was recorded in the tokens
+//	printf("%u\n", bracket);
 
 	return 0;
 /*	printf("Hi\n");

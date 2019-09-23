@@ -111,7 +111,7 @@ static bool make_token(char *e) {
          */
 
         switch (rules[i].token_type) {
-			case TK_NOTYPE: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case TK_NOTYPE: {/* ADD_TO_TOKENS; nr_token++; token_end ++;*/ break; } 
 			case '+': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
 			case TK_EQ: { ADD_TO_TOKENS; nr_token++; token_end ++; break;  } 
 			case '-': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }

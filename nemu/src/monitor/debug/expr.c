@@ -44,7 +44,7 @@ static struct rule {
   {"[0-9]+",TK_NUM}        //number
 };
 
-#define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(rules[i].regex, tokens[nr_token].str)  
+#define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str)  
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 static regex_t re[NR_REGEX] = {};
 
@@ -52,7 +52,7 @@ static regex_t re[NR_REGEX] = {};
  * Therefore we compile them only once before any usage.
  */
 
-void copy_char_array(char a[],char b[]) {
+void copy_char_array(char *a,char b[]) {
     int i;
 	for (i = 0; a[i] != '\0'; i ++) {
 	    b[i] = a[i];

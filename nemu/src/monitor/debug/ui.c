@@ -265,6 +265,7 @@ static int cmd_p(char *args) {
 	    int j = 0;
 		while ( pointer[i].str[j] != '\0' ) {
 	     	printf("%c", pointer[i].str[j]);
+			printf("%d",j);
 			j++;
 		}
 	}

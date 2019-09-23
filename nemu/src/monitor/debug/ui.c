@@ -268,6 +268,7 @@ static int cmd_p(char *args) {
 		//	printf("index:%d\n",j);
 			j++;
 		}
+		printf("\n");
 	}
 
 	//printf("%u\n", product);

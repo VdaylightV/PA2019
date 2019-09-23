@@ -230,6 +230,8 @@ static int cmd_p(char *args) {
 	else {
 	    printf("failed");
 	}
+    
+
 	return 0;
 /*	printf("Hi\n");
 	return 1;   */

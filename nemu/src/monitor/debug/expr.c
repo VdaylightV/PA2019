@@ -358,7 +358,7 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 
 	if ( i > j ) {
 	    assert(0);
-	}
+	} //So end with 0 or 1 means the fault was due to find_op function
 
 	else if ( token[i].type == '+' || token[i].type == '-' ) {
 	    return find_op( i, j-1, token );
@@ -374,7 +374,7 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 		}
 	}
 
-	assert(0);
+	assert(1);
 	return -1;
 
 
@@ -404,7 +404,7 @@ uint32_t eval(uint32_t p,uint32_t q, Token *token) {
 		    case '-': return val1 - val2;
 		    case '*': return val1 * val2;
             case '/': return val1 / val2;
-		    default: assert(0); return -1;
+		    default: assert(2); return -1; // So end with 2 means the fault was in eval function
 		
 		}
 	}

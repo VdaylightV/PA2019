@@ -416,7 +416,7 @@ uint32_t expr(char *e, bool *success) {
 		  j ++;
 	  }
   }
-  printf("End Here!!");
+  printf("\nEnd Here!!\n");
   return 0;
 }
 

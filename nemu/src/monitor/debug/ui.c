@@ -240,13 +240,15 @@ static int cmd_p(char *args) {
 //  make_token(args);
     char *arg = strtok(NULL,"$");
 	bool success = true;
-	int result = expr(arg,&success);
+	uint32_t result = expr(arg,&success);
 	if(success) {
-	    printf("%x\n",result);
+	    printf("%u\n",result);
 	}
 	else {
 	    printf("failed");
 	}
+
+//The following codes are used to call the functions, however, they are not useful now.
 //    uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
 //    uint32_t op = find_op(0, token_end-1, ptr);

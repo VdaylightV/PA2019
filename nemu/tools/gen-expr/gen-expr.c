@@ -4,10 +4,34 @@
 #include <time.h>
 #include <assert.h>
 #include <string.h>
+#include <cstdlib>
+
+uint32_t choose(uint32_t n) {
+    int seed = time(0);
+	srand((seed);
+	uint32_t rand  = (rand()%(3));
+	return rand;
+}
+
+uint32_t gen_num() {
+
+}
+
+char gen_op() {
+
+}
+
+
+
 
 // this should be enough
 static char buf[65536];
 static inline void gen_rand_expr() {
+    switch (choose(3)) {
+	    case 0: gen_num(); break;
+		case 1: gen('('); gen_rand_expr();
+		default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
+	}
   buf[0] = '\0';
 }
 

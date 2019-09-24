@@ -227,7 +227,7 @@ uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
 			else if (token[left].type == '(') {
 			    weight += 0.5;
 			}
-	    return 100;
+//	    return 100;
 
 			else if (token[left].type == ')') {
 			    weight -= 0.5;

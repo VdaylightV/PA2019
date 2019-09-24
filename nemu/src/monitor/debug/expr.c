@@ -171,34 +171,23 @@ uint32_t return_end_index(Token *args) {
 }
 */
 
-uint32_t expr(char *e, bool *success) {
-  if (!make_token(e)) {
-    *success = false;
-    return 0;
-  }
-  return 0;
-}
-
-
-  /* TODO: Insert codes to evaluate the expression. */
-//  TODO();
 
 //char *ptr_to_tokens_end = &tokens[0];
 //uint32_t p = 0;
 //uint32_t q = *(&nr_token); 
 //there exist a cast from int to uinr32_t, because the nr_token was originally "int", now I turn it to "uint32_t";
 //Don't forget that the "Token *token" was a pointer, whose type is "Token" and name is "token"!!!!!!!
-uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
+uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {
     float weight = 0.0;
 	float weight_min = weight;
     uint32_t i = p;
 
 	for ( ; i <= q; i ++ ) {
-	    if ( token[i].type == '(' ) {
+	    if ( tokens[i].type == '(' ) {
 		    weight += 0.5;
 		}
 	    
-		else if ( token[i].type == ')' ) {
+		else if ( tokens[i].type == ')' ) {
 		    weight -= 0.5; 
 			if ( weight < weight_min ) {
 			    weight = weight_min;
@@ -214,7 +203,7 @@ uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
 	    return 3;
 	}
 	
-	else if ( token[p].type == '(' && token[q].type == ')') {
+	else if ( tokens[p].type == '(' && tokens[q].type == ')') {
 		uint32_t left = p + 1;
 		uint32_t right = q - 1;
 		
@@ -224,12 +213,12 @@ uint32_t check_parentheses(uint32_t p, uint32_t q, Token *token) {
 			    return 0;
 			}
 
-			else if (token[left].type == '(') {
+			else if (tokens[left].type == '(') {
 			    weight += 0.5;
 			}
 //	    return 100;
 
-			else if (token[left].type == ')') {
+			else if (tokens[left].type == ')') {
 			    weight -= 0.5;
 				
 			}
@@ -248,27 +237,27 @@ uint32_t find bracket(uint32_t p, uin32_t q, Token *tokens) {
 }
 */
 
-uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
+uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
     uint32_t i = p;
     uint32_t j = q;
     uint32_t index = p;
 
  //   while ( token[j].type != '*' && token[j].type != '/' && token[j].type != '-' && token[j].type != '+' ) { 
 		float weight = 0.0;
-	    if ( token[j].type == ')' ) {
+	    if ( tokens[j].type == ')' ) {
 			weight += 0.5;
 			j --;
 			while ( weight != 0.0 ) {
-		        if ( token[j].type != ')' && token[j].type != '(' ) {
+		        if ( tokens[j].type != ')' && tokens[j].type != '(' ) {
 				    j --;
 				}
 
-			    else if ( token[j].type == ')' ) {
+			    else if ( tokens[j].type == ')' ) {
 				    weight += 0.5;
 					j --;
 				}	
 
-			    else if ( token[j].type == '(' ) {
+			    else if ( tokens[j].type == '(' ) {
 				    weight -= 0.5;
 					j --;
 				}	
@@ -295,31 +284,31 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 				*/
 	    	}
     	}	
-		else if ( token[j].type == TK_NUM ) {
+		else if ( tokens[j].type == TK_NUM ) {
 		    j --;
 		}
 //	}	
 
-	if ( token[j].type == '+' || token[j].type == '-' ) {
+	if ( tokens[j].type == '+' || tokens[j].type == '-' ) {
 	    return j;
 	}
 
 //    while ( token[i].type != '*' && token[i].type != '/' && token[i].type != '-' && token[i].type != '+' ) {
 		weight = 0.0;
-	    if ( token[i].type == '(' ) {
+	    if ( tokens[i].type == '(' ) {
 			weight += 0.5;
 			i ++;
 			while ( weight != 0 ) {
-			    if ( token[i].type != ')' && token[i].type != '(' ) {
+			    if ( tokens[i].type != ')' && tokens[i].type != '(' ) {
 				    i ++;
 				}
 
-				else if ( token[i].type == '(' ) {
+				else if ( tokens[i].type == '(' ) {
 				    weight += 0.5;
 					i ++;
 				}
 
-				else if ( token[i].type == ')' ) {
+				else if ( tokens[i].type == ')' ) {
 				    weight -= 0.5;
 					i ++;
 				}
@@ -348,7 +337,7 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 		    i ++;
 		   	*/
 		 }
-		else if ( token[i].type == TK_NUM ) {
+		else if ( tokens[i].type == TK_NUM ) {
 		    i ++;
 			}
 //	}
@@ -361,17 +350,17 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 	    assert(0);
 	} //So end with 0 or 1 means the fault was due to find_op function
 
-	else if ( token[i].type == '+' || token[i].type == '-' ) {
-	    return find_op( i, j-1, token );
+	else if ( tokens[i].type == '+' || tokens[i].type == '-' ) {
+	    return find_op( i, j-1/*, token*/ );
     }
 
-	else if ( token[i].type == '*' || token[i].type == '/' ) {
+	else if ( tokens[i].type == '*' || tokens[i].type == '/' ) {
 		index = j;
-	    if ( find_op( i, j-1, token ) == i  ) {
+	    if ( find_op( i, j-1/*, token*/ ) == i  ) {
 		    return index;
         }
-		else if ( find_op ( i, j-1, token ) != i ) {
-			return find_op ( i, j-1, token );
+		else if ( find_op ( i, j-1/*, token*/ ) != i ) {
+			return find_op ( i, j-1/*, token*/ );
 		}
 	}
 
@@ -382,25 +371,25 @@ uint32_t find_op(uint32_t p, uint32_t q, Token *token) {
 }
 
 
-uint32_t eval(uint32_t p,uint32_t q, Token *token) {
+uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
     if ( p > q ) {
 		return -1;
 	}
 
 	else if ( p == q ) {
-	    return str_to_uint_expression(&(token[p].str[0]));
+	    return str_to_uint_expression(&(tokens[p].str[0]));
 	}
 
-	else if ( check_parentheses( p, q, token ) == 1 ) {
-	    return eval( p + 1, q - 1, token );
+	else if ( check_parentheses( p, q/*, token*/ ) == 1 ) {
+	    return eval( p + 1, q - 1/*, token*/ );
 	}
 
 	else {
-	    uint32_t op = find_op( p, q, token );
-	    uint32_t val1 = eval( p, op - 1, token );
-		uint32_t val2 = eval( op + 1, q, token );
+	    uint32_t op = find_op( p, q/*, token*/ );
+	    uint32_t val1 = eval( p, op - 1/*, token*/ );
+		uint32_t val2 = eval( op + 1, q/*, token*/ );
 
-		switch ( token[op].type ) {
+		switch ( tokens[op].type ) {
 		    case '+': return val1 + val2;
 		    case '-': return val1 - val2;
 		    case '*': return val1 * val2;
@@ -411,3 +400,25 @@ uint32_t eval(uint32_t p,uint32_t q, Token *token) {
 	}
 }
 
+uint32_t expr(char *e, bool *success) {
+  if (!make_token(e)) {
+    *success = false;
+  }
+
+  printf("Hi\n");
+
+  Token *ptr = &tokens[0];
+  printf("content:\n");
+  for ( int i = 0; i < token_end; i ++ ) {
+      int j = 0;
+	  while ( ptr[i].str[j] != '\0' ) {
+	      printf("%c", ptr[i].str[j]);
+		  j ++;
+	  }
+  }
+  return 0;
+}
+
+
+  /* TODO: Insert codes to evaluate the expression. */
+//  TODO();

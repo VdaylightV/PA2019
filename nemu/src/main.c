@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 	  printf("%s \n", str);
   }
   char *args = strtok(NULL, "$ ");
+  assert(args != NULL);
   printf("%c\n",*args);
   /*
   while (!feof(fp)) {

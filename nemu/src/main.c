@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	  str[len-1] = '\0';
 	  printf("%s \n", str);
   }
-  char *args = strtok(NULL, "$ ");
+  char *args = strtok(str, "$ ");
   assert(args != NULL);
   printf("%c\n",*args);
   /*

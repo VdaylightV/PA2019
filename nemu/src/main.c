@@ -16,9 +16,16 @@ int main(int argc, char *argv[]) {
   ui_mainloop(is_batch_mode);
  
   static char str[300];
-  char *string = &str[0];
+//  char *string = &str[0];
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
+  int len = strlen(str);
+  while(fgets(str, 300,fp) != NULL) {
+      len = strlen(str);
+	  str[len-1] = '\0';
+	  printf("%s %d \n", str, len - 1 );
+  }
+  /*
   while (!feof(fp)) {
       fgets(string,30,fp);
 	  printf("%s",string);
@@ -30,7 +37,19 @@ int main(int argc, char *argv[]) {
   uint32_t result = expr(arg,&success);
   fclose(fp);
   printf("%u\n",result);
-  
-
+  */
+/*
+  while(fscanf(fp, "%[^\n]%c",&str,&c) != EOF) {
+      if(str!="")
+	  {
+		  fputs(str,stdout);
+		  printf("\n");
+		  memset(str,0,sizeof(char));
+	  }
+	  else
+		  printf("error:no content\n");
+  }
+*/
+  fclose(fp);
   return 0;
 }

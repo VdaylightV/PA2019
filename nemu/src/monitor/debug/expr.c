@@ -43,7 +43,7 @@ static struct rule {
   {"\\)", ')'},          //right_bracket
   {"[0-9]+",TK_NUM}        //number
 };
-#define Token_length 100
+#define Token_length 500
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str, substr_len)  
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 static regex_t re[NR_REGEX] = {};

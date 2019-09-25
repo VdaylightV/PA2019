@@ -19,6 +19,9 @@ int main(int argc, char *argv[]) {
 //  char *string = &str[0];
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
+
+  while (!feof(fp)) {
+      fgets(str,500,fp);
   int len = strlen(str);
   while(fgets(str, 300,fp) != NULL) {
       len = strlen(str);
@@ -41,18 +44,17 @@ int main(int argc, char *argv[]) {
   printf("%c\n",*args);
 */
   /*
-  while (!feof(fp)) {
-      fgets(string,30,fp);
-	  printf("%s",string);
-  }
   char *arg = strtok(string,"$");
   assert(arg != NULL);
   arg = strtok(NULL,"$");
 */
   bool success = true;
   uint32_t result = expr(args,&success);
-  fclose(fp);
   printf("%u\n",result);
+  
+  }
+
+  fclose(fp);
   
 /*
   while(fscanf(fp, "%[^\n]%c",&str,&c) != EOF) {

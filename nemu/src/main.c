@@ -25,7 +25,13 @@ int main(int argc, char *argv[]) {
 	  str[len-1] = '\0';
 	  printf("%s \n", str);
   }
+  int j = 20;
   char *args = strtok(str, "$");
+  printf("%c\n",*args);
+  while ( j > 0 ) {
+      args = strtok(NULL,"$");
+	  printf("%c\n",*args);
+  }
   assert(args != NULL);
   args = strtok(" ","$");
   printf("%c\n",*args);

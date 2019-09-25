@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 	  printf("%s",string);
 //  }
   char *arg = strtok(string,"$");
+  assert(arg != NULL);
   arg = strtok(NULL,"$");
   bool success = true;
   uint32_t result = expr(arg,&success);

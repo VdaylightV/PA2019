@@ -25,12 +25,12 @@ int main(int argc, char *argv[]) {
 	  str[len-1] = '\0';
 	  printf("%s \n", str);
   }
-  int j = 20;
+ // int j = 20;
   char *args = strtok(str, "$");
   while (*args != ' ') {
       args ++;
   }
-  printf("%c\n",*args);
+/*  printf("%c\n",*args);
   while ( j > 0 ) {
       args++; //= strtok(NULL,"$"); 
 	  printf("%c\n",*args);
@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
   assert(args != NULL);
   args = strtok(" ","$");
   printf("%c\n",*args);
+*/
   /*
   while (!feof(fp)) {
       fgets(string,30,fp);
@@ -47,11 +48,12 @@ int main(int argc, char *argv[]) {
   char *arg = strtok(string,"$");
   assert(arg != NULL);
   arg = strtok(NULL,"$");
+*/
   bool success = true;
-  uint32_t result = expr(arg,&success);
+  uint32_t result = expr(args,&success);
   fclose(fp);
   printf("%u\n",result);
-  */
+  
 /*
   while(fscanf(fp, "%[^\n]%c",&str,&c) != EOF) {
       if(str!="")
@@ -64,6 +66,6 @@ int main(int argc, char *argv[]) {
 		  printf("error:no content\n");
   }
 */
-  fclose(fp);
+//  fclose(fp);
   return 0;
 }

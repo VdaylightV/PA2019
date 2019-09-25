@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	  printf("%s \n", str);
   }
   char *args = strtok(NULL, "$ ");
-  printf("%d\n",*args);
+  printf("%c\n",*args);
   /*
   while (!feof(fp)) {
       fgets(string,30,fp);

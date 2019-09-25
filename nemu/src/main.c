@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   static char str[65536];
   char *string = &str[0];
   FILE *fp = fopen("/ics2019/nemu/tools/gen-expr/input","r");
-  assert(fp != NULL);
+  assert(fp == NULL);
   while (!feof(fp)) {
       fgets(string,65536,fp);
 	  printf("%s",string);

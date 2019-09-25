@@ -25,8 +25,9 @@ int main(int argc, char *argv[]) {
 	  str[len-1] = '\0';
 	  printf("%s \n", str);
   }
-  char *args = strtok(str, "$ ");
+  char *args = strtok(str, "$");
   assert(args != NULL);
+  args = strtok(" ","$");
   printf("%c\n",*args);
   /*
   while (!feof(fp)) {

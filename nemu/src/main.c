@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);
-  
+ /* 
   static char str[65536];
   char *string = &str[0];
   FILE *fp = fopen("/ics2019/nemu/tools/gen-expr/input","r");
@@ -29,6 +29,6 @@ int main(int argc, char *argv[]) {
   fclose(fp);
   printf("%u\n",result);
   
-
+*/
   return 0;
 }

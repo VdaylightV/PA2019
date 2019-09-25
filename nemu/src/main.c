@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
   while (!feof(fp)) {
-      fgets(string,65536,fp);
+      fgets(string,1024,fp);
 	  printf("%s",string);
   }
   char *arg = strtok(string,"$");

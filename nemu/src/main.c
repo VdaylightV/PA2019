@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
   char *args = strtok(str, "$");
   printf("%c\n",*args);
   while ( j > 0 ) {
-      args = strtok(NULL,"$"); 
+      args++; //= strtok(NULL,"$"); 
 	  printf("%c\n",*args);
 	  j--;
   }

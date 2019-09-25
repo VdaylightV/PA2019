@@ -393,7 +393,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 		    case '+': return val1 + val2;
 		    case '-': return val1 - val2;
 		    case '*': return val1 * val2;
-            case '/': return val1 / val2;
+            case '/': { assert( val2 != 0 ); return val1 / val2; }
 		    default: assert(2); return -1; // So end with 2 means the fault was in eval function
 		
 		}

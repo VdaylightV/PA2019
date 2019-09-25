@@ -19,10 +19,10 @@ int main(int argc, char *argv[]) {
   char *string = &str[0];
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
-//  while (!feof(fp)) {
+  while (!feof(fp)) {
       fgets(string,30,fp);
 	  printf("%s",string);
-//  }
+  }
   char *arg = strtok(string,"$");
   assert(arg != NULL);
   arg = strtok(NULL,"$");

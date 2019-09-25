@@ -2,7 +2,7 @@
 #include "string.h"
 #include "stdint.h"
 #include "stdbool.h"
-
+#include "assert.h"
 
 int init_monitor(int, char *[]);
 void ui_mainloop(int);
@@ -14,10 +14,11 @@ int main(int argc, char *argv[]) {
 
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);
-/* 
+ 
   static char str[65536];
   char *string = &str[0];
   FILE *fp = fopen("/ics2019/nemu/tools/gen-expr/input","r");
+  assert(fp != NULL);
   while (!feof(fp)) {
       fgets(string,65536,fp);
 	  printf("%s",string);
@@ -29,6 +30,6 @@ int main(int argc, char *argv[]) {
   fclose(fp);
   printf("%u\n",result);
   
-*/
+
   return 0;
 }

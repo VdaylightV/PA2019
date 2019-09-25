@@ -23,8 +23,10 @@ int main(int argc, char *argv[]) {
   while(fgets(str, 300,fp) != NULL) {
       len = strlen(str);
 	  str[len-1] = '\0';
-	  printf("%s %d \n", str, len - 1 );
+	  printf("%s \n", str);
   }
+  char *args = strtok(NULL, "$ ");
+  printf("%d\n",*args);
   /*
   while (!feof(fp)) {
       fgets(string,30,fp);

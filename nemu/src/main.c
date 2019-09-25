@@ -22,15 +22,15 @@ int main(int argc, char *argv[]) {
 
   while (!feof(fp)) {
       fgets(str,500,fp);
-  int len = strlen(str);
-  while(fgets(str, 300,fp) != NULL) {
-      len = strlen(str);
-	  str[len-1] = '\0';
-	  printf("%s \n", str);
+	  int len = strlen(str);
+      while(fgets(str, 300,fp) != NULL) {
+		  len = strlen(str);
+		  str[len-1] = '\0';
+		  printf("%s \n", str);
   }
  // int j = 20;
-  char *args = strtok(str, "$");
-  while (*args != ' ') {
+	  char *args = strtok(str, "$");
+	  while (*args != ' ') {
       args ++;
   }
 /*  printf("%c\n",*args);
@@ -48,13 +48,13 @@ int main(int argc, char *argv[]) {
   assert(arg != NULL);
   arg = strtok(NULL,"$");
 */
-  bool success = true;
-  uint32_t result = expr(args,&success);
-  printf("%u\n",result);
+	 bool success = true;
+	 uint32_t result = expr(args,&success);
+	 printf("%u\n",result);
   
   }
 
-  fclose(fp);
+	 fclose(fp);
   
 /*
   while(fscanf(fp, "%[^\n]%c",&str,&c) != EOF) {

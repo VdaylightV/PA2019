@@ -43,7 +43,7 @@ static struct rule {
   {"\\)", ')'},          //right_bracket
   {"[0-9]+",TK_NUM}        //number
 };
-
+#define Token_length 50
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str, substr_len)  
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 static regex_t re[NR_REGEX] = {};
@@ -80,9 +80,9 @@ typedef struct token {
 } Token;
 
 //static?
-static Token tokens[32] __attribute__((used)) = {}; //don't forget to add "static"
+static Token tokens[Token_length] __attribute__((used)) = {}; //don't forget to add "static"
 //I choose to copy a copy of the tokens
-Token tokens_copy[32];
+Token tokens_copy[Token_length];
 static int nr_token __attribute__((used))  = 0;
 uint32_t token_end = 0;
 //static?

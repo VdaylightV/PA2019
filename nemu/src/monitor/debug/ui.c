@@ -245,7 +245,7 @@ static int cmd_p(char *args) {
 	    printf("%u\n",result);
 	}
 	else {
-	    printf("failed");
+	    printf("failed\n");
 	}
 
 //The following codes are used to call the functions, however, they are not useful now.

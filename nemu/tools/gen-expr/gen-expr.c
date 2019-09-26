@@ -80,8 +80,11 @@ void gen_num() {
 	    uint32_t bit = temp/pow_uint32_t( division, count - 1 );
 		*end = '0' + bit;
 		temp = (temp % pow_uint32_t( division, count - 1));
-	} 
-	*end = '\0'; 
+	}
+	*end = 'u';
+    end ++;
+	*end = '\0';
+
 }
 
 void gen_rand_op() {

@@ -356,11 +356,11 @@ uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
 
 	else if ( tokens[i].type == '*' || tokens[i].type == '/' ) {
 		index = j;
-	    if ( find_op( i, j-1/*, token*/ ) == i  ) {
+	    if ( find_op( i+1, j/*, token*/ ) == j  ) {
 		    return index;
         }
-		else if ( find_op ( i, j-1/*, token*/ ) != i ) {
-			return find_op ( i, j-1/*, token*/ );
+		else if ( find_op ( i+1, j/*, token*/ ) != i ) {
+			return find_op ( i+1, j/*, token*/ );
 		}
 	}
 

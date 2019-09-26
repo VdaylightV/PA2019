@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_CHAR
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_CHAR, TK_HEX, TK_REG, TK_UEQ, TK_AND
 
   /* TODO: Add more token types */
 
@@ -33,16 +33,20 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-  {" +", TK_NOTYPE},     // spaces
-  {"\\+", '+'},          // plus
-  {"==", TK_EQ},         // equal
-  {"\\-", '-'},          // minus
-  {"\\*", '*' },         //multiply
-  {"/", '/'},            //divide
-  {"\\(", '('},          //left_bracket
-  {"\\)", ')'},          //right_bracket
-  {"[0-9]+",TK_NUM},        //number
-  {"[a-zA-Z]",TK_CHAR}     // character
+  {" +", TK_NOTYPE},				 // spaces
+  {"\\+", '+'},						 // plus
+  {"==", TK_EQ},					 // equal
+  {"!=", TK_UEQ},                                // unequal
+  {"\\-", '-'},						 // minus
+  {"\\*", '*' },					 // multiply
+  {"/", '/'},						 // divide
+  {"\\(", '('},						 // left_bracket
+  {"\\)", ')'},						 // right_bracket
+  {"[0-9]+",TK_NUM},			     // number
+  {"[a-zA-Z]",TK_CHAR},			     // character
+  {"0[xX]{1}[0-9a-fA-F]+",TK_HEX},   // hex_number
+  {"\\$[0-9a-zA-Z]+",TK_REG},        // register
+  {"&&", TK_AND},                    // and     
 };
 #define Token_length 500
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str, substr_len)  
@@ -102,8 +106,8 @@ static bool make_token(char *e) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
-    //    Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-     //       i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+           i, rules[i].regex, position, substr_len, substr_len, substr_start);
         position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
@@ -122,6 +126,10 @@ static bool make_token(char *e) {
 			case '(': { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
 			case ')': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
 	    	case TK_NUM: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case TK_UEQ: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+			case TK_AND: { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
+			case TK_HEX: { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
+	    	case TK_REG: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
         //    case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: assert(0);
         }
@@ -177,6 +185,7 @@ uint32_t return_end_index(Token *args) {
 //char *ptr_to_tokens_end = &tokens[0];
 //uint32_t p = 0;
 //uint32_t q = *(&nr_token); 
+
 //there exist a cast from int to uinr32_t, because the nr_token was originally "int", now I turn it to "uint32_t";
 //Don't forget that the "Token *token" was a pointer, whose type is "Token" and name is "token"!!!!!!!
 uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {

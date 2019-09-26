@@ -14,26 +14,31 @@ int main(int argc, char *argv[]) {
 
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);
- 
+/* 
   static char str[300];
-//  char *string = &str[0];
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
 
-//  while (*fp != '\0') {
     while ( !feof(fp)) {
       fgets(str,500,fp);
-	 // fscanf(fp,"%s",&str[0]);
 	  int len;
 	  len = strlen(str);
 	  str[len-1] = '\0';
 //	  printf("%s \n", str);		  
 
- // int j = 20;
 	  char *args = strtok(str, "$");
 	  while (*args != ' ') {
       args ++;
   }
+	 bool success = true;
+	 uint32_t result = expr(args,&success);
+	 printf("%u\n",result);
+  
+  }
+
+	 fclose(fp);
+*/
+//The codes above are used to test whether the function of calculation works properly!  
 /*  printf("%c\n",*args);
   while ( j > 0 ) {
       args++; //= strtok(NULL,"$"); 
@@ -49,14 +54,6 @@ int main(int argc, char *argv[]) {
   assert(arg != NULL);
   arg = strtok(NULL,"$");
 */
-	 bool success = true;
-	 uint32_t result = expr(args,&success);
-	 printf("%u\n",result);
-  
-  }
-
-	 fclose(fp);
-  
 /*
   while(fscanf(fp, "%[^\n]%c",&str,&c) != EOF) {
       if(str!="")

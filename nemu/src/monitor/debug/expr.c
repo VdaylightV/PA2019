@@ -415,8 +415,11 @@ uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
   }
-
-  uint32_t expression_value = eval( 0, token_end - 1 );
+  return 0;
+}
+/* uint32_t expression_value = eval( 0, token_end - 1 );
+  return expression_value;
+*/
 /* The following codes are used to test the functions above!!!
   printf("Hi\n");
 
@@ -431,8 +434,6 @@ uint32_t expr(char *e, bool *success) {
   }
   printf("\nEnd Here!!\n");
 */
-  return expression_value;
-}
 
 
   /* TODO: Insert codes to evaluate the expression. */

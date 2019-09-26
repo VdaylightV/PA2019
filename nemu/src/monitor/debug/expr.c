@@ -44,8 +44,8 @@ static struct rule {
   {"\\)", ')'},						 // right_bracket
   {"[0-9]+",TK_NUM},			     // number
   {"[u]{1}",TK_CHAR},			     // character
-  {"0[xX]{1}[0-9a-fA-F]+",TK_HEX},   // hex_number
-  {"[^\\$][0-9a-zA-Z]",TK_REG},        // register
+  {"\b0x[0-9a-fA-F]+\b",TK_HEX},   // hex_number
+  {"[^\\$][0-9a-zA-Z]+",TK_REG},        // register
   {"&&", TK_AND},                    // and     
 };
 #define Token_length 500

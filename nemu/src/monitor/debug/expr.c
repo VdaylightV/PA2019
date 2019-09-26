@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_CHAR
 
   /* TODO: Add more token types */
 
@@ -41,7 +41,8 @@ static struct rule {
   {"/", '/'},            //divide
   {"\\(", '('},          //left_bracket
   {"\\)", ')'},          //right_bracket
-  {"[0-9]+",TK_NUM}        //number
+  {"[0-9]+",TK_NUM},        //number
+  {"[a-zA-Z]",TK_CHAR}     // character
 };
 #define Token_length 500
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str, substr_len)  
@@ -112,6 +113,7 @@ static bool make_token(char *e) {
 
         switch (rules[i].token_type) {
 			case TK_NOTYPE: {/* ADD_TO_TOKENS; nr_token++; token_end ++;*/ break; } 
+	        case TK_CHAR: {/* ADD_TO_TOKENS; nr_token++; token_end ++;*/ break; } 
 			case '+': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
 			case TK_EQ: { ADD_TO_TOKENS; nr_token++; token_end ++; break;  } 
 			case '-': { ADD_TO_TOKENS; nr_token++; token_end ++; break; }

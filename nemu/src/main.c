@@ -20,8 +20,10 @@ int main(int argc, char *argv[]) {
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
 
-  while (!feof(fp)) {
-      fgets(str,500,fp);
+//  while (*fp != '\0') {
+    while ( !feof(fp)) {
+      //fgets(str,500,fp);
+	  // fscanf(fp,"%s",&str);
 	  int len = strlen(str);
       while(fgets(str, 300,fp) != NULL) {
 		  len = strlen(str);

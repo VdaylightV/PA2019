@@ -150,7 +150,7 @@ static inline void gen_rand_expr() {
 	}
 */
     uint32_t rand = choose(3);
-    if ( count >= 10  ) {
+    if ( count >= 15  ) {
 	    rand = 0;
 	}
 	sleep(1);

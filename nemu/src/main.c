@@ -23,14 +23,14 @@ int main(int argc, char *argv[]) {
 //  while (*fp != '\0') {
     while ( !feof(fp)) {
       //fgets(str,500,fp);
-	  fscanf(fp,"%s",&str[0]);
-/*	  int len = strlen(str);
+//	  fscanf(fp,"%s",&str[0]);
+	  int len;
       while(fgets(str, 300,fp) != NULL) {
 		  len = strlen(str);
 		  str[len-1] = '\0';
 		  printf("%s \n", str);		  
   }
-*/
+
  // int j = 20;
 	  char *args = strtok(str, "$");
 	  while (*args != ' ') {

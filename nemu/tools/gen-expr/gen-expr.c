@@ -67,7 +67,7 @@ uint32_t judge_bits( uint32_t number ) {
 void gen_num() {
     int seed = time(0);
 	srand(seed);
-	uint32_t rand_num = (rand()%(500));
+	uint32_t rand_num = (rand()%(2500));
     
 	uint32_t division = 10;
 	uint32_t count = judge_bits( rand_num );

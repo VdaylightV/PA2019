@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_CHAR, TK_HEX, TK_REG, TK_UEQ, TK_AND
+  TK_NOTYPE = 256, TK_EQ, TK_NUM, TK_CHAR, TK_HEX, TK_REG, TK_UEQ, TK_AND, DEREF
 
   /* TODO: Add more token types */
 
@@ -143,6 +143,11 @@ static bool make_token(char *e) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
     }
+  }
+  for ( int i = 0; i < nr_token; i++ ) {
+      if (tokens[i].type == '*' && (i == 0 || tokens[i-1].type == '(' || tokens[i-1].type == '+' || tokens[i-1].type == '-' || tokens[i-1].type == '*' || tokens[i-1].type == '/' || tokens[i-1].type == TK_AND || tokens[i-1].type == TK_UEQ)) {
+	      tokens[i].type = DEREF;
+	  }
   }
   for ( int i = 0; i < nr_token; i ++ ) {
       tokens_copy[i].type = tokens[i].type;

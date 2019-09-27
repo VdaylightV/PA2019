@@ -162,12 +162,12 @@ static bool make_token(char *e) {
 	      tokens_copy[i].str[j] = tokens[i].str[j];
 		  j ++;
 	  }
-	  /*
+	  
 	  while ( j <= 31 ) {
 	      tokens_copy[i].str[j] = '\0';
 		  j ++;
 	  }
-	  *///To avoid the content left in the tokens will impact the nect strtok
+	  //To avoid the content left in the tokens will impact the nect strtok
 	  switch ( tokens[i].type ) {
           case '+': case '-': { tokens_copy[i].prefer = 4; break; }
 		  case '*': case '/': { tokens_copy[i].prefer = 3; break; }

@@ -474,7 +474,7 @@ uint32_t expr(char *e, bool *success) {
     *success = false;
   }
  uint32_t expression_value = eval( 0, token_end - 1 );
-  return expression_value;
+ // return expression_value;
 
 // The following codes are used to test the functions above!!!
   printf("Hi\n");

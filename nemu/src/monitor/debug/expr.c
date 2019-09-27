@@ -492,7 +492,7 @@ uint32_t expr(char *e, bool *success) {
 
 
 
-  printf("OP:%c\n",op_index);
+  printf("OP:%c\n",tokens_copy[op_index].type);
 
 
 

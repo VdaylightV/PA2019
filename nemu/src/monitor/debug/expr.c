@@ -24,6 +24,35 @@ uint32_t str_to_uint_expression(char *args) {
 	return sum;
 }
 
+uint32_t hex_to_uint32_t(char *args) {
+    uint32_t result = 0;
+	while(*args != '\0') {
+	    if((*args >= '0') && (*args <= '9')) {
+		    result = result*16 + (*args-'0');
+			args ++;
+		}
+		else {
+			int condition = *args - '0';
+			switch(condition) {
+				case 17 : result = result*16+10;break;
+				case -15: result = result*16+10;break; 
+				case 18 : result = result*16+11;break;
+				case -14: result = result*16+11;break;	 
+				case 19 : result = result*16+12;break;
+				case -13: result = result*16+12;break;	 
+				case 20 : result = result*16+13;break;
+				case -12: result = result*16+13;break;	 
+				case 21 : result = result*16+14;break;
+				case -11: result = result*16+14;break;	 
+				case 22 : result = result*16+15;break;	 
+				case -10: result = result*16+15;break;	 
+	 		}
+		    args ++; 
+		}
+	}
+    return result;
+}
+
 static struct rule {
   char *regex;
   int token_type;
@@ -438,7 +467,18 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 	}
 
 	else if ( p == q ) {
-	    return str_to_uint_expression(&(tokens_copy[p].str[0]));
+		if ( tokens_copy[p].type == TK_NUM ) {
+	        return str_to_uint_expression(&(tokens_copy[p].str[0]));
+		}
+
+		else if ( tokens_copy[p].type == TK_HEX ) {
+		    return hex_to_uint32_t(&(tokens_copy[p].str[0]));
+		}
+
+		else {
+		    assert(0); 
+			return -1;
+		}
 	}
 
 	else if ( check_parentheses( p, q/*, token*/ ) == 1 ) {
@@ -463,7 +503,6 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 		}
 	}
 }
-
 
 
 uint32_t expr(char *e, bool *success) {
@@ -496,10 +535,6 @@ uint32_t expr(char *e, bool *success) {
 
   printf("VALUE:%u\n",expression_value);
   printf("BRACKETS:%u\n",brackets);
-
-
-
-
 
   return 0;
 }

@@ -33,6 +33,7 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
+  {"\\$edx",TK_REG},        // register
   {" +", TK_NOTYPE},				 // spaces
   {"\\+", '+'},						 // plus
   {"==", TK_EQ},					 // equal
@@ -42,7 +43,6 @@ static struct rule {
   {"/", '/'},						 // divide
   {"\\(", '('},						 // left_bracket
   {"\\)", ')'},						 // right_bracket
-  {"\\$edx",TK_REG},        // register
   {"^[0]{1}[x]{1}[0-9a-fA-F]+",TK_HEX},   // hex_number
   {"[0-9]+",TK_NUM},			     // number
   {"[u]{1}",TK_CHAR},			     // character

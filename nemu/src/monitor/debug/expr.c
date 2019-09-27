@@ -473,9 +473,9 @@ uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
   }
-/* uint32_t expression_value = eval( 0, token_end - 1 );
+ uint32_t expression_value = eval( 0, token_end - 1 );
   return expression_value;
-*/
+
 // The following codes are used to test the functions above!!!
   printf("Hi\n");
 
@@ -495,6 +495,8 @@ uint32_t expr(char *e, bool *success) {
 
 
   printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
+
+  printf("VALUE:%u\n",expression_value);
 
 
 

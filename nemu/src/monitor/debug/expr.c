@@ -270,7 +270,7 @@ uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
     float weight = 0.0; 
 	uint32_t max_prefer = 0;
 
-	for ( int k = p; k < nr_token; k++ ) {
+	for ( int k = p; k <= q; k++ ) {
 	    if ( tokens_copy[k].type == '(' ) {
 		    weight += 0.5;
 		}

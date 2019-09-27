@@ -458,7 +458,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 			case TK_EQ: { if ( val1 == val2 ) { return 1;} else { return 0; } break; }
 			case TK_UEQ: { if ( val1 != val2 ) { return 1;} else { return 0; } break; }
 			case TK_AND: return val1 && val2;
-		    default: assert(2); return -1; // So end with 2 means the fault was in eval function
+		    default: assert(0); return -1; // So end with 2 means the fault was in eval function
 		
 		}
 	}
@@ -470,8 +470,8 @@ uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
   }
- uint32_t expression_value = eval( 0, token_end - 1 );
- uint32_t brackets = check_parentheses( 0, token_end - 1 );
+// uint32_t expression_value = eval( 0, token_end - 1 );
+// uint32_t brackets = check_parentheses( 0, token_end - 1 );
  // return expression_value;
 
 // The following codes are used to test the functions above!!!
@@ -494,8 +494,8 @@ uint32_t expr(char *e, bool *success) {
 
   printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
 
-  printf("VALUE:%u\n",expression_value);
-  printf("BRACKETS:%u\n",brackets);
+//  printf("VALUE:%u\n",expression_value);
+//  printf("BRACKETS:%u\n",brackets);
 
 
 

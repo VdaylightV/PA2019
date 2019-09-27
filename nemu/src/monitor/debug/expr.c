@@ -174,11 +174,7 @@ static bool make_token(char *e) {
 		  case TK_EQ: case TK_UEQ: { tokens_copy[i].prefer = 7; break; }
 		  case DEREF: { tokens_copy[i].prefer = 2; break; }
 		  case TK_AND: { tokens_copy[i].prefer = 11; break; }
-
-
           	  
-	  
-	  
 	  }
   }
 
@@ -272,13 +268,40 @@ uint32_t find bracket(uint32_t p, uin32_t q, Token *tokens) {
     uint32_t index = p;
 }
 */
-
 uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
-    uint32_t i = p;
-    uint32_t j = q;
     uint32_t index = p;
+    float weight = 0.0; 
+	uint32_t max_prefer = 0;
+
+	for ( int k = p; k < nr_token; k++ ) {
+	    if ( tokens_copy[k].type == '(' ) {
+		    weight += 0.5;
+		}
+
+		if ( tokens_copy[k].type == ')' ) {
+			weight -= 0.5;
+		}
+
+		if ( weight == 0.0 && tokens_copy[k].prefer >= max_prefer ) {
+		    max_prefer = tokens_copy[k].prefer;
+			index = k;
+		}
+	}
+
+	return index;
+
+/*
+	for ( int k = 0; k < nr_token; k ++ ) {
+	    if ( tokens_copy[k].prefer > max_prefer ) {
+		    max_prefer = tokens_copy[k].prefer;
+		}
+	
+	}
+
+	if ( max_prefer == 4  ) {
 
  //   while ( token[j].type != '*' && token[j].type != '/' && token[j].type != '-' && token[j].type != '+' ) { 
+	
 		float weight = 0.0;
 	    if ( tokens[j].type == ')' ) {
 			weight += 0.5;
@@ -298,26 +321,26 @@ uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
 					j --;
 				}	
 			    
-	            /*		
-		    	while ( token[j].type == ')' ) {
-			        weight += 0.5;
-			     	j --;
-		    	}
-		        while ( token[j].type != '(' ) {
-			        j --;
-			    }
-
-		    	while ( token[j].type == '(' ) {
-			    	weight -= 0.5;
-			        j --;
-		    	}
-                while ( weight != 0.0 ) {
-			        j --;
-			    	if ( token[j].type == '(' ) {
-				        weight -= 0.5;
-			    	}
-		    	}
-				*/
+	            		
+//		    	while ( token[j].type == ')' ) {
+//			        weight += 0.5;
+//			     	j --;
+//		    	}
+//		        while ( token[j].type != '(' ) {
+//			        j --;
+//			    }
+//
+//		    	while ( token[j].type == '(' ) {
+//			    	weight -= 0.5;
+//			        j --;
+//		    	}
+ //               while ( weight != 0.0 ) {
+//			        j --;
+//			    	if ( token[j].type == '(' ) {
+//				        weight -= 0.5;
+//			    	}
+//		    	}
+//				
 	    	}
     	}	
 		else if ( tokens[j].type == TK_NUM ) {
@@ -325,85 +348,90 @@ uint32_t find_op(uint32_t p, uint32_t q/*, Token *token*/) {
 		}
 //	}	
 
-	if ( tokens[j].type == '+' || tokens[j].type == '-' ) {
-	    return j;
-	}
-
-//    while ( token[i].type != '*' && token[i].type != '/' && token[i].type != '-' && token[i].type != '+' ) {
-		weight = 0.0;
-	    if ( tokens[i].type == '(' ) {
-			weight += 0.5;
-			i ++;
-			while ( weight != 0 ) {
-			    if ( tokens[i].type != ')' && tokens[i].type != '(' ) {
-				    i ++;
-				}
-
-				else if ( tokens[i].type == '(' ) {
-				    weight += 0.5;
-					i ++;
-				}
-
-				else if ( tokens[i].type == ')' ) {
-				    weight -= 0.5;
-					i ++;
-				}
-			
-			}
-
-			/*	
-			while ( token[i].type == '(' ) {
-			    weight += 0.5;
-				i ++;
-			}
-		    while ( token[i].type != ')' ) {
-			    i ++;
-			}
-
-			while ( token[i].type == ')' ) {
-	            i ++;	
-		        weight -= 0.5;		
-			}
-			while ( weight != 0.0 ) {
-			    i ++;
-				if ( token[i].type == ')' ) {
-				    weight -= 0.5;
-				}
-			}
-		    i ++;
-		   	*/
-		 }
-		else if ( tokens[i].type == TK_NUM ) {
-		    i ++;
-			}
-//	}
-            
-	if ( i == j ) {
-	    return i;
-	}
-
-	if ( i > j ) {
-	    assert(0);
-	} //So end with 0 or 1 means the fault was due to find_op function
-
-	else if ( tokens[i].type == '+' || tokens[i].type == '-' ) {
-	    return find_op( i, j-1/*, token*/ );
-    }
-
-	else if ( tokens[i].type == '*' || tokens[i].type == '/' ) {
-		index = j;
-	    if ( find_op( i+1, j/*, token*/ ) == j  ) {
-		    return index;
-        }
-		else if ( find_op ( i+1, j/*, token*/ ) != i ) {
-			return find_op ( i+1, j/*, token*/ );
+		if ( tokens[j].type == '+' || tokens[j].type == '-' ) {
+			return j;
 		}
+
+	//    while ( token[i].type != '*' && token[i].type != '/' && token[i].type != '-' && token[i].type != '+' ) {
+			weight = 0.0;
+			if ( tokens[i].type == '(' ) {
+				weight += 0.5;
+				i ++;
+				while ( weight != 0 ) {
+					if ( tokens[i].type != ')' && tokens[i].type != '(' ) {
+						i ++;
+					}
+
+					else if ( tokens[i].type == '(' ) {
+						weight += 0.5;
+						i ++;
+					}
+
+					else if ( tokens[i].type == ')' ) {
+						weight -= 0.5;
+						i ++;
+					}
+				
+				}
+
+					
+//				while ( token[i].type == '(' ) {
+//					weight += 0.5;
+//					i ++;
+//				}
+//				while ( token[i].type != ')' ) {
+//					i ++;
+//				}
+//
+//				while ( token[i].type == ')' ) {
+//					i ++;	
+//					weight -= 0.5;		
+//				}
+//				while ( weight != 0.0 ) {
+//					i ++;
+//					if ( token[i].type == ')' ) {
+//						weight -= 0.5;
+//					}
+//				}
+//				i ++;
+//				
+		 }
+			else if ( tokens[i].type == TK_NUM ) {
+				i ++;
+				}
+	//	}
+				
+		if ( i == j ) {
+			return i;
+		}
+
+		if ( i > j ) {
+			assert(0);
+		} //So end with 0 or 1 means the fault was due to find_op function
+
+		else if ( tokens[i].type == '+' || tokens[i].type == '-' ) {
+			return find_op( i, j-1);
+		}
+
+		else if ( tokens[i].type == '*' || tokens[i].type == '/' ) {
+			index = j;
+			if ( find_op( i+1, j) == j  ) {
+				return index;
+			}
+			else if ( find_op ( i+1, j) != i ) {
+				return find_op ( i+1, j);
+			}
+		}
+
 	}
 
+	else if ( max_prefer > 4 ) {
+	
+	}
+	
 	assert(1);
 	return -1;
-
-
+*/
 }
 
 
@@ -437,6 +465,8 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 	}
 }
 
+
+
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
@@ -457,6 +487,14 @@ uint32_t expr(char *e, bool *success) {
 	  }
   }
   printf("\nEnd Here!!\n");
+
+  uint32_t op_index = find_op(0, token_end-1);
+
+
+
+  printf("OP:%c\n",op_index);
+
+
 
 
 

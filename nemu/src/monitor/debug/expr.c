@@ -216,11 +216,11 @@ uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {
     uint32_t i = p;
 
 	for ( ; i <= q; i ++ ) {
-	    if ( tokens[i].type == '(' ) {
+	    if ( tokens_copy[i].type == '(' ) {
 		    weight += 0.5;
 		}
 	    
-		else if ( tokens[i].type == ')' ) {
+		else if ( tokens_copy[i].type == ')' ) {
 		    weight -= 0.5; 
 			if ( weight < weight_min ) {
 			    weight = weight_min;
@@ -236,7 +236,7 @@ uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {
 	    return 3;
 	}
 	
-	else if ( tokens[p].type == '(' && tokens[q].type == ')') {
+	else if ( tokens_copy[p].type == '(' && tokens_copy[q].type == ')') {
 		uint32_t left = p + 1;
 		uint32_t right = q - 1;
 		
@@ -246,12 +246,12 @@ uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {
 			    return 0;
 			}
 
-			else if (tokens[left].type == '(') {
+			else if (tokens_copy[left].type == '(') {
 			    weight += 0.5;
 			}
 //	    return 100;
 
-			else if (tokens[left].type == ')') {
+			else if (tokens_copy[left].type == ')') {
 			    weight -= 0.5;
 				
 			}

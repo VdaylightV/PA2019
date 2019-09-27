@@ -239,7 +239,6 @@ uint32_t check_parentheses(uint32_t p, uint32_t q/*, Token *token*/) {
 		for ( ; left <= right; left ++ ) {
 			
             if (weight < 0) {
-				assert(0);
 			    return 0;
 			}
 

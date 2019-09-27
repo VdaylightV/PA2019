@@ -174,6 +174,7 @@ static bool make_token(char *e) {
 		  case TK_EQ: case TK_UEQ: { tokens_copy[i].prefer = 7; break; }
 		  case DEREF: { tokens_copy[i].prefer = 2; break; }
 		  case TK_AND: { tokens_copy[i].prefer = 11; break; }
+		  default: {tokens_copy[i].prefer = 0; break;}
           	  
 	  }
   }

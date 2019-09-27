@@ -441,7 +441,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 	}
 
 	else if ( p == q ) {
-	    return str_to_uint_expression(&(tokens[p].str[0]));
+	    return str_to_uint_expression(&(tokens_copy[p].str[0]));
 	}
 
 	else if ( check_parentheses( p, q/*, token*/ ) == 1 ) {
@@ -453,12 +453,14 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 	    uint32_t val1 = eval( p, op - 1/*, token*/ );
 		uint32_t val2 = eval( op + 1, q/*, token*/ );
 
-		switch ( tokens[op].type ) {
+		switch ( tokens_copy[op].type ) {
 		    case '+': return val1 + val2;
 		    case '-': return val1 - val2;
 		    case '*': return val1 * val2;
             case '/': { assert( val2 != 0 ); return val1 / val2; }
-//			case TK_AND; return val1 && val2;
+			case TK_EQ: { if ( val1 == val2 ) { return 1;} else { return 0; } break; }
+			case TK_UEQ: { if ( val1 != val2 ) { return 1;} else { return 0; } break; }
+			case TK_AND: return val1 && val2;
 		    default: assert(2); return -1; // So end with 2 means the fault was in eval function
 		
 		}

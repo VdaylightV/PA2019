@@ -84,10 +84,15 @@ typedef struct token {
   char str[32];
 } Token;
 
+typedef struct token_pro {
+  int type;
+  char str[32];
+  int prefer;
+} Token_pro;
 //static?
 static Token tokens[Token_length] __attribute__((used)) = {}; //don't forget to add "static"
 //I choose to copy a copy of the tokens
-Token tokens_copy[Token_length];
+static Token_pro tokens_copy[Token_length];
 static int nr_token __attribute__((used))  = 0;
 uint32_t token_end = 0;
 //static?
@@ -149,6 +154,7 @@ static bool make_token(char *e) {
 	      tokens[i].type = DEREF;
 	  }
   }
+
   for ( int i = 0; i < nr_token; i ++ ) {
       tokens_copy[i].type = tokens[i].type;
       int j = 0;
@@ -156,9 +162,23 @@ static bool make_token(char *e) {
 	      tokens_copy[i].str[j] = tokens[i].str[j];
 		  j ++;
 	  }
+	  /*
 	  while ( j <= 31 ) {
 	      tokens_copy[i].str[j] = '\0';
 		  j ++;
+	  }
+	  *///To avoid the content left in the tokens will impact the nect strtok
+	  switch ( tokens[i].type ) {
+          case '+': case '-': { tokens_copy[i].prefer = 4; break; }
+		  case '*': case '/': { tokens_copy[i].prefer = 3; break; }
+		  case TK_EQ: case TK_UEQ: { tokens_copy[i].prefer = 7; break; }
+		  case DEREF: { tokens_copy[i].prefer = 2; break; }
+		  case TK_AND: { tokens_copy[i].prefer = 11; break; }
+
+
+          	  
+	  
+	  
 	  }
   }
 
@@ -421,15 +441,13 @@ uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
   }
-  return 0;
-}
 /* uint32_t expression_value = eval( 0, token_end - 1 );
   return expression_value;
 */
-/* The following codes are used to test the functions above!!!
+// The following codes are used to test the functions above!!!
   printf("Hi\n");
 
-  Token *ptr = &tokens[0];
+  Token_pro *ptr = &tokens_copy[0];
   printf("content:\n");
   for ( int i = 0; i < token_end; i ++ ) {
       int j = 0;
@@ -439,8 +457,10 @@ uint32_t expr(char *e, bool *success) {
 	  }
   }
   printf("\nEnd Here!!\n");
-*/
 
 
+
+  return 0;
+}
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();

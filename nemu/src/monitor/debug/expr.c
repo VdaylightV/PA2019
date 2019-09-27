@@ -475,7 +475,7 @@ uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
   }
- uint32_t expression_value = eval( 0, token_end - 1 );
+// uint32_t expression_value = eval( 0, token_end - 1 );
  //uint32_t brackets = check_parentheses( 0, token_end - 1 );
  // return expression_value;
 
@@ -499,7 +499,7 @@ uint32_t expr(char *e, bool *success) {
 
   printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
 
-  printf("VALUE:%u\n",expression_value);
+//  printf("VALUE:%u\n",expression_value);
   //printf("BRACKETS:%u\n",brackets);
 
 

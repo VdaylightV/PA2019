@@ -170,17 +170,17 @@ uint32_t find_end_str(char *args) {
 
 static int cmd_si(char *args) {
   /* extract the first argument */
-  char *arg = strtok(NULL, " ");
+//  char *arg = strtok(NULL, " ");
  // int i;
 
 
-  if (arg == NULL) {
+  if (args == NULL) {
 	  /* no argument given */
 	  cpu_exec(1);
   }
 
   else {
-	  cpu_exec(str_to_uint(arg));
+	  cpu_exec(str_to_uint(args));
   }
   return 0;
 }

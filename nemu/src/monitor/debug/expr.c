@@ -516,6 +516,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
 	*success = false;
+	return 0;
   }
 
  assert(token_end!=0);

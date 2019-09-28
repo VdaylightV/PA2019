@@ -64,7 +64,7 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-  {"\\$[a-zA_Z]{2,3}",TK_REG},        // register
+  {"[\\$]{2,3}",TK_REG},        // register
   {" +", TK_NOTYPE},				 // spaces
   {"\\+", '+'},						 // plus
   {"==", TK_EQ},					 // equal

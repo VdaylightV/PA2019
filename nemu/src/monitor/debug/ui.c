@@ -201,11 +201,11 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
    /* extract the first argument */
-   char *arg = strtok(args," ");
+//   char *arg = strtok(args," ");
    char *add = strtok(NULL," ");
    
    int i;
-   int numbers = str_to_uint(arg);
+   int numbers = str_to_uint(args);
    unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
        printf(("0x%08x:      "),addr);

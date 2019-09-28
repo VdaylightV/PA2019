@@ -1,6 +1,7 @@
 #include "nemu.h"
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 const char *regsl[] = {"eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"};
 const char *regsw[] = {"ax", "cx", "dx", "bx", "sp", "bp", "si", "di"};
@@ -53,5 +54,49 @@ void isa_reg_display() {
 }
 
 uint32_t isa_reg_str2val(const char *s, bool *success) {
+	char eax[4] = "eax";
+	char ecx[4] = "ecx";
+	char edx[4] = "edx";
+	char ebx[4] = "ebx";
+	char esp[4] = "esp";
+	char ebp[4] = "ebp";
+	char esi[4] = "esi";
+	char edi[4] = "edi";
+
+	if ( strcmp(&eax[0], s) == 0 ) {
+	    return cpu.eax;
+	}
+
+	else if ( strcmp(&ecx[0], s) == 0 ) {
+	    return cpu.ecx;
+	}
+
+	else if ( strcmp(&edx[0], s) == 0 ) {
+	    return cpu.edx;
+	}
+	
+	else if ( strcmp(&ebx[0], s) == 0 ) {
+	    return cpu.ebx;
+	}
+	
+	else if ( strcmp(&esp[0], s) == 0 ) {
+	    return cpu.esp;
+	}
+
+	else if ( strcmp(&ebp[0], s) == 0 ) {
+	    return cpu.ebp;
+	}
+
+	else if ( strcmp(&esi[0], s) == 0 ) {
+	    return cpu.esi;
+	}
+
+	else if ( strcmp(&edi[0], s) == 0 ) {
+	    return cpu.edi;
+	}
+
+	else {
+	    assert(0);
+	}
   return 0;
 }

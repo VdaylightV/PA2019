@@ -26,6 +26,8 @@ uint32_t str_to_uint_expression(char *args) {
 
 uint32_t isa_vaddr_read(vaddr_t addr, int len);
 
+uint32_t isa_reg_str2val(const char *s, bool *success);
+
 uint32_t hex_to_uint32_t(char *args) {
     uint32_t result = 0;
 	while(*args != '\0') {
@@ -476,6 +478,16 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 		    return hex_to_uint32_t(&(tokens_copy[p].str[0]));
 		}
 
+		else if ( tokens_copy[p].type == TK_REG ) {
+			bool success = true;
+			if (success) {
+				return isa_reg_str2val( &(tokens_copy[p].str[1]),&success );
+			}
+			else {
+			    assert(0);return -1;
+			}
+		}
+
 		else {
 		    assert(0); 
 			return -1;
@@ -488,7 +500,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 
 	else {
 	    uint32_t op = find_op( p, q/*, token*/ );
-		if ( tokens_copy[op].type != DEREF ) {
+		if ( tokens_copy[op].type != DEREF && tokens_copy[op].type != TK_REG ) {
 			uint32_t val1 = eval( p, op - 1/*, token*/ );
 			uint32_t val2 = eval( op + 1, q/*, token*/ );
 

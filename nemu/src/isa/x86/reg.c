@@ -78,11 +78,12 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 	char dh[3] = "dx";
 	char ch[3] = "cx";
 	char bh[3] = "bx";
-    
+    char pc[3] = "pc";    
  
 	if ( strcmp(&eax[0], s) == 0 ) {
 	    return cpu.eax;
 	}
+
 	else if ( strcmp(&edx[0], s) == 0 ) {
 	    return cpu.edx;
 	}
@@ -173,6 +174,10 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 	
 	else if ( strcmp(&bh[0], s) == 0 ) {
 	    return cpu.gpr[3]._8[1];
+	}
+
+	else if ( strcmp(&pc[0], s) == 0 ) {
+	    return cpu.pc;
 	}
 
 	else {

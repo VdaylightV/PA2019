@@ -77,7 +77,7 @@ static struct rule {
   {"^[0]{1}[x]{1}[0-9a-fA-F]+",TK_HEX},   // hex_number
   {"[0-9]+",TK_NUM},			     // number
   {"[u]{1}",TK_CHAR},			     // character
-  {"&&", TK_AND},                    // and     
+  {"&&", TK_AND}                    // and     
 };
 #define Token_length 500
 #define ADD_TO_TOKENS tokens[nr_token].type = rules[i].token_type;  copy_char_array(substr_start, tokens[nr_token].str, substr_len)  

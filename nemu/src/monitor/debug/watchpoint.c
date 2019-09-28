@@ -140,7 +140,8 @@ void set_wp(WP *wp, char *args) {
 }
 
 void wp_display() {
-    WP *ptr = head;
+    assert(head != NULL);
+	WP *ptr = head;
     while ( (*ptr).next != NULL ) {
 	    printf("WatchPoint NO: %d\n",(*ptr).NO);
 		printf("The Expression Under Watch: ");

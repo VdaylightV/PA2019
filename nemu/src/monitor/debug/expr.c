@@ -529,7 +529,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
 	*success = false;
-	return 0;
+	return -1;
   }
 
  assert(token_end!=0);
@@ -560,10 +560,10 @@ uint32_t expr(char *e, bool *success) {
 
 //  printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
 
-  printf("VALUE:%u\n",expression_value);
+//  printf("VALUE:%u\n",expression_value);
 //  printf("BRACKETS:%u\n",brackets);
 
-  return 0;
+  return expression_value;
 }
   /* TODO: Insert codes to evaluate the expression. */
 //  TODO();

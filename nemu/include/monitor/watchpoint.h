@@ -7,7 +7,7 @@
 typedef struct watchpoint {
   int NO;
   bool work_state;
-  char var_name[32]; 
+  char expression[32]; 
   uint32_t Old_Value;
   uint32_t New_Value;
   struct watchpoint *next;
@@ -16,5 +16,17 @@ typedef struct watchpoint {
 
 
 } WP;
+
+void init_wp_pool();
+
+WP *new_wp();
+
+void free_wp(WP *wp);
+
+void delete_wp(int NO);
+
+void set_wp(WP *wp, char *args);
+
+void wp_display();
 
 #endif

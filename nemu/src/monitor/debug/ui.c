@@ -64,6 +64,10 @@ static int cmd_x(char *args);
 
 static int cmd_p(char *args);
 
+static int cmd_d(char *args);
+
+static int cmd_w(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -76,6 +80,8 @@ static struct {
   { "info", "Print the states of the registers and the information of watchpoints.", cmd_info },
   { "x", "scan the contents of the internal memory", cmd_x }, 
   { "p", "caculate the value of the expression", cmd_p },
+  { "d", "delete the watchpoint", cmd_d},
+  { "w", "set an watchpoint with specific expression", cmd_w}
   /* TODO: Add more commands */
 
 };
@@ -187,14 +193,17 @@ static int cmd_si(char *args) {
 
 static int cmd_info(char *args) {
   /* extract the first argument */
-//  char *arg = strtok(NULL, " ");
+  char *arg = strtok(NULL, " ");
   
-  if ( *args == 'r' ) {
+  if ( *arg == 'r' ) {
      isa_reg_display();
   }
   
-  else if ( *args == 'w' ) {
+  else if ( *arg == 'w' ) {
+    wp_display();
+
   }
+      
 
   return 0;
 }
@@ -286,6 +295,19 @@ static int cmd_p(char *args) {
 /*	printf("Hi\n");
 	return 1;   */
 }
+
+static int cmd_d(char *args) {
+    int NO = str_to_uint(args);
+    delete_wp(NO);
+	return 0;
+}
+
+static int cmd_w(char *args) {
+    WP *wp = new_wp();
+	set_wp(wp, args);
+	return 0;
+}
+
 
 void ui_mainloop(int is_batch_mode) {
   if (is_batch_mode) {

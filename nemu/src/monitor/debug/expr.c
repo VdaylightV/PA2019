@@ -535,12 +535,13 @@ uint32_t expr(char *e, bool *success) {
  assert(token_end!=0);
 
  uint32_t expression_value = eval( 0, token_end - 1 );
- uint32_t brackets = check_parentheses( 0, token_end - 1 );
+// uint32_t brackets = check_parentheses( 0, token_end - 1 );
  // return expression_value;
 
 // The following codes are used to test the functions above!!!
-  printf("Hi\n");
+//  printf("Hi\n");
 
+ /*
   Token_pro *ptr = &tokens_copy[0];
   printf("content:\n");
   for ( int i = 0; i < token_end; i ++ ) {
@@ -550,16 +551,17 @@ uint32_t expr(char *e, bool *success) {
 		  j ++;
 	  }
   }
-  printf("\nEnd Here!!\n");
+*/
+//  printf("\nEnd Here!!\n");
 
-  uint32_t op_index = find_op(0, token_end-1);
+//  uint32_t op_index = find_op(0, token_end-1);
 
 
 
-  printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
+//  printf("OP:%c, OP_INDEX:%u\n",tokens_copy[op_index].type, op_index);
 
   printf("VALUE:%u\n",expression_value);
-  printf("BRACKETS:%u\n",brackets);
+//  printf("BRACKETS:%u\n",brackets);
 
   return 0;
 }

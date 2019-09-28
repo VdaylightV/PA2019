@@ -249,6 +249,9 @@ static int cmd_p(char *args) {
 	    printf("failed\n");
 	}
 
+	return 0;
+//!!!!!!!DON'T FORGET THAT THE LAST BRACKET IS BEHIND !!!!!!!
+
 //The following codes are used to call the functions, however, they are not useful now.
 //    uint32_t bracket = check_parentheses(0, token_end-1, ptr);  
 //    uint32_t product = eval(0, token_end-1, ptr);
@@ -280,7 +283,6 @@ static int cmd_p(char *args) {
 //	printf("op:%u\n", op);
 //	printf("product:%u\n",product);
 
-	return 0;
 /*	printf("Hi\n");
 	return 1;   */
 }

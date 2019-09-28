@@ -62,17 +62,33 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 	char ebp[4] = "ebp";
 	char esi[4] = "esi";
 	char edi[4] = "edi";
-
+	char ax[3] = "ax";
+	char dx[3] = "dx";
+	char cx[3] = "cx";
+	char bx[3] = "bx";
+	char bp[3] = "bp";
+	char si[3] = "si";
+	char di[3] = "di";
+	char sp[3] = "sp";
+	char al[3] = "ax";
+	char dl[3] = "dx";
+	char cl[3] = "cx";
+	char bl[3] = "bx";
+	char ah[3] = "ax";
+	char dh[3] = "dx";
+	char ch[3] = "cx";
+	char bh[3] = "bx";
+    
+ 
 	if ( strcmp(&eax[0], s) == 0 ) {
 	    return cpu.eax;
+	}
+	else if ( strcmp(&edx[0], s) == 0 ) {
+	    return cpu.edx;
 	}
 
 	else if ( strcmp(&ecx[0], s) == 0 ) {
 	    return cpu.ecx;
-	}
-
-	else if ( strcmp(&edx[0], s) == 0 ) {
-	    return cpu.edx;
 	}
 	
 	else if ( strcmp(&ebx[0], s) == 0 ) {
@@ -93,6 +109,70 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 
 	else if ( strcmp(&edi[0], s) == 0 ) {
 	    return cpu.edi;
+	}
+
+	else if ( strcmp(&ax[0], s) == 0 ) {
+	    return cpu.gpr[0]._16;
+	}
+
+	else if ( strcmp(&dx[0], s) == 0 ) {
+	    return cpu.gpr[2]._16;
+	}
+
+	else if ( strcmp(&cx[0], s) == 0 ) {
+	    return cpu.gpr[1]._16;
+	}
+	
+	else if ( strcmp(&bx[0], s) == 0 ) {
+	    return cpu.gpr[3]._16;
+	}
+	
+	else if ( strcmp(&sp[0], s) == 0 ) {
+	    return cpu.gpr[4]._16;
+	}
+
+	else if ( strcmp(&bp[0], s) == 0 ) {
+	    return cpu.gpr[5]._16;
+	}
+
+	else if ( strcmp(&si[0], s) == 0 ) {
+	    return cpu.gpr[6]._16;
+	}
+
+	else if ( strcmp(&di[0], s) == 0 ) {
+	    return cpu.gpr[7]._16;
+	}
+
+	else if ( strcmp(&al[0], s) == 0 ) {
+	    return cpu.gpr[0]._8[0];
+	}
+
+	else if ( strcmp(&dl[0], s) == 0 ) {
+	    return cpu.gpr[2]._8[0];
+	}
+
+	else if ( strcmp(&cl[0], s) == 0 ) {
+	    return cpu.gpr[1]._8[0];
+	}
+	
+	else if ( strcmp(&bl[0], s) == 0 ) {
+	    return cpu.gpr[3]._8[0];
+	}
+
+	else if ( strcmp(&ah[0], s) == 0 ) {
+	    return cpu.gpr[0]._8[1];
+	}
+
+	else if ( strcmp(&dh[0], s) == 0 ) {
+	    return cpu.gpr[2]._8[1];
+	}
+
+	else if ( strcmp(&ch[0], s) == 0 ) {
+	    return cpu.gpr[1]._8[1];
+	}
+	
+	else if ( strcmp(&bh[0], s) == 0 ) {
+	    return cpu.gpr[3]._8[1];
 	}
 
 	else {

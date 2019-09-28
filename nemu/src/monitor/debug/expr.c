@@ -64,7 +64,7 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-  {"[\\$]{2,3}",TK_REG},        // register
+  {"\\$",TK_REG},        // register
   {" +", TK_NOTYPE},				 // spaces
   {"\\+", '+'},						 // plus
   {"==", TK_EQ},					 // equal
@@ -203,6 +203,7 @@ static bool make_token(char *e) {
 		  case TK_EQ: case TK_UEQ: { tokens_copy[i].prefer = 7; break; }
 		  case DEREF: { tokens_copy[i].prefer = 2; break; }
 		  case TK_AND: { tokens_copy[i].prefer = 11; break; }
+		  case TK_REG: { tokens_copy[i].prefer = 1; break; }
 		  default: {tokens_copy[i].prefer = 0; break;}
           	  
 	  }

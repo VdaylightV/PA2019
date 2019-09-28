@@ -149,6 +149,7 @@ void wp_display() {
 		    printf("%c", (*ptr).expression[j]);
 			j ++;
 		}
+		printf("\n");
         printf("The Old Value: %u\n", (*ptr).Old_Value);
         printf("The New Value: %u\n", (*ptr).New_Value);
         ptr = (*ptr).next;

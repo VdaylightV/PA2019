@@ -169,8 +169,6 @@ static bool make_token(char *e) {
         //    case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: assert(0);
         }
-
-
         break;
       }
     }

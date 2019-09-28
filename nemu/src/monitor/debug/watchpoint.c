@@ -165,6 +165,44 @@ void wp_display() {
 
 }
 
+uint32_t wp_detect() {
+	uint32_t Flags = 0;
+    if ( head == NULL ) {
+	    return Flags;
+	}
+
+	else {
+	    WP *ptr = head;
+	    bool success = true;
+
+		while ( (*ptr).next != NULL ) {
+			uint32_t expression_value = expr(&((*ptr).expression[0]), &success);
+
+			assert(token_end != 0);
+
+			(*ptr).Old_Value = (*ptr).New_Value; 
+		    (*ptr).New_Value = expression_value;
+		    
+			if ( (*ptr).Old_Value != (*ptr).New_Value ) {
+			    Flags ++;
+			}
+
+            ptr = (*ptr).next;
+		}
+
+		uint32_t expression_value = expr(&((*ptr).expression[0]), &success);
+
+		assert(token_end != 0);
+
+		(*ptr).Old_Value = (*ptr).New_Value; 
+		(*ptr).New_Value = expression_value;
+		
+		if ( (*ptr).Old_Value != (*ptr).New_Value ) {
+			Flags ++;
+		}
+    }
+	return Flags;
+}
 
 /* TODO: Implement the functionality of watchpoint */
 

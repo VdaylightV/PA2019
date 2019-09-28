@@ -30,10 +30,17 @@ void monitor_statistic(void) {
 
 /* Simulate how the CPU works. */
 void cpu_exec(uint64_t n) {
+  uint32_t flags = wp_detect();
+  
+  if ( flags > 0 ) {
+      nemu_state.state = NEMU_STOP;
+  }
+
   switch (nemu_state.state) {
     case NEMU_END: case NEMU_ABORT:
       printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
       return;
+	case NEMU_STOP: printf("The watchpoint(s) you set was aroused! You should detect the watchpoint(s)\n"); return;
     default: nemu_state.state = NEMU_RUNNING;
   }
 
@@ -43,7 +50,7 @@ void cpu_exec(uint64_t n) {
     /* Execute one instruction, including instruction fetch,
      * instruction decode, and the actual execution. */
     __attribute__((unused)) vaddr_t seq_pc = exec_once();
-
+   
 #if defined(DIFF_TEST)
   difftest_step(ori_pc, cpu.pc);
 #endif

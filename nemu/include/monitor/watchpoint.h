@@ -29,4 +29,5 @@ void set_wp(WP *wp, char *args);
 
 void wp_display();
 
+uint32_t wp_detect();
 #endif

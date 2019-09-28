@@ -118,9 +118,8 @@ void set_wp(WP *wp, char *args) {
 */	
 	bool success = true;
 
-//	assert(token_end != 0);
-
 	uint32_t expression_value = expr(&((*wp).expression[0]), &success);
+	assert(token_end != 0);
 	(*wp).Old_Value = (*wp).New_Value = expression_value;
 
 	if ( head == NULL ) {

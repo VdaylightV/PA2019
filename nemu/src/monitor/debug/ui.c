@@ -187,13 +187,13 @@ static int cmd_si(char *args) {
 
 static int cmd_info(char *args) {
   /* extract the first argument */
-  char *arg = strtok(NULL, " ");
+//  char *arg = strtok(NULL, " ");
   
-  if ( *arg == 'r' ) {
+  if ( *args == 'r' ) {
      isa_reg_display();
   }
   
-  else if ( *arg == 'w' ) {
+  else if ( *args == 'w' ) {
   }
 
   return 0;

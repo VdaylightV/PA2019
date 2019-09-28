@@ -206,6 +206,7 @@ static int cmd_x(char *args) {
    
    int i;
    int numbers = str_to_uint(arg);
+
    unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
        printf(("0x%08x:      "),addr);
@@ -238,9 +239,9 @@ static int cmd_p(char *args) {
 //	Token *ptr = &tokens_copy[0];
 //	show_array(ptr);
 //  make_token(args);
-    char *arg = strtok(NULL,"^");
+//    char *arg = strtok(NULL,"^");
 	bool success = true;
-	uint32_t result = expr(arg,&success);
+	uint32_t result = expr(args,&success);
 	if(success) {
 	    printf("%u\n",result);
 	}

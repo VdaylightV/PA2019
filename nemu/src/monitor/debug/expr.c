@@ -518,6 +518,7 @@ uint32_t eval(uint32_t p,uint32_t q/*, Token *token*/) {
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
 	*success = false;
+	assert(0);
   }
  uint32_t expression_value = eval( 0, token_end - 1 );
  uint32_t brackets = check_parentheses( 0, token_end - 1 );

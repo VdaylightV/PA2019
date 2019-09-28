@@ -1,7 +1,7 @@
 #include "nemu.h"
 #include "monitor/monitor.h"
 #include "monitor/watchpoint.h"
-
+#include "stdint.h"
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
  * This is useful when you use the `si' command.
@@ -29,18 +29,14 @@ void monitor_statistic(void) {
 }
 
 /* Simulate how the CPU works. */
+uint32_t flags = 0;
 void cpu_exec(uint64_t n) {
-  uint32_t flags = wp_detect();
-  
-  if ( flags > 0 ) {
-      nemu_state.state = NEMU_STOP;
-  }
 
   switch (nemu_state.state) {
     case NEMU_END: case NEMU_ABORT:
       printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
       return;
-	case NEMU_STOP: printf("The watchpoint(s) you set was aroused! You should detect the watchpoint(s)\n"); return;
+//	case NEMU_STOP: printf("The watchpoint(s) you set was aroused! You should detect the watchpoint(s)\n"); return;
     default: nemu_state.state = NEMU_RUNNING;
   }
 
@@ -66,6 +62,11 @@ void cpu_exec(uint64_t n) {
   }
 
     /* TODO: check watchpoints here. */
+  flags = wp_detect();
+  
+  if ( flags > 0 ) {
+      nemu_state.state = NEMU_STOP;
+  }
 
 #endif
 
@@ -87,6 +88,9 @@ void cpu_exec(uint64_t n) {
           (nemu_state.state == NEMU_ABORT ? "\33[1;31mABORT" :
            (nemu_state.halt_ret == 0 ? "\33[1;32mHIT GOOD TRAP" : "\33[1;31mHIT BAD TRAP")),
           nemu_state.halt_pc);
-      monitor_statistic();
+      monitor_statistic(); break;
+	case NEMU_STOP:
+	  printf("nemu:There are %u watchpoint(s) you set have been aroused, you may check them\n",flags);
+
   }
 }

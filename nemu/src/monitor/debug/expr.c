@@ -64,7 +64,7 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-  {"[e]{2,3}",TK_REG},        // register
+  {"\\$[a-zA_Z]{2,3}",TK_REG},        // register
   {" +", TK_NOTYPE},				 // spaces
   {"\\+", '+'},						 // plus
   {"==", TK_EQ},					 // equal
@@ -165,7 +165,7 @@ static bool make_token(char *e) {
 			case TK_UEQ: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
 			case TK_AND: { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
 			case TK_HEX: { ADD_TO_TOKENS; nr_token++; token_end ++; break; }
-//	    	case TK_REG: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
+	    	case TK_REG: { ADD_TO_TOKENS; nr_token++; token_end ++; break; } 
         //    case TK_NUM: { char *str = &e[position-substr_len]; tokens[nr_token].type = str_to_uint(str); nr_token++; break; }
           default: assert(0);
         }

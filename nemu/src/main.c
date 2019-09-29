@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
 
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);
-/* 
+ 
   static char str[300];
   FILE *fp = fopen("/home/nector/ics2019/nemu/tools/gen-expr/input","r");
   assert(fp != NULL);
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   }
 
 	 fclose(fp);
-*/
+
 //The codes above are used to test whether the function of calculation works properly!  
 /*  printf("%c\n",*args);
   while ( j > 0 ) {

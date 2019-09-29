@@ -79,8 +79,8 @@ void delete_wp( int NO ) {
 	}
     
 	if ( follow_wp_NO == NULL ) {
-        free_wp(wp_NO);
 		head = (*head).next;
+        free_wp(wp_NO);
 	}
 
 	else if ( (*wp_NO).next != NULL ) {

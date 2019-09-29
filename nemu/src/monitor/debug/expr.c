@@ -39,17 +39,17 @@ uint32_t hex_to_uint32_t(char *args) {
 			int condition = *args - '0';
 			switch(condition) {
 				case 17 : result = result*16+10;break;
-				case -15: result = result*16+10;break; 
+				case 49 : result = result*16+10;break; 
 				case 18 : result = result*16+11;break;
-				case -14: result = result*16+11;break;	 
+				case 50 : result = result*16+11;break;	 
 				case 19 : result = result*16+12;break;
-				case -13: result = result*16+12;break;	 
+				case 51 : result = result*16+12;break;	 
 				case 20 : result = result*16+13;break;
-				case -12: result = result*16+13;break;	 
+				case 52 : result = result*16+13;break;	 
 				case 21 : result = result*16+14;break;
-				case -11: result = result*16+14;break;	 
+				case 53 : result = result*16+14;break;	 
 				case 22 : result = result*16+15;break;	 
-				case -10: result = result*16+15;break;	 
+				case 54 : result = result*16+15;break;	 
 	 		}
 		    args ++; 
 		}

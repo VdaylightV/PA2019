@@ -29,7 +29,7 @@ make_EHelper(call) {
   // TODO();
 
   rtl_jr(&id_src->addr);
-  print_asm("call " );
+  print_asm("call %x", id_src->addr );
 }
 
 make_EHelper(ret) {

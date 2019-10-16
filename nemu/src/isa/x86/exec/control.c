@@ -1,23 +1,6 @@
 #include "cpu/exec.h"
 #include "cc.h"
 
-make_EHelper(push) {
-/*  if ((*id_src)->type == OP_TYPE_IMM) {
-      rtl_push(&((*id_src)->imm));
-
-	  print_asm("push %x", (*id_src)->imm);
-  }
-
-  if ((*id_sr)c->type == OP_TYPE_EWG) {
-      rtl_push(&((*id_src)->reg));
-
-      print_asm("push %x", (*id_src)->reg);
-  }
-*/
-	rtl_push(&decinfo.src.val);
-  assert(0);
-}
-
 make_EHelper(jmp) {
   // the target address is calculated at the decode stage
   rtl_j(decinfo.jmp_pc);

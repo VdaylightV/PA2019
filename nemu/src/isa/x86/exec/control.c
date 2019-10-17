@@ -19,7 +19,7 @@ make_EHelper(jcc) {
 }
 
 make_EHelper(jmp_rm) {
-  rtl_j(id_dest->val);
+  rtl_j(id_dest->reg);
 
   print_asm("jmp *%s", id_dest->str);
 }

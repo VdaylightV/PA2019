@@ -3,6 +3,7 @@
 
 #include "rtl/rtl.h"
 
+
 /* RTL pseudo instructions */
 
 static inline void rtl_lr(rtlreg_t* dest, int r, int width) {
@@ -27,7 +28,7 @@ static inline void rtl_push(const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
   cpu.esp -= 4;
-  rtl_sm(&cpu.esp, src1, 1);
+  rtl_sm(&cpu.esp, src1, 4);
   // TODO();
 }
 

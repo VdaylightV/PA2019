@@ -28,7 +28,9 @@ static inline void rtl_push(const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
   cpu.esp -= 4;
-  rtl_sm(&cpu.esp, src1, 4);
+  uint32_t *p;
+  p = (uint32_t *)(long)cpu.esp;
+  rtl_sm(p, src1, 1);
   // TODO();
 }
 

@@ -27,7 +27,7 @@ static inline void rtl_push(const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
   cpu.esp -= 4;
-  rtl_sr(cpu.esp, src1, 1);
+  rtl_sm(&cpu.esp, src1, 1);
   // TODO();
 }
 

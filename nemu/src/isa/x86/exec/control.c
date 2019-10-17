@@ -28,8 +28,8 @@ make_EHelper(call) {
   // the target address is calculated at the decode stage
   // TODO();
   //  assert(0);
-  rtl_j(id_src->addr);
-  print_asm("call %x", id_src->addr);
+  rtl_j(decinfo.jmp_pc);
+  print_asm("call %x", decinfo.jmp_pc);
 }
 
 make_EHelper(ret) {

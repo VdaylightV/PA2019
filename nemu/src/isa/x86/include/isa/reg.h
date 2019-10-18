@@ -34,7 +34,7 @@ typedef struct {
         };
 	};
   
-  rtlreg_t CF, ZF, SF, IF, OF;
+//  rtlreg_t CF, ZF, SF, IF, OF;
 	 
   vaddr_t pc;
 

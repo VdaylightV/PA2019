@@ -6,7 +6,7 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  rtl_push(&id_src->val);
+ // rtl_push(&id_src->val);
 
 //   print_asm("push %x", id_src->val);
 

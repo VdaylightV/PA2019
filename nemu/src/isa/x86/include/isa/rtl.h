@@ -30,6 +30,8 @@ static inline void rtl_push(const rtlreg_t* src1) {
 /*  reg_l(R_ESP) -= 4;
   vaddr_write(reg_l(R_ESP), *src, 4);
 */
+	cpu.esp -= 4;
+	rtl_sm(&cpu.esp , src1 , 4);
     
   // TODO();
 }

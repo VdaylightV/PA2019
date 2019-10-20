@@ -6,10 +6,10 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
- rtl_push(&id_src->val);
-
+  if (id_src->type == OP_TYPE_IMM) {
+      rtl_push(&id_src->val);
+  }
 //   print_asm("push %x", id_src->val);
-  
 
   print_asm_template1(push);
 }

@@ -39,7 +39,9 @@ static inline void rtl_push(const rtlreg_t* src1) {
 static inline void rtl_pop(rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
-  TODO();
+  rtl_mv(dest, &cpu.esp);
+  cpu.esp += 4;
+  //TODO();
 }
 
 static inline void rtl_is_sub_overflow(rtlreg_t* dest,

@@ -36,7 +36,9 @@ make_EHelper(ret) {
 
  // rtl_mv(&cpu.esp, &cpu.ebp);
 //  rtl_pop(&t0);
-  rtl_j(cpu.esp);
+  
+  rtl_lm(&t0, &cpu.esp, 4);
+  rtl_j(t0);
 
    //TODO();
 

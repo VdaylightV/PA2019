@@ -8,14 +8,18 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  rtl_and(&cpu.esp, &id_src->val, &cpu.esp);
+  rtl_and(&s0, &id_src->val, &id_src2->val);
+
+  operand_write(id_dest, &s0);
   //TODO();
 
   print_asm_template2(and);
 }
 
 make_EHelper(xor) {
-  rtl_xor(&cpu.eax, &cpu.eax, &cpu.eax);
+  rtl_xor(&s0, &id_src->val, &id_src2->val);
+  
+  operand_write(id_dest, &s0);
    //TODO();
 
   print_asm_template2(xor);

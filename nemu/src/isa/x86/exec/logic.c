@@ -8,7 +8,8 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  TODO();
+  rtl_and(&cpu.esp, &id_src->val, &cpu.esp);
+  //TODO();
 
   print_asm_template2(and);
 }

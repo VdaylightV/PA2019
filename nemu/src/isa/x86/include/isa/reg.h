@@ -33,8 +33,10 @@ typedef struct {
 	   	rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
         };
 	};
-  
+
+ struct  { 
   rtlreg_t CF, ZF, SF, IF, OF;
+    } eflags;
 	 
   vaddr_t pc;
 

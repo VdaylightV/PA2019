@@ -2,6 +2,13 @@
 
 CPU_state cpu;
 
+/*
+typedef struct {
+	rtlreg_t ZF, CF, OF, IF, SF;
+} EFLAGS;
+
+EFLAGS eflags;
+*/
 rtlreg_t s0, s1, t0, t1, ir;
 
 /* shared by all helper functions */

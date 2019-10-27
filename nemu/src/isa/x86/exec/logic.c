@@ -19,8 +19,8 @@ make_EHelper(and) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   */
-  id_dest->val = 0xfffffff0;
-  rtl_and(&s0, &id_dest->val, &s1);
+  id_src->val = 0xfffffff0;
+  rtl_and(&s0, &id_dest->val, &id_src->val);
 
   operand_write(id_dest, &s0);
   //TODO();

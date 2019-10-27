@@ -15,6 +15,13 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
+  if(id_src->width == 1 && id_dest->width == 4) {
+      id_src->val = (uint32_t)id_src->val;
+  }
+
+  if(id_src->width == 1 && id_dest->width == 2) {
+      id_src->val = (uint16_t)id_src->val;
+  }
   rtl_and(&s0, &id_dest->val, &id_src->val);
 
   operand_write(id_dest, &s0);

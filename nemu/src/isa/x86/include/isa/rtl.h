@@ -53,8 +53,16 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 
 static inline void rtl_is_sub_carry(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
+    rtl_sub(&s0, res, src1);
+	if (s0 > *res && s0 > *src1) {
+	    *dest = 1;
+	}
+	else {
+	    *dest = 0;
+	}
+    	
   // dest <- is_carry(src1 - src2)
-  TODO();
+  //TODO();
 }
 
 static inline void rtl_is_add_overflow(rtlreg_t* dest,
@@ -86,13 +94,26 @@ make_rtl_setget_eflags(SF)
 
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
-  cpu.eflags.ZF = 0;
+  switch(width) {
+	  case 1: { if ( ((*result)&(0xff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
+	  case 2: { if ( ((*result)&(0xffff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
+	  case 4: { if ( ((*result)&(0xffffffff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
+  }
+  assert(0);
+  
   //TODO();
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
-  cpu.eflags.SF = 0;
+  switch(width) {
+	  case 1: { if ( ((*result)&(0x80)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+	  case 2: { if ( ((*result)&(0x8000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+	  case 4: { if ( ((*result)&(0x80000000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+  }
+  assert(0);
+
+
   //TODO();
 }
 

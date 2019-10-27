@@ -10,7 +10,7 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   rtl_sub(&s0, &id_dest->val, &id_src->val);
-  
+  rtl_update_ZFSF(&s0, id_src->width);
   operand_write(id_dest, &s0);
   //TODO();
 
@@ -18,7 +18,8 @@ make_EHelper(sub) {
 }
 
 make_EHelper(cmp) {
-  TODO();
+  rtl_is_sub_carry(&cpu.eflags.CF, &id_dest->val, &id_src->val);
+  //TODO();
 
   print_asm_template2(cmp);
 }

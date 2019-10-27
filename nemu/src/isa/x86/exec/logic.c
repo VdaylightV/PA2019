@@ -7,7 +7,7 @@ make_EHelper(test) {
     cpu.eflags.ZF = 1;
  }
  else {
-     cpu.eflags.ZF = 0;
+    cpu.eflags.ZF = 0;
  }
  // TODO();
 

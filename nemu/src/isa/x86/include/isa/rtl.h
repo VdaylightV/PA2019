@@ -98,8 +98,8 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
 	  case 1: { if ( ((*result)&(0xff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
 	  case 2: { if ( ((*result)&(0xffff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
 	  case 4: { if ( ((*result)&(0xffffffff)) == 0 ) cpu.eflags.ZF = 1; else cpu.eflags.ZF = 0; break; }
+      default: assert(0);
   }
-  assert(0);
   
   //TODO();
 }
@@ -110,8 +110,8 @@ static inline void rtl_update_SF(const rtlreg_t* result, int width) {
 	  case 1: { if ( ((*result)&(0x80)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
 	  case 2: { if ( ((*result)&(0x8000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
 	  case 4: { if ( ((*result)&(0x80000000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+      default: assert(0);
   }
-  assert(0);
 
 
   //TODO();

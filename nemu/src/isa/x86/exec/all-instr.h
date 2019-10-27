@@ -14,6 +14,7 @@ make_EHelper(cmp);
 make_EHelper(lea);
 make_EHelper(call);
 make_EHelper(ret);
+make_EHelper(setcc);
 
 make_EHelper(add);
 make_EHelper(and);

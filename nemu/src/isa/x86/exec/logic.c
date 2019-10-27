@@ -2,7 +2,14 @@
 #include "cc.h"
 
 make_EHelper(test) {
-  TODO();
+ rtl_and(&id_dest->val, &id_src->val, &id_dest->val);
+ if (id_dest->val == 0) {
+    cpu.eflags.ZF = 1;
+ }
+ else {
+     cpu.eflags.ZF = 0;
+ }
+ // TODO();
 
   print_asm_template2(test);
 }

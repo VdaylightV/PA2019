@@ -9,6 +9,7 @@ make_EHelper(inv);
 make_EHelper(nemu_trap);
 
 make_EHelper(push);
+make_EHelper(jcc);
 
 make_EHelper(sub);
 make_EHelper(cmp);

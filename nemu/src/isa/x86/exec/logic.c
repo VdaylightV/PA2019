@@ -2,8 +2,9 @@
 #include "cc.h"
 
 make_EHelper(test) {
- rtl_and(&id_dest->val, &id_src->val, &id_dest->val);
- if (id_dest->val == 0) {
+ printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");
+ rtl_and(&s1, &id_src->val, &id_dest->val);
+ if (s1 == 0) {
     cpu.eflags.ZF = 1;
  }
  else {

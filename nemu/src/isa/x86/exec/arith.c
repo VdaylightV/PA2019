@@ -1,7 +1,7 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
- // rtl_add(&id_dest->val, &id_src->val, &id_src2->val);
+  rtl_add(&id_dest->val, &id_src->val, &id_dest->val);
 
   //TODO();
 

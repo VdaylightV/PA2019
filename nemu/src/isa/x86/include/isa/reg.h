@@ -34,12 +34,12 @@ typedef struct {
         };
 	};
 
+  vaddr_t pc;
+
  struct  { 
   rtlreg_t CF, ZF, SF, IF, OF;
     } eflags;
 	 
-  vaddr_t pc;
-
 } CPU_state;
 
 static inline int check_reg_index(int index) {

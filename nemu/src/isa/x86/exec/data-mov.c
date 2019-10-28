@@ -32,7 +32,7 @@ make_EHelper(popa) {
 
 make_EHelper(leave) {
 
-  cpu.esp = cpu.ebp;
+//  cpu.esp = cpu.ebp;
   rtl_pop(&s1);
   // TODO();
 

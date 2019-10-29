@@ -54,13 +54,15 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 
 static inline void rtl_is_sub_carry(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
-    rtl_sub(&s0, res, src1);
-	if (s0 > *res && s0 > *src1) {
+    rtl_setrelop(RELOP_LTU, dest, res, src1);
+	/*
+	if (dest, &cpu.esp, 40 > *res && s0 > *src1) {
 	    *dest = 1;
 	}
 	else {
 	    *dest = 0;
 	}
+	*/
     	
   // dest <- is_carry(src1 - src2)
   //TODO();

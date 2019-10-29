@@ -51,6 +51,10 @@ void isa_reg_display() {
 	printf(("    ebp:       0x%08x      %012dD\n"),cpu.ebp,cpu.ebp);
 	printf(("    esi:       0x%08x      %012dD\n"),cpu.esi,cpu.esi);
 	printf(("    edi:       0x%08x      %012dD\n"),cpu.edi,cpu.edi);
+	printf(("    ZF:        0x%08x      %012dD\n"),cpu.eflags.ZF,cpu.eflags.ZF);
+	printf(("    CF:        0x%08x      %012dD\n"),cpu.eflags.CF,cpu.eflags.CF);
+	printf(("    SF:        0x%08x      %012dD\n"),cpu.eflags.SF,cpu.eflags.SF);
+	printf(("    OF:        0x%08x      %012dD\n"),cpu.eflags.OF,cpu.eflags.OF);
 }
 
 uint32_t isa_reg_str2val(const char *s, bool *success) {

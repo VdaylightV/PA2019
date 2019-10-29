@@ -49,6 +49,12 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
   //rtl_setrelop(RELOP_LTU, dest, res, src1
   // dest <- is_overflow(src1 - src2)
+	switch(width) {
+	    case 1: { if (((*src1) && 0x80 == (*src2) && 0x80) && (((*src1) && 0x80) != ((*res) && 0x80))) *dest = 1; else *dest = 0; break;}
+		case 2: { if (((*src1) && 0x8000 == (*src2) && 0x8000) && (((*src1) && 0x8000) != ((*res) && 0x8000))) *dest = 1; else *dest = 0; break;}
+		case 4: { if (((*src1) && 0x80000000 == (*src2) && 0x80000000) && (((*src1) && 0x80000000) != ((*res) && 0x80000000))) *dest = 1; else *dest = 0; break;}
+	    default: assert(0);
+	}
 
   //TODO();
 }

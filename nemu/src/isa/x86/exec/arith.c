@@ -27,10 +27,10 @@ make_EHelper(sub) {
 
 make_EHelper(cmp) {
   
-  id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
-  rtl_sext(&s1, &id_src->val, id_src->width);
+ // id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
+ // rtl_sext(&s1, &id_src->val, id_src->width);
   
-  rtl_sub(&s0, &id_dest->val, &s1);
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
   rtl_is_sub_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
   rtl_update_ZFSF(&s0, id_dest->width);

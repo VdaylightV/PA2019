@@ -31,6 +31,7 @@ static inline void rtl_push(const rtlreg_t* src1) {
   vaddr_write(reg_l(R_ESP), *src, 4);
 */
 	cpu.esp -= 4;
+	printf("The value to be pushed: %x\n", *src1);
 	rtl_sm(&cpu.esp , src1 , 4);
     
   // TODO();
@@ -40,12 +41,13 @@ static inline void rtl_pop(rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
   //rtl_mv(dest, &cpu.esp);
-  printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", cpu.esp);
+  /*printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", cpu.esp);
   t1 = vaddr_read(cpu.esp, 4);
   printf("t1:%x!!!!!!!!!\n", t1);
   printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", *dest);
+  */
   rtl_lm(dest, &cpu.esp, 4);
-  printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", *dest);
+  /*printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", *dest);*/
   cpu.esp += 4;
   //TODO();
 }

@@ -40,6 +40,7 @@ static inline void rtl_pop(rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
   //rtl_mv(dest, &cpu.esp);
+  printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", cpu.esp);
   t1 = vaddr_read(cpu.esp, 4);
   printf("t1:%x!!!!!!!!!\n", t1);
   printf("HHHHHHHHHHHHH___%x___HHHHHHHHHHHHHHH\n", *dest);

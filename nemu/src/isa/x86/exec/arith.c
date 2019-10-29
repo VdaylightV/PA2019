@@ -15,6 +15,7 @@ make_EHelper(sub) {
   rtl_sext(&s1, &id_src->val, id_src->width);
   
   rtl_sub(&s0, &id_dest->val, &s1);
+  rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
   //TODO();

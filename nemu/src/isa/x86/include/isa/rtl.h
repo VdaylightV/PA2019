@@ -31,7 +31,7 @@ static inline void rtl_push(const rtlreg_t* src1) {
   vaddr_write(reg_l(R_ESP), *src, 4);
 */
 	cpu.esp -= 4;
-	printf("The value to be pushed: %x\n", *src1);
+	//printf("The value to be pushed: %x\n", *src1);
 	rtl_sm(&cpu.esp , src1 , 4);
     
   // TODO();

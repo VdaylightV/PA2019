@@ -5,7 +5,7 @@ make_EHelper(test) {
  /*printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");*/
  rtl_and(&s1, &id_src->val, &id_dest->val);
  /*printf("HHHHHHHHHH:_________%u__________:HHHHHHHHHHHHH\n",s1);*/
- if (s1 == 1) {
+ if (s1 == 0) {
     cpu.eflags.ZF = 1;
  }
  else {

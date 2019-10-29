@@ -2,6 +2,7 @@
 
 make_EHelper(add) {
   rtl_add(&s0, &id_src->val, &id_dest->val);
+  rtl_is_add_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
   operand_write(id_dest, &s0);
 
   //TODO();

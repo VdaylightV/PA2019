@@ -11,7 +11,8 @@ uint32_t expr(char *e, bool *success);
 int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
   int is_batch_mode = init_monitor(argc, argv);
-
+  
+  is_batch_mode = false;
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);
 

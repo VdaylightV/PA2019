@@ -41,7 +41,7 @@ make_EHelper(ret) {
   rtl_pop(&t1);
   */
   rtl_pop(&t0);
-  rtl_lm(&t0, &cpu.esp, 4);
+  //rtl_lm(&t0, &cpu.esp, 4);
   rtl_j(t0);
 
    //TODO();

@@ -45,6 +45,7 @@ make_EHelper(ret) {
   //rtl_lm(&t0, &cpu.esp, 4);
   //rtl_j(t0);
   decinfo.is_jmp = true;
+  rtl_j(decinfo.jmp_pc);
 
    //TODO();
 

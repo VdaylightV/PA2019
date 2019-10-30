@@ -40,13 +40,8 @@ static inline make_DopHelper(SI) {
   }
 */
   
-  switch(op->width) {
   
-	  case 1: {rtl_sext(&s1, &s0, 1); break;}
-	  case 2: {rtl_sext(&s1, &s0, 2); break;}
-	  case 4: {break;}
-	  default: assert(0);
-  }
+  rtl_sext(&s1, &s0, op->width); 
 
   op->simm = s1;
 

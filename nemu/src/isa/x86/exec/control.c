@@ -40,9 +40,10 @@ make_EHelper(ret) {
   rtl_lm(&t0, &cpu.esp, 4);
   rtl_pop(&t1);
   */
-  rtl_pop(&t0);
+  rtl_pop(&decinfo.jmp_pc);
   //rtl_lm(&t0, &cpu.esp, 4);
-  rtl_j(t0);
+  //rtl_j(t0);
+  decinfo.is_jmp = true;
 
    //TODO();
 

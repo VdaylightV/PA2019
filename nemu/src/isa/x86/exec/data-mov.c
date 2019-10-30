@@ -33,10 +33,9 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  cpu.esp = cpu.ebp;
+ // cpu.esp = cpu.ebp;
+  rtl_sr(4, &cpu.ebp, 4);
   rtl_pop(&cpu.ebp);
-  t1 = vaddr_read(cpu.ebp, 4);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@___%x___@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n", t1);
   // TODO();
 
   print_asm("leave");

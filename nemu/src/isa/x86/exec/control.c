@@ -38,12 +38,12 @@ make_EHelper(ret) {
    
   //rtl_mv(&cpu.esp, &cpu.ebp);
   /* 
-  rtl_lm(&t0, &cpu.esp, 4);
-  rtl_pop(&t1);
+  rtl_lm(&s0, &cpu.esp, 4);
+  rtl_pop(&s1);
   */
   rtl_pop(&decinfo.jmp_pc);
-  //rtl_lm(&t0, &cpu.esp, 4);
-  //rtl_j(t0);
+  //rtl_lm(&s0, &cpu.esp, 4);
+  //rtl_j(s0);
   decinfo.is_jmp = true;
   rtl_j(decinfo.jmp_pc);
 

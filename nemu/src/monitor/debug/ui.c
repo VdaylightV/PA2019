@@ -219,8 +219,8 @@ static int cmd_x(char *args) {
    unsigned int addr = str_to_hex(add);
    for (i = 0; i < numbers; i ++) {
        printf(("0x%08x:      "),addr);
-	   printf(("%-8u      "),isa_vaddr_read(addr, 1));//1 means 8 bits(1 byte),so 2 means 2 bytes, 3 means 3 bytes and so on.
-	   printf(("0x%08x\n"),isa_vaddr_read(addr, 1 ));
+	   printf(("%-8u      "),isa_vaddr_read(addr, 4));//1 means 8 bits(1 byte),so 2 means 2 bytes, 3 means 3 bytes and so on.
+	   printf(("0x%08x\n"),isa_vaddr_read(addr, 4 ));
        addr += 1;
    }
 /*   printf("end\n");

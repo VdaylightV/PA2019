@@ -7,7 +7,8 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   rtl_push(&id_src->val);
-  printf("!!!!!!!!!!!!!!!!!!!The value to be pushed: %x\n", id_src->val);
+
+//  printf("!!!!!!!!!!!!!!!!!!!The value to be pushed: %x\n", id_src->val);
 //   print_asm("push %x", id_src->val);
 
   print_asm_template1(push);

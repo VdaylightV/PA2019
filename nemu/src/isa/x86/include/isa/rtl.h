@@ -96,7 +96,7 @@ static inline void rtl_is_add_overflow(rtlreg_t* dest,
 
 static inline void rtl_is_add_carry(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
-	/*
+	
 	if (*res < *src1) {
 	   *dest = 1;
 	}
@@ -104,7 +104,7 @@ static inline void rtl_is_add_carry(rtlreg_t* dest,
 	else {
 	   *dest = 0;
 	}
-	*/
+	
   // dest <- is_carry(src1 + src2)
   //TODO();
 }

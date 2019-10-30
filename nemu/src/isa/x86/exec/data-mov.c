@@ -6,7 +6,7 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  rtl_push(&id_src->val);
+  rtl_push(&id_dest->val);
 
 //  printf("!!!!!!!!!!!!!!!!!!!The value to be pushed: %x\n", id_src->val);
 //   print_asm("push %x", id_src->val);
@@ -15,7 +15,7 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) {
-  rtl_pop(&id_dest->val);
+  rtl_pop(&id_src->val);
 
   print_asm_template1(pop);
 }

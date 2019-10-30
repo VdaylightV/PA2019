@@ -40,7 +40,9 @@ make_EHelper(cmp) {
 }
 
 make_EHelper(inc) {
-  TODO();
+  s0 = 1; 
+  rtl_add(&id_dest->val, &s0, &id_dest->val); 
+  //TODO();
 
   print_asm_template1(inc);
 }

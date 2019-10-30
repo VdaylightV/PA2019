@@ -13,13 +13,15 @@ make_EHelper(jcc);
 make_EHelper(leave);
 
 make_EHelper(sub);
+make_EHelper(add);
+make_EHelper(inc);
+
 make_EHelper(cmp);
 make_EHelper(lea);
 make_EHelper(call);
 make_EHelper(ret);
 make_EHelper(setcc);
 
-make_EHelper(add);
 make_EHelper(and);
 make_EHelper(xor);
 make_EHelper(test);

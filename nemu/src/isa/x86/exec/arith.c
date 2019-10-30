@@ -2,9 +2,9 @@
 
 make_EHelper(add) {
   rtl_add(&s0, &id_src->val, &id_dest->val);
- // rtl_is_add_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
-//  rtl_is_add_carry(&cpu.eflags.CF, &s0, &id_src->val);
-//  rtl_update_ZFSF(&s0, id_dest->width);
+  rtl_is_add_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
+  rtl_is_add_carry(&cpu.eflags.CF, &s0, &id_src->val);
+  rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
 
   //TODO();

@@ -32,8 +32,8 @@ static inline void rtl_push(const rtlreg_t* src1) {
 */
 	cpu.esp -= 4;
 	//printf("The value to be pushed: %x\n", *src1);
-	rtl_sext(&t0, src1, 4);
-	rtl_sm(&cpu.esp, &t0 , 4);
+	rtl_sext(&t1, src1, 4);
+	rtl_sm(&cpu.esp, &t1 , 4);
     
   // TODO();
 }

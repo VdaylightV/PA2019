@@ -151,8 +151,8 @@ void wp_display() {
 			j ++;
 		}
 		printf("\n");
-        printf("The Old Value: %u\n", (*ptr).Old_Value);
-        printf("The New Value: %u\n", (*ptr).New_Value);
+        printf("The Old Value: %x\n", (*ptr).Old_Value);
+        printf("The New Value: %x\n", (*ptr).New_Value);
         ptr = (*ptr).next;
 	}
 	printf("WatchPoint NO: %d\n",(*ptr).NO);
@@ -163,8 +163,8 @@ void wp_display() {
 		j ++;
 	}
 	printf("\n");
-	printf("The Old Value: %u\n", (*ptr).Old_Value);
-	printf("The New Value: %u\n", (*ptr).New_Value);
+	printf("The Old Value: %x\n", (*ptr).Old_Value);
+	printf("The New Value: %x\n", (*ptr).New_Value);
 
 }
 

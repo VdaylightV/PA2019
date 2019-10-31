@@ -10,7 +10,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     CC_S, CC_NS, CC_P,  CC_NP,
     CC_L, CC_NL, CC_LE, CC_NLE,
   };
-  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHsubcode: %x\n",(subcode & 0xe));
+//  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHsubcode: %x\n",(subcode & 0xe));
 
   // TODO: Query EFLAGS to determine whether the condition code is satisfied.
   // dest <- ( cc is satisfied ? 1 : 0)
@@ -28,12 +28,12 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");
   }
-  printf("@@@@@____%d____@@@@@\n", *dest);
+//  printf("@@@@@____%d____@@@@@\n", *dest);
 
   if (invert) {
     rtl_xori(dest, dest, 0x1);
   }
 
-  printf("@@@@@____%d____@@@@@\n", *dest);
+//  printf("@@@@@____%d____@@@@@\n", *dest);
   assert(*dest == 0 || *dest == 1);
 }

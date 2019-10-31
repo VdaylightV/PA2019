@@ -11,6 +11,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     CC_L, CC_NL, CC_LE, CC_NLE,
 	CC_GE
   };
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHsubcode: %x\n",(subcode & 0xe));
 
   // TODO: Query EFLAGS to determine whether the condition code is satisfied.
   // dest <- ( cc is satisfied ? 1 : 0)

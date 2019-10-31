@@ -69,7 +69,7 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 
 static inline void rtl_is_sub_carry(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
-    rtl_setrelop(RELOP_LTU, dest, res, src1);
+    rtl_setrelop(RELOP_LTU, dest, src1, res);
 	/*
 	if (dest, &cpu.esp, 40 > *res && t0 > *src1) {
 	    *dest = 1;

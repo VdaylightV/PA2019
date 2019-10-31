@@ -9,7 +9,6 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     CC_E, CC_NE, CC_BE, CC_NBE,
     CC_S, CC_NS, CC_P,  CC_NP,
     CC_L, CC_NL, CC_LE, CC_NLE,
-	CC_GE
   };
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHsubcode: %x\n",(subcode & 0xe));
 
@@ -21,11 +20,10 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_E: {*dest = cpu.eflags.ZF; break; }
     case CC_BE:
     case CC_S:
-    case CC_L:
+    case CC_L: {if ( cpu.eflags.CF == 1 ) (*dest) = 0; else (*dest) = 1; printf("@@@@@____%u____@@@@@\n", *dest); break; }
     case CC_LE:
 	case CC_NE: {*dest = ~cpu.eflags.ZF; break; }
-//	case CC_NL: {if ( cpu.eflags.CF == 1 ) (*dest) = 0; else (*dest) = 1; printf("@@@@@____%u____@@@@@\n", *dest); break; }
-//	case CC_GE: {if ( cpu.eflags.CF == 1 ) (*dest) = 0; else (*dest) = 1; printf("@@@@@____%u____@@@@@\n", *dest); break; }
+	case CC_NL:
       TODO();
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");

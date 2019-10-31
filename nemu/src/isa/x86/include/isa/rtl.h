@@ -141,9 +141,9 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   switch(width) {
-	  case 1: { if ( ((*result)&(0x80)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
-	  case 2: { if ( ((*result)&(0x8000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
-	  case 4: { if ( ((*result)&(0x80000000)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+	  case 1: { if ( (((*result) >> 7)&(0x1)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+	  case 2: { if ( (((*result) >> 15)&(0x1)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
+	  case 4: { if ( (((*result) >> 31)&(0x1)) == 0 ) cpu.eflags.SF = 0; else cpu.eflags.SF = 1; break; }
       default: assert(0);
   }
 

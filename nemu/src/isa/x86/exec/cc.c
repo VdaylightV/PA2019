@@ -29,9 +29,12 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");
   }
+  printf("@@@@@____%u____@@@@@\n", *dest);
 
   if (invert) {
     rtl_xori(dest, dest, 0x1);
   }
+
+  printf("@@@@@____%u____@@@@@\n", *dest);
   assert(*dest == 0 || *dest == 1);
 }

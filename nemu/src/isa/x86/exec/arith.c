@@ -32,7 +32,7 @@ make_EHelper(cmp) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   
-  rtl_sub(&s0, &id_dest->val, &s1);
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);

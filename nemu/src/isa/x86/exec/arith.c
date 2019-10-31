@@ -36,6 +36,7 @@ make_EHelper(cmp) {
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
   rtl_is_sub_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
   rtl_update_ZFSF(&s0, id_dest->width);
+  operand_write(id_dest, &s0);
   //TODO();
 
   print_asm_template2(cmp);

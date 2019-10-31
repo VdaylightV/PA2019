@@ -33,7 +33,9 @@ make_EHelper(cmp) {
   rtl_sext(&s1, &id_src->val, id_src->width);
   
   rtl_sub(&s0, &id_dest->val, &id_src->val);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
   rtl_is_sub_overflow(&cpu.eflags.OF, &s0, &id_src->val, &id_dest->val, id_src->width);
   rtl_update_ZFSF(&s0, id_dest->width);
   //TODO();

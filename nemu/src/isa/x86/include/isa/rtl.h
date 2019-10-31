@@ -58,9 +58,9 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
   //rtl_setrelop(RELOP_LTU, dest, res, src1
   // dest <- is_overflow(src1 - src2)
 	switch(width) {
-	  case 1: { if ((((*src1)>>7) && 0x1 == ((*src2)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0; break;}
-		case 2: { if ((((*src1)>>15) && 0x1 == ((*src2)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0; break;}
-		case 4: { if ((((*src1)>>31) && 0x1 == ((*src2)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0; break;}
+	    case 1: { if (((*src1) && 0x80 == (*src2) && 0x80) && (((*src1) && 0x80) != ((*res) && 0x80))) *dest = 1; else *dest = 0; break;}
+		case 2: { if (((*src1) && 0x8000 == (*src2) && 0x8000) && (((*src1) && 0x8000) != ((*res) && 0x8000))) *dest = 1; else *dest = 0; break;}
+		case 4: { if (((*src1) && 0x80000000 == (*src2) && 0x80000000) && (((*src1) && 0x80000000) != ((*res) && 0x80000000))) *dest = 1; else *dest = 0; break;}
 	    default: assert(0);
 	}
 
@@ -69,16 +69,8 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 
 static inline void rtl_is_sub_carry(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
-    // rtl_setrelop(RELOP_LTU, dest, src1, res);
-	if (*res > *src1) {
-    *dest = 1;
-  }
-
-  else {
-    *dest = 0;
-  }
-
-  /*
+    rtl_setrelop(RELOP_LTU, dest, src1, res);
+	/*
 	if (dest, &cpu.esp, 40 > *res && t0 > *src1) {
 	    *dest = 1;
 	}
@@ -94,10 +86,10 @@ static inline void rtl_is_sub_carry(rtlreg_t* dest,
 
 static inline void rtl_is_add_overflow(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
-		switch(width) {
-	  case 1: { if ((((*src1)>>7) && 0x1 == ((*src2)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0; break;}
-		case 2: { if ((((*src1)>>15) && 0x1 == ((*src2)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0; break;}
-		case 4: { if ((((*src1)>>31) && 0x1 == ((*src2)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0; break;}
+	switch(width) {
+	    case 1: { if (((*src1) && 0x80 == (*src2) && 0x80) && (((*src1) && 0x80) != ((*res) && 0x80))) *dest = 1; else *dest = 0; break;}
+		case 2: { if (((*src1) && 0x8000 == (*src2) && 0x8000) && (((*src1) && 0x8000) != ((*res) && 0x8000))) *dest = 1; else *dest = 0; break;}
+		case 4: { if (((*src1) && 0x80000000 == (*src2) && 0x80000000) && (((*src1) && 0x80000000) != ((*res) && 0x80000000))) *dest = 1; else *dest = 0; break;}
 	    default: assert(0);
 	}
   // dest <- is_overflow(src1 + src2)

@@ -22,7 +22,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_L:
     case CC_LE:
 	case CC_NE: {*dest = ~cpu.eflags.ZF; break; }
-      //TODO();
+      TODO();
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");
   }

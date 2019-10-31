@@ -78,8 +78,7 @@ static inline void rtl_is_sub_carry(rtlreg_t* dest,
 
 	    *dest = 0;
 	}
-*/	
-    	
+*/    	
   // dest <- is_carry(src1 - src2)
   //TODO();
 }

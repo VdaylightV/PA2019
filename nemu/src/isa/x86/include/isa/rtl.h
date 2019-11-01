@@ -63,6 +63,8 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 	    case 4: { if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0; break;}
 	    default: assert(0);
 	}
+	uint32_t c = 0x80000000;
+	printf("@@@@@@@@@@@@@@@@@@@@@       0x%x        @@@@@@@@@@@@@@@@@@@@@\n",(c >> 31) & 0x1);
 
   //TODO();
 }

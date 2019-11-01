@@ -69,7 +69,7 @@ static inline make_DopHelper(a) {
 static inline make_DopHelper(r) {
   op->type = OP_TYPE_REG;
   op->reg = decinfo.opcode & 0x7;
-  printf("@@@@@@@@@@@@@@__The reg code is: %d@@@@@@@@@@\n", op->reg);
+  //printf("@@@@@@@@@@@@@@__The reg code is: %d@@@@@@@@@@\n", op->reg);
   if (load_val) {
     rtl_lr(&op->val, op->reg, op->width);
   }

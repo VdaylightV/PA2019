@@ -94,8 +94,8 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
 	  printf("ZF: %x\n",ref_r->eflags.ZF);
 	  printf("CF: %x\n",ref_r->eflags.CF);
 	  printf("SF: %x\n",ref_r->eflags.SF);
-*/	  printf("OF: %x\n",ref_r->eflags.OF);
-	  printf("\n");
+	  printf("OF: %x\n",ref_r->eflags.OF);
+*/	  printf("\n");
 	  return false;
   }
 

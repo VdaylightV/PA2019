@@ -65,6 +65,7 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 	}
 	uint32_t c = 0x80000000;
 	printf("@@@@@@@@@@@@@@@@@@@@@       0x%x        @@@@@@@@@@@@@@@@@@@@@\n",(~c)+1 + c);
+	printf("@@@@@@@@@@@@@@@@@@@@@       0x%x        @@@@@@@@@@@@@@@@@@@@@\n",c - c);
 
   //TODO();
 }

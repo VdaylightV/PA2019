@@ -38,9 +38,12 @@ make_EHelper(cmp) {
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus:%x\n", id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@result:%x\n", s0);
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.OF:%x\n", cpu.eflags.OF);
   rtl_is_sub_overflow(&cpu.eflags.OF, &s0, &id_dest->val, &id_src->val, id_src->width);
   rtl_update_ZFSF(&s0, id_dest->width);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.OF:%x\n", cpu.eflags.OF);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.ZF:%x\n", cpu.eflags.ZF);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.SF:%x\n", cpu.eflags.SF);
   //TODO();
 
   print_asm_template2(cmp);

@@ -48,10 +48,15 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decinfo.isa.is_operand_size_16) {
-    TODO();
+	s0 = 15;
+	rtl_shr(&cpu.edx, &cpu.eax, &s0);
+
+    //TODO();
   }
   else {
-    TODO();
+	s0 = 31;
+	rtl_shr(&cpu.edx, &cpu.eax, &s0);
+    //TODO();
   }
 
   print_asm(decinfo.isa.is_operand_size_16 ? "cwtl" : "cltd");

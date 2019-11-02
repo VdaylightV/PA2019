@@ -18,17 +18,19 @@ make_EHelper(sub) {
   rtl_sext(&s1, &id_src->val, id_src->width);
    
   rtl_sub(&s0, &id_dest->val, &id_src->val);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
+/*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus_before_extend:%x\n", id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused_after_extend:%x\n", s1);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@result:%x\n", s0);
+*/ 
   rtl_is_sub_carry(&cpu.eflags.CF, &s0, &id_dest->val);
   rtl_is_sub_overflow(&cpu.eflags.OF, &s0, &id_dest->val, &id_src->val, id_src->width);
   rtl_update_ZFSF(&s0, id_dest->width);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
+/*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.OF:%x\n", cpu.eflags.OF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.ZF:%x\n", cpu.eflags.ZF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.SF:%x\n", cpu.eflags.SF);
+*/  
   operand_write(id_dest, &s0);
   printf("$$$$$$$$$$$$$$$$___cpu.esi:%x__$$$$$$$$$$$$$$$$$$\n",cpu.esi);
   //TODO();

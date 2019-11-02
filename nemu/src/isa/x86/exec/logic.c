@@ -4,7 +4,7 @@
 make_EHelper(test) {
   s2 = 0;
   /*printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");*/
-  id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
+  //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   printf("HHHHHHHHHH:________the src before extend:_%x__________:HHHHHHHHHHHHH\n",id_src->val);
   printf("HHHHHHHHHH:________the src after extend:_%x__________:HHHHHHHHHHHHH\n",s1);
@@ -31,7 +31,7 @@ make_EHelper(test) {
 
 make_EHelper(and) {
   
-  id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
+  //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   
   /*

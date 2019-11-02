@@ -41,7 +41,7 @@ static inline make_DopHelper(SI) {
 */
   
 //  rtl_sext(&op->imm, &op->imm, op->width); 
-//  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
+  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
 
   switch(op->width) {
 	  case 1: { s0 = ((uint16_t)instr_fetch(pc, 1)); rtl_sext(&s1, &s0, 1); op->simm = s1; break;}

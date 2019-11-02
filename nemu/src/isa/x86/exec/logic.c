@@ -21,7 +21,6 @@ make_EHelper(test) {
  */
  // TODO();
 
-  operand_write(id_dest, &s0);
   print_asm_template2(test);
 }
 

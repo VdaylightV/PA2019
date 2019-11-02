@@ -17,7 +17,7 @@ make_EHelper(sub) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
    
-  rtl_sub(&s0, &id_dest->val, &s1);
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus_before_extend:%x\n", id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused_after_extend:%x\n", s1);

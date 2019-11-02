@@ -6,11 +6,11 @@ make_EHelper(test) {
   printf("src:\n");
   printf("simm:0x%x\n", id_src->simm);
   printf("val:0x%x\n", id_src->val);
-  printf("width:0x%x", id_src->width);
+  printf("width:0x%x\n", id_src->width);
   printf("dest:\n");
   printf("simm:0x%x\n", id_dest->simm);
   printf("val:0x%x\n", id_dest->val);
-  printf("width:0x%x", id_dest->width);
+  printf("width:0x%x\n", id_dest->width);
   /*printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");*/
   //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   //printf("HHHHHHHHHH:________the original s1:_0x%x__________:HHHHHHHHHHHHH\n",s1);

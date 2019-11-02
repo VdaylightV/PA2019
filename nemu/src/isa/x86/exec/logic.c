@@ -7,6 +7,7 @@ make_EHelper(test) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   rtl_and(&s0, &id_src->val, &s1);
+  printf("HHHHHHHHHH:_________%x__________:HHHHHHHHHHHHH\n",s0);
   rtl_update_ZFSF(&s0, id_dest->width);
   rtl_set_CF(&s2);
   rtl_set_OF(&s2);

@@ -61,18 +61,18 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
     printf("*************************___~src2+1:%x___********************************\n",~(*src2)+1);
     if(*src2 != 0x80000000){ 
 		switch(width) {
-			case 1: { if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0; break;}
-			case 2: { if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0; break;}
-			case 4: { if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0; break;}
+			case 1: {printf("0-1\n"); if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0; break;}
+			case 2: {printf("0-2\n"); if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0; break;}
+			case 4: {printf("0-4\n"); if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0; break;}
 			default: assert(0);
 		}
 	}
 
 	else{
 		switch(width) {
-			case 1: { if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 0; else *dest = 1; break;}
-			case 2: { if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 0; else *dest = 1; break;}
-			case 4: { if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 0; else *dest = 1; break;}
+			case 1: {printf("1-1\n"); if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 0; else *dest = 1; break;}
+			case 2: {printf("1-2\n"); if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 0; else *dest = 1; break;}
+			case 4: {printf("1-4\n"); if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 0; else *dest = 1; break;}
 			default: assert(0);
 		}
 	}

@@ -11,7 +11,7 @@ static inline make_DopHelper(I) {
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(pc, op->width);
   rtl_li(&op->val, op->imm);
-  printf("+++++++++++++++++++++++++The result:%x\n",op->imm);
+  printf("I:+++++++++++++++++++++++++The result:%x\n",op->imm);
   print_Dop(op->str, OP_STR_SIZE, "$0x%x", op->imm);
 }
 
@@ -41,7 +41,7 @@ static inline make_DopHelper(SI) {
 */
   
   rtl_sext(&op->imm, &op->imm, op->width); 
-  printf("+++++++++++++++++++++++++The result:%x\n",op->imm);
+  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
 
   rtl_li(&op->val, op->simm);
   
@@ -273,6 +273,7 @@ make_DHelper(J) {
   decode_op_SI(pc, id_dest, false);
   // the target address can be computed in the decode stage
   decinfo.jmp_pc = id_dest->simm + *pc;
+  printf("Jump_PC:%x\n",decinfo.jmp_pc);
 }
 
 make_DHelper(push_SI) {

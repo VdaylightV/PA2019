@@ -76,7 +76,7 @@ static inline void rtl_is_sub_carry(rtlreg_t* dest,
 	rtl_sub(&t0, src1, res);
 
 	if(t0 == 0x80000000 && *src1 != 0x80000000)  {
-		*dest = 1;	
+		*dest = 0;	
 	}
 
 	else if ((*src1) < (*res)) {

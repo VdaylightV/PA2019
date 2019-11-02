@@ -34,7 +34,7 @@ make_EHelper(test) {
 make_EHelper(and) {
   
   //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
-  rtl_sext(&s1, &id_src->val, id_src->width);
+  //rtl_sext(&s1, &id_src->val, id_src->width);
   
   /*
   int32_t temp = (int32_t)id_src->val;
@@ -43,7 +43,7 @@ make_EHelper(and) {
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH%u\n",rs);
   */
   s2 = 0;
-  rtl_and(&s0, &id_dest->val, &s1);
+  rtl_and(&s0, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&s0, id_dest->width);
   rtl_set_CF(&s2);
   rtl_set_OF(&s2);

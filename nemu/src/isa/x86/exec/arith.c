@@ -32,7 +32,7 @@ make_EHelper(sub) {
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.SF:%x\n", cpu.eflags.SF);
 */  
   operand_write(id_dest, &s0);
-  printf("$$$$$$$$$$$$$$$$___cpu.esi:%x__$$$$$$$$$$$$$$$$$$\n",cpu.esi);
+ //printf("$$$$$$$$$$$$$$$$___cpu.esi:%x__$$$$$$$$$$$$$$$$$$\n",cpu.esi);
   //TODO();
 
   print_asm_template2(sub);

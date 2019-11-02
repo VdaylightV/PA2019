@@ -8,7 +8,7 @@ make_EHelper(test) {
   rtl_sext(&s1, &id_src->val, id_src->width);
   printf("HHHHHHHHHH:________the src before extend:_%x__________:HHHHHHHHHHHHH\n",id_src->val);
   printf("HHHHHHHHHH:________the src after extend:_%x__________:HHHHHHHHHHHHH\n",s1);
-  rtl_and(&s0, &id_src->val, &s1);
+  rtl_and(&s0, &id_src->val, &id_dest->val);
   printf("HHHHHHHHHH:________the result after and:_%x__________:HHHHHHHHHHHHH\n",s0);
   printf("HHHHHHHHHH:________the ZF before and:_%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
   rtl_update_ZFSF(&s0, id_dest->width);

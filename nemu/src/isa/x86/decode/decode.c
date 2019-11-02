@@ -41,7 +41,7 @@ static inline make_DopHelper(SI) {
 */
   
   rtl_sext(&op->imm, &op->imm, op->width); 
-
+  printf("+++++++++++++++++++++++++The result:%x\n",op->imm);
 
   rtl_li(&op->val, op->simm);
   

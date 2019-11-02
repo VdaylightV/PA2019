@@ -5,16 +5,16 @@ make_EHelper(test) {
   s2 = 0;
   /*printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");*/
   //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
-  printf("HHHHHHHHHH:________the original s1:_0x%x__________:HHHHHHHHHHHHH\n",s1);
-  rtl_sext(&s1, &id_src->val, id_src->width);
-  printf("HHHHHHHHHH:________the src beforewidth:_%x__________:HHHHHHHHHHHHH\n",id_src->width);
-  printf("HHHHHHHHHH:________the src before extend:0x%x__________:HHHHHHHHHHHHH\n",id_src->val);
-  printf("HHHHHHHHHH:________the src after extend:_0x%x__________:HHHHHHHHHHHHH\n",s1);
-  rtl_and(&s0, &s1, &id_dest->val);
-  printf("HHHHHHHHHH:________the result after and:_%x__________:HHHHHHHHHHHHH\n",s0);
-  printf("HHHHHHHHHH:________the ZF before and:_%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
+  //printf("HHHHHHHHHH:________the original s1:_0x%x__________:HHHHHHHHHHHHH\n",s1);
+  //rtl_sext(&s1, &id_src->val, id_src->width);
+  //printf("HHHHHHHHHH:________the src beforewidth:_%x__________:HHHHHHHHHHHHH\n",id_src->width);
+  //printf("HHHHHHHHHH:________the src before extend:0x%x__________:HHHHHHHHHHHHH\n",id_src->val);
+  //printf("HHHHHHHHHH:________the src after extend:_0x%x__________:HHHHHHHHHHHHH\n",s1);
+  rtl_and(&s0, &id_dest->val, &id_src->val);
+  //printf("HHHHHHHHHH:________the result after and:_%x__________:HHHHHHHHHHHHH\n",s0);
+  //printf("HHHHHHHHHH:________the ZF before and:_%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
   rtl_update_ZFSF(&s0, id_dest->width);
-  printf("HHHHHHHHHH:_________the ZF after and: %x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
+  //printf("HHHHHHHHHH:_________the ZF after and: %x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
   rtl_set_CF(&s2);
   rtl_set_OF(&s2);
  /*printf("HHHHHHHHHH:_________%u__________:HHHHHHHHHHHHH\n",s1);*/

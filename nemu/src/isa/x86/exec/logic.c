@@ -7,10 +7,10 @@ make_EHelper(test) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   rtl_and(&s0, &id_src->val, &s1);
-  printf("HHHHHHHHHH:_________%x__________:HHHHHHHHHHHHH\n",s0);
-  printf("HHHHHHHHHH:_________%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
+  printf("HHHHHHHHHH:________the result after and:_%x__________:HHHHHHHHHHHHH\n",s0);
+  printf("HHHHHHHHHH:________the ZF before and:_%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
   rtl_update_ZFSF(&s0, id_dest->width);
-  printf("HHHHHHHHHH:_________%x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
+  printf("HHHHHHHHHH:_________the ZF after and: %x__________:HHHHHHHHHHHHH\n",cpu.eflags.ZF);
   rtl_set_CF(&s2);
   rtl_set_OF(&s2);
  /*printf("HHHHHHHHHH:_________%u__________:HHHHHHHHHHHHH\n",s1);*/

@@ -11,7 +11,7 @@ static inline make_DopHelper(I) {
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(pc, op->width);
   rtl_li(&op->val, op->imm);
-  printf("I:+++++++++++++++++++++++++The result:%x\n",op->imm);
+  //printf("I:+++++++++++++++++++++++++The result:%x\n",op->imm);
   print_Dop(op->str, OP_STR_SIZE, "$0x%x", op->imm);
 }
 
@@ -41,7 +41,7 @@ static inline make_DopHelper(SI) {
 */
   
 //  rtl_sext(&op->imm, &op->imm, op->width); 
-  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
+  //printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
 
   switch(op->width) {
 	  case 1: { s0 = ((uint16_t)instr_fetch(pc, 1)); rtl_sext(&s1, &s0, 1); op->simm = s1; break;}

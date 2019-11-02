@@ -57,13 +57,13 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
   //rtl_setrelop(RELOP_LTU, dest, res, src1
   // dest <- is_overflow(src1 - src2)
-    printf("*************************___src2:%x___********************************\n",*src2);
-    printf("*************************___~src2+1:%x___********************************\n",~(*src2)+1);
+    //printf("*************************___src2:%x___********************************\n",*src2);
+    //printf("*************************___~src2+1:%x___********************************\n",~(*src2)+1);
     if(*src2 != 0x80000000){ 
 		switch(width) {
-			case 1: {printf("0-1\n"); if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0; printf("src1:%x\n",((*src1)>>7)&0x1); printf("src2:%x\n",((~(*src2)+1)>>7)&0x1); printf("res:%x\n",((*res)>>7)&0x1); break;}
-			case 2: {printf("0-2\n"); if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0; printf("src1:%x\n",((*src1)>>15)&0x1); printf("src2:%x\n",((~(*src2)+1)>>15)&0x1); printf("res:%x\n",((*res)>>15)&0x1); break;}
-			case 4: {printf("0-4\n"); if (((((*src1)>>31) && 0x1) == (((~(*src2)+1)>>31) && 0x1)) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) {*dest = 1; printf("OF=1\n");} else {*dest = 0; printf("OF=0\n");} printf("src1:%x\n",((*src1)>>31)&0x1); printf("src2:%x\n",((~(*src2)+1)>>31)&0x1); printf("res:%x\n",((*res)>>31)&0x1); break;}
+			case 1: {/*printf("0-1\n");*/ if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 1; else *dest = 0;/*printf("src1:%x\n",((*src1)>>7)&0x1); printf("src2:%x\n",((~(*src2)+1)>>7)&0x1); printf("res:%x\n",((*res)>>7)&0x1);*/ break;}
+			case 2: {/*printf("0-2\n");*/ if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 1; else *dest = 0;/*printf("src1:%x\n",((*src1)>>15)&0x1); printf("src2:%x\n",((~(*src2)+1)>>15)&0x1); printf("res:%x\n",((*res)>>15)&0x1);*/ break;}
+			case 4: {/*printf("0-4\n");*/ if (((((*src1)>>31) && 0x1) == (((~(*src2)+1)>>31) && 0x1)) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 1; else *dest = 0;/*printf("src1:%x\n",((*src1)>>31)&0x1); printf("src2:%x\n",((~(*src2)+1)>>31)&0x1); printf("res:%x\n",((*res)>>31)&0x1);*/ break;}
 			default: assert(0);
 		}
 	}

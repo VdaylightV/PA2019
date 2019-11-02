@@ -33,16 +33,22 @@ static inline make_DopHelper(SI) {
    */
   //TODO();
   
-  op->simm = instr_fetch(pc, op->width);
+//  op->simm = instr_fetch(pc, op->width);
  /* 
   if( op->width == 1 && ((op->simm >> 7) & 1) == 1) {
      op->simm = op->simm | 0xffffff00;
   }
 */
   
-  rtl_sext(&op->imm, &op->imm, op->width); 
-  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
+//  rtl_sext(&op->imm, &op->imm, op->width); 
+//  printf("SI:+++++++++++++++++++++++++The result:%x\n",op->imm);
 
+  switch(op->width) {
+	  case 1: { s0 = ((uint8_t)instr_fetch(pc, 1)); rtl_sext(&s1, &s0, 1); op->simm = s1; break;}
+	  case 2: { s0 = ((uint16_t)instr_fetch(pc, 2)); rtl_sext(&s1, &s0, 2); op->simm = s1; break;}
+	  case 4: { s0 =  instr_fetch(pc, 4); op->simm = s0; break;}
+
+  }
   rtl_li(&op->val, op->simm);
   
   print_Dop(op->str, OP_STR_SIZE, "$0x%x", op->simm);

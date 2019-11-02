@@ -27,7 +27,11 @@ make_EHelper(and) {
   uint32_t rs = (uint32_t)temp;
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH%u\n",rs);
   */
+  s2 = 0;
   rtl_and(&s0, &id_dest->val, &s1);
+  rtl_update_ZFSF(&s0, id_dest->width);
+  rtl_set_CF(&s2);
+  rtl_set_OF(&s2);
 
   operand_write(id_dest, &s0);
   //TODO();

@@ -63,8 +63,12 @@ make_EHelper(and) {
 }
 
 make_EHelper(xor) {
+  s2 = 0;
   rtl_xor(&s0, &id_dest->val, &id_src->val);
   
+  rtl_update_ZFSF(&s0, id_dest->width);
+  rtl_set_CF(&s2);
+  rtl_set_OF(&s2);
   operand_write(id_dest, &s0);
    //TODO();
 
@@ -72,8 +76,16 @@ make_EHelper(xor) {
 }
 
 make_EHelper(or) {
-  TODO();
+	s2 = 0;
+	rtl_or(&s0, &id_dest->val, &id_src->val);
 
+  //TODO();
+
+  rtl_update_ZFSF(&s0, id_dest->width);
+  rtl_set_CF(&s2);
+  rtl_set_OF(&s2);
+  operand_write(id_dest, &s0);
+  
   print_asm_template2(or);
 }
 

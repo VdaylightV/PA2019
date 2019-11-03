@@ -170,7 +170,7 @@ make_DHelper(I2r) {
   decode_op_r(pc, id_dest, true);
   printf("######################dest:%x########\n",id_dest->val);
   decode_op_I(pc, id_src, true);
-  printf("######################dest:%x########\n",id_src->val);
+  printf("######################src:%x########\n",id_src->val);
 }
 
 make_DHelper(mov_I2r) {

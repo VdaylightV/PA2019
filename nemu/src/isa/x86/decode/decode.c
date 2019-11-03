@@ -168,9 +168,9 @@ make_DHelper(mov_I2E) {
  */
 make_DHelper(I2r) {
   decode_op_r(pc, id_dest, true);
-  printf("######################dest:%x########\n",id_dest->val);
+//  printf("######################dest:%x########\n",id_dest->val);
   decode_op_I(pc, id_src, true);
-  printf("######################src:%x########\n",id_src->val);
+//  printf("######################src:%x########\n",id_src->val);
 }
 
 make_DHelper(mov_I2r) {
@@ -280,9 +280,9 @@ make_DHelper(a2O) {
 make_DHelper(J) {
   decode_op_SI(pc, id_dest, false);
   // the target address can be computed in the decode stage
-  printf("PC:%x\n", decinfo.seq_pc);
+  //printf("PC:%x\n", decinfo.seq_pc);
   decinfo.jmp_pc = id_dest->simm + *pc;
-  printf("Jump_PC:%x\n",decinfo.jmp_pc);
+  //printf("Jump_PC:%x\n",decinfo.jmp_pc);
 }
 
 make_DHelper(push_SI) {

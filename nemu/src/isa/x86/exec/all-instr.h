@@ -36,4 +36,6 @@ make_EHelper(and);
 make_EHelper(xor);
 make_EHelper(or);
 make_EHelper(sar);
+make_EHelper(shl);
+make_EHelper(shr);
 make_EHelper(test);

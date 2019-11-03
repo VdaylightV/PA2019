@@ -15,6 +15,8 @@ make_EHelper(pop);
 make_EHelper(jcc);
 make_EHelper(jmp);
 make_EHelper(jmp_rm);
+make_EHelper(call);
+make_EHelper(call_rm);
 make_EHelper(leave);
 
 make_EHelper(sub);
@@ -30,7 +32,6 @@ make_EHelper(cltd);
 
 make_EHelper(cmp);
 make_EHelper(lea);
-make_EHelper(call);
 make_EHelper(ret);
 make_EHelper(setcc);
 

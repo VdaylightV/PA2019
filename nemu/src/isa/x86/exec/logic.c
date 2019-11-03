@@ -130,7 +130,7 @@ make_EHelper(setcc) {
 }
 
 make_EHelper(not) {
-  rtl_not(&s0, &id_src->val);
+  rtl_not(&s0, &id_dest->val);
   operand_write(id_dest, &s0);
   //TODO();
 

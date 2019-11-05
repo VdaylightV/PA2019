@@ -4,9 +4,8 @@
 
 size_t strlen(const char *s) {
   size_t count = 0;
-  while(*s != '\0') {
+  while(s[count] != '\0') {
 	  count ++;
-	  s ++;
   }
   return count;
 }
@@ -16,7 +15,7 @@ char *strcpy(char* dst,const char* src) {
 		assert(0);
 	    return NULL;
 	}
-    
+/*  //Forget to consider the problem of overlapping  
 	else {
 		char* temp = dst;
 	    while(*src != '\0') {
@@ -27,6 +26,24 @@ char *strcpy(char* dst,const char* src) {
 		*temp = '\0';
 		return dst;
 	}
+*/
+	size_t length = strlen(src);
+
+	char store_src[length];
+
+    for(int i = 0; i < length; i ++) {
+	    store_src[i] = src[i];
+	}
+	store_src[length] = '\0';
+
+	for(int i = 0; i < length; i ++) {
+	    dst[i] = store_src[i];
+	}
+	dst[length] = '\0';
+
+	return dst;
+
+
 }
 
 char* strncpy(char* dst, const char* src, size_t n) {
@@ -35,6 +52,42 @@ char* strncpy(char* dst, const char* src, size_t n) {
 	    return NULL;
 	}
 
+	size_t length = strlen(src);
+
+	if(n >= length) {
+
+		char store_src[length];
+
+		for(int i = 0; i < length; i ++) {
+		    store_src[i] = src[i]; 
+		}
+		store_src[length] = '\0';
+
+        for(int i = 0; i < length; i ++) {
+		    dst[i] = store_src[i];
+		}
+		dst[length] = '\0';
+	    
+		return dst;
+	}
+
+	else {
+	    
+		char store_src[n];
+
+		for(int i = 0; i < n; i ++) {
+		    store_src[i] = src[i];
+		}
+		store_src[n] = '\0';
+
+		for(int i = 0; i < length; i ++) {
+		   dst[i] = store_src[i];
+		}
+		dst[n] = '\0';
+
+		return dst;
+	}
+/*
 	else {
 		char* temp = dst;
 		int count = 0;
@@ -47,6 +100,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 		*temp = '\0';
 	return dst;
 	}
+*/
 }
 
 char* strcat(char* dst, const char* src) {
@@ -55,6 +109,22 @@ char* strcat(char* dst, const char* src) {
 	    temp_dst ++;
 	}
 
+    size_t length = strlen(src);
+
+	char store_src[length];
+
+	for(int i = 0; i < length; i ++) {
+	    store_src[i] = src[i];
+	}
+	store_src[length] = '\0';
+
+	for(int i = 0; i < length; i ++) {
+	    temp_dst[i] = store_src[i];
+	}
+	temp_dst[length] = '\0';
+
+    return dst;
+/*
 	size_t n = strlen(src);
 	for(size_t i = 0; i < n; i ++) {
 	    *temp_dst = src[i];
@@ -62,8 +132,7 @@ char* strcat(char* dst, const char* src) {
 	}
 
 	*temp_dst = '\0'; 
-
-    return dst;
+*/
 }
 
 int strcmp(const char* s1, const char* s2) {
@@ -119,8 +188,8 @@ int strcmp(const char* s1, const char* s2) {
 
 int strncmp(const char* s1, const char* s2, size_t n) {
 
-	int len_s1 = strlen(s1);
-	int len_s2 = strlen(s2);
+	size_t len_s1 = strlen(s1);
+	size_t len_s2 = strlen(s2);
 
     if(n >= len_s1 && n >= len_s2) {
 		if(len_s1 == len_s2) {
@@ -219,8 +288,7 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 void* memset(void* v,int c,size_t n) {
   int* temp_v = (int *)v;
   for(size_t i = 0; i < n; i ++) {
-      *temp_v = c;
-	  temp_v ++;
+      temp_v[i] = c;
   }
   return v;
 }
@@ -228,11 +296,19 @@ void* memset(void* v,int c,size_t n) {
 void* memcpy(void* out, const void* in, size_t n) {
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
+
+  char store_in[n];
+
   for(size_t i = 0; i < n; i ++) {
-	  *temp_out = *temp_in;
-	  temp_out ++;
-	  temp_in ++;
+      store_in[i] = temp_in[i];
   }
+  temp_in[n] = '\0';
+
+  for(size_t i = 0; i < n; i ++) {
+      temp_out[i] = store_in[i];
+  }
+  temp_out[n] = '\0';
+
   return out;
 }
 
@@ -240,18 +316,14 @@ int memcmp(const void* s1, const void* s2, size_t n){
   unsigned char* temp_s1 = (unsigned char *)s1;
   unsigned char* temp_s2 = (unsigned char *)s2;
   for(size_t i = 0; i < n; i++) {
-      if(*temp_s1 > *temp_s2) {
+      if(temp_s1[i] > temp_s2[i]) {
 	      return 1;
 	  }
 
-	  if(*temp_s1 < *temp_s2) {
+	  if(temp_s1[i] < temp_s2[i]) {
 	      return -1;
 	  }
 	 
-	  else {
-	      temp_s1 ++;
-		  temp_s2 ++;
-	  }
   }
   return 0;
 }

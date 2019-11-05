@@ -7,15 +7,17 @@ size_t strlen(const char *s) {
   while(s[count] != '\0') {
 	  count ++;
   }
-  printf("Length:%d\n",count);
+//  printf("Length:%d\n",count);
   return count;
 }
 
 char *strcpy(char* dst,const char* src) {
-	if (src == NULL) {
+/*	if (src == NULL) {
 		assert(0);
 	    return NULL;
 	}
+*/
+
 /*  //Forget to consider the problem of overlapping  
 	else {
 		char* temp = dst;
@@ -28,6 +30,8 @@ char *strcpy(char* dst,const char* src) {
 		return dst;
 	}
 */
+
+/*
 	size_t length = strlen(src);
 
 	char store_src[length];
@@ -43,19 +47,38 @@ char *strcpy(char* dst,const char* src) {
 	dst[length] = '\0';
 
 	return dst;
-
+*/
+	return strncpy(dst, src, strlen(src));
 
 }
 
 char* strncpy(char* dst, const char* src, size_t n) {
-	if (src == NULL) {
+/*	if (src == NULL) {
 		assert(0);
 	    return NULL;
 	}
-
+*/
 	size_t length = strlen(src);
 
-	if(n >= length) {
+	if (n > length) {
+	    return strncpy(dst, src, length);
+	}
+
+	else {
+	    char str[length+1];
+		char* head = str;
+		size_t i = 0;
+		while(i < n) {
+		    *(head+i)= *(src+i);
+			i ++;
+		}
+		str[n] = '\0';
+		head = str;
+		char* result = dst;
+		while((*(dst++) = *(head++)));
+		return result;
+	}
+/*	if(n >= length) {
 
 		char store_src[length];
 
@@ -88,6 +111,8 @@ char* strncpy(char* dst, const char* src, size_t n) {
 
 		return dst;
 	}
+*/
+
 /*
 	else {
 		char* temp = dst;

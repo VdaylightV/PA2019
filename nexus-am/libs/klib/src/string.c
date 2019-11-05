@@ -226,8 +226,8 @@ void* memset(void* v,int c,size_t n) {
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-  unsigned char* temp_out = (unsigned char *)out;
-  unsigned char* temp_in = (unsigned char *)in;
+  char* temp_out = (char *)out;
+  char* temp_in = (char *)in;
   for(size_t i = 0; i < n; i ++) {
 	  *temp_out = *temp_in;
 	  temp_out ++;

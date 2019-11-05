@@ -362,7 +362,7 @@ void* memset(void* v,int c,size_t n) {
 	
   char* temp_v = (char *)v;
   for(size_t i = 0; i < n; i ++) {
-      temp_v[i] = (char)c;
+      temp_v[i] = c;
   }
   return v;
   

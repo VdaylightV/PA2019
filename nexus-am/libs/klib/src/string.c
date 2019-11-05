@@ -20,11 +20,11 @@ size_t strlen(const char *s) {
 }
 
 char *strcpy(char* dst,const char* src) {
-/*	if (src == NULL) {
+	if (src == NULL) {
 		assert(0);
 	    return NULL;
 	}
-*/
+
 
 /*  //Forget to consider the problem of overlapping  
 	else {
@@ -39,7 +39,7 @@ char *strcpy(char* dst,const char* src) {
 	}
 */
 
-/*
+
 	size_t length = strlen(src);
 
 	char store_src[length];
@@ -55,8 +55,8 @@ char *strcpy(char* dst,const char* src) {
 	dst[length] = '\0';
 
 	return dst;
-*/
-	return strncpy(dst, src, strlen(src));
+
+//	return strncpy(dst, src, strlen(src));
 
 }
 

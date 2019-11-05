@@ -3,12 +3,19 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 size_t strlen(const char *s) {
+	/*
   size_t count = 0;
   while(s[count] != '\0') {
 	  count ++;
   }
 //  printf("Length:%d\n",count);
   return count;
+*/
+    size_t size = 0;
+	while(*(s++)) {
+	    size ++;
+	}
+	return size;
 }
 
 char *strcpy(char* dst,const char* src) {
@@ -130,6 +137,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 }
 
 char* strcat(char* dst, const char* src) {
+	/*
 	char* temp_dst = dst;
 	while(*temp_dst != '\0') {
 	    temp_dst ++;
@@ -150,6 +158,13 @@ char* strcat(char* dst, const char* src) {
 	temp_dst[length] = '\0';
 
     return dst;
+*/
+	char* result = dst;
+	while(*dst) {
+	    dst ++;
+	}
+	strcpy(dst, src);
+	return result;
 /*
 	size_t n = strlen(src);
 	for(size_t i = 0; i < n; i ++) {
@@ -340,14 +355,23 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 }
 
 void* memset(void* v,int c,size_t n) {
+	/*
   int* temp_v = (int *)v;
   for(size_t i = 0; i < n; i ++) {
       temp_v[i] = c;
   }
   return v;
+  */
+	void* ret = v;
+	while(n--) {
+	    *(char*)v = (char)c;
+		v = (char*)v + 1;
+	}
+	return ret;
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
+	/*
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
 
@@ -364,9 +388,40 @@ void* memcpy(void* out, const void* in, size_t n) {
 //  temp_out[n] = '\0';
 
   return out;
+  */
+	void* ret = out;
+	char *begin1 = (char*) out;
+	const char *begin2 = (const char *)in;
+	while(n--) {
+	    *(begin1+n-1) = *(begin2+n-1);
+	}
+	return ret;
 }
 
-int memcmp(const void* s1, const void* s2, size_t n){
+int memcmp(const void* s1, const void* s2, size_t n) {
+	const char* temp_s1 = (char*)s1;
+	const char* temp_s2 = (char*)s2;
+
+	while(*temp_s1 == *temp_s2 && --n>0) {
+	    temp_s1 ++;
+		temp_s2 ++;
+
+	}
+
+	int flag = *temp_s1 - *temp_s2;
+	if(flag > 0)
+	{
+	    return 1;
+	}
+	else if(flag < 0)
+	{
+		return -1;
+	}
+	else
+	{
+	    return flag;
+	}
+	/*
   unsigned char* temp_s1 = (unsigned char *)s1;
   unsigned char* temp_s2 = (unsigned char *)s2;
   for(size_t i = 0; i < n; i++) {
@@ -380,6 +435,7 @@ int memcmp(const void* s1, const void* s2, size_t n){
 	 
   }
   return 0;
+  */
 }
 
 

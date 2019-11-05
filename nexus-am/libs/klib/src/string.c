@@ -143,28 +143,34 @@ int strcmp(const char* s1, const char* s2) {
 	if(len_s1 == len_s2) {
 	    for(int i = 0; i < len_s1; i ++) {
 		    if(s1[i] > s2[i]) {
+				printf("S1 Bigger!\n");
 			    return 1;
 			}
 
 			if(s1[i] < s2[i]) {
+				printf("S2 Bigger!\n");
 			    return -1;
 			}
 
 		}
+		printf("Equal!\n");
 		return 0;
 	}
 
 	if(len_s1 > len_s2) {
 	    for(int i = 0; i < len_s2; i ++) {
 		    if(s1[i] > s2[i]) {
+				printf("S1 Bigger!\n");
 			    return 1;
 			}
 
 			if(s1[i] < s2[i]) {
+				printf("S2 Bigger!\n");
 			    return -1;
 			}
 
 		}
+		printf("Equal!\n");
 		return 1;
 	    
 	}
@@ -172,14 +178,17 @@ int strcmp(const char* s1, const char* s2) {
 	else {
 	    for(int i = 0; i < len_s1; i ++) {
 		    if(s1[i] > s2[i]) {
+				printf("S1 Bigger!\n");
 			    return 1;
 			}
 
 			if(s1[i] < s2[i]) {
+				printf("S2 Bigger!\n");
 			    return -1;
 			}
 
 		}
+		printf("Equal!\n");
 		return -1;
 	    
 	}

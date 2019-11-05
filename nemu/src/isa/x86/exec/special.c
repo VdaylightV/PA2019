@@ -5,6 +5,15 @@ make_EHelper(nop) {
   print_asm("nop");
 }
 
+make_EHelper(xchg) {
+
+  uint32_t temp = id_dest->val;
+  operand_write(id_dest, &id_src->val);
+  operand_write(id_src, &temp);
+    
+  print_asm("xchg");
+}
+
 make_EHelper(inv) {
   /* invalid opcode */
 

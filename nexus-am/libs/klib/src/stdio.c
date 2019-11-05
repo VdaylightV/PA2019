@@ -8,7 +8,6 @@ int fac(int base, int exp) {
 	for(int i = 0; i < exp; i ++) {
 	    result *= base;
 	}
-
 	return result;
 
 }
@@ -24,7 +23,7 @@ char *int_to_str(int val, char* str) {
 	}
     
 	num = val;
-	int division = 0;
+	int division = 1;
 	int bit;
 	char c;
 

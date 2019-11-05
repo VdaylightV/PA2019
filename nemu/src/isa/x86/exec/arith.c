@@ -88,7 +88,23 @@ make_EHelper(dec) {
 }
 
 make_EHelper(neg) {
-  TODO();
+	s0 = id_dest->val;
+	s1 = 1;
+	rtl_not(&s3, &s0);
+	rtl_add(&s2, &s1, &s3);
+    rtl_is_add_overflow(&cpu.eflags.OF, &s2, &s3, &s1, id_dest->width);
+    rtl_update_ZFSF(&s2, id_dest->width);
+    if(s0 == 0) {
+	    rtl_set_CF(&s1);
+	}
+
+	else{
+	    s1 = 0;
+		rtl_set_CF(&s1);
+	}
+    operand_write(id_dest, &s2);
+
+  //TODO();
 
   print_asm_template1(neg);
 }

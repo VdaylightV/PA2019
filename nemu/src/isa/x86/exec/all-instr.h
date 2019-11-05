@@ -20,6 +20,7 @@ make_EHelper(call);
 make_EHelper(call_rm);
 make_EHelper(leave);
 
+make_EHelper(neg);
 make_EHelper(sub);
 make_EHelper(sbb);
 make_EHelper(add);

@@ -360,7 +360,7 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 
 void* memset(void* v,int c,size_t n) {
 	
-  char* temp_v = (char *)v;
+  int* temp_v = (int *)v;
   for(size_t i = 0; i < n; i ++) {
       temp_v[i] = c;
   }

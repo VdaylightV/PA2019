@@ -307,7 +307,7 @@ void* memcpy(void* out, const void* in, size_t n) {
   for(size_t i = 0; i < n; i ++) {
       temp_out[i] = store_in[i];
   }
-  temp_out[n] = '\0';
+//  temp_out[n] = '\0';
 
   return out;
 }

@@ -61,14 +61,14 @@ char *strcpy(char* dst,const char* src) {
 }
 
 char* strncpy(char* dst, const char* src, size_t n) {
-/*	if (src == NULL) {
+	if (src == NULL) {
 		assert(0);
 	    return NULL;
 	}
-*/
+
 	size_t length = strlen(src);
 
-	if (n > length) {
+/*	if (n > length) {
 	    return strncpy(dst, src, length);
 	}
 
@@ -86,7 +86,9 @@ char* strncpy(char* dst, const char* src, size_t n) {
 		while((*(dst++) = *(head++)));
 		return result;
 	}
-/*	if(n >= length) {
+*/
+
+	if(n >= length) {
 
 		char store_src[length];
 
@@ -119,9 +121,9 @@ char* strncpy(char* dst, const char* src, size_t n) {
 
 		return dst;
 	}
-*/
 
 /*
+
 	else {
 		char* temp = dst;
 		int count = 0;

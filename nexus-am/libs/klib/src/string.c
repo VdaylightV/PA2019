@@ -24,6 +24,7 @@ char *strcpy(char* dst,const char* src) {
 		    temp ++;
 		    src ++;
 	    }
+		*temp = '\0';
 		return dst;
 	}
 }
@@ -43,6 +44,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 		    src ++;
 	        count ++;	
 		}
+		*temp = '\0';
 	return dst;
 	}
 }

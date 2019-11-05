@@ -1,5 +1,4 @@
 #include "klib.h"
-#include <stdio.h> 
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
@@ -141,39 +140,46 @@ int strcmp(const char* s1, const char* s2) {
 
 	int len_s1 = strlen(s1);
 	int len_s2 = strlen(s2);
+
+	int flag = 0;
     
 	if(len_s1 == len_s2) {
 	    for(int i = 0; i < len_s1; i ++) {
 		    if(s1[i] > s2[i]) {
 				printf("S1 Bigger!\n");
-			    return 1;
+				flag = 1;
+			    return flag;
 			}
 
 			if(s1[i] < s2[i]) {
 				printf("S2 Bigger!\n");
-			    return -1;
+				flag = -1;
+			    return flag;
 			}
 
 		}
 		printf("Equal!\n");
-		return 0;
+		return flag;
 	}
 
 	if(len_s1 > len_s2) {
 	    for(int i = 0; i < len_s2; i ++) {
 		    if(s1[i] > s2[i]) {
 				printf("S1 Bigger!\n");
-			    return 1;
+			    flag =  1;
+			    return flag;
 			}
 
 			if(s1[i] < s2[i]) {
 				printf("S2 Bigger!\n");
-			    return -1;
+			    flag = -1;
+			    return flag;
 			}
 
 		}
 		printf("Equal!\n");
-		return 1;
+		flag = 1;
+	    return flag;
 	    
 	}
 
@@ -181,17 +187,20 @@ int strcmp(const char* s1, const char* s2) {
 	    for(int i = 0; i < len_s1; i ++) {
 		    if(s1[i] > s2[i]) {
 				printf("S1 Bigger!\n");
-			    return 1;
+			    flag =  1;
+			    return flag;
 			}
 
 			if(s1[i] < s2[i]) {
 				printf("S2 Bigger!\n");
-			    return -1;
+			    flag = -1;
+			    return flag;
 			}
 
 		}
 		printf("Equal!\n");
-		return -1;
+	    flag = -1;
+	    return flag;
 	    
 	}
 

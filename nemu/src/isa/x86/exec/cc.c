@@ -15,8 +15,8 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   // TODO: Query EFLAGS to determine whether the condition code is satisfied.
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
-    case CC_O:{if (cpu.eflags.OF == 1) (*dest) = 1; else (*dest) = 0; break; }
-    case CC_B:{if (cpu.eflags.CF == 1) (*dest) = 1; else (*dest) = 0; break; }
+    case CC_O: {if (cpu.eflags.OF == 1) (*dest) = 1; else (*dest) = 0; break; }
+    case CC_B:// {if (cpu.eflags.CF == 1) (*dest) = 1; else (*dest) = 0; break; }
     case CC_E: {*dest = cpu.eflags.ZF; break; }
     case CC_BE: {if (cpu.eflags.CF == 1 || cpu.eflags.ZF == 1) (*dest) = 1; else (*dest) = 0; break; }
     case CC_S: {if (cpu.eflags.SF == 1) (*dest) = 1; else (*dest) = 0; break; }

@@ -140,7 +140,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 }
 
 char* strcat(char* dst, const char* src) {
-	/*
+	
 	char* temp_dst = dst;
 	while(*temp_dst != '\0') {
 	    temp_dst ++;
@@ -161,13 +161,14 @@ char* strcat(char* dst, const char* src) {
 	temp_dst[length] = '\0';
 
     return dst;
-*/
+/*
 	char* result = dst;
 	while(*dst) {
 	    dst ++;
 	}
 	strcpy(dst, src);
 	return result;
+*/
 /*
 	size_t n = strlen(src);
 	for(size_t i = 0; i < n; i ++) {

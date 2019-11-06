@@ -109,6 +109,8 @@ int sprintf(char *out, const char *fmt, ...) {
 
   int ret = vsprintf(out, fmt, ap);
 
+  va_end(ap);
+
   return ret;
 }
 

@@ -63,8 +63,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		switch(*fmt) {
 		    case 'd': 
 				{
-				 int val = 0;
-				 val += va_arg(ap, int);
+				 int val = va_arg(ap, int);
 
 				 char temp[65535];
 				 char *head = temp;
@@ -72,8 +71,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *result = int_to_str(val, head);
 				 temp_out = strcpy(temp_out, result);
 
-				 int len = strlen(result);
-				 for(int i = 0; i < len; i ++) {
+				 size_t len = strlen(result);
+				 for(size_t i = 0; i < len; i ++) {
 				     temp_out ++;
 				 }
 				 fmt ++;
@@ -85,12 +84,22 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			   	{
 				 char* c; 
 				 c = va_arg(ap, char*);
+              
+				 size_t len = strlen(c);
+
+				 for(size_t i = 0; i < len; i ++) {
+				     *temp_out = *c;
+					 temp_out ++;
+					 c ++;
+				 }
+				 /*
 
 				 temp_out = strcpy(temp_out, c);
 				 int len = strlen(c);
 				 for(int i = 0; i < len; i ++) {
 				     temp_out ++;
 				 }
+				 */
 				 fmt ++;
 
 				 break;
@@ -98,6 +107,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				}
 		}
 	}
+	*temp_out = '\0';
 
   return 0;
 }

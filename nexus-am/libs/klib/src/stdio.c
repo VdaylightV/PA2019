@@ -47,6 +47,7 @@ int printf(const char *fmt, ...) {
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
 	char *temp_out = out;
+//	const char* temp_fmt;
 //	va_start(ap, fmt);
 
 	while(*fmt) {

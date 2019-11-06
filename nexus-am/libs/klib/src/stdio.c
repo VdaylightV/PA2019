@@ -69,9 +69,10 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *head = temp;
 
 				 char *result = int_to_str(val, head);
+				 size_t len = strlen(result);
+
 				 temp_out = strcpy(temp_out, result);
 
-				 size_t len = strlen(result);
 				 for(size_t i = 0; i < len; i ++) {
 				     temp_out ++;
 				 }

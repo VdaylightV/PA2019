@@ -46,3 +46,6 @@ make_EHelper(sar);
 make_EHelper(shl);
 make_EHelper(shr);
 make_EHelper(test);
+
+make_EHelper(in);
+make_EHelper(out);

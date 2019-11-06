@@ -1,3 +1,4 @@
+/*
 #include "common.h"
 #include "device/map.h"
 
@@ -11,3 +12,4 @@ void init_argsrom() {
   strcpy((char *)argsrom_base, get_mainargs());
   add_mmio_map("argsrom", ARGSROM_MMIO, argsrom_base, 4096, NULL);
 }
+*/

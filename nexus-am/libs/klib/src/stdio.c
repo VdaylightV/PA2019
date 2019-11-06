@@ -71,14 +71,30 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
 
-				 temp_out = strcpy(temp_out, result);
+				 if(len<2) {
+				     *temp_out = '0';
+					 temp_out ++;
 
-				 for(size_t i = 0; i < len; i ++) {
-				     temp_out ++;
+					 temp_out = strcpy(temp_out, result);
+				     for(size_t i = 0; i < len; i ++) {
+				         temp_out ++;
+				     }
+
+					 fmt ++;
+					 break;
 				 }
-				 fmt ++;
 
-				 break;
+				 else {
+
+					temp_out = strcpy(temp_out, result);
+
+					for(size_t i = 0; i < len; i ++) {
+						temp_out ++;
+					}
+					fmt ++;
+
+					break;
+					}
 				}
 
 			case 's':

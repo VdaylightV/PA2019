@@ -61,9 +61,9 @@ make_EHelper(out) {
     s0 = id_src->val;
 
 	switch(id_src->width) {
-	    case 1: { pio_write_b(id_dest->addr, id_src->val); break; }
-	    case 2: { pio_write_w(id_dest->addr, id_src->val); break; }
-	    case 4: { pio_write_l(id_dest->addr, id_src->val); break; }
+	    case 1: { pio_write_b(id_dest->addr, s0); break; }
+	    case 2: { pio_write_w(id_dest->addr, s0); break; }
+	    case 4: { pio_write_l(id_dest->addr, s0); break; }
 		default: assert(0);
 	}
 //  TODO();

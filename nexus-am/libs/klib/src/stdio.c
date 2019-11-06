@@ -87,19 +87,20 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
               
 				 size_t len = strlen(c);
 
+/*
 				 for(size_t i = 0; i < len; i ++) {
 				     *temp_out = *c;
 					 temp_out ++;
 					 c ++;
 				 }
-				 /*
+*/
+				 
 
 				 temp_out = strcpy(temp_out, c);
-				 int len = strlen(c);
 				 for(int i = 0; i < len; i ++) {
 				     temp_out ++;
 				 }
-				 */
+				 
 				 fmt ++;
 
 				 break;

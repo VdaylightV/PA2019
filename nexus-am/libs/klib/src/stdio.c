@@ -97,7 +97,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 
 
 				 temp_out = strcpy(temp_out, c);
-				 for(int i = 0; i < len; i ++) {
+				 for(size_t i = 0; i < len; i ++) {
 				     temp_out ++;
 				 }
 				 
@@ -108,7 +108,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				}
 		}
 	}
-	*temp_out = '\0';
+	//*temp_out = '\0';
 
   return 0;
 }

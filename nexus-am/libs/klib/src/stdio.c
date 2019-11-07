@@ -43,6 +43,19 @@ char *int_to_str(int val, char* str) {
 
 int printf(const char *fmt, ...) {
 
+  char *out = "";
+
+  va_list ap;
+
+  va_start(ap, fmt);
+
+  int ret = vsprintf(out, fmt, ap);
+
+  va_end(ap);
+
+  return ret;
+
+
   return 0;
 }
 

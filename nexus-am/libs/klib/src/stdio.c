@@ -64,6 +64,7 @@ int printf(const char *fmt, ...) {
 
   return ret;
 */
+	return 0;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -210,23 +211,10 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 */
 
 
-				
-/*			case '0':
-				{
-					fmt ++;
-
-					int width = *fmt - '0';
-
-					char *fill_width = "";
-
-					for(int i = 0; i < width - 1; i ++) {
-						
-					    
-					}
-*/					
 //				}
 		}
 	}
+
 	*temp_out = '\0';
 
   return 0;

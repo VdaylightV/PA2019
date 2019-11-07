@@ -71,7 +71,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
 
-/*				 if(len < 2) {
+				 size_t limit = 2;
+
+				 if(len < limit) {
 					 assert(0);
 				     *temp_out = '0';
 					 temp_out ++;
@@ -80,12 +82,12 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				     for(size_t i = 0; i < len; i ++) {
 				         temp_out ++;
 				     }
-
 					 fmt ++;
+
 					 break;
 				 }
-*/
-//				 else {
+
+				 else {
 
 					temp_out = strcpy(temp_out, result);
 
@@ -95,7 +97,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					fmt ++;
 
 					break;
-//					}
+					}
 				}
 
 			case 's':

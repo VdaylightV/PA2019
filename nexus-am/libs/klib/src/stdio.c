@@ -51,7 +51,7 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
-
+/*
   char *out = "";
 
   va_list ap;
@@ -63,9 +63,7 @@ int printf(const char *fmt, ...) {
   va_end(ap);
 
   return ret;
-
-
-  return 0;
+*/
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {

@@ -82,21 +82,21 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char temp[65535];
 				 char *head = temp;
 				 
-				 char* fill_width = "0";
+//				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
 
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
 //
-				 if(len < 2) {
+/*				 if(len < 2) {
 
                      result = strcpy(fill_width, result);
 					 size_t fill_result_len = strlen(result);
 
-/*					 for(size_t i = 0; i < len_zero; i ++) {
-					     temp_out ++;
+//					 for(size_t i = 0; i < len_zero; i ++) {
+//					     temp_out ++;
 					 }
-*/
+//
 					 temp_out = strcpy(temp_out, result);
 				     for(size_t i = 0; i < fill_result_len; i ++) {
 				         temp_out ++;
@@ -105,8 +105,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 					 break;
 				 }
-
-				 else {
+*/
+//				 else {
 
 					temp_out = strcpy(temp_out, result);
 
@@ -116,7 +116,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					fmt ++;
 
 					break;
-					}
+//					}
 				}
 
 			case 's':

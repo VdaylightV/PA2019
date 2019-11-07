@@ -67,16 +67,19 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 char temp[65535];
 				 char *head = temp;
+				 
+				 char* fill_width = "0";
+				 size_t len_zero = strlen(fill_width);
 
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
 
-				 size_t limit = 2;
+				 if(len < 2) {
 
-				 if(len < limit) {
-					 assert(0);
-				     *temp_out = '0';
-					 temp_out ++;
+                     temp_out = strcpy(temp_out, fill_width);
+					 for(size_t i = 0; i < len_zero; i ++) {
+					     temp_out ++;
+					 }
 
 					 temp_out = strcpy(temp_out, result);
 				     for(size_t i = 0; i < len; i ++) {

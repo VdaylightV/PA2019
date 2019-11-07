@@ -69,20 +69,22 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *head = temp;
 				 
 				 char* fill_width = "0";
-				 size_t len_zero = strlen(fill_width);
+//				 size_t len_zero = strlen(fill_width);
 
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
-
+//
 				 if(len < 2) {
 
-                     temp_out = strcpy(temp_out, fill_width);
-					 for(size_t i = 0; i < len_zero; i ++) {
+                     result = strcpy(fill_width, result);
+					 size_t fill_result_len = strlen(result);
+
+/*					 for(size_t i = 0; i < len_zero; i ++) {
 					     temp_out ++;
 					 }
-
+*/
 					 temp_out = strcpy(temp_out, result);
-				     for(size_t i = 0; i < len; i ++) {
+				     for(size_t i = 0; i < fill_result_len; i ++) {
 				         temp_out ++;
 				     }
 					 fmt ++;

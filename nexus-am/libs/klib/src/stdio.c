@@ -41,6 +41,15 @@ char *int_to_str(int val, char* str) {
 
 }
 
+size_t str_to_int(char* str) {
+    size_t value = 0;
+	while(*str) {
+		value += *str - '0';
+		value = value*10;
+	}
+	return value;
+}
+
 int printf(const char *fmt, ...) {
 
   char *out = "";
@@ -144,6 +153,79 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 
+				}
+
+           default :
+				{
+				char *fill_content = "";
+
+				*fill_content = *fmt;
+
+				*(fill_content + 1) = '\0';
+
+				size_t para_width = 0;
+               
+                const char* temp_fmt = fmt;
+
+				while(*temp_fmt != 'd') {
+					para_width ++;
+	                temp_fmt ++;
+				}
+
+			   char *width_num = "";
+
+			   for(size_t i = 0; i < para_width - 1; i ++) {
+				   width_num = strcat(width_num, fill_content);
+			   }
+
+			   size_t print_width = str_to_int(width_num);
+			   
+			   int val = va_arg(ap, int);
+
+			   char temp[65535];
+			   char *head = temp;
+   
+			   char *result = int_to_str(val, head);
+			   size_t len = strlen(result);
+
+			   char* the_whole_fill = "";
+
+			  for(size_t i = 0; i < print_width - len; i ++) {
+			      the_whole_fill = strcat(the_whole_fill, fill_content);
+			  } 
+
+              the_whole_fill = strcat(the_whole_fill, result);
+
+			  temp_out = strcpy(temp_out, the_whole_fill);
+
+			  for(size_t i = 0; i < print_width; i ++) {
+			      temp_out ++;
+			  }
+
+			  while(*fmt != 'd') {
+			      fmt ++;
+			  }
+
+			  fmt ++;
+
+			  break;
+
+
+
+				
+/*			case '0':
+				{
+					fmt ++;
+
+					int width = *fmt - '0';
+
+					char *fill_width = "";
+
+					for(int i = 0; i < width - 1; i ++) {
+						
+					    
+					}
+*/					
 				}
 		}
 	}

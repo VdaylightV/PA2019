@@ -42,6 +42,7 @@ char *int_to_str(int val, char* str) {
 }
 
 int printf(const char *fmt, ...) {
+
   return 0;
 }
 

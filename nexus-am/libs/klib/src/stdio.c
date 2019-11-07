@@ -71,7 +71,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 char *result = int_to_str(val, head);
 				 size_t len = strlen(result);
 
-				 if(len<2) {
+				 if(len < 2) {
+					 assert(0);
 				     *temp_out = '0';
 					 temp_out ++;
 

@@ -155,7 +155,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 
-           default :
+/*           default :
 				{
 				char *fill_content = "";
 
@@ -211,7 +211,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			  break;
 
 
-
+*/
 				
 /*			case '0':
 				{
@@ -226,7 +226,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					    
 					}
 */					
-				}
+//				}
 		}
 	}
 	*temp_out = '\0';

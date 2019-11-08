@@ -203,6 +203,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 for(size_t i = 0; i < len; i ++) {
 					 temp_out ++;
+
 				 }
          
 		        fmt ++;

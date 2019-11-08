@@ -51,7 +51,7 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
-/*
+
   char *out = "";
 
   va_list ap;
@@ -70,8 +70,8 @@ int printf(const char *fmt, ...) {
   }
 
 	return ret;
-*/
-    return 0;
+
+//    return 0;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -161,7 +161,48 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 
-           default :
+            case '0':
+			    {
+				 int val = va_arg(ap, int);
+
+				 char temp[65535];
+				 char *head = temp;
+				 char *result = int_to_str(val, head);
+				 size_t len = strlen(result);
+
+                 char* fill_char = "0";
+
+				 fmt ++;
+
+				 size_t width_num = 0;
+
+				 while(*fmt != 'd') {
+					 width_num += *fmt - '0';
+					 width_num *= 10;
+
+					 fmt ++;
+				 }
+
+				 size_t fill_char_len = width_num - len;
+
+				 for(size_t i = 0; i < fill_char_len; i ++) {
+					 temp_out = strcat(temp_out, fill_char);
+				 }
+
+				 for(size_t i = 0; i < fill_char_len; i ++) {
+					 temp_out ++;
+				 }
+
+				 temp_out = strcpy(temp_out, result);
+
+				 for(size_t i = 0; i < len; i ++) {
+					 temp_out ++;
+				 }
+         
+		        fmt ++;
+       			}
+
+  /*         default :
 				{
 				char *fill_content = "";
 
@@ -216,7 +257,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 			  break;
 			}
-
+*/
 
 
 

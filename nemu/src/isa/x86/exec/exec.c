@@ -32,7 +32,7 @@ make_group(gp2,
 /* 0xf6, 0xf7 */
 make_group(gp3,
     IDEX(test_I, test), EMPTY, EX(not), EX(neg),
-    EX(mul), EX(imul1), EX(div), EX(idiv))
+    EX(mul), EX(imul1), EMPTY, EX(idiv))
 
 /* 0xfe */
 make_group(gp4,
@@ -56,16 +56,16 @@ static OpcodeEntry opcode_table [512] = {
   /* 0x00 */	EMPTY, IDEX(G2E, add), EMPTY, IDEX(E2G, add),
   /* 0x04 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x08 */	IDEXW(G2E, or, 1), IDEX(G2E, or), IDEXW(E2G, or, 1), IDEX(E2G, or),
-  /* 0x0c */	EMPTY, EMPTY, EMPTY, EX(2byte_esc),
+  /* 0x0c */	IDEXW(I2a, or, 1), IDEX(I2a, or), EMPTY, EX(2byte_esc),
   /* 0x10 */	EMPTY, EMPTY, EMPTY, IDEX(E2G, adc),
   /* 0x14 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x18 */	EMPTY, EMPTY, EMPTY, IDEX(E2G, sbb),
   /* 0x1c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x20 */	EMPTY, EMPTY, IDEXW(E2G, and, 1), EMPTY,
-  /* 0x24 */	IDEXW(I2a, div, 1), IDEX(I2a, div), EMPTY, EMPTY,
+  /* 0x24 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x28 */	EMPTY, IDEX(G2E, sub), EMPTY, IDEX(E2G, sub),
   /* 0x2c */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0x30 */	IDEXW(G2E, xor, 1), IDEX(G2E, xor), IDEXW(E2G, xor, 1), IDEX(E2G, xor),
+  /* 0x30 */	EMPTY, IDEX(G2E, xor), EMPTY, EMPTY,
   /* 0x34 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x38 */	IDEXW(G2E, cmp, 1), IDEX(G2E, cmp), EMPTY, IDEX(E2G, cmp),
   /* 0x3c */	IDEXW(I2a, cmp, 1), IDEX(I2a, cmp), EMPTY, EMPTY,
@@ -95,7 +95,7 @@ static OpcodeEntry opcode_table [512] = {
   /* 0x9c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xa0 */	IDEXW(O2a, mov, 1), IDEX(O2a, mov), IDEXW(a2O, mov, 1), IDEX(a2O, mov),
   /* 0xa4 */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xa8 */	IDEXW(I2a, test, 1), EMPTY, EMPTY, EMPTY,
+  /* 0xa8 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xac */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xb0 */	IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1),
   /* 0xb4 */	IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1), IDEXW(mov_I2r, mov, 1),

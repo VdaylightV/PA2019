@@ -33,6 +33,7 @@ make_EHelper(imul2);
 make_EHelper(idiv);
 make_EHelper(div);
 make_EHelper(cltd);
+make_EHelper(cwtl);
 
 make_EHelper(cmp);
 make_EHelper(lea);

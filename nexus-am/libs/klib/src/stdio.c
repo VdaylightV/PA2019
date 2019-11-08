@@ -52,7 +52,7 @@ size_t str_to_int(char* str) {
 
 int printf(const char *fmt, ...) {
 
-  char *out = "\0";
+  char out[512];
 
   va_list ap;
 
@@ -62,12 +62,18 @@ int printf(const char *fmt, ...) {
 
   va_end(ap);
 
-  char *temp_out = out;
+  size_t len = strlen(out);
 
+  for(size_t i = 0; i < len; i ++) {
+	  _putc(out[i]);
+  }
+
+/*
   while(*temp_out) {
       _putc(*temp_out);
 	  temp_out ++;
   }
+  */
 
 	return ret;
 
@@ -258,8 +264,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			  break;
 			}
 */
-
-
 
 		}
 	}

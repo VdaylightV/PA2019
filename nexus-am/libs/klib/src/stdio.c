@@ -52,7 +52,7 @@ size_t str_to_int(char* str) {
 
 int printf(const char *fmt, ...) {
 
-  char *out = "";
+  char *out = "\0";
 
   va_list ap;
 

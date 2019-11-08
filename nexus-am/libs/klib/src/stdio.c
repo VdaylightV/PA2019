@@ -183,8 +183,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 size_t width_num = 0;
 
 				 while(*fmt != 'd') {
-					 width_num += *fmt - '0';
 					 width_num *= 10;
+					 width_num += *fmt - '0';
 
 					 fmt ++;
 				 }

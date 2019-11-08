@@ -209,19 +209,19 @@ int strcmp(const char* s1, const char* s2) {
 	if(len_s1 > len_s2) {
 	    for(int i = 0; i < len_s2; i ++) {
 		    if(s1[i] > s2[i]) {
-				printf("S1 Bigger!\n");
+		//		printf("S1 Bigger!\n");
 			    flag =  1;
 			    return flag;
 			}
 
 			if(s1[i] < s2[i]) {
-				printf("S2 Bigger!\n");
+			//	printf("S2 Bigger!\n");
 			    flag = -1;
 			    return flag;
 			}
 
 		}
-		printf("Equal!\n");
+		//printf("Equal!\n");
 		flag = 1;
 	    return flag;
 	    

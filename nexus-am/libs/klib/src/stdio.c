@@ -12,6 +12,62 @@ int fac(int base, int exp) {
 
 }
 
+char* to_hex(int value, char* str) {
+
+	int temp0 = value;
+
+	int len = 1;
+	while(temp0 / 16 > 0) {
+        temp0 = temp0 / 16;
+		len ++;
+	}
+
+	int temp1 = value;
+	int bit;
+	int count = 0;
+	while(temp1 / 16 > 0) {
+	    bit = temp1 % 16;
+		temp1 = temp1 / 16;
+		char c = '0' + bit;
+		if ( c > '0' && c < '9' ) {
+		    str[len - count - 1] = c;
+		}
+
+		else {
+		    switch(bit) {
+		        case 10: {c = 'a'; str[len - count - 1] = c; break;}
+		        case 11: {c = 'b'; str[len - count - 1] = c; break;}
+		        case 12: {c = 'c'; str[len - count - 1] = c; break;}
+		        case 13: {c = 'd'; str[len - count - 1] = c; break;}
+		        case 14: {c = 'e'; str[len - count - 1] = c; break;}
+		        case 15: {c = 'f'; str[len - count - 1] = c; break;}
+                default: {assert(0); break;}
+		        }
+		}
+
+		count ++;
+	}
+
+	str[len] = '\0';
+
+    return str;	
+
+/*
+    int temp0 = value;
+	int len = 1;
+	while(
+       temp / 16 > 0;
+	   temp = temp / 16;
+	   len ++;
+		 }
+
+	int temp1 = value;
+    char str[256];
+
+	int bit;
+*/
+}
+
 char *int_to_str(int val, char* str) {
     char *temp = str;
 	int num = val;
@@ -51,8 +107,8 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
-
-  char out[512];
+/*
+  char *out = "";
 
   va_list ap;
 
@@ -62,22 +118,9 @@ int printf(const char *fmt, ...) {
 
   va_end(ap);
 
-  size_t len = strlen(out);
-
-  for(size_t i = 0; i < len; i ++) {
-	  _putc(out[i]);
-  }
-
-/*
-  while(*temp_out) {
-      _putc(*temp_out);
-	  temp_out ++;
-  }
-  */
-
-	return ret;
-
-//    return 0;
+  return ret;
+*/
+	return 0;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -167,49 +210,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 
-            case '0':
-			    {
-				 int val = va_arg(ap, int);
-
-				 char temp[65535];
-				 char *head = temp;
-				 char *result = int_to_str(val, head);
-				 size_t len = strlen(result);
-
-                 char* fill_char = "0";
-
-				 fmt ++;
-
-				 size_t width_num = 0;
-
-				 while(*fmt != 'd') {
-					 width_num *= 10;
-					 width_num += *fmt - '0';
-
-					 fmt ++;
-				 }
-
-				 size_t fill_char_len = width_num - len;
-
-				 for(size_t i = 0; i < fill_char_len; i ++) {
-					 temp_out = strcat(temp_out, fill_char);
-				 }
-
-				 for(size_t i = 0; i < fill_char_len; i ++) {
-					 temp_out ++;
-				 }
-
-				 temp_out = strcpy(temp_out, result);
-
-				 for(size_t i = 0; i < len; i ++) {
-					 temp_out ++;
-
-				 }
-         
-		        fmt ++;
-       			}
-
-  /*         default :
+           default :
 				{
 				char *fill_content = "";
 
@@ -221,7 +222,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
                
                 const char* temp_fmt = fmt;
 
-				while(*temp_fmt != 'd') {
+				while(*temp_fmt != 'd' && *temp_fmt != 'x') {
 					para_width ++;
 	                temp_fmt ++;
 				}
@@ -256,16 +257,17 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			      temp_out ++;
 			  }
 
-			  while(*fmt != 'd') {
+			  while(*fmt != 'd' && *fmt != 'x') {
 			      fmt ++;
 			  }
 
 			  fmt ++;
 
 			  break;
-			}
-*/
 
+
+
+				}
 		}
 	}
 

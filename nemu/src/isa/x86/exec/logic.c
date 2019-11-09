@@ -102,9 +102,13 @@ make_EHelper(sar) {
 
 make_EHelper(rol) {
   
-  rtl_rol(&id_src->val, &s0, &id_dest->val, id_src->width);
+  rtl_rol(&id_dest->val, &s0, &id_src->val, id_dest->width);
   operand_write(id_dest, &s0);
 
+/*
+  rtl_li(&s1, id_dest->val);
+  for(int i = 0; i < src
+*/
   print_asm_template2(rol);
 }
 

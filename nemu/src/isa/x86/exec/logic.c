@@ -101,7 +101,9 @@ make_EHelper(sar) {
 }
 
 make_EHelper(rol) {
-
+  
+  rtl_rol(&id_src->val, &s0, &id_dest->val, id_src->width);
+  operand_write(id_dest, &s0);
 
   print_asm_template2(rol);
 }

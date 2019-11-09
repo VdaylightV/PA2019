@@ -175,4 +175,33 @@ static inline void rtl_update_ZFSF(const rtlreg_t* result, int width) {
   rtl_update_SF(result, width);
 }
 
+static inline void rtl_rol(const rtlreg_t* src, rtlreg_t* dest, const rtlreg_t* count, int width) {
+
+	uint32_t temp = *count;
+
+	t0 = *src;
+
+	for(uint32_t i = 0; i < temp; i ++) {
+	    rtl_msb(&t1, &t0, width);
+		rtl_set_CF(&t1);
+		t0 = (t0 << 1) + t1;
+	}
+
+	*dest = t0;
+
+	if(*count == 1) {
+	    rtl_get_CF(&t2);
+		rtl_msb(&t1, dest, width);
+		t0 = 0;
+		if(t2==t1) {
+		    rtl_set_OF(&t0);
+		} 
+		else {
+		    t0 += 1;
+			rtl_set_OF(&t0);
+		}
+
+	}
+}
+
 #endif

@@ -173,6 +173,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
                     char fill_content[2] = "0";
 					char whole_content[512];
 
+					char* head = &whole_content[0];
+
 					int val = va_arg(ap, int);
 
 					fmt ++;
@@ -203,12 +205,12 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					size_t len = strlen(result);
 
 					for(size_t i = 0; i < width - len; i ++) {
-					    whole_content = strcat(whole_content, fill_content);
+					    head = strcat(head, fill_content);
 					}
 
-					whole_content = strcat(whole_content, result);
+					head = strcat(head, result);
   
-					temp_out = strcpy(temp_out, whole_content);
+					temp_out = strcpy(temp_out, head);
 
 					for(size_t i = 0; i < width; i ++) {
 					    temp_out ++;

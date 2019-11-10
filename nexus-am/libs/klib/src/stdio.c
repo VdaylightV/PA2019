@@ -111,7 +111,7 @@ char *int_to_str(int val, char* str) {
 		num = num % division;
 	}
 	*temp = '\0';
-    _putc(str[0]);
+//    _putc(str[0]);
 	return str;
 
 }

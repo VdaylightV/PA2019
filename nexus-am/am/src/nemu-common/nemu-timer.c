@@ -10,7 +10,7 @@ size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
      uint32_t time = inl(0x48);
 
       uptime->hi = 0;
-      uptime->lo = time;
+      uptime->lo = time | 0xffffffff;
       return sizeof(_DEV_TIMER_UPTIME_t);
     }
     case _DEVREG_TIMER_DATE: {

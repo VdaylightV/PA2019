@@ -106,6 +106,9 @@ char *int_to_str(int val, char* str) {
         division = fac(10, len-i-1);
 		bit = num / division;
 	    c = '0' + bit;
+		_putc('p');
+		_putc(c);
+		_putc('p');
 	    *temp = c;	
 		temp ++;
 		num = num % division;

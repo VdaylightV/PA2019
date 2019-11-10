@@ -272,10 +272,15 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 }
 */
 //				 else {
-                _putc('c');
-				_putc(temp[0]);
+/*   
 				_putc('c');
+				_putc(*head);
+				_putc('c');
+*/
 				temp_out = strcpy(temp_out, head);
+				_putc('o');
+                _putc(*temp_out);
+				_putc('o');
 
 				for(size_t i = 0; i < len; i ++) {
 					temp_out ++;

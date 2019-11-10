@@ -106,16 +106,17 @@ char *int_to_str(int val, char* str) {
         division = fac(10, len-i-1);
 		bit = num / division;
 	    c = '0' + bit;
-		_putc('p');
+/*		_putc('p');
 		_putc(c);
 		_putc('p');
+*/
 	    *temp = c;	
 		temp ++;
 		num = num % division;
 	}
 	*temp = '\0';
 //    _putc(str[0]);
-	return str;
+	return &str[0];
 
 }
 
@@ -207,9 +208,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					char temp[128];
 					char* p_temp = &temp[0];
 					char* result = int_to_str(val, p_temp);
-					_putc('a');
-					_putc(*result);
-					_putc('a');
+		//			_putc('a');
+		//			_putc(*result);
+		//			_putc('a');
 
 					size_t len = strlen(result);
 
@@ -220,9 +221,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					head = strcat(head, result);
   
 					temp_out = strcpy(temp_out, head);
-					_putc('v');
-					_putc(*temp_out);
-					_putc('v');
+//					_putc('v');
+//					_putc(*temp_out);
+//					_putc('v');
 
 					for(size_t i = 0; i < width; i ++) {
 					    temp_out ++;

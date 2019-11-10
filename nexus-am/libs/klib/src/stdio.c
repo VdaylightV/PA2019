@@ -244,7 +244,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 		   
-		   case 'x':
+/*		   case 'x':
 				{ 
 				 int val = va_arg(ap, int);
 				 char temp[65535];
@@ -263,7 +263,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-
+*/
            default :
 				{
 				//进入default说明%后面有占位符和宽度

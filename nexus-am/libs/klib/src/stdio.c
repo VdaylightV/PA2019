@@ -118,9 +118,9 @@ char *int_to_str(int val, char* str) {
 
 size_t str_to_int(char* str) {
     size_t value = 0;
-	while(*str) {
+	while(*str != '\0') {
 		value = value*10;
-		value += *str - '0';
+		value += (*str - '0');
 		str ++;
 	}
 	return value;
@@ -317,8 +317,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			                     char *result = int_to_str(val, head);
 			                     size_t len = strlen(result);
 								 //把该数变成字符数组，并计算长度
-			                  
-								 char* the_whole_fill = "";
+			                 
+								 char complete[512]; 
+								 char* the_whole_fill = &complete[0];
 	
 					   			 for(size_t i = 0; i < print_width - len; i ++) {
 									 the_whole_fill = strcat(the_whole_fill, fill_content);

@@ -116,7 +116,7 @@ char *int_to_str(int val, char* str) {
 	}
 	*temp = '\0';
 //    _putc(str[0]);
-	return &str[0];
+	return str;
 
 }
 
@@ -272,7 +272,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 }
 */
 //				 else {
-
+                _putc('c');
+				_putc(temp[0]);
+				_putc('c');
 				temp_out = strcpy(temp_out, head);
 
 				for(size_t i = 0; i < len; i ++) {

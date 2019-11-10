@@ -119,8 +119,8 @@ char *int_to_str(int val, char* str) {
 size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
-		value = value*10;
-		value += (*str - '0');
+		value = value * 10;
+		value += ((*str) - '0');
 		str ++;
 	}
 	return value;
@@ -201,8 +201,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
                     size_t width = str_to_int(&width_num[0]);
 
-					char temp[128];
-					char* result = int_to_str(val, &temp[0]);
+					char* temp = "";
+					char* result = int_to_str(val, temp);
 
 					size_t len = strlen(result);
 

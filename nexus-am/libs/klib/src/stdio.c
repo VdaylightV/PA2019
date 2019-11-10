@@ -132,19 +132,21 @@ size_t str_to_int(char* str) {
 
 int printf(const char *fmt, ...) {
 
-  char *out = "";
+  char out[65535];
+
+  char* head = &out[0];
 
   va_list ap;
 
   va_start(ap, fmt);
 
-  int ret = vsprintf(out, fmt, ap);
+  int ret = vsprintf(head, fmt, ap);
 
   va_end(ap);
 
-  size_t len = strlen(out);
+  size_t len = strlen(head);
   for( size_t i = 0; i < len; i ++ ) {
-      _putc(out[i]);
+      _putc(head[i]);
   }
 
 
@@ -252,8 +254,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 head = int_to_str(val, head);
 				 size_t len = strlen(head);
 				 //把整数直接换成字符串
-				 _putc('u');
-				 _putc('0' + len);
 //
 /*				 if(len < 2) {
 
@@ -280,10 +280,10 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				_putc('c');
 */
 				temp_out = strcpy(temp_out, head);
-/*				_putc('o');
-                _putc(*temp_out);
-				_putc('o');
-*/
+//				_putc('o');
+//                _putc(*temp_out);
+//				_putc('o');
+
 				for(size_t i = 0; i < len; i ++) {
 					temp_out ++;
 				}

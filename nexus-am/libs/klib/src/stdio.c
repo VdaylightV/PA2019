@@ -135,6 +135,11 @@ int printf(const char *fmt, ...) {
 
   int ret = vsprintf(out, fmt, ap);
 
+  size_t len = strlen(out);
+  for( size_t i = 0; i < len; i ++ ) {
+      _putc(out[i]);
+  }
+
   va_end(ap);
 
   return ret;

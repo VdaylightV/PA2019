@@ -187,6 +187,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					    para_width ++;
 						temp_fmt ++;
 					}
+
+					//char type = *temp_fmt;
         
                     temp_fmt = fmt;
 

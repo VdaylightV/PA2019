@@ -168,6 +168,62 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		//此时temp_out所指向的地方就是需要填参数的地方
 
 		switch(*fmt) {
+			case '0':
+				{    
+                    char fill_content[2] = "0";
+					char whole_content[512];
+
+					int val = va_arg(ap, int);
+
+					fmt ++;
+
+					size_t para_width = 0;
+
+					const char* temp_fmt = fmt;
+
+					while(*temp_fmt != 'd' && *temp_fmt != 'x') {
+					    para_width ++;
+						temp_fmt ++;
+					}
+        
+                    temp_fmt = fmt;
+
+					char width_num[para_width];
+					for(size_t i = 0; i < para_width; i ++) {
+					    width_num[i] = *temp_fmt;
+						temp_fmt ++;
+					}
+					width_num[para_width] = '\0';
+
+                    size_t width = str_to_int(&width_num[0]);
+
+					char temp[128];
+					char* result = int_to_str(val, &temp[0]);
+
+					size_t len = strlen(result);
+
+					for(size_t i = 0; i < width - len; i ++) {
+					    whole_content = strcat(whole_content, fill_content);
+					}
+
+					whole_content = strcat(whole_content, result);
+  
+					temp_out = strcpy(temp_out, whole_content);
+
+					for(size_t i = 0; i < width; i ++) {
+					    temp_out ++;
+					}
+
+					while(*fmt != 'd' && *fmt != 'x') {
+					    fmt ++;
+					}
+
+					fmt ++;
+
+					break;
+
+				
+				}
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);

@@ -252,6 +252,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 head = int_to_str(val, head);
 				 size_t len = strlen(head);
 				 //把整数直接换成字符串
+				 _putc('u');
+				 _putc('0' + len);
 //
 /*				 if(len < 2) {
 

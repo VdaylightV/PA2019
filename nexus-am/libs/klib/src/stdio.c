@@ -154,7 +154,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 //	const char* temp_fmt;
 //	va_start(ap, fmt);
 
-	while(*fmt) {
+	while(*fmt != '\0') {
 		if(*fmt != '%'){
 			*temp_out = *fmt;
 			temp_out ++;

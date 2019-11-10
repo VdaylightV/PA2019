@@ -202,7 +202,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
                     size_t width = str_to_int(&width_num[0]);
 
 					char temp[128];
-					char* result = int_to_str(val, &temp[0]);
+					char* p_temp = &temp[0];
+					char* result = int_to_str(val, p_temp);
 
 					size_t len = strlen(result);
 

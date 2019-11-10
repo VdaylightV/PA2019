@@ -9,7 +9,7 @@ size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
       
      unsigned long long time = inl(0x48);
 
-      uptime->hi = time >> 32;
+      uptime->hi = 0;
       uptime->lo = time & 0xffffffff;
       return sizeof(_DEV_TIMER_UPTIME_t);
     }

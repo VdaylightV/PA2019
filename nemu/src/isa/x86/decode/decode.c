@@ -280,7 +280,7 @@ make_DHelper(a2O) {
 make_DHelper(J) {
   decode_op_SI(pc, id_dest, false);
   // the target address can be computed in the decode stage
-  printf("PC:%x\n", decinfo.seq_pc);
+//  printf("PC:%x\n", decinfo.seq_pc);
   decinfo.jmp_pc = id_dest->simm + *pc;
 //  printf("Jump_PC:%x\n",decinfo.jmp_pc);
 }

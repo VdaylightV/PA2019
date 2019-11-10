@@ -63,20 +63,22 @@ make_EHelper(cltd) {
 }
 
 make_EHelper(cwtl) {
+	
   if (decinfo.isa.is_operand_size_16) {
-	  if(((cpu.eax >> 15) & 1) == 1) {
+/*	  if(((cpu.eax >> 15) & 1) == 1) {
 	      cpu.eax = cpu.eax | 0xffff0000;
 	  }
-
-	  else {
-	      cpu.eax = cpu.eax | 0x00000000;
-	  }
+*/
+	  rtl_shli(&cpu.eax, &cpu.eax, 24);
+	  rtl_sari(&cpu.eax, &cpu.eax, 8);
+	  rtl_shri(&cpu.eax, &cpu.eax, 16);
   //  TODO();
   }
   else {
-       cpu.eax = cpu.eax;
+	  rtl_sext(&cpu.eax, &cpu.eax, 2);
   //  TODO();
   }
+
 
   print_asm(decinfo.isa.is_operand_size_16 ? "cbtw" : "cwtl");
 }

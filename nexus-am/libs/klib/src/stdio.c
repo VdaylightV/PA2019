@@ -234,7 +234,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 int val = va_arg(ap, int);
 
 				 char temp[65535];
-				 char *head = temp;
+				 char *head = &temp[0];
 				 
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);

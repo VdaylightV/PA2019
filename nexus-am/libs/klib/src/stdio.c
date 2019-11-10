@@ -249,8 +249,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
 
-				 char *result = int_to_str(val, head);
-				 size_t len = strlen(result);
+				 head = int_to_str(val, head);
+				 size_t len = strlen(head);
 				 //把整数直接换成字符串
 //
 /*				 if(len < 2) {
@@ -273,7 +273,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 */
 //				 else {
 
-				temp_out = strcpy(temp_out, result);
+				temp_out = strcpy(temp_out, head);
 
 				for(size_t i = 0; i < len; i ++) {
 					temp_out ++;

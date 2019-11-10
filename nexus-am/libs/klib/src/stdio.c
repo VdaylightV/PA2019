@@ -204,6 +204,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					char temp[128];
 					char* p_temp = &temp[0];
 					char* result = int_to_str(val, p_temp);
+					_putc('a');
+					_putc(*result);
+					_putc('a');
 
 					size_t len = strlen(result);
 

@@ -272,7 +272,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				*fill_content = *fmt;
 
-				*(fill_content + 1) = '\0';
+				fill_content[1]  = '\0';
 				//fill_content是储存了占位符的数组的头指针
 
 				size_t para_width = 0;
@@ -301,6 +301,11 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			   }
 			   width_num[para_width - 1] = '\0';
 			   //把打印宽度读取到width_num所指向的字符数组中
+               
+               size_t r = strlen(width_num);
+			   for(size_t i = 0; i < r; i ++) {
+			       _putc(width_num[i]);
+			   }
 
 			   size_t print_width = str_to_int(width_num);
 			   //取出打印宽度的数值

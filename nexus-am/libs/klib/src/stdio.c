@@ -214,6 +214,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					head = strcat(head, result);
   
 					temp_out = strcpy(temp_out, head);
+					_putc('v');
+					_putc(*temp_out);
+					_putc('v');
 
 					for(size_t i = 0; i < width; i ++) {
 					    temp_out ++;
@@ -233,7 +236,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{
 				 int val = va_arg(ap, int);
 
-				 char temp[65535];
+				 char temp[256];
 				 char *head = &temp[0];
 				 
 //				 char* fill_width = "0";

@@ -194,7 +194,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 						temp_fmt ++;
 					}
 
-					//char type = *temp_fmt;
+					char type = *temp_fmt;
         
                     temp_fmt = fmt;
 
@@ -209,7 +209,22 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 					char temp[128];
 					char* p_temp = &temp[0];
-					char* result = int_to_str(val, p_temp);
+
+					char *result = NULL;
+
+					switch(type) {
+					    case 'd':
+							{
+					            result = int_to_str(val, p_temp);
+								break;
+							}
+                        case 'x':
+							{
+					            result = to_hex(val, p_temp);
+								break;
+							}
+                        default: {assert(0); break;}
+					}
 		//			_putc('a');
 		//			_putc(*result);
 		//			_putc('a');

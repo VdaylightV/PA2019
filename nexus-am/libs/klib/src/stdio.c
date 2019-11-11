@@ -253,7 +253,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	return 0;
 */
 
-
+/*
 	char* temp_out = out;
 
 	while(*fmt != '%') {
@@ -394,7 +394,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 	return 0;
 
-
+*/
 /*
 	char c;
 	char *str = out;
@@ -486,7 +486,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 */
 
-/*
+
 	char *temp_out = out;
 //	const char* temp_fmt;
 //	va_start(ap, fmt);
@@ -692,7 +692,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-*/
+
 /*         default :
 				{
 				//进入default说明%后面有占位符和宽度
@@ -813,14 +813,14 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			}
 */
 	
-/*
+
 		}
 	}
 
 	*temp_out = '\0';
 
   return 0;
-*/
+
 }
 
 int sprintf(char *out, const char *fmt, ...) {

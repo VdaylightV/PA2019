@@ -36,13 +36,13 @@ make_group(gp3,
 
 /* 0xfe */
 make_group(gp4,
-    EX(inc), EX(dec), EMPTY, EMPTY,
+    EX(inc), EXW(dec, 1), EMPTY, EMPTY,
     EMPTY, EMPTY, EMPTY, EMPTY)
 
 /* 0xff */
 make_group(gp5,
-    EXW(inc, 2), EX(dec), EX(call_rm), EXW(call_rm, 2),
-    EXW(jmp_rm, 2), EX(jmp_rm), EX(push), EMPTY)
+    EX(inc), EX(dec), EX(call_rm), EX(call_rm),
+    EX(jmp_rm), EX(jmp_rm), EX(push), EMPTY)
 
 /* 0x0f 0x01*/
 make_group(gp7,
@@ -79,7 +79,7 @@ static OpcodeEntry opcode_table [512] = {
   /* 0x5c */	IDEX(r, pop), IDEX(r, pop), IDEX(r, pop), IDEX(r, pop),
   /* 0x60 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x64 */	EMPTY, EMPTY, EX(operand_size), EMPTY,
-  /* 0x68 */	IDEX(push_SI ,push), EMPTY, IDEXW(push_SI, push, 1), EMPTY,
+  /* 0x68 */	IDEX(I ,push), EMPTY, IDEXW(I, push, 1), EMPTY,
   /* 0x6c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x70 */	IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1),
   /* 0x74 */	IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1),

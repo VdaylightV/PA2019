@@ -163,6 +163,95 @@ int printf(const char *fmt, ...) {
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
 
+	char c;
+	char* temp_out = out;
+	const char* temp_fmt = fmt;
+	size_t i = 0;
+	int j = 0;
+	size_t len;
+    int flag;
+	int print_width;
+	int num;
+	char num_s[256];
+
+	for(; *fmt; fmt ++) {
+	    if(*fmt != '%') {
+		    *temp_out = *fmt;
+		   temp_out ++;
+	       fmt ++;
+	       continue;	   
+		}
+
+		flag = 0;
+		fmt ++;
+		while(*fmt == ' ' || *fmt == '0') {
+		    if(*fmt==' ') {
+			    flag |= 8;
+			}
+			else if(*fmt == '0') {
+			    flag |= 1;
+			}
+			fmt ++;
+		}
+
+		print_width = 0;
+		if(*fmt >= '0' && *fmt <= '9') {
+		    while(*fmt >= '0' && *fmt <= '9') {
+			    print_width = print_width * 10 + *fmt - '0';
+				fmt ++;
+			}
+		}
+
+		else if(*fmt == '*') {
+		    fmt ++;
+			print_width = va_arg(ap, int);
+		}
+
+		switch(*fmt) {
+		    case's':
+				temp_fmt = va_arg(ap, char*);
+				len = strlen(temp_fmt);
+				for(i = 0; i < len; i ++) {
+				    *temp_out++ = *temp_fmt;
+				}
+				continue;
+			case 'd': break;
+		}
+
+		num = va_arg(ap, int);
+		j = 0;
+		if(num == 0) {
+		    num_s[j++] = '0';
+		}
+
+		else {
+		    if(num < 0) {
+				*temp_out++ = '-';
+				num = -num;
+			
+			}
+
+			while(num) {
+			    num_s[j++] = num%10 + '0';
+				num /= 10;
+			}
+		}
+
+		if(j < print_width) {
+		    num = print_width - j;
+			c = flag & 1 ? '0':' ';
+			while(num--) {
+			    *temp_out++ = c;
+			}
+		}
+		while(j--) {
+		    *temp_out++ = num_s[j];
+		}
+
+	}
+	*temp_out = '\0';
+	return 0;
+/*
 	char* temp_out = out;
 
 	while(*fmt != '%') {
@@ -302,7 +391,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 
 	return 0;
-
+*/
 
 /*
 	char c;

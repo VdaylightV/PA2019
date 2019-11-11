@@ -162,7 +162,7 @@ int printf(const char *fmt, ...) {
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
-
+/*
 	char c;
 	char* temp_out = out;
 	const char* temp_fmt = fmt;
@@ -251,7 +251,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	}
 	*temp_out = '\0';
 	return 0;
-/*
+*/
+
+
 	char* temp_out = out;
 
 	while(*fmt != '%') {
@@ -391,7 +393,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 
 	return 0;
-*/
+
 
 /*
 	char c;

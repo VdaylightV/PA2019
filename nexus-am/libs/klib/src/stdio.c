@@ -131,6 +131,7 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
+/*
 	size_t len = strlen(fmt);
 
     size_t i = 0;    
@@ -147,7 +148,9 @@ int printf(const char *fmt, ...) {
 	   temp_ftm ++;
 
 	}
-/*
+*/
+
+
 	//我的代码：
   char out[512];
 
@@ -174,7 +177,7 @@ int printf(const char *fmt, ...) {
 
 
 // 大腿代码：
-*/
+
 
 }
 
@@ -303,27 +306,27 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 			}
 
-/*		case 'x': 
-			{
-			    int val = va_arg(ap, int);
-				char temp[128];
-				char* head = &temp[0];
+//		case 'x': 
+//			{
+//			    int val = va_arg(ap, int);
+//				char temp[128];
+//				char* head = &temp[0];
+//
+//                head = to_hex(val, head);
+//				size_t len = strlen(head);
+//
+//				temp_out = strcpy(temp_out, head);
+//
+//				for(size_t i = 0; i < len; i ++) {
+//				    temp_out ++;
+//				}
+//
+//				fmt ++;
+//
+//				break;
+//			
+//			}
 
-                head = to_hex(val, head);
-				size_t len = strlen(head);
-
-				temp_out = strcpy(temp_out, head);
-
-				for(size_t i = 0; i < len; i ++) {
-				    temp_out ++;
-				}
-
-				fmt ++;
-
-				break;
-			
-			}
-*/
 		case 's' :
 			{
 			    char* str = va_arg(ap, char*);
@@ -341,71 +344,71 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 
 			}
-/*		case '0' :
-			{
-                fmt ++;
-
-				const char* temp_fmt = fmt;
-
-				size_t width_num = 0;
-
-				while(*temp_fmt != 'd' && *temp_fmt != 'x') {
-				    width_num ++;
-				}
-				
-				char type = *temp_out;
-               
-				temp_fmt = fmt;
-
-				char width_str[32];
-                for( size_t i = 0; i < width_num; i ++) {
-				    width_str[i] = *temp_fmt;
-					temp_fmt ++;
-				}
-				width_str[width_num] = '\0';
- 
-				char *head_width_str = &width_str[0];
-				size_t print_width = str_to_int(head_width_str);
-
-				int val = va_arg(ap, int);
-
-			    char result[128];
-			    char *head_result = &result[0];
-
-				switch(type) {
-				    case 'x':{
-
-								 head_result = to_hex(val, head_result);
-							 }
-					case 'd':{
-								 head_result = int_to_str(val, head_result);
-							 }
-
-					default: {assert(0); break;}
-				}
-
-				size_t len_result = strlen(head_result);
-
-				char whole_content[512];
-
-				for(size_t i = 0; i < print_width - len_result; i ++) {
-				    whole_content[i] = '0';
-				}
-				whole_content[print_width-len_result] = '\0';
-
-				char* the_point_to_insert_result = &whole_content[print_width-len_result];
-
-				the_point_to_insert_result = strcpy(the_point_to_insert_result, head_result);
-
-				temp_out = strcpy(temp_out, whole_content);
-
-				for(size_t i = 0; i < print_width; i ++) {
-				    temp_out ++;
-				}
-
-                break;
-			}
-*/
+//		case '0' :
+//			{
+//                fmt ++;
+//
+//				const char* temp_fmt = fmt;
+//
+//				size_t width_num = 0;
+//
+//				while(*temp_fmt != 'd' && *temp_fmt != 'x') {
+//				    width_num ++;
+//				}
+//				
+//				char type = *temp_out;
+//              
+//				temp_fmt = fmt;
+//
+//				char width_str[32];
+//                for( size_t i = 0; i < width_num; i ++) {
+//				    width_str[i] = *temp_fmt;
+//					temp_fmt ++;
+//				}
+//				width_str[width_num] = '\0';
+// 
+//				char *head_width_str = &width_str[0];
+//				size_t print_width = str_to_int(head_width_str);
+//
+//				int val = va_arg(ap, int);
+//
+//			    char result[128];
+//			    char *head_result = &result[0];
+//
+//				switch(type) {
+//				    case 'x':{
+//
+//								 head_result = to_hex(val, head_result);
+//							 }
+//					case 'd':{
+//								 head_result = int_to_str(val, head_result);
+//							 }
+//
+//					default: {assert(0); break;}
+//				}
+//
+//				size_t len_result = strlen(head_result);
+//
+//				char whole_content[512];
+//
+//				for(size_t i = 0; i < print_width - len_result; i ++) {
+//				    whole_content[i] = '0';
+//				}
+//				whole_content[print_width-len_result] = '\0';
+//
+//				char* the_point_to_insert_result = &whole_content[print_width-len_result];
+//
+//				the_point_to_insert_result = strcpy(the_point_to_insert_result, head_result);
+//
+//				temp_out = strcpy(temp_out, whole_content);
+//
+//				for(size_t i = 0; i < print_width; i ++) {
+//				    temp_out ++;
+//				}
+//
+//               break;
+//			}
+//
 	}
 
     temp_out = '\0';
@@ -505,7 +508,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 */
 
-
+/*
 	char *temp_out = out;
 //	const char* temp_fmt;
 //	va_start(ap, fmt);
@@ -524,7 +527,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		//此时temp_out所指向的地方就是需要填参数的地方
 
 		switch(*fmt) {
-/*			case '0':
+			case '0':
 				{    
                     char fill_content[2] = "0";
 					char whole_content[512];
@@ -606,7 +609,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				
 				}
-*/
+
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);
@@ -836,7 +839,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	*temp_out = '\0';
 
   return 0;
-
+*/
 }
 
 int sprintf(char *out, const char *fmt, ...) {

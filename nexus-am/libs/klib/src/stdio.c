@@ -131,7 +131,24 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
-//*我的代码：
+	size_t len = strlen(fmt);
+
+    size_t i = 0;    
+
+	while(i < len) {
+	    if(fmt[i] != '%') {
+		    _putc(fmt[i]);
+			i ++;
+			continue;
+		}
+
+       char c = fmt[i];
+       const char* temp_fmt = &fmt[i];
+	   temp_ftm ++;
+
+	}
+/*
+	//我的代码：
   char out[512];
 
   char* head = &out[0];
@@ -157,7 +174,7 @@ int printf(const char *fmt, ...) {
 
 
 // 大腿代码：
-
+*/
 
 }
 
@@ -253,7 +270,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	return 0;
 */
 
-/*
+
 	char* temp_out = out;
 
 	while(*fmt != '%') {
@@ -286,7 +303,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 			}
 
-		case 'x': 
+/*		case 'x': 
 			{
 			    int val = va_arg(ap, int);
 				char temp[128];
@@ -306,6 +323,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 			
 			}
+*/
 		case 's' :
 			{
 			    char* str = va_arg(ap, char*);
@@ -323,7 +341,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 
 			}
-		case '0' :
+/*		case '0' :
 			{
                 fmt ++;
 
@@ -387,6 +405,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
                 break;
 			}
+*/
 	}
 
     temp_out = '\0';
@@ -394,7 +413,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 	return 0;
 
-*/
+
 /*
 	char c;
 	char *str = out;

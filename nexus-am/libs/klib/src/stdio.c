@@ -29,7 +29,7 @@ char* to_hex(int value, char* str) {
 	    bit = temp1 % 16;
 		temp1 = temp1 / 16;
 		char c = '0' + bit;
-		if ( c > '0' && c < '9' ) {
+		if ( c >= '0' && c <= '9' ) {
 		    str[len - count - 1] = c;
 		}
 
@@ -49,7 +49,7 @@ char* to_hex(int value, char* str) {
 	}
 
 	char first_c = '0' + temp1;
-	if( first_c > '0' && first_c < '0') {
+	if( first_c >= '0' && first_c <= '9') {
 	    str[0] = first_c;
 	}
 
@@ -156,6 +156,42 @@ int printf(const char *fmt, ...) {
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
+/*	char c;
+	char *str = out;
+	const char *tmp;
+	char num_s[100];
+	int i,j,len,num;
+	int flag,field_width;
+
+	for(; *fmt; fmt ++) {
+	    if(*fmt != '%') {
+		    *str++ = *fmt;
+			continue;
+		}
+
+		flag=0;
+		fmt++;
+		while(*fmt == ' ' || *fmt == '0') {
+		    if(*fmt == ' ') {
+			    flag |= 8;
+			}
+
+			else if(*fmt == '0';) {
+			    flag |= 1;
+			}
+
+			fmt ++;
+		}
+
+		field_width = 0;
+		
+		if(*fmt >= '0' && *fmt <= '9') {
+		    while(*fmt )
+		}
+	}
+
+*/
+
 	char *temp_out = out;
 //	const char* temp_fmt;
 //	va_start(ap, fmt);
@@ -270,30 +306,30 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 size_t len = strlen(head);
 				 //把整数直接换成字符串
 //
-/*				 if(len < 2) {
-
-                     result = strcpy(fill_width, result);
-					 size_t fill_result_len = strlen(result);
-
+//				 if(len < 2) {
+//
+//                     result = strcpy(fill_width, result);
+//					 size_t fill_result_len = strlen(result);
+//
 //					 for(size_t i = 0; i < len_zero; i ++) {
 //					     temp_out ++;
-					 }
+//					 }
 //
-					 temp_out = strcpy(temp_out, result);
-				     for(size_t i = 0; i < fill_result_len; i ++) {
-				         temp_out ++;
-				     }
-					 fmt ++;
-
-					 break;
-				 }
-*/
+//					 temp_out = strcpy(temp_out, result);
+//				     for(size_t i = 0; i < fill_result_len; i ++) {
+//				         temp_out ++;
+//				     }
+//					 fmt ++;
+//
+//					 break;
+//				 }
+//
 //				 else {
-/*   
-				_putc('c');
-				_putc(*head);
-				_putc('c');
-*/
+   
+//				_putc('c');
+//				_putc(*head);
+//				_putc('c');
+
 				temp_out = strcpy(temp_out, head);
 //				_putc('o');
 //                _putc(*temp_out);
@@ -318,13 +354,13 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 size_t len = strlen(c);
 				 //先读取要填入的字符串的长度
 
-/*
-				 for(size_t i = 0; i < len; i ++) {
-				     *temp_out = *c;
-					 temp_out ++;
-					 c ++;
-				 }
-*/
+//
+//				 for(size_t i = 0; i < len; i ++) {
+//				     *temp_out = *c;
+//					 temp_out ++;
+//					 c ++;
+//				 }
+//
 				 
 
 				 temp_out = strcpy(temp_out, c);
@@ -360,126 +396,125 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-
-/*           default :
-				{
-				//进入default说明%后面有占位符和宽度
-				char *fill_content = "";
-
-				*fill_content = *fmt;
-
-				fill_content[1]  = '\0';
-				//fill_content是储存了占位符的数组的头指针
-
-				size_t para_width = 0;
-				//用于统计%之后，'d'或'x'之前的字符的数量，包括占位符和打印宽度
+//有用         default :
+//				{
+//				//进入default说明%后面有占位符和宽度
+//				char *fill_content = "";
+//
+//				*fill_content = *fmt;
+//
+//				fill_content[1]  = '\0';
+//				//fill_content是储存了占位符的数组的头指针
+//
+//				size_t para_width = 0;
+//	
+//			//用于统计%之后，'d'或'x'之前的字符的数量，包括占位符和打印宽度
+//               
+//                const char* temp_fmt = fmt;
+//
+//				while(*temp_fmt != 'd' && *temp_fmt != 'x') {
+//					para_width ++;
+//	                temp_fmt ++;
+//				}
+//
+//			   char type = *temp_fmt;
+//
+//			   char *width_num = "";
+//
+////			   temp_fmt = fmt;
+//		   //让temp_fmt再次指向占位符
+//
+//			   temp_fmt ++;
+//			   //temp_fmt指向了宽度字符的头
+//
+//			   for(size_t i = 0; i < para_width - 1; i ++) {
+//				   width_num[i] = *temp_fmt;
+//				   temp_fmt ++;
+//			   }
+//			   width_num[para_width - 1] = '\0';
+//			   //把打印宽度读取到width_num所指向的字符数组中
                
-                const char* temp_fmt = fmt;
-
-				while(*temp_fmt != 'd' && *temp_fmt != 'x') {
-					para_width ++;
-	                temp_fmt ++;
-				}
-
-			   char type = *temp_fmt;
-
-			   char *width_num = "";
-
-			   temp_fmt = fmt;
-			   //让temp_fmt再次指向占位符
-
-			   temp_fmt ++;
-			   //temp_fmt指向了宽度字符的头
-
-			   for(size_t i = 0; i < para_width - 1; i ++) {
-				   width_num[i] = *temp_fmt;
-				   temp_fmt ++;
-			   }
-			   width_num[para_width - 1] = '\0';
-			   //把打印宽度读取到width_num所指向的字符数组中
-               
-			   size_t print_width = str_to_int(width_num);
-			   //取出打印宽度的数值
-			   
-			   int val = va_arg(ap, int);
-			   //从参数表中取出该数
-
-			   char temp[65535];
-			   char *head = temp;
-
-			   switch(type) {
-			       case 'd': {
-			                     char *result = int_to_str(val, head);
-			                     size_t len = strlen(result);
-								 //把该数变成字符数组，并计算长度
-			                 
-								 char complete[512]; 
-								 char* the_whole_fill = &complete[0];
-	
-					   			 for(size_t i = 0; i < print_width - len; i ++) {
-									 the_whole_fill = strcat(the_whole_fill, fill_content);
-								 }
-								//先补上前面的占位符 
-               
-								 the_whole_fill = strcat(the_whole_fill, result);
-								//把整数转换成的字符串也填上去
-							 
-								 temp_out = strcpy(temp_out, the_whole_fill);
-								//把整个完善好的结果放到temp_out后面
-			  
-								 for(size_t i = 0; i < print_width; i ++) {
-									 temp_out ++;
-								 }
-								 //把temp_out的指针指向下一个空处
-			     
-								 while(*fmt != 'd') {
-									 fmt ++;
-								 }
-								 //由于fmt一直指向%后面的占位符，先把fmt移动到'd'或'x'上
-								 fmt ++;
-								 //fmt此时便指向了下一个字符
-
-								 break;
-							 }
-
-				  case 'x': {
-								char *result = to_hex(val, head);
-			                     size_t len = strlen(result);
-								 //把该数变成字符数组，并计算长度
-			                  
-								 char* the_whole_fill = "";
-
-					   			 for(size_t i = 0; i < print_width - len; i ++) {
-									 the_whole_fill = strcat(the_whole_fill, fill_content);
-								 }
-								//先补上前面的占位符 
-               
-								 the_whole_fill = strcat(the_whole_fill, result);
-								//把整数转换成的字符串也填上去
-							 
-								 temp_out = strcpy(temp_out, the_whole_fill);
-								//把整个完善好的结果放到temp_out后面
-			  
-								 for(size_t i = 0; i < print_width; i ++) {
-									 temp_out ++;
-								 }
-								 //把temp_out的指针指向下一个空处
-			     
-								 while(*fmt != 'd') {
-									 fmt ++;
-								 }
-								 //由于fmt一直指向%后面的占位符，先把fmt移动到'd'或'x'上
-								 fmt ++;
-								 //fmt此时便指向了下一个字符
-
-								 break;
-							
-							}
-				 default: {assert(0); break;}
-			   }
-			   break;
-			}
-		*/
+//			   size_t print_width = str_to_int(width_num);
+//			   //取出打印宽度的数值
+//			   
+//			   int val = va_arg(ap, int);
+//			   //从参数表中取出该数
+//
+//			   char temp[65535];
+//			   char *head = temp;
+//
+//			   switch(type) {
+//			       case 'd': {
+//			                     char *result = int_to_str(val, head);
+//			                     size_t len = strlen(result);
+//								 //把该数变成字符数组，并计算长度
+//			                 
+//								 char complete[512]; 
+//								 char* the_whole_fill = &complete[0];
+//	
+//					   			 for(size_t i = 0; i < print_width - len; i ++) {
+//									 the_whole_fill = strcat(the_whole_fill, fill_content);
+//								 }
+//								//先补上前面的占位符 
+//               
+//								 the_whole_fill = strcat(the_whole_fill, result);
+//								//把整数转换成的字符串也填上去
+//							 
+//								 temp_out = strcpy(temp_out, the_whole_fill);
+	//							//把整个完善好的结果放到temp_out后面
+//			  
+//								 for(size_t i = 0; i < print_width; i ++) {
+//									 temp_out ++;
+//								 }
+//								 //把temp_out的指针指向下一个空处
+//			     
+//								 while(*fmt != 'd') {
+//									 fmt ++;
+//								 }
+//								 //由于fmt一直指向%后面的占位符，先把fmt移动到'd'或'x'上
+//								 fmt ++;
+//								 //fmt此时便指向了下一个字符
+//
+//								 break;
+//							 }
+//
+//				  case 'x': {
+//								char *result = to_hex(val, head);
+//			                     size_t len = strlen(result);
+//								 //把该数变成字符数组，并计算长度
+//			                  
+//								 char* the_whole_fill = "";
+//
+//					   			 for(size_t i = 0; i < print_width - len; i ++) {
+//									 the_whole_fill = strcat(the_whole_fill, fill_content);
+//								 }
+//								//先补上前面的占位符 
+//               
+//								 the_whole_fill = strcat(the_whole_fill, result);
+//								//把整数转换成的字符串也填上去
+//							 
+//								 temp_out = strcpy(temp_out, the_whole_fill);
+//								//把整个完善好的结果放到temp_out后面
+//			  
+//								 for(size_t i = 0; i < print_width; i ++) {
+//									 temp_out ++;
+//								 }
+//								 //把temp_out的指针指向下一个空处
+//			     
+//								 while(*fmt != 'd') {
+//									 fmt ++;							 }
+//								 //由于fmt一直指向%后面的占位符，先把fmt移动到'd'或'x'上
+//								 fmt ++;
+//								 //fmt此时便指向了下一个字符
+//
+//								 break;
+//							
+//							}
+//				 default: {assert(0); break;}
+//			   }
+//			   break;
+//			}
+//有用结束		
 		}
 	}
 

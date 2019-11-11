@@ -140,7 +140,7 @@ int printf(const char *fmt, ...) {
 
   va_start(ap, fmt);
 
-  vsprintf(head, fmt, ap);
+  int ret = vsprintf(head, fmt, ap);
 
   va_end(ap);
 
@@ -150,9 +150,9 @@ int printf(const char *fmt, ...) {
   }
 
 
-//  return ret;
+  return ret;
 
-	return 0;
+//	return 0;
 
 
 

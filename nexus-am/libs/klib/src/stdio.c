@@ -370,8 +370,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{
 				 int val = va_arg(ap, int);
 
-				 char temp[256];
-				 char *head = &temp[0];
+				 char *head = "";
 				 
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
@@ -402,9 +401,11 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 //先读取要填入的字符串的长度
 
 
-				 temp_out = strcpy(temp_out, c);
+                 // temp_out = strcpy(temp_out, c);
 				 //把字符串直接拷贝到temp_out之后
 				 for(size_t i = 0; i < len; i ++) {
+					 *temp_out = *c;
+					 c ++;
 				     temp_out ++;
 				 }
 				 //temp_out指针增长，指向下一个空处

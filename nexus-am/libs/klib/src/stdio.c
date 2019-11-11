@@ -156,11 +156,12 @@ int printf(const char *fmt, ...) {
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
-/*	char c;
+	char c;
 	char *str = out;
 	const char *tmp;
 	char num_s[100];
-	int i,j,len,num;
+	int j,num;
+	size_t len, i;
 	int flag,field_width;
 
 	for(; *fmt; fmt ++) {
@@ -176,7 +177,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			    flag |= 8;
 			}
 
-			else if(*fmt == '0';) {
+			else if(*fmt == '0') {
 			    flag |= 1;
 			}
 
@@ -186,12 +187,66 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		field_width = 0;
 		
 		if(*fmt >= '0' && *fmt <= '9') {
-		    while(*fmt )
+		    while(*fmt >= '0' && *fmt <= '9') {
+			    field_width = field_width*10 + *fmt -'0';
+				fmt ++;
+			}
+		}
+
+		else if(*fmt == '*') {
+		    fmt ++;
+			field_width = va_arg(ap, int);
+		}
+
+		switch(*fmt) {
+		
+			case 's':
+				tmp = va_arg(ap, char *);
+				len = strlen(tmp);
+				for(i = 0; i < len; i ++) {
+				    *str++ = *tmp++;
+				}
+				continue;
+			case 'd': break;
+
+		}
+
+		num = va_arg(ap, int);
+		j = 0;
+		if(num == 0) {
+		    num_s[j++] = '0';
+		}
+
+		else {
+		    if(num < 0) {
+			   *str++ = '-';
+			   num = -num;
+			}
+
+			while(num) {
+			    num_s[j++] = num%10 + '0';
+				num /= 10;
+			}
+		}
+
+		if(j < field_width) {
+		    num = field_width - j;
+			c = flag & 1 ? '0': ' ';
+			while(num--) {
+			    *str++ = c;
+			}
+		}
+
+		while(j--) {
+		    *str++ = num_s[j];
 		}
 	}
 
-*/
+	*str = '\0';
 
+
+
+/*
 	char *temp_out = out;
 //	const char* temp_fmt;
 //	va_start(ap, fmt);
@@ -515,11 +570,12 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 //			   break;
 //			}
 //有用结束		
+
 		}
 	}
 
 	*temp_out = '\0';
-
+*/
   return 0;
 }
 

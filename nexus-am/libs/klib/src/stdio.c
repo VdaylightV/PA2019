@@ -272,7 +272,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		//此时temp_out所指向的地方就是需要填参数的地方
 
 		switch(*fmt) {
-/*			case '0':
+			case '0':
 				{    
                     char fill_content[2] = "0";
 					char whole_content[512];
@@ -354,7 +354,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				
 				}
-*/
+
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);
@@ -459,7 +459,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-         default :
+/*         default :
 				{
 				//进入default说明%后面有占位符和宽度
 				char *fill_content = "";
@@ -577,6 +577,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			   }
 			   break;
 			}
+*/
 	
 
 		}

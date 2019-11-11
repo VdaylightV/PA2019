@@ -49,7 +49,7 @@ make_EHelper(leave) {
 make_EHelper(cltd) {
   if (decinfo.isa.is_operand_size_16) {
 	  rtl_sext(&s0, &reg_l(R_EAX), 2);
-	  rtl_shli(&reg_l(R_EDX), &s0, 16);
+	  rtl_shri(&reg_l(R_EDX), &s0, 16);
 
 /*	s0 = 15;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);

@@ -131,7 +131,7 @@ size_t str_to_int(char* str) {
 }
 
 int printf(const char *fmt, ...) {
-
+//*我的代码：
   char out[512];
 
 //  char* head = &out[0];
@@ -153,6 +153,12 @@ int printf(const char *fmt, ...) {
 //  return ret;
 
 	return 0;
+
+
+
+// 大腿代码：
+
+
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {

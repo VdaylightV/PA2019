@@ -48,20 +48,20 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decinfo.isa.is_operand_size_16) {
-/*	  rtl_sext(&s0, &reg_l(R_EAX), 2);
+	  rtl_sext(&s0, &reg_l(R_EAX), 2);
 	  rtl_shli(&reg_l(R_EDX), &s0, 16);
-*/
-	s0 = 15;
-	rtl_shr(&cpu.edx, &cpu.eax, &s0);
 
+/*	s0 = 15;
+	rtl_shr(&cpu.edx, &cpu.eax, &s0);
+*/
     //TODO();
   }
   else {
-//	  rtl_sari(&reg_l(R_EDX), &reg_l(R_EAX), 31);
+	  rtl_sari(&reg_l(R_EDX), &reg_l(R_EAX), 31);
 
-	s0 = 31;
+/*	s0 = 31;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);
-  //TODO();
+*/  //TODO();
   }
 
   print_asm(decinfo.isa.is_operand_size_16 ? "cwtl" : "cltd");

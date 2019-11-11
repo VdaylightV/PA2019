@@ -344,6 +344,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 
 			}
+/*
 //		case '0' :
 //			{
 //                fmt ++;
@@ -408,6 +409,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 //
 //               break;
 //			}
+*/
 //
 	}
 

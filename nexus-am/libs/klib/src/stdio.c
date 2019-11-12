@@ -150,19 +150,19 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   char out[512];
 
-  char* head = &out[0];
+  char* start = &out[0];
 
   va_list ap;
 
   va_start(ap, fmt);
  
-  vsprintf(head, fmt, ap);
+  vsprintf(start, fmt, ap);
 
   va_end(ap);
 
-  size_t len = strlen(head);
+  size_t len = strlen(start);
   for( size_t i = 0; i < len; i ++ ) {
-      _putc(head[i]);
+      _putc(start[i]);
   }
 
 

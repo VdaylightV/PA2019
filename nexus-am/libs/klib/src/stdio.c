@@ -162,7 +162,8 @@ int printf(const char *fmt, ...) {
 
   size_t len = strlen(start);
   for( size_t i = 0; i < len; i ++ ) {
-      _putc(start[i]);
+      _putc(*start);
+	  start ++;
   }
 
 

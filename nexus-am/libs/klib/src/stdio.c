@@ -106,16 +106,12 @@ char *int_to_str(int val, char* str) {
         division = fac(10, len-i-1);
 		bit = num / division;
 	    c = '0' + bit;
-/*		_putc('p');
-		_putc(c);
-		_putc('p');
-*/
-	    *temp = c;	
+	    
+		*temp = c;	
 		temp ++;
 		num = num % division;
 	}
 	*temp = '\0';
-//    _putc(str[0]);
 	return str;
 
 }
@@ -334,9 +330,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 							}
                         default: {assert(0); break;}
 					}
-		//			_putc('a');
-		//			_putc(*result);
-		//			_putc('a');
 
 					size_t len = strlen(result);
 
@@ -347,9 +340,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					head = strcat(head, result);
   
 					temp_out = strcpy(temp_out, head);
-//					_putc('v');
-//					_putc(*temp_out);
-//					_putc('v');
 
 					for(size_t i = 0; i < width; i ++) {
 					    temp_out ++;
@@ -363,17 +353,15 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 					break;
 
-				
 				}
 
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);
 
-				 char *head = "";
-				 
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
+                 char* head = "";
 
 				 head = int_to_str(val, head);
 				 size_t len = strlen(head);

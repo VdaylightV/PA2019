@@ -3,7 +3,7 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-static int i = 0;
+//static int i = 0;
 
 int fac(int base, int exp) {
     int result = 1;
@@ -150,7 +150,7 @@ int printf(const char *fmt, ...) {
 
 
 	//我的代码：
-  i ++;
+  //i ++;
 
   char out[512];
 
@@ -162,9 +162,9 @@ int printf(const char *fmt, ...) {
  
   vsprintf(start, fmt, ap);
 
-  _putc('\n');
-  _putc(i + '0');
-  _putc('\n');
+//  _putc('\n');
+// _putc(i + '0');
+//  _putc('\n');
 
   va_end(ap);
 

@@ -3,6 +3,8 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
+static int i = 0;
+
 int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
@@ -148,6 +150,8 @@ int printf(const char *fmt, ...) {
 
 
 	//我的代码：
+  i ++;
+
   char out[512];
 
   char* start = &out[0];
@@ -157,6 +161,10 @@ int printf(const char *fmt, ...) {
   va_start(ap, fmt);
  
   vsprintf(start, fmt, ap);
+
+  _putc('\n');
+  _putc(i + '0');
+  _putc('\n');
 
   va_end(ap);
 

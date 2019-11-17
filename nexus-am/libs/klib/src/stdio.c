@@ -389,7 +389,19 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 //					}
 				}
+            case 'c':
+			    {
+                     char c;
+					 c = va_arg(ap, int);
 
+					 *temp_out = c;
+
+					 temp_out ++;
+
+					 fmt ++;
+
+					 break;
+     			}
 			case 's':
 			   	{
 				 char* c; 

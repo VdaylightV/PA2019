@@ -14,7 +14,6 @@ size_t __am_input_read(uintptr_t reg, void *buf, size_t size) {
           kbd->keycode = input;
           kbd->keydown = !(kbd->keydown);
       }
-      //kbd->keydown = 0;
       return sizeof(_DEV_INPUT_KBD_t);
     }
   }

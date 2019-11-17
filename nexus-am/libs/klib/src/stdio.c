@@ -290,7 +290,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			case '0':
 				{    
                     char fill_content[2] = "0";
-					char whole_content[512];
+					char whole_content[128] = "";
 
 					char* head = &whole_content[0];
 
@@ -369,14 +369,16 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
-                 char* head = "";
+                 char val_str[128];
 
-				 head = int_to_str(val, head);
-				 size_t len = strlen(head);
+				 char* head_val_str = &val_str[0];
+
+				 head_val_str = int_to_str(val, head_val_str);
+				 size_t len = strlen(head_val_str);
 				 //把整数直接换成字符串
 
 
-				temp_out = strcpy(temp_out, head);
+				temp_out = strcpy(temp_out, head_val_str);
 				for(size_t i = 0; i < len; i ++) {
 					temp_out ++;
 				}

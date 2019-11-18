@@ -7,8 +7,7 @@ static inline int min(int x, int y) {
   return (x < y) ? x : y;
 }
 
-//static uint32_t* const fb __attribute__((used)) = (uint32_t *)0xa0000000;
-static uint32_t fb[300 * 400] = {};
+static uint32_t* const fb __attribute__((used)) = (uint32_t *)0xa0000000;
 
 size_t __am_video_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {

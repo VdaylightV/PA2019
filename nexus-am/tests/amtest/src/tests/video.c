@@ -75,7 +75,6 @@ void video_test() {
 
   while (1) {
     unsigned long upt = uptime();
-    unsigned long a = 89123123;
     if (upt - last > 1000 / FPS) {
       update();
       redraw();
@@ -85,7 +84,6 @@ void video_test() {
     if (upt - fps_last > 1000) {
       // display fps every 1s
       printf("%d: FPS = %d\n", upt, fps);
-      printf("%d",a);
       fps_last = upt;
       fps = 0;
     }

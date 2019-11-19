@@ -110,7 +110,6 @@ char *int_to_str(int val, char* str) {
 	    c = '0' + bit;
 	    
 		*temp = c;	
-		_putc(c);
 		temp ++;
 		num = num % division;
 	}

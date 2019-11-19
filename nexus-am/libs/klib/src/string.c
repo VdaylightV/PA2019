@@ -399,6 +399,13 @@ void* memcpy(void* out, const void* in, size_t n) {
 
   return out;
 */
+    char*dp = out;
+	const char *sp = in;
+	while(n--) {
+	    *dp++ = *sp++;
+	}
+	return out;
+
 /*
     char* charout = (char*) out;
 	char* charin = (char*) in;
@@ -409,6 +416,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 
 	return out;
 */
+/*  
 	void* ret = out;
 	char *begin1 = (char*) out;
 	const char *begin2 = (const char *)in;
@@ -416,6 +424,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 	    *(begin1+n-1) = *(begin2+n-1);
 	}
 	return ret;
+*/
 }
 
 int memcmp(const void* s1, const void* s2, size_t n) {

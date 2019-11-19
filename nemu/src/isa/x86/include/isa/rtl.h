@@ -70,9 +70,9 @@ static inline void rtl_is_sub_overflow(rtlreg_t* dest,
 
 	else{
 		switch(width) {
-			case 1: {printf("1-1\n"); if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 0; else *dest = 1; printf("src1:%x\n",((*src1)>>7)&0x1); printf("src2:%x\n",((~(*src2)+1)>>7)&0x1); printf("res:%x\n",((*res)>>7)&0x1); break;}
-			case 2: {printf("1-2\n"); if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 0; else *dest = 1; printf("src1:%x\n",((*src1)>>15)&0x1); printf("src2:%x\n",((~(*src2)+1)>>15)&0x1); printf("res:%x\n",((*res)>>15)&0x1); break;}
-			case 4: {printf("1-4\n"); if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 0; else *dest = 1; printf("src1:%x\n",((*src1)>>31)&0x1); printf("src2:%x\n",((~(*src2)+1)>>31)&0x1); printf("res:%x\n",((*res)>>31)&0x1); break;}
+			case 1: {/*printf("1-1\n");*/ if ((((*src1)>>7) && 0x1 == ((~(*src2)+1)>>7) && 0x1) && ((((*src1)>>7) && 0x1) != (((*res)>>7) && 0x1))) *dest = 0; else *dest = 1; /*printf("src1:%x\n",((*src1)>>7)&0x1);* printf("src2:%x\n",((~(*src2)+1)>>7)&0x1); printf("res:%x\n",((*res)>>7)&0x1);*/ break;}
+			case 2: {/*printf("1-2\n");*/if ((((*src1)>>15) && 0x1 == ((~(*src2)+1)>>15) && 0x1) && ((((*src1)>>15) && 0x1) != (((*res)>>15) && 0x1))) *dest = 0; else *dest = 1; /*printf("src1:%x\n",((*src1)>>15)&0x1); printf("src2:%x\n",((~(*src2)+1)>>15)&0x1); printf("res:%x\n",((*res)>>15)&0x1);*/ break;}
+			case 4: {/*printf("1-4\n");*/ if ((((*src1)>>31) && 0x1 == ((~(*src2)+1)>>31) && 0x1) && ((((*src1)>>31) && 0x1) != (((*res)>>31) && 0x1))) *dest = 0; else *dest = 1; /*printf("src1:%x\n",((*src1)>>31)&0x1); printf("src2:%x\n",((~(*src2)+1)>>31)&0x1); printf("res:%x\n",((*res)>>31)&0x1);*/ break;}
 			default: assert(0);
 		}
 	}

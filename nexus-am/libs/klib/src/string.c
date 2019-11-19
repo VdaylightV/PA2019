@@ -381,7 +381,8 @@ void* memset(void* v,int c,size_t n) {
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-/*
+
+
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
 
@@ -398,13 +399,6 @@ void* memcpy(void* out, const void* in, size_t n) {
 //  temp_out[n] = '\0';
 
   return out;
-*/
-    char*dp = out;
-	const char *sp = in;
-	while(n--) {
-	    *dp++ = *sp++;
-	}
-	return out;
 
 /*
     char* charout = (char*) out;

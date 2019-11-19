@@ -34,6 +34,7 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
       for (int j = 0; j < h && y + j < 300; j ++) {
         memcpy(&fb[(y + j) * 400 + x], pixels, cp_bytes);
         pixels += w;
+        printf("%d\n", j);
       }
 
     if (ctl->sync) {

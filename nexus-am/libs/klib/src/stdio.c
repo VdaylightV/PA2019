@@ -381,7 +381,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				temp_out = strcpy(temp_out, head_val_str);
 				for(size_t i = 0; i < len; i ++) {
-					_putc(*temp_out);
 					temp_out ++;
 				}
 				//此时temp_out又指向一个空位置

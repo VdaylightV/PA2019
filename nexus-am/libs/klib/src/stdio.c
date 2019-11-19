@@ -389,7 +389,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				break;
 //					}
 				}
-            case 'c':
+/*            case 'c':
 			    {
                      char c;
 					 c = va_arg(ap, int);
@@ -402,7 +402,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 					 break;
      			}
-			case 's':
+*/			case 's':
 			   	{
 				 char* c; 
 				 c = va_arg(ap, char*);

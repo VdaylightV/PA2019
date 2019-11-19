@@ -83,7 +83,7 @@ void video_test() {
     }
     if (upt - fps_last > 1000) {
       // display fps every 1s
-      printf("%c: FPS = %d\n", upt, fps);
+      printf("%d: FPS = %d\n", upt, fps);
       fps_last = upt;
       fps = 0;
     }

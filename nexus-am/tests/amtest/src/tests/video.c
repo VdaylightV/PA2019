@@ -75,7 +75,6 @@ void video_test() {
 
   while (1) {
     unsigned long upt = uptime();
-    printf("%d\n",upt);
     if (upt - last > 1000 / FPS) {
       update();
       redraw();

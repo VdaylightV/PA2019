@@ -38,11 +38,12 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
       }
 */
 
-    int i;
+/*    int i;
     for( i = 0; i < ctl->h; i ++) {
 
       memcpy(fb+(ctl->y+i)*screen_width()+ctl->x, ctl->pixels+i*ctl->w,ctl->w*4);
     }
+*/
     if (ctl->sync) {
        outl(0x104, 0);
       }

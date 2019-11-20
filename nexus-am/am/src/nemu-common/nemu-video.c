@@ -33,22 +33,22 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
        outl(0x104, 0);
       }
     else {
-/*      int width = inw(SCREEN_ADDR + 2);
+      int width = inw(SCREEN_ADDR + 2);
       uint32_t *fb = (uint32_t*)(uintptr_t)FB_ADDR;
       for(int i = 0; i < ctl->h; i ++) {
         for(int j = 0; j < ctl->w; j ++) {
           fb[(i + ctl->y)*width + j + ctl->x] = ctl->pixels[i*ctl->w + j];
         }
       }
-*/
-      int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h;
+
+/*      int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h;
       uint32_t *pixels = ctl->pixels;
       int cp_bytes = sizeof(uint32_t) * (w < 400-w ? w : 400-w);
       for (int j = 0; j < h && y + j < 300; j ++) {
         memcpy(&fb[(y + j) * 400 + x], pixels, cp_bytes);
         pixels += w;
       }
-
+*/
     }
 
 /*    int i;

@@ -2,15 +2,15 @@
 #include <amdev.h>
 #include <nemu.h>
 
+uint32_t boot_time;
+
 size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_TIMER_UPTIME: {
       _DEV_TIMER_UPTIME_t *uptime = (_DEV_TIMER_UPTIME_t *)buf;
-      
-     unsigned long long time = inl(0x48);
-
-      uptime->hi = time >> 32;
-      uptime->lo = time & 0xffffffff;
+      uint64_t temptime = inl(0x48) - boot_time; 
+      uptime->hi = (uint32_t) temptime;
+      uptime->lo = (uint32_t)temptime & 0xffffffff;
       return sizeof(_DEV_TIMER_UPTIME_t);
     }
     case _DEVREG_TIMER_DATE: {

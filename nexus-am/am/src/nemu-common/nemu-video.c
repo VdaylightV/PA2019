@@ -35,7 +35,7 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
     else {
       int width = inw(SCREEN_ADDR + 2);
       uint32_t *fb = (uint32_t*)(uintptr_t)FB_ADDR;
-      for(int i = 0; i < ctl->h && ctl->y + i < 300; i ++) {
+      for(int i = 0; i < ctl->h; i ++) {
         for(int j = 0; j < ctl->w; j ++) {
           fb[(i + ctl->y)*width + j + ctl->x] = ctl->pixels[i*ctl->w + j];
         }

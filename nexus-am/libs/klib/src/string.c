@@ -3,20 +3,21 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 size_t strlen(const char *s) {
-	
+/*
   size_t count = 0;
   while(s[count] != '\0') {
 	  count ++;
   }
 //  printf("Length:%d\n",count);
   return count;
-/*
+*/
+
     size_t size = 0;
 	while(*(s++)) {
 	    size ++;
 	}
 	return size;
-*/
+
 }
 
 char *strcpy(char* dst,const char* src) {
@@ -24,21 +25,6 @@ char *strcpy(char* dst,const char* src) {
 		assert(0);
 	    return NULL;
 	}
-
-
-/*  //Forget to consider the problem of overlapping  
-	else {
-		char* temp = dst;
-	    while(*src != '\0') {
-            *temp = *src;
-		    temp ++;
-		    src ++;
-	    }
-		*temp = '\0';
-		return dst;
-	}
-*/
-
 
 	size_t length = strlen(src);
 

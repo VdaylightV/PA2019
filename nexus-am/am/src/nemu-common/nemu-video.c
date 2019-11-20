@@ -9,8 +9,8 @@ static inline int min(int x, int y) {
 }
 */
 
-//static uint32_t* const fb __attribute__((used)) = (uint32_t *)FB_ADDR;
-static uint32_t fb[400 * 300] = {};
+static uint32_t* const fb __attribute__((used)) = (uint32_t *)0xa1000100;
+//static uint32_t fb[400 * 300] = {};
 
 size_t __am_video_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {

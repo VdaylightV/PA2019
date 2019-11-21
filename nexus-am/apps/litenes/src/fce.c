@@ -106,6 +106,7 @@ void fce_run() {
     int scanlines = 262;
 
     while (scanlines-- > 0) {
+      printf("!!!!!!!!!!!!!!!\n");
       ppu_cycle();
       psg_detect_key();
     }

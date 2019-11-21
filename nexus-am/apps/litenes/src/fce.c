@@ -97,26 +97,20 @@ void wait_for_frame() {
 
 void fce_run() {
   gtime = uptime();
-  printf("??????????\n");
   int nr_draw = 0;
   uint32_t last = gtime;
   while(1) {
-    printf("!!!!!!!!!!!!!!!\n");
     wait_for_frame();
     int scanlines = 262;
 
     while (scanlines-- > 0) {
-      printf("&&&&&&&&&&&&&&&&&&\n");
       ppu_cycle();
       psg_detect_key();
     }
 
     nr_draw ++;
-	printf("%d\n",uptime());
-	printf("%d\n",last);
 
     if (uptime() - last > 1000) {
-      printf("************************\n");
       last = uptime();
       printf("FPS = %d\n", nr_draw);
       nr_draw = 0;

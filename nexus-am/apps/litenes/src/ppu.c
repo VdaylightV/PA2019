@@ -253,7 +253,7 @@ void ppu_cycle() {
 #ifdef PROFILE
   TIME_TYPE t0, t1, t2, t3, t4, t5;
 #endif
-
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");
   if (!ppu.ready && cpu_clock() > 29658)
     ppu.ready = true;
 

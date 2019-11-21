@@ -291,6 +291,7 @@ void ppu_cycle() {
   sprite_time += time_diff(t4, t3);
 
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH7\n");
+  printf("%d\n",ppu.scanline);
   if (ppu.scanline == 241) {
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHa\n");
     ppu_set_in_vblank(true);

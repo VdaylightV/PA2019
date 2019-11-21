@@ -55,7 +55,7 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
     }
 */
     if (ctl->sync) {
-//       outl(0x104, 0);
+       outl(0x104, 0);
       }
       return size;
     }

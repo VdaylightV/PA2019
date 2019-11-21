@@ -54,7 +54,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 
 	size_t length = strlen(src);
 
-/*	if (n > length) {
+	if (n > length) {
 	    return strncpy(dst, src, length);
 	}
 
@@ -72,8 +72,8 @@ char* strncpy(char* dst, const char* src, size_t n) {
 		while((*(dst++) = *(head++)));
 		return result;
 	}
-*/
 
+/*
 	if(n >= length) {
 
 		char store_src[length];
@@ -107,7 +107,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 
 		return dst;
 	}
-
+*/
 /*
 
 	else {
@@ -422,7 +422,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 }
 
 int memcmp(const void* s1, const void* s2, size_t n) {
-	
+/*	
 	const char* temp_s1 = (char*)s1;
 	const char* temp_s2 = (char*)s2;
 
@@ -445,9 +445,9 @@ int memcmp(const void* s1, const void* s2, size_t n) {
 	{
 	    return flag;
 	}
-	
+*/	
 
-/*	
+	
   unsigned char* temp_s1 = (unsigned char *)s1;
   unsigned char* temp_s2 = (unsigned char *)s2;
   for(size_t i = 0; i < n; i++) {
@@ -461,7 +461,7 @@ int memcmp(const void* s1, const void* s2, size_t n) {
 	 
   }
   return 0;
-*/  
+  
 }
 
 

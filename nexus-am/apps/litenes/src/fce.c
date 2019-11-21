@@ -123,7 +123,7 @@ void fce_update_screen() {
 
   int idx = ppu_ram_read(0x3F00);
   uint32_t bgc = palette[idx];
-  printf("bgc:%d\n");
+  //printf("bgc:%d\n");
 
   int w = screen_width();
   int h = screen_height();

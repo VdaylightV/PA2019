@@ -109,7 +109,8 @@ void fce_run() {
     }
 
     nr_draw ++;
-
+    printf("uptime:%d\n",uptime());
+	printf("last:%d\n",last);
     if (uptime() - last > 1000) {
       last = uptime();
       printf("FPS = %d\n", nr_draw);

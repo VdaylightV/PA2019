@@ -292,13 +292,20 @@ void ppu_cycle() {
 
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH7\n");
   if (ppu.scanline == 241) {
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHa\n");
     ppu_set_in_vblank(true);
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHb\n");
     ppu_set_sprite_0_hit(false);
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHc\n");
     cpu_interrupt();
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHd\n");
   }
   else if (ppu.scanline == 262) {
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHe\n");
     ppu.scanline = -1;
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHf\n");
     ppu_sprite_hit_occured = false;
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHg\n");
     ppu_set_in_vblank(false);
 
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH9\n");

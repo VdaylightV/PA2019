@@ -253,37 +253,44 @@ void ppu_cycle() {
 #ifdef PROFILE
   TIME_TYPE t0, t1, t2, t3, t4, t5;
 #endif
-  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n");
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH0\n");
   if (!ppu.ready && cpu_clock() > 29658)
     ppu.ready = true;
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH1\n");
   time_read(t0);
   cpu_run(256);
   time_read(t1);
 
   ppu.scanline++;
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH2\n");
 
   if (ppu.scanline < H && ppu_shows_background()) {
     ppu_draw_background_scanline(false);
     ppu_draw_background_scanline(true);
   }
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH3\n");
   time_read(t2);
   cpu_run(85 - 16);
   time_read(t3);
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH4\n");
   if (ppu.scanline < H && ppu_shows_sprites()) {
     ppu_draw_sprite_scanline();
   }
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH5\n");
   time_read(t4);
   cpu_run(16);
   time_read(t5);
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH6\n");
   cpu_time += time_diff(t1, t0) + time_diff(t3, t2) + time_diff(t5, t4);
   background_time += time_diff(t2, t1);
   sprite_time += time_diff(t4, t3);
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH7\n");
   if (ppu.scanline == 241) {
     ppu_set_in_vblank(true);
     ppu_set_sprite_0_hit(false);
@@ -294,6 +301,7 @@ void ppu_cycle() {
     ppu_sprite_hit_occured = false;
     ppu_set_in_vblank(false);
 
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH9\n");
     time_read(t0);
     fce_update_screen();
     time_read(t1);
@@ -303,6 +311,7 @@ void ppu_cycle() {
     printf("Time: cpu + bg + spr + scr = (%d + %d + %d + %d)\t= %d %s\n",
         cpu_time, background_time, sprite_time, time_diff(t1, t0), total, TIMER_UNIT);
 #endif
+  printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH10\n");
     cpu_time = 0;
     background_time = 0;
     sprite_time = 0;

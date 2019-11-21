@@ -135,6 +135,7 @@ void fce_update_screen() {
   int ypad = (h - H) / 2;
   assert(xpad >= 0 && ypad >= 0);
 
+  printf("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
   for (int x = 0; x < W; x ++) {
     for (int y = 0; y < H; y ++) {
       draw_rect(&canvas[y * W + x], xpad + x, ypad + y, 1, 1);

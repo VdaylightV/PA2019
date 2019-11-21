@@ -97,6 +97,7 @@ void wait_for_frame() {
 
 void fce_run() {
   gtime = uptime();
+  printf("??????????\n");
   int nr_draw = 0;
   uint32_t last = gtime;
   while(1) {
@@ -159,6 +160,7 @@ int main(const char *rom_name) {
 
   fce_load_rom(rom->body);
   fce_init();
+  printf("HHHHHHHHHHHHHHH\n");
   printf("Initialization finish!\n");
   fce_run();
   return 1;

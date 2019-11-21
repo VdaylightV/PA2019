@@ -30,7 +30,7 @@ size_t __am_video_write(uintptr_t reg, void *buf, size_t size) {
     case _DEVREG_VIDEO_FBCTL: {
       _DEV_VIDEO_FBCTL_t *ctl = (_DEV_VIDEO_FBCTL_t *)buf;
     if (ctl->sync) {
-       outl(0x104, 0);
+ //      outl(0x104, 0);
       }
 //    else {
       int width = inw(SCREEN_ADDR + 2);

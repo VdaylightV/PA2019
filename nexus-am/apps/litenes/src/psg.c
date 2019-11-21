@@ -40,8 +40,11 @@ void psg_io_write(word address, byte data) {
 }
 
 void psg_detect_key() {
+	printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA1\n");
   int key = read_key();
+	printf("key:%d\n",key);
   for (; key != _KEY_NONE; key = read_key()) {
+	printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2\n");
     int down = (key & 0x8000) != 0;
     int code = key & ~0x8000;
     key_state[code] = down;

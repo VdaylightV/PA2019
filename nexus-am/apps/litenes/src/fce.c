@@ -101,6 +101,7 @@ void fce_run() {
   int nr_draw = 0;
   uint32_t last = gtime;
   while(1) {
+    printf("!!!!!!!!!!!!!!!\n");
     wait_for_frame();
     int scanlines = 262;
 

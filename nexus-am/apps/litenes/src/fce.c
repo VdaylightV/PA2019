@@ -106,13 +106,14 @@ void fce_run() {
     int scanlines = 262;
 
     while (scanlines-- > 0) {
-      printf("!!!!!!!!!!!!!!!\n");
+      printf("&&&&&&&&&&&&&&&&&&\n");
       ppu_cycle();
       psg_detect_key();
     }
 
     nr_draw ++;
     if (uptime() - last > 1000) {
+      printf("&&&&&&&&&&&&&&&&&&\n");
       last = uptime();
       printf("FPS = %d\n", nr_draw);
       nr_draw = 0;

@@ -306,6 +306,7 @@ void ppu_cycle() {
     background_time = 0;
     sprite_time = 0;
   }
+  printf("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\n");
 }
 
 void ppu_copy(word address, byte *source, int length) {

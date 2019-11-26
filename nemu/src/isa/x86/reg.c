@@ -57,6 +57,7 @@ void isa_reg_display() {
 	printf(("    CF:        0x%08x      %012dD\n"),cpu.eflags.CF,cpu.eflags.CF);
 	printf(("    SF:        0x%08x      %012dD\n"),cpu.eflags.SF,cpu.eflags.SF);
 	printf(("    OF:        0x%08x      %012dD\n"),cpu.eflags.OF,cpu.eflags.OF);
+	printf(("    PC:        0x%08x      %012dD\n"),cpu.pc,cpu.pc);
 }
 
 uint32_t isa_reg_str2val(const char *s, bool *success) {

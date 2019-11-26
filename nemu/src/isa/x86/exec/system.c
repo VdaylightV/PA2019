@@ -5,8 +5,14 @@ void raise_intr(uint32_t, vaddr_t);
 make_EHelper(lidt) {
   //TODO();
   s0 = id_dest->addr;
-  cpu.idtr.limit = vaddr_read(s0, 2);
-  cpu.idtr.base = vaddr_read(s0 + 2, 4);
+  if(id_dest->width == 2) {
+      cpu.idtr.base = vaddr_read(s0 + 2, 3);
+      cpu.idtr.limit = vaddr_read(s0, 2);
+  }
+  else {
+      cpu.idtr.base = vaddr_read(s0 + 2, 4);
+      cpu.idtr.limit = vaddr_read(s0, 2);
+  }
   print_asm_template1(lidt);
 }
 

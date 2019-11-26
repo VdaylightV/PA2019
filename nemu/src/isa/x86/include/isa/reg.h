@@ -45,7 +45,7 @@ typedef struct {
          uint32_t OF    :1;
      };
      uint32_t value; 
- }eflags;
+ } eflags;
 
   rtlreg_t cs;
  struct {

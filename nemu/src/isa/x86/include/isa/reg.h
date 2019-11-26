@@ -36,9 +36,16 @@ typedef struct {
 
   vaddr_t pc;
 
- struct  { 
-  rtlreg_t CF, ZF, SF, IF, OF;
-    } eflags;
+ union {
+     struct  { 
+         uint32_t CF;
+         uint32_t ZF;
+         uint32_t SF;
+         uint32_t IF;
+         uint32_t OF;
+     };
+     uint32_t value; 
+ }eflags;
 
   rtlreg_t cs;
  struct {

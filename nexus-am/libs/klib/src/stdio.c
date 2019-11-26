@@ -16,7 +16,7 @@ int fac(int base, int exp) {
 
 char* to_hex(int value, char* str) {
 
-	int temp0 = value;
+	unsigned int temp0 = (unsigned int)value;
 
 	int len = 1;
 	while(temp0 / 16 > 0) {
@@ -24,7 +24,7 @@ char* to_hex(int value, char* str) {
 		len ++;
 	}
 
-	int temp1 = value;
+	unsigned int temp1 = (unsigned int)value;
 	int bit;
 	int count = 0;
 	while(temp1 / 16 > 0) {
@@ -427,10 +427,10 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 		   
-/*		   case 'x':
+		   case 'x':
 				{ 
 				 int val = va_arg(ap, int);
-				 char temp[65535];
+				 char temp[65535] = "";
 				 char *head = temp;
 
 				 char *result = to_hex(val, head);
@@ -446,7 +446,57 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-*/
+
+		   case 'p':
+			     {
+				    int val = va_arg(ap, int);
+				    char temp[65535] = "";
+				    char *head = temp;
+
+					char *result = to_hex(val, head);
+					size_t len = strlen(result);
+
+					char prefix[3] = "0x";
+					char *head_prefix = prefix;
+
+					if(len == 8) {
+					    temp_out = strcpy(temp_out, head_prefix);
+						temp_out ++;
+						temp_out ++;
+
+						temp_out = strcpy(temp_out, result);
+						for(size_t i = 0; i < len; i ++) {
+						    temp_out ++;
+						}
+
+						fmt ++;
+
+						break;
+					}
+
+					else {
+					    temp_out = strcpy(temp_out, head_prefix);
+						temp_out ++;
+						temp_out ++;
+
+						for(size_t i = 0; i < 8 - len; i ++) {
+						    *temp_out = '0';
+							temp_out ++;
+						}
+
+						temp_out = strcpy(temp_out, result);
+
+						for(size_t i = 0; i < len; i ++) {
+						    temp_out ++;
+						}
+
+						fmt ++;
+
+						break;
+					}
+				 
+				 }
+
 /*       default :
 				{
 				//进入default说明%后面有占位符和宽度

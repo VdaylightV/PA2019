@@ -39,6 +39,13 @@ typedef struct {
  struct  { 
   rtlreg_t CF, ZF, SF, IF, OF;
     } eflags;
+
+  rtlreg_t cs;
+ struct {
+  uint16_t limit;
+  uint32_t base;
+ } idtr;
+  
 	 
 } CPU_state;
 

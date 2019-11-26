@@ -51,6 +51,8 @@ void isa_reg_display() {
 	printf(("    ebp:       0x%08x      %012dD\n"),cpu.ebp,cpu.ebp);
 	printf(("    esi:       0x%08x      %012dD\n"),cpu.esi,cpu.esi);
 	printf(("    edi:       0x%08x      %012dD\n"),cpu.edi,cpu.edi);
+	printf(("    cs:        0x%08x      %012dD\n"),cpu.cs,cpu.cs);
+	printf(("    eflags:    0x%08x      %012dD\n"),cpu.eflags.value,cpu.eflags.value);
 	printf(("    ZF:        0x%08x      %012dD\n"),cpu.eflags.ZF,cpu.eflags.ZF);
 	printf(("    CF:        0x%08x      %012dD\n"),cpu.eflags.CF,cpu.eflags.CF);
 	printf(("    SF:        0x%08x      %012dD\n"),cpu.eflags.SF,cpu.eflags.SF);
@@ -58,6 +60,7 @@ void isa_reg_display() {
 }
 
 uint32_t isa_reg_str2val(const char *s, bool *success) {
+	char eflags[7] = "eflags";
 	char eax[4] = "eax";
 	char ecx[4] = "ecx";
 	char edx[4] = "edx";
@@ -83,7 +86,13 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 	char ch[3] = "cx";
 	char bh[3] = "bx";
     char pc[3] = "pc";    
- 
+    char cs[3] = "cs";
+	char OF[3] = "OF";
+	char CF[3] = "CF";
+	char ZF[3] = "ZF";
+	char SF[3] = "SF";
+	char IF[3] = "IF";
+
 	if ( strcmp(&eax[0], s) == 0 ) {
 	    return cpu.eax;
 	}
@@ -182,6 +191,34 @@ uint32_t isa_reg_str2val(const char *s, bool *success) {
 
 	else if ( strcmp(&pc[0], s) == 0 ) {
 	    return cpu.pc;
+	}
+
+	else if ( strcmp(&cs[0], s) == 0 ) {
+	    return cpu.cs;
+	}
+
+	else if ( strcmp(&OF[0], s) == 0 ) {
+	    return cpu.eflags.OF;
+	}
+
+	else if ( strcmp(&CF[0], s) == 0 ) {
+	    return cpu.eflags.CF;
+	}
+
+	else if ( strcmp(&ZF[0], s) == 0 ) {
+	    return cpu.eflags.ZF;
+	}
+
+	else if ( strcmp(&SF[0], s) == 0 ) {
+	    return cpu.eflags.SF;
+	}
+
+	else if ( strcmp(&IF[0], s) == 0 ) {
+	    return cpu.eflags.IF;
+	}
+
+	else if ( strcmp(&eflags[0], s) == 0 ) {
+	    return cpu.eflags.value;
 	}
 
 	else {

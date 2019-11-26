@@ -12,6 +12,7 @@ make_EHelper(nop);
 make_EHelper(xchg);
 
 make_EHelper(push);
+make_EHelper(pusha);
 make_EHelper(pop);
 make_EHelper(jcc);
 make_EHelper(jmp);

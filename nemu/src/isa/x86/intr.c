@@ -6,7 +6,7 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    */
    rtl_push(&cpu.eflags.value);
    rtl_push(&cpu.cs);
-   rtl_push(&cpu.pc);
+   //rtl_push(&cpu.pc);
 
    s0 = cpu.idtr.base;
 

@@ -1,5 +1,6 @@
 #include <am.h>
 #include <x86.h>
+#include "klib.h"
 
 static _Context* (*user_handler)(_Event, _Context*) = NULL;
 
@@ -10,6 +11,17 @@ void __am_vecnull();
 
 _Context* __am_irq_handle(_Context *c) {
   _Context *next = c;
+  printf("eax:%x\n", c->eax);
+  printf("ecx:%x\n", c->ecx);
+  printf("edx:%x\n", c->edx);
+  printf("ebx:%x\n", c->ebx);
+  printf("esp:%x\n", c->esp);
+  printf("ebp:%x\n", c->ebp);
+  printf("esi:%x\n", c->esi);
+  printf("edi:%x\n", c->edi);
+  printf("eflags:%x\n", c->eflags);
+  printf("cs:%x\n", c->cs);
+  printf("pc:%x\n", c->pc);
   if (user_handler) {
     _Event ev = {0};
     switch (c->irq) {

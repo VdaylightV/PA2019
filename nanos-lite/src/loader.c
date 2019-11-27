@@ -26,6 +26,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   while(buf[i] != '\0') {
       buf[i] = '\0';
 	  i ++;
+
+	  if (i > 0xfffff) {
+	      assert(0);
+	  }
   }
    
   ramdisk_read(buf_head, 0x005000, 0x01918);

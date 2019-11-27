@@ -19,8 +19,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   char* buf_head = &buf[0];
 
   ramdisk_read(buf_head, 0x001000, 0x03a43);
-  strcpy((char*)0x03001000, buf_head);
-  memset((char*)(0x03001000+0x03a43), 0, 1);
+  memcpy((uintptr_t*)0x03001000, buf_head, 0x03a43);
+  memset((uintptr_t*)(0x03001000+0x03a43), 0, 1);
  
   i = 0; 
   while(buf[i] != '\0') {
@@ -29,8 +29,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
    
   ramdisk_read(buf_head, 0x005000, 0x01918);
-  strcpy((char*)0x03005000, buf_head);
-  memset((char*)(0x03005000+0x01918), 0, 1);
+  memcpy((uintptr_t*)0x03005000, buf_head, 0x01918);
+  memset((uintptr_t*)(0x03005000+0x01918), 0, 1);
 
   i = 0; 
   while(buf[i] != '\0') {
@@ -39,8 +39,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
    
   ramdisk_read(buf_head, 0x007000, 0x00868);
-  strcpy((char*)0x03008000, buf_head);
-  memset((char*)(0x03008000+0x00868), 0, 0x00071);
+  memcpy((uintptr_t*)0x03008000, buf_head, 0x00868);
+  memset((uintptr_t*)(0x03008000+0x00868), 0, 0x00071);
 
   return 0;
 }

@@ -35,7 +35,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
 
-  return 0x03001000;
+  return 0x0300105c;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {

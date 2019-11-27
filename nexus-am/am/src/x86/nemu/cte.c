@@ -26,7 +26,7 @@ _Context* __am_irq_handle(_Context *c) {
     _Event ev = {0};
     switch (c->irq) {
       case 1: {ev.event = _EVENT_YIELD; printf("##########################\n"); break;}
-      default: ev.event = _EVENT_ERROR; break;
+      default:{ev.event = _EVENT_ERROR; printf("_EVENT_ERROR:%d\n", _EVENT_ERROR); break;}
     }
 
     next = user_handler(ev, c);

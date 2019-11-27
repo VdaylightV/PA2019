@@ -24,18 +24,18 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   char* buf2_head = &buf2[0];
 
   ramdisk_read(buf0_head, 0x001000, 0x03a43);
-  memcpy((uintptr_t*)0x03001000, buf0_head, 0x03a43);
-  memset((uintptr_t*)(0x03001000+0x03a43), '0', 1);
+  memcpy((char*)0x03001000, buf0_head, 0x03a43);
+  memset((char*)(0x03001000+0x03a43), '0', 1);
  
   ramdisk_read(buf1_head, 0x005000, 0x01918);
-  memcpy((uintptr_t*)0x03005000, buf1_head, 0x01918);
-  memset((uintptr_t*)(0x03005000+0x01918), '0', 1);
+  memcpy((char*)0x03005000, buf1_head, 0x01918);
+  memset((char*)(0x03005000+0x01918), '0', 1);
 
   ramdisk_read(buf2_head, 0x007000, 0x00868);
-  memcpy((uintptr_t*)0x03008000, buf2_head, 0x008d8);
-  memset((uintptr_t*)(0x03008000+0x00868), '0', 0x00071);
+  memcpy((char*)0x03008000, buf2_head, 0x008d8);
+  memset((char*)(0x03008000+0x00868), '0', 0x00071);
 
-  return 0x03000000;
+  return 0;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {

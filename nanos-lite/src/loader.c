@@ -15,7 +15,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   
   //TODO();
   int i;
-  char buf[65535];
+  char buf[65535] = "";
   char* buf_head = &buf[0];
 
   ramdisk_read(buf_head, 0x001000, 0x03a43);
@@ -39,7 +39,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   }
    
   ramdisk_read(buf_head, 0x007000, 0x00868);
-  memcpy((uintptr_t*)0x03008000, buf_head, 0x00868);
+  memcpy((uintptr_t*)0x03008000, buf_head, 0x008d8);
   memset((uintptr_t*)(0x03008000+0x00868), 0, 0x00071);
 
   return 0;

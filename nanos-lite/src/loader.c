@@ -16,15 +16,20 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
   Elf_Ehdr elf_ehdr;
   Elf_Phdr elf_phdr;
+  Elf_Phdr elf_phdr1;
 
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read(&elf_phdr, sizeof(elf_ehdr), sizeof(elf_phdr));
+  ramdisk_read(&elf_phdr1, sizeof(elf_ehdr) + sizeof(elf_phdr), sizeof(elf_phdr));
   printf("Phdr Entry Size:%d\n",elf_ehdr.e_phentsize);
   printf("Phdr Size:%d\n",sizeof(elf_phdr));
   printf("Phdr Entry Number:%d\n",elf_ehdr.e_phnum);
   printf("Phdr First Entry Type:%d\n",elf_phdr.p_type);
   printf("Phdr First Entry Offset:%d\n",elf_phdr.p_offset);
 
+  printf("Phdr Size:%d\n",sizeof(elf_phdr1));
+  printf("Phdr First Entry Type:%d\n",elf_phdr1.p_type);
+  printf("Phdr First Entry Offset:%d\n",elf_phdr1.p_offset);
 
   //TODO();
 //  char buf0[65535];

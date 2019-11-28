@@ -31,7 +31,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
 		  //printf("?????????????????????\n");
 	      //ramdisk_read(ptr, elf_phdr.p_offset, elf_phdr.p_filesz);
-		  //memset(ptr + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
+		  memset(ptr + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
 	  }
   }
 /*          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);

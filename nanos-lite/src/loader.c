@@ -26,12 +26,12 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("Phdr Entry Number:%d\n",elf_ehdr.e_phnum);
   printf("Phdr First Entry Type:%d\n",elf_phdr.p_type);
   printf("Phdr First Entry Offset:%d\n",elf_phdr.p_offset);
-  printf("Phdr First Entry VirtAddr:%d\n",elf_phdr.p_vaddr);
+  printf("Phdr First Entry VirtAddr:%x\n",elf_phdr.p_vaddr);
 
   printf("Phdr Size:%d\n",sizeof(elf_phdr1));
   printf("Phdr First Entry Type:%d\n",elf_phdr1.p_type);
   printf("Phdr First Entry Offset:%d\n",elf_phdr1.p_offset);
-  printf("Phdr First Entry VirtAddr:%d\n",elf_phdr1.p_vaddr);
+  printf("Phdr First Entry VirtAddr:%x\n",elf_phdr1.p_vaddr);
 
   //TODO();
 //  char buf0[65535];

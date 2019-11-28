@@ -19,8 +19,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read(&elf_phdr, sizeof(elf_ehdr), sizeof(elf_phdr));
 
-
-  
   //TODO();
 //  char buf0[65535];
 //  char* buf0_head = &buf0[0];
@@ -43,7 +41,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
 */
-  return 0x0300105c;
+  return elf_ehdr.e_entry;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {

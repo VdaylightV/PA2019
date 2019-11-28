@@ -292,7 +292,6 @@ int strcmp(const char* s1, const char* s2) {
 	return flag;
 */
 }
-
 int strncmp(const char* s1, const char* s2, size_t n) {
 //#####GC##
   for(size_t i = 0; i < n; ++i) {
@@ -428,14 +427,18 @@ void* memset(void* v,int c,size_t n) {
 
 void* memcpy(void* out, const void* in, size_t n) {
 //#####CO###
-    if(out == NULL ||n < 0) return NULL;
+    if(out == NULL ||n < 0) {
+		assert(0);
+		return NULL;
+	}
     char* charout = (char*) out;
 	char* charin = (char*) in;
-    
+   
 	for(int i = 0; i < n;  ++i) {
 	    charout[i] = charin[i];
+	//    _putc('0');
+	//    _putc('\n');
 	}
-
 	return out;
 
 //##########

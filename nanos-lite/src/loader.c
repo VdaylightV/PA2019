@@ -22,8 +22,19 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   
   for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
       ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + sizeof(elf_ehdr), sizeof(elf_phdr));
+  printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
+  printf("Ehdr Size:%d\n",sizeof(elf_ehdr));
+  printf("Phdr Entry Size:%d\n",elf_ehdr.e_phentsize);
+  printf("Phdr Size:%d\n",sizeof(elf_phdr));
+  printf("Phdr Entry Number:%d\n",elf_ehdr.e_phnum);
+  printf("Phdr First Entry Type:%d\n",elf_phdr.p_type);
+  printf("Phdr First Entry Offset:0x%08x\n",elf_phdr.p_offset);
+  printf("Phdr First Entry VirtAddr:0x%08x\n",elf_phdr.p_vaddr);
 	  if(elf_phdr.p_type == PT_LOAD) {
-	      memcpy((uintptr_t *)elf_phdr.p_vaddr, &elf_ehdr + elf_phdr.p_offset, elf_phdr.p_filesz);
+          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
+          printf("Offset:0x%08x\n",elf_phdr.p_offset);
+		  printf("Start:0x%08x\n", &elf_ehdr + (uintptr_t)elf_phdr.p_offset);
+	      memcpy((char*)elf_phdr.p_vaddr, &elf_ehdr + elf_phdr.p_offset, elf_phdr.p_filesz);
 		  memset(&elf_ehdr + elf_phdr.p_offset + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
 	  }
   }

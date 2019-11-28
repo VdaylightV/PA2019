@@ -21,14 +21,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   
   for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
-      ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + sizeof(elf_ehdr), sizeof(elf_phdr));
+      ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + elf_ehdr.e_phoff, elf_ehdr.e_phentsize);
 	  if(elf_phdr.p_type == PT_LOAD) {
-          printf("Start of ELF_Header:0x%08d\n",&elf_ehdr);
-          printf("Offset:0x%08d\n",elf_phdr.p_offset);
-		  printf("Start:0x%08d\n", &elf_ehdr + (elf_phdr.p_offset)/52);
+          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
+          printf("Offset:0x%08x\n",elf_phdr.p_offset);
+		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset));
 		  void* ptr = (void*)elf_phdr.p_vaddr;
 	      memcpy(ptr, &elf_ehdr + (elf_phdr.p_offset), elf_phdr.p_filesz);
-
 		  memset(&elf_ehdr + elf_phdr.p_offset + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
 	  }
   }

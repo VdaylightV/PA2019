@@ -25,9 +25,9 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	  if(elf_phdr.p_type == PT_LOAD) {
           printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
           printf("Offset:0x%08x\n",elf_phdr.p_offset);
-		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset));
+		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset/ 52));
 		  void* ptr = (void*)elf_phdr.p_vaddr;
-	      memcpy(ptr, &elf_ehdr + (elf_phdr.p_offset / sizeof(elf_ehdr)), elf_phdr.p_filesz);
+	      memcpy(ptr, &elf_ehdr + (elf_phdr.p_offset / 52), elf_phdr.p_filesz);
 
 		  memset(&elf_ehdr + elf_phdr.p_offset + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
 	  }

@@ -14,27 +14,27 @@ size_t ramdisk_read(void *buf, size_t offset, size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
   
   //TODO();
-  char buf0[65535];
-  char* buf0_head = &buf0[0];
-
+//  char buf0[65535];
+//  char* buf0_head = &buf0[0];
+/*
   char buf1[65535];
   char* buf1_head = &buf1[0];
 
   char buf2[65535];
   char* buf2_head = &buf2[0];
-
-  ramdisk_read(buf0_head, 0x001000, 0x03a43);
-  memcpy((char*)0x03001000, buf0_head, 0x03a43);
-  memset((char*)(0x03001000+0x03a43), '0', 1);
+*/
+ //  ramdisk_read((char*)0x03001000, 0x001000, 0x03a43);
+  /*memcpy((char*)0x03001000, buf0_head, 0x03a43);*/
+ // memset((char*)(0x03001000+0x03a43), '0', 1);
  
-  ramdisk_read(buf1_head, 0x005000, 0x01918);
+/*  ramdisk_read(buf1_head, 0x005000, 0x01918);
   memcpy((char*)0x03005000, buf1_head, 0x01918);
   memset((char*)(0x03005000+0x01918), '0', 1);
 
   ramdisk_read(buf2_head, 0x007000, 0x00868);
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
-
+*/
   return 0x0300105c;
 }
 

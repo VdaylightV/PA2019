@@ -22,7 +22,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("Phdr Entry Size:%d\n",elf_ehdr.e_phentsize);
   printf("Phdr Size:%d\n",sizeof(elf_phdr));
   printf("Phdr Entry Number:%d\n",elf_ehdr.e_phnum);
-  printf("Phdr First Entry:%d\n",elf_phdr.p_offset);
+  printf("Phdr First Entry Type:%d\n",elf_phdr.p_type);
+  printf("Phdr First Entry Offset:%d\n",elf_phdr.p_offset);
 
 
   //TODO();

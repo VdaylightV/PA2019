@@ -18,9 +18,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   Elf_Phdr elf_phdr;
 
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
-  printf("Size:%d\n",sizeof(elf_ehdr));
   ramdisk_read(&elf_phdr, sizeof(elf_ehdr), sizeof(elf_phdr));
-  printf("Size:%d\n",sizeof(elf_phdr));
+  printf("Phdr Entry Size:%d\n",elf_ehdr.e_phentsize);
 
   //TODO();
 //  char buf0[65535];

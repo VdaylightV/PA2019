@@ -24,8 +24,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + sizeof(elf_ehdr), sizeof(elf_phdr));
 	  if(elf_phdr.p_type == PT_LOAD) {
           printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
-          printf("Offset:0x%08x\n",elf_phdr.p_offset);
-		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset) / 34);
+          printf("Offset:0x%d\n",sizeof(elf_phdr.p_offset));
+		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset));
 		  void* ptr = (void*)elf_phdr.p_vaddr;
 	      memcpy(ptr, &elf_ehdr + (elf_phdr.p_offset), elf_phdr.p_filesz);
 

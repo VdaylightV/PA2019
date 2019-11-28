@@ -14,6 +14,20 @@ size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
 
+ 
+  Elf_Ehdr elf_ehdr;
+  Elf_Phdr elf_phdr;
+
+  ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
+  
+  for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
+      ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + sizeof(elf_ehdr), sizeof(elf_phdr));
+	  if(elf_phdr.p_type == PT_LOAD) {
+	      memcpy((uintptr_t *)elf_phdr.p_vaddr, &elf_ehdr + elf_phdr.p_offset, elf_phdr.p_filesz);
+		  memset(&elf_ehdr + elf_phdr.p_offset + elf_phdr.p_filesz, '0', elf_phdr.p_memsz - elf_phdr.p_filesz + 1);
+	  }
+  }
+/*
   Elf_Ehdr elf_ehdr;
   Elf_Phdr elf_phdr;
   Elf_Phdr elf_phdr1;
@@ -32,7 +46,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("Phdr First Entry Type:%d\n",elf_phdr1.p_type);
   printf("Phdr First Entry Offset:%d\n",elf_phdr1.p_offset);
   printf("Phdr First Entry VirtAddr:%x\n",elf_phdr1.p_vaddr);
-
+*/
   //TODO();
 //  char buf0[65535];
 //  char* buf0_head = &buf0[0];

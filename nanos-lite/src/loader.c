@@ -16,7 +16,7 @@ size_t get_ramdisk_size();
 static uintptr_t loader(PCB *pcb, const char *filename) {
   Elf_Ehdr elf_ehdr;
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
-  ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, sizeof(get_ramdisk_size));
+  ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, (elf_ehdr.e_phnum - 1) * elf_ehdr.e_phentsize);
 
 /* 
   Elf_Ehdr elf_ehdr;

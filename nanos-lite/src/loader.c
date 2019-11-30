@@ -14,10 +14,10 @@ size_t ramdisk_read(void *buf, size_t offset, size_t len);
 size_t get_ramdisk_size();
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  Elf_Ehdr elf_ehdr;
+ /* Elf_Ehdr elf_ehdr;
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, (elf_ehdr.e_phnum - 1) * elf_ehdr.e_phentsize);
-
+*/
 /* 
   Elf_Ehdr elf_ehdr;
   Elf_Phdr elf_phdr;
@@ -43,7 +43,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	}
   }
 */
-/*//Maybe correct????
+//Maybe correct????
 	Elf_Ehdr elf;
 	ramdisk_read(&elf, 0, sizeof(elf));
 
@@ -68,7 +68,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 		}
 	}
 
-*/
+
 /*          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
           printf("Offset:0x%08x\n",elf_phdr.p_offset);
 		  printf("Start:0x%08x\n", &elf_ehdr + (elf_phdr.p_offset)/52);*/
@@ -122,7 +122,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
 */
-  return elf_ehdr.e_entry;
+  return elf.e_entry;
   
 }
 

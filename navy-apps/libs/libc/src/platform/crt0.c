@@ -8,7 +8,6 @@ extern char **environ;
 void _start(int argc, char *argv[], char *envp[]) {
   char *env[] = {NULL};
   environ = env;
-  printf("&*&*&*&*&*&*&*&*&%^*&^&*%*&^&*^*&^&*^*^\n");
   exit(main(argc, argv, env));
   assert(0);
 }

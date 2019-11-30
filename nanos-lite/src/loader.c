@@ -48,10 +48,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	for(int i = 0; i < elf.e_phnum; i ++) {
 	    if(segment[i].p_type == PT_LOAD) {
 		    size_t content[segment[i].p_filesz];
-			ramdisk_read(&content, segment[i].p_offset, segment[i].p_filesz);
+			ramdisk_read(content, segment[i].p_offset, segment[i].p_filesz);
 			uint32_t *anch1 = (uint32_t*)segment[i].p_vaddr;
 
-			memcpy(anch1, &content, segment[i].p_filesz);
+			memcpy(anch1, content, segment[i].p_filesz);
 
 		  if(segment[i].p_memsz > segment[i].p_filesz) {
 			  char* anch2 = (char*)(segment[i].p_vaddr + segment[i].p_filesz);

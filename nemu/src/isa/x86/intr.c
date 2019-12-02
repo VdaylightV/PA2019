@@ -4,7 +4,6 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
   /* TODO: Trigger an interrupt/exception with ``NO''.
    * That is, use ``NO'' to index the IDT.
    */
-   /*
    rtl_push(&cpu.eflags.value);
    rtl_push(&cpu.cs);
    //rtl_push(&cpu.pc);
@@ -18,7 +17,7 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    s0 = ((s2 & 0xffff0000) | (s1 & 0x0000ffff));
    
    rtl_j(s0);
-   */
+
 }
 
 bool isa_query_intr(void) {

@@ -4,7 +4,6 @@ void raise_intr(uint32_t, vaddr_t);
 
 make_EHelper(lidt) {
   //TODO();
-  /*
   s0 = id_dest->addr;
   if(id_dest->width == 2) {
       cpu.idtr.base = vaddr_read(s0 + 2, 3);
@@ -14,7 +13,6 @@ make_EHelper(lidt) {
       cpu.idtr.base = vaddr_read(s0 + 2, 4);
       cpu.idtr.limit = vaddr_read(s0, 2);
   }
-  */
   print_asm_template1(lidt);
 }
 
@@ -33,7 +31,7 @@ make_EHelper(mov_cr2r) {
 }
 
 make_EHelper(int) {
-	//raise_intr(id_dest->val, decinfo.seq_pc);
+	raise_intr(id_dest->val, decinfo.seq_pc);
   //TODO();
 
   print_asm("int %s", id_dest->str);
@@ -42,11 +40,11 @@ make_EHelper(int) {
 }
 
 make_EHelper(iret) {
-  /*  
+  
   rtl_pop(&cpu.pc);
   rtl_pop(&cpu.cs);
   rtl_pop(&cpu.eflags.value);
-  */
+  
 
 /*
   rtl_pop(&decinfo.jmp_pc);

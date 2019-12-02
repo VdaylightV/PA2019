@@ -41,10 +41,10 @@ make_EHelper(int) {
 
 make_EHelper(iret) {
   
-  rtl_pop(&cpu.pc);
+  rtl_pop(&s0);
   rtl_pop(&cpu.cs);
   rtl_pop(&cpu.eflags.value);
-  
+  rtl_j(s0);
 
 /*
   rtl_pop(&decinfo.jmp_pc);

@@ -77,7 +77,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 			
 		}
 	}
-_yield();
 
 
 /*          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
@@ -140,6 +139,7 @@ _yield();
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
   Log("Jump to entry = %x", entry);
+_yield();
   //Log("What???????????????????Why");
   ((void(*)())entry) ();
 }

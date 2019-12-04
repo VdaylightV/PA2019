@@ -24,8 +24,10 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    addr = ((offset2 & 0xffff0000) + (offset1 & 0x0000ffff));
    printf("address head:0x%x\n", cpu.idtr.base);
    printf("NO:0x%x\n", NO);
-   printf("address:0x%x\n", offset1);
-   printf("address:0x%x\n", offset2);
+   printf("addr offset1:0x%x\n", cpu.idtr.base + NO * 8);
+   printf("addr offset2:0x%x\n", cpu.idtr.base + NO * 8 + 4);
+   printf("offset1:0x%x\n", offset1);
+   printf("offset2:0x%x\n", offset2);
    printf("address:0x%x\n", addr);
    
    rtl_j(addr);

@@ -22,11 +22,14 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    offset2 = vaddr_read(cpu.idtr.base + NO * 8 + 4, 4);
    
    addr = ((offset2 & 0xffff0000) + (offset1 & 0x0000ffff));
+   printf("address head:0x%x\n", cpu.idtr.base);
+   printf("NO:0x%x\n", NO);
    printf("address:0x%x\n", offset1);
    printf("address:0x%x\n", offset2);
    printf("address:0x%x\n", addr);
    
    rtl_j(addr);
+  
 
 }
 

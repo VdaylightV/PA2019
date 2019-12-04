@@ -15,6 +15,8 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    s2 = vaddr_read(s0 + NO * 8 + 4, 4);
 
    s0 = ((s2 & 0xffff0000) | (s1 & 0x0000ffff));
+   printf("address:0x%x\n", s1);
+   printf("address:0x%x\n", s2);
    printf("address:0x%x\n", s0);
    
    rtl_j(s0);

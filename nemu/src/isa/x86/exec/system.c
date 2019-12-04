@@ -22,6 +22,7 @@ make_EHelper(lidt) {
   */
 
   rtl_lm((uint32_t*)&cpu.idtr.limit, &id_dest->addr, 2);
+  printf("id_dest->addr:0x%x\n", id_dest->addr);
   rtl_addi(&s0, &id_dest->addr, 2);
   rtl_lm(&cpu.idtr.base, &s0, 4);
   print_asm_template1(lidt);

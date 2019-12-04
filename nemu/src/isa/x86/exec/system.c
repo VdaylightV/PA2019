@@ -15,9 +15,15 @@ make_EHelper(lidt) {
       cpu.idtr.limit = vaddr_read(s0, 2);
   }
   */
+  /*
   rtl_li(&s0, id_dest->addr);
   rtl_li(&cpu.idtr.limit, vaddr_read(s0, 2));
   rtl_li(&cpu.idtr.base, vaddr_read(s0+2,4));
+  */
+
+  rtl_lm((uint32_t*)&cpu.idtr.limit, &id_dest->addr, 2);
+  rtl_addi(&s0, &id_dest->addr, 2);
+  rtl_lm(&cpu.idtr.base, &s0, 4);
   print_asm_template1(lidt);
 }
 

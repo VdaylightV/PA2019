@@ -52,12 +52,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	}
   }
 *********/
-_yield();
 //Maybe correct????
 	Elf_Ehdr elf;
 	ramdisk_read(&elf, 0, sizeof(elf));
 
 	Elf_Phdr segment[elf.e_phnum];
+
+_yield();
 	ramdisk_read(&segment, elf.e_phoff, elf.e_phentsize*elf.e_phnum);
 
 	for(int i = 0; i < elf.e_phnum; i ++) {

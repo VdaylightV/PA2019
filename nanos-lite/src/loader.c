@@ -132,6 +132,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
 */
+_yield();
   return elf.e_entry;
   
 }
@@ -139,7 +140,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
   Log("Jump to entry = %x", entry);
-_yield();
   //Log("What???????????????????Why");
   ((void(*)())entry) ();
 }

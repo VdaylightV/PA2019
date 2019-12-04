@@ -18,8 +18,8 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    s2 = vaddr_read(s0 + NO * 8 + 4, 4);
   */
 
-   offset1 = vaddr_read(cpu.idtr.base + NO * 8, 4);
-   offset2 = vaddr_read(cpu.idtr.base + NO * 8 + 4, 4);
+   offset1 = vaddr_read(cpu.idtr.base + (NO+1) * 8, 4);
+   offset2 = vaddr_read(cpu.idtr.base + (NO+1) * 8 + 4, 4);
    
    addr = ((offset2 & 0xffff0000) + (offset1 & 0x0000ffff));
    //assert(addr!=0);

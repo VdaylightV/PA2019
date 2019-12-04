@@ -52,9 +52,9 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   // ----------------------- interrupts ----------------------------
   idt[32]   = GATE(STS_IG32, KSEL(SEG_KCODE), __am_irq0,   DPL_KERN);
   // ---------------------- system call ----------------------------
-  printf("**************************\n?");
+  printf("**************************\n");
   idt[0x80] = GATE(STS_TG32, KSEL(SEG_KCODE), __am_vecsys, DPL_USER);
-  printf("$$$$$$$$$$$$$$$$$$$$$$$$$$\n?");
+  printf("$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
   idt[0x81] = GATE(STS_TG32, KSEL(SEG_KCODE), __am_vectrap, DPL_KERN);
 
   set_idt(idt, sizeof(idt));

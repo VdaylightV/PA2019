@@ -60,7 +60,6 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
 	ramdisk_read(&segment, elf.e_phoff, elf.e_phentsize*elf.e_phnum);
 
-_yield();
 	for(int i = 0; i < elf.e_phnum; i ++) {
 	    if(segment[i].p_type == PT_LOAD) {
 		      //size_t content[segment[i].p_filesz];
@@ -78,6 +77,7 @@ _yield();
 			
 		}
 	}
+_yield();
 
 
 /*          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);

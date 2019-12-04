@@ -14,6 +14,15 @@ size_t ramdisk_read(void *buf, size_t offset, size_t len);
 size_t get_ramdisk_size();
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
+  /*
+   uint32_t offset1 = vaddr_read(cpu.idtr.base + (NO) * 8, 4);
+   uint32_t offset2 = vaddr_read(cpu.idtr.base + (NO) * 8 + 4, 4);
+   printf("addr offset1:0x%x\n", cpu.idtr.base + (NO) * 8);
+   printf("addr offset2:0x%x\n", cpu.idtr.base + (NO) * 8 + 4);
+   printf("offset1:0x%x\n", offset1);
+   printf("offset2:0x%x\n", offset2);
+   */
+
  /* Elf_Ehdr elf_ehdr;
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, (elf_ehdr.e_phnum - 1) * elf_ehdr.e_phentsize);
@@ -43,7 +52,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	}
   }
 *********/
-
+_yield();
 //Maybe correct????
 	Elf_Ehdr elf;
 	ramdisk_read(&elf, 0, sizeof(elf));

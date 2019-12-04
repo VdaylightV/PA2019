@@ -10,6 +10,7 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    rtl_push(&ret_addr);
 
    s0 = cpu.idtr.base;
+   printf("address:0x%x\n", s0);
 
    s1 = vaddr_read(s0 + NO * 8, 4);
    s2 = vaddr_read(s0 + NO * 8 + 4, 4);

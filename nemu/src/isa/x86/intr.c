@@ -9,18 +9,24 @@ void raise_intr(uint32_t NO, vaddr_t ret_addr) {
    //rtl_push(&cpu.pc);
    rtl_push(&ret_addr);
 
-   s0 = cpu.idtr.base;
-   printf("address:0x%x\n", s0);
+   uint32_t addr;
+   uint32_t offset1;
+   uint32_t offset2;
 
+  /*
    s1 = vaddr_read(s0 + NO * 8, 4);
    s2 = vaddr_read(s0 + NO * 8 + 4, 4);
+  */
 
-   s0 = ((s2 & 0xffff0000) | (s1 & 0x0000ffff));
-   printf("address:0x%x\n", s1);
-   printf("address:0x%x\n", s2);
-   printf("address:0x%x\n", s0);
+   offset1 = vaddr_read(cpu.idtr.base + NO * 8, 4);
+   offset2 = vaddr_read(cpu.idtr.base + NO * 8 + 4, 4);
    
-   rtl_j(s0);
+   addr = ((offset2 & 0xffff0000) + (offset1 & 0x0000ffff));
+   printf("address:0x%x\n", offset1);
+   printf("address:0x%x\n", offset2);
+   printf("address:0x%x\n", addr);
+   
+   rtl_j(addr);
 
 }
 

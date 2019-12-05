@@ -28,8 +28,8 @@ _Context* __am_irq_handle(_Context *c) {
     _Event ev = {0};
     switch (c->irq) {
       case 0x81: {ev.event = _EVENT_YIELD; /*printf("???????????????%d\n",ev.event);*/ break;}
-      //case 0x80: {ev.event = _EVENT_SYSCALL; /*printf("???????????????%d\n",ev.event);*/ break;}
-      default:{/*printf("############%d\n", c->irq);*/ev.event = _EVENT_ERROR; break;}
+      case 0x80: {ev.event = _EVENT_SYSCALL; /*printf("???????????????%d\n",ev.event);*/ break;}
+      default:{printf("############%d\n", c->irq);ev.event = _EVENT_ERROR; break;}
     }
 
     next = user_handler(ev, c);

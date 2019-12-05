@@ -4,7 +4,7 @@ void raise_intr(uint32_t, vaddr_t);
 
 make_EHelper(lidt) {
   //TODO();
-  /*
+  
   s0 = id_dest->addr;
   if(id_dest->width == 2) {
       cpu.idtr.base = vaddr_read(s0 + 2, 3);
@@ -14,20 +14,22 @@ make_EHelper(lidt) {
       cpu.idtr.base = vaddr_read(s0 + 2, 4);
       cpu.idtr.limit = vaddr_read(s0, 2);
   }
-  */
+  
   /*
   rtl_li(&s0, id_dest->addr);
   rtl_li(&cpu.idtr.limit, vaddr_read(s0, 2));
   rtl_li(&cpu.idtr.base, vaddr_read(s0+2,4));
   */
-
+  /*
   rtl_lm((uint32_t*)&cpu.idtr.limit, &id_dest->addr, 2);
-  printf("id_dest->addr:0x%x\n", id_dest->addr);
+  //printf("id_dest->addr:0x%x\n", id_dest->addr);
   printf("limit:0x%x\n", cpu.idtr.limit);
   rtl_addi(&s0, &id_dest->addr, 2);
-  printf("id_dest->addr + 2:0x%x\n", s0);
+  //printf("id_dest->addr + 2:0x%x\n", s0);
   rtl_lm(&cpu.idtr.base, &s0, 4);
-  printf("base:0x%x\n", cpu.idtr.base);
+  //printf("base:0x%x\n", cpu.idtr.base);
+  */
+
   print_asm_template1(lidt);
 }
 

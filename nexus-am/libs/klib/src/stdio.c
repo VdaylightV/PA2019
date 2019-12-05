@@ -152,7 +152,7 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
-  char out[128];
+  char out[512];
 
   char* start = &out[0];
 
@@ -290,7 +290,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			case '0':
 				{    
                     char fill_content[2] = "0";
-					char whole_content[32] = "";
+					char whole_content[128] = "";
 
 					char* head = &whole_content[0];
 
@@ -320,7 +320,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
                     size_t width = str_to_int(&width_num[0]);
 
-					char temp[32] = "";
+					char temp[128] = "";
 					char* p_temp = &temp[0];
 
 					char *result = NULL;
@@ -451,7 +451,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		   case 'p':
 			     {
 				    int val = va_arg(ap, int);
-				    char temp[32] = "";
+				    //char temp[65535] = "";
+					char temp[32] = "";
 				    char *head = temp;
 
 					char *result = to_hex(val, head);

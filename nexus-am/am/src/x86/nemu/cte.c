@@ -27,8 +27,8 @@ _Context* __am_irq_handle(_Context *c) {
   if (user_handler) {
     _Event ev = {0};
     switch (c->irq) {
-      case 129: {ev.event = _EVENT_YIELD; /*printf("???????????????%d\n",ev.event);*/ break;}
-      default:{printf("############%d\n", c->irq); ev.event = _EVENT_ERROR; break;}
+      case 0x81: {ev.event = _EVENT_YIELD; /*printf("???????????????%d\n",ev.event);*/ break;}
+      default:{/*printf("############%d\n", c->irq);*/ev.event = _EVENT_ERROR; break;}
     }
 
     next = user_handler(ev, c);
@@ -42,7 +42,7 @@ _Context* __am_irq_handle(_Context *c) {
 
 int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   static GateDesc idt[NR_IRQ];
-  printf("??????????????????????????\n?");
+  //printf("??????????????????????????\n?");
 
   // initialize IDT
   for (unsigned int i = 0; i < NR_IRQ; i ++) {
@@ -52,9 +52,9 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   // ----------------------- interrupts ----------------------------
   idt[32]   = GATE(STS_IG32, KSEL(SEG_KCODE), __am_irq0,   DPL_KERN);
   // ---------------------- system call ----------------------------
-  printf("**************************\n");
+  //printf("**************************\n");
   idt[0x80] = GATE(STS_TG32, KSEL(SEG_KCODE), __am_vecsys, DPL_USER);
-  printf("$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+  //printf("$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
   idt[0x81] = GATE(STS_TG32, KSEL(SEG_KCODE), __am_vectrap, DPL_KERN);
 
   set_idt(idt, sizeof(idt));
@@ -70,7 +70,7 @@ _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
 }
 
 void _yield() {
-  printf("What?***************************************************************************************************************************************************************************\n");
+  //printf("What?***************************************************************************************************************************************************************************\n");
   asm volatile("int $0x81");
 }
 

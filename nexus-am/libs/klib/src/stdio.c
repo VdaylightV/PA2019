@@ -430,7 +430,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		   case 'x':
 				{ 
 				 int val = va_arg(ap, int);
-				 char temp[128] = "";
+				 char temp[65535] = "";
 				 char *head = temp;
 
 				 char *result = to_hex(val, head);

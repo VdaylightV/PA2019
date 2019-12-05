@@ -27,32 +27,32 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, (elf_ehdr.e_phnum - 1) * elf_ehdr.e_phentsize);
 */
-/**My codes***** 
+//**My codes***** 
   Elf_Ehdr elf_ehdr;
   Elf_Phdr elf_phdr;
 
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   
   for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
-	  printf("num:%d\n",elf_ehdr.e_phnum);
-	  printf("i:%d\n",i);
+	  //printf("num:%d\n",elf_ehdr.e_phnum);
+	  //printf("i:%d\n",i);
       ramdisk_read(&elf_phdr, i * elf_ehdr.e_phentsize + elf_ehdr.e_phoff, elf_ehdr.e_phentsize);
 	  if(elf_phdr.p_type == PT_LOAD) {
-		  uint32_t* ptr = (uint32_t*)elf_phdr.p_vaddr;
-		  size_t buf[elf_phdr.p_filesz];
-	      ramdisk_read(buf, elf_phdr.p_offset, elf_phdr.p_filesz);
+		  //uint32_t* ptr = (uint32_t*)elf_phdr.p_vaddr;
+		  //size_t buf[elf_phdr.p_filesz];
+	    ramdisk_read((void*)elf_phdr.p_vaddr, elf_phdr.p_offset, elf_phdr.p_filesz);
 
-		  memcpy((uint32_t*)ptr, buf, elf_phdr.p_filesz);
+		  //memcpy((uint32_t*)ptr, buf, elf_phdr.p_filesz);
 
-		  printf("?????????????????????\n");
+		  //printf("?????????????????????\n");
 	      //ramdisk_read(ptr, elf_phdr.p_offset, elf_phdr.p_filesz);
 		  if(elf_phdr.p_memsz > elf_phdr.p_filesz) {
-		      memset((char*)(ptr + elf_phdr.p_filesz), 0, elf_phdr.p_memsz - elf_phdr.p_filesz);
+		      memset((char*)(elf_phdr.p_vaddr + elf_phdr.p_filesz), 0, elf_phdr.p_memsz - elf_phdr.p_filesz);
 		  }
 	}
   }
-*********/
-//Maybe correct????
+//*********/
+/*/Maybe correct????
 	Elf_Ehdr elf;
 	ramdisk_read(&elf, 0, sizeof(elf));
 
@@ -77,7 +77,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 			
 		}
 	}
-
+*/
 
 /*          printf("Start of ELF_Header:0x%08x\n",&elf_ehdr);
           printf("Offset:0x%08x\n",elf_phdr.p_offset);
@@ -132,7 +132,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   memcpy((char*)0x03008000, buf2_head, 0x008d8);
   memset((char*)(0x03008000+0x00868), '0', 0x00071);
 */
-  return elf.e_entry;
+  return elf_ehdr.e_entry;
   
 }
 

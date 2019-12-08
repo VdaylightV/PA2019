@@ -20,9 +20,10 @@ int sys_write(_Context *c) {
    return temp[2]; 
 }
 
-/*int sys_brk(_Context *c) {
-
-}*/
+int sys_brk(_Context *c) {
+  
+    return 0;
+}
 
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];

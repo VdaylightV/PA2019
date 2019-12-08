@@ -73,10 +73,11 @@ int _write(int fd, void *buf, size_t count) {
   //在return0时会输出很多“HHHHHH”
 }
 
-void *_sbrk(intptr_t increment) {
-  extern char _end;
 
-  intptr_t end = (intptr_t)(&_end);
+extern char _end;
+intptr_t end = (intptr_t)(&_end);
+
+void *_sbrk(intptr_t increment) {
   intptr_t program_break = end + increment;
      
   int ret = _syscall_(SYS_brk, program_break, 0, 0);

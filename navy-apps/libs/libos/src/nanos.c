@@ -76,6 +76,7 @@ int _write(int fd, void *buf, size_t count) {
 
 extern char _end;
 intptr_t end = (intptr_t)(&_end);
+//放到_sbrk里会导致end时局部变量，就无法修改program_break的值
 
 void *_sbrk(intptr_t increment) {
   intptr_t program_break = end + increment;

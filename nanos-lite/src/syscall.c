@@ -8,7 +8,7 @@ int sys_write(_Context *c) {
   temp[1] = c->GPR3;
   temp[2] = c->GPR4;
   
-  Log("abcdefghijklmnopqrstuvwxyz");
+  //Log("abcdefghijklmnopqrstuvwxyz");
 
   if(temp[0] == 1 || temp[0] == 2) {
     char *buf = (char*) temp[1];

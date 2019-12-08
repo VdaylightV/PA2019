@@ -21,7 +21,7 @@ struct _Context {
 };
 
 #define GPR1 eax
-#define GPR2 eip
+#define GPR2 ebx
 #define GPR3 eip
 #define GPR4 eip
 #define GPRx eip

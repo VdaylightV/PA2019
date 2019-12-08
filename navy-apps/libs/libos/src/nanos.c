@@ -80,7 +80,7 @@ void *_sbrk(intptr_t increment) {
   intptr_t program_break = _end + increment;
      
   _syscall_(SYS_brk, program_break, 0, 0);
-  return _end;
+  return (void*)_end;
   //return (void *)-1;
 }
 

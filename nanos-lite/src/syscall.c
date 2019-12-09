@@ -1,12 +1,14 @@
 #include "common.h"
 #include "syscall.h"
 #include "klib.h"
+#include "proc.h"
 
 int fs_open(const char *pathname);
 size_t fs_read(int fd, void *buf, size_t count);
 int fs_close(int fd);
 size_t fs_lseek(int fd, size_t offset, int whence);
 size_t fs_write(int fd, const void *buf, size_t count);
+void naive_uload(PCB *pcb, const char *filename);
 
 size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
@@ -75,7 +77,7 @@ _Context* do_syscall(_Context *c) {
   
   switch (a[0]) {
 	case SYS_yield: {_yield(); c->GPRx = 0; break;}
-    case SYS_exit: {_halt(c->GPR2); break;}
+    case SYS_exit: {naive_uload(NULL, "/bin/text")/*_halt(c->GPR2)*/; break;}
     case SYS_write: { c->GPRx = sys_write(c); break;}
     case SYS_brk: { c->GPRx = sys_brk(c); break;}
     case SYS_open: { c->GPRx = sys_open(c); break;}

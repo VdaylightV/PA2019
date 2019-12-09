@@ -74,7 +74,7 @@ _Context* do_syscall(_Context *c) {
   a[0] = c->GPR1;
   
   switch (a[0]) {
-	  case SYS_yield: {_yield(); c->GPRx = 0; break;}
+	case SYS_yield: {_yield(); c->GPRx = 0; break;}
     case SYS_exit: {_halt(c->GPR2); break;}
     case SYS_write: { c->GPRx = sys_write(c); break;}
     case SYS_brk: { c->GPRx = sys_brk(c); break;}

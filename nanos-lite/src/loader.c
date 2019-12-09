@@ -12,6 +12,12 @@
 
 size_t ramdisk_read(void *buf, size_t offset, size_t len);
 size_t get_ramdisk_size();
+size_t fs_write(int fd, const void *buf, size_t count);
+size_t fs_read(int fd, void *buf, size_t count);
+size_t fs_lseek(int fd, size_t offset, int whence);
+int fs_close(int fd);
+int fs_open(const char *pathname);
+
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
   /*
@@ -27,7 +33,37 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   ramdisk_read(&elf_ehdr, 0, sizeof(elf_ehdr));
   ramdisk_read((uint32_t*)elf_ehdr.e_entry, 0, (elf_ehdr.e_phnum - 1) * elf_ehdr.e_phentsize);
 */
-//**My codes***** 
+//**My codes 2st Version*****
+  int fd = fs_open(filename);
+  
+   
+  Elf_Ehdr elf_ehdr;
+  Elf_Phdr elf_phdr;
+
+  fs_read(fd, &elf_ehdr, sizeof(elf_ehdr));
+  
+  for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
+	  //printf("num:%d\n",elf_ehdr.e_phnum);
+	  //printf("i:%d\n",i);
+
+      fs_lseek(fd,  i * elf_ehdr.e_phentsize + elf_ehdr.e_phoff, SEEK_SET);
+      fs_read(fd, &elf_phdr, elf_ehdr.e_phentsize);
+	  if(elf_phdr.p_type == PT_LOAD) {
+		  //uint32_t* ptr = (uint32_t*)elf_phdr.p_vaddr;
+		  //size_t buf[elf_phdr.p_filesz];
+      fs_lseek(fd, elf_phdr.p_offset, SEEK_SET);
+	    fs_read(fd, (void*)elf_phdr.p_vaddr, elf_phdr.p_filesz);
+
+		  //memcpy((uint32_t*)ptr, buf, elf_phdr.p_filesz);
+
+		  //printf("?????????????????????\n");
+	      //ramdisk_read(ptr, elf_phdr.p_offset, elf_phdr.p_filesz);
+		  if(elf_phdr.p_memsz > elf_phdr.p_filesz) {
+		      memset((char*)(elf_phdr.p_vaddr + elf_phdr.p_filesz), 0, elf_phdr.p_memsz - elf_phdr.p_filesz);
+		  }
+	}
+  }
+/**My codes 1st Version***** 
   Elf_Ehdr elf_ehdr;
   Elf_Phdr elf_phdr;
 
@@ -51,7 +87,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 		  }
 	}
   }
-//*********/
+*********/
 /*/Maybe correct????
 	Elf_Ehdr elf;
 	ramdisk_read(&elf, 0, sizeof(elf));

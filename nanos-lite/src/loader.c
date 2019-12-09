@@ -41,7 +41,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   Elf_Phdr elf_phdr;
 
   fs_read(fd, &elf_ehdr, sizeof(elf_ehdr));
-  
+    
   for(uint16_t i = 0; i < elf_ehdr.e_phnum; i ++) {
 	  //printf("num:%d\n",elf_ehdr.e_phnum);
 	  //printf("i:%d\n",i);

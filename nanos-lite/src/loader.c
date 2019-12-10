@@ -92,7 +92,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 //Maybe correct????
     int fd = fs_open(filename);
 	Elf_Ehdr elf;
-	ramdisk_read(&elf, 0, sizeof(elf));
+	fs_read(fd, &elf, sizeof(elf));
 
 	Elf_Phdr segment[elf.e_phnum];
     fs_lseek(fd, elf.e_phoff, SEEK_SET);

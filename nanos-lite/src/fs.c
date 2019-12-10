@@ -45,7 +45,7 @@ int fs_open(const char *pathname) {
       return i;
     }
   }
-  assert(i != NR_FILES);
+  assert(0);
   return -1;
 }
 

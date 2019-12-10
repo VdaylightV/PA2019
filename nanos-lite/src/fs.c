@@ -77,9 +77,9 @@ size_t fs_read(int fd, void *buf, size_t count) {
 
  size_t fs_lseek(int fd, size_t offset, int whence) {
    switch(whence) {
-     case SEEK_SET: {file_table[fd].open_offset = offset; return file_table[fd].open_offset;}
-     case SEEK_CUR: {file_table[fd].open_offset += offset; return file_table[fd].open_offset;}
-     case SEEK_END: {file_table[fd].open_offset = offset + file_table[fd].size; return file_table[fd].open_offset;}
+     case SEEK_SET: {assert(offset <= file_table[fd].size); file_table[fd].open_offset = offset; return file_table[fd].open_offset;}
+     case SEEK_CUR: {assert(file_table[fd].open_offset + offset <= file_table[fd].size); file_table[fd].open_offset += offset; return file_table[fd].open_offset;}
+     case SEEK_END: {assert(offset <= 0); file_table[fd].open_offset = offset + file_table[fd].size; return file_table[fd].open_offset;}
      default: assert(0);
    }
 

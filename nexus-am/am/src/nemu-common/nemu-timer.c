@@ -2,23 +2,14 @@
 #include <amdev.h>
 #include <nemu.h>
 
-_DEV_TIMER_UPTIME_t last_uptime;
-_DEV_TIMER_UPTIME_t start_time;
-
+static uint32_t start_time;
 size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_TIMER_UPTIME: {
       _DEV_TIMER_UPTIME_t *uptime = (_DEV_TIMER_UPTIME_t *)buf;
-	  uptime->lo = inl(0x48);
-	  uptime->lo = start_time.lo;
-	  if (uptime->lo < last_uptime.lo) {
-	     uptime->hi = ++last_uptime.hi;
-		 last_uptime.lo = uptime->lo;
-	  }
-     /* uint64_t time = inl(0x48) - start_time;
+      uint64_t time = inl(0x48) - start_time;
 	  uptime->hi = (uint32_t)(time >> 32);
       uptime->lo = time;
-	 */
       return sizeof(_DEV_TIMER_UPTIME_t);
     }
     case _DEVREG_TIMER_DATE: {
@@ -36,6 +27,5 @@ size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
 }
 
 void __am_timer_init() {
-    start_time.lo = inl(0x48);
-
+    start_time = inl(0x48);
 }

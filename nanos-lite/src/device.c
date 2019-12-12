@@ -22,7 +22,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
    int key = read_key();
    if(key == _KEY_NONE) {
       uint32_t time = uptime();
-	   int length = sprintf((char*)buf, "t %d\n", time);
+	   sprintf((char*)buf, "t %d\n", time);
+	   int length = strlen(buf);
 	   // return sprintf((char*)buf, "t %d\n", uptime());
 	   return length;
    } 
@@ -42,7 +43,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   {
 	       flag = 'u';
 	   }
-	   int length = sprintf((char*)buf, "k%c %s\n", flag, key_name);
+	   sprintf((char*)buf, "k%c %s\n", flag, key_name);
+	   int length = strlen(buf);
        return length;
 	   
    }

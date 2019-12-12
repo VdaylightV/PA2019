@@ -2,6 +2,7 @@
 #include <amdev.h>
 
 size_t serial_write(const void *buf, size_t offset, size_t len) {
+
   char* temp = (char*) buf;
   for(int i = 0; i < len; i ++) {
       _putc(temp[i]);
@@ -18,7 +19,26 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  return 0;
+   int key = read_key();
+   if(key == _KEY_NONE) {
+       uint32_t time = uptime();
+	   return time;
+   } 
+
+   else {
+       char flag;
+	   const char *key_name = keyname[key & 0x7fff];
+	   printf("????????%p\n", key_name);
+	   if ((key & 0x8000) == 0x8000) {
+	       flag = 'd';
+	   }
+	   else {
+	       flag = 'u';
+	   }
+       return flag;
+   }
+
+
 }
 
 static char dispinfo[128] __attribute__((used)) = {};

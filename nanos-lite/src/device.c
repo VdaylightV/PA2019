@@ -34,15 +34,14 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   }
 	   */
 	   return sprintf((char*)buf, "t %d\n", uptime());
-	   int length = strlen(buf);
-	   return length;
+//	   int length = strlen(buf);
+//	   return length;
    } 
 
    else {
 	   
 	   char status = key & 0x8000 ? 'd': 'u';
-	   sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
-	   
+	   return sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
 	   
        //char flag;
 	   /*
@@ -67,8 +66,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 		   i ++;
 	   }
 	   */
-	   int length = strlen(buf);
-       return length;
+	  // int length = strlen(buf);
+      // return length;
 	   
    }
 

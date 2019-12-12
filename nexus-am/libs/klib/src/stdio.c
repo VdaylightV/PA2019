@@ -4,7 +4,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 //static int i = 0;
-
+/*
 int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
@@ -13,6 +13,7 @@ int fac(int base, int exp) {
 	return result;
 
 }
+
 
 char* to_hex(int value, char* str) {
 
@@ -73,21 +74,8 @@ char* to_hex(int value, char* str) {
 
     return str;	
 
-/*
-    int temp0 = value;
-	int len = 1;
-	while(
-       temp / 16 > 0;
-	   temp = temp / 16;
-	   len ++;
-		 }
-
-	int temp1 = value;
-    char str[256];
-
-	int bit;
-*/
 }
+
 
 char *int_to_str(int val, char* str) {
     char *temp = str;
@@ -127,32 +115,15 @@ size_t str_to_int(char* str) {
 	}
 	return value;
 }
-
-int printf(const char *fmt, ...) {
-/*
-	size_t len = strlen(fmt);
-
-    size_t i = 0;    
-
-	while(i < len) {
-	    if(fmt[i] != '%') {
-		    _putc(fmt[i]);
-			i ++;
-			continue;
-		}
-
-       char c = fmt[i];
-       const char* temp_fmt = &fmt[i];
-	   temp_ftm ++;
-
-	}
 */
 
-
+/*
+int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
   char out[158];
+
 
   char* start = &out[0];
 
@@ -161,10 +132,6 @@ int printf(const char *fmt, ...) {
   va_start(ap, fmt);
  
   vsprintf(start, fmt, ap);
-
-//  _putc('\n');
-// _putc(i + '0');
-//  _putc('\n');
 
   va_end(ap);
 
@@ -410,6 +377,115 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 	*temp_out = '\0';
 
   return 0;
+
+}
+*/
+
+void my_itoa(char *str, unsigned digit, int base) {
+    int count = 0;
+	char buffer[30];
+	char table[] = "0123456789abcde";
+	    
+	if (digit == 0) {
+	    str[0] = '0';
+		str[1] = '\0';
+		return;
+	}
+
+	while (digit != 0) {
+	    buffer[count] = table[digit % base];
+		digit /= base;
+		count ++;
+	}
+
+	for(int i = 0; i < 0; i ++) {
+		str[i] = buffer[count - i - 1];
+	}
+	str[count] = '\0';
+	return;
+}
+
+int printf(const char *fmt, ...) {
+    char buf[200];
+	va_list(ap);
+	va_start(ap, fmt);
+	int res = vsprintf(buf, fmt, ap);
+	for(int i = 0; i < res; i ++) {
+	    _putc(buf[i]);
+	}
+	return res;
+}
+
+int vsprintf(char *out, const char *fmt, va_list ap){
+	*out = '\0';
+	int index = 0;
+	int count = 0;
+	char *str;
+	char val_str[50];
+	char val_char;
+
+	int val = 0;
+
+	for(index = 0; fmt[index] != '\0'; index ++) {
+	    if(fmt[index] != '%') {
+		    out[count] = fmt[index];
+			count ++;
+			continue;
+		}
+
+		index ++;
+
+		switch(fmt[index]) {
+		    case 's':
+				for(str = va_arg(ap, char*); *str!='\0'; str++) {
+				    out[count] = *str;
+					count ++;
+				}
+				break;
+
+            case 'c':
+                val_char = va_arg(ap, int);
+				out[count] = (char)val_char;
+				count ++;
+				break;
+
+		    case 'd':
+				val = va_arg(ap, int);
+				my_itoa(val_str, val, 10);
+				for(int i = 0; val_str[i] != '\0'; i ++) {
+				    out[count] = val_str[i];
+					count ++;
+				}
+				break;
+
+			case 'p':
+				val = va_arg(ap, uint32_t);
+				out[count] = '0'; count ++;
+				out[count] = 'x'; count ++;
+				my_itoa(val_str, val, 16);
+				for(int i = 0; val_str[i] != '\0'; i ++) {
+				    out[count] = val_str[i];
+					count ++;
+				}
+				break;
+
+			case 'x':
+				val = va_arg(ap, uint32_t);
+				out[count] = '0'; count ++;
+				out[count] = 'x'; count ++;
+				my_itoa(val_str, val, 16);
+				for(int i = 0; val_str[i] != '\0'; i ++) {
+				    out[count] = val_str[i];
+					count ++;
+				}
+				break;
+
+			default: assert(0);
+		}
+	}
+
+	out[count] = '\0';
+	return count;
 
 }
 

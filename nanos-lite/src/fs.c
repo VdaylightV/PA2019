@@ -40,7 +40,7 @@ static Finfo file_table[] __attribute__((used)) = {
 };
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
-
+/*
 int fs_open(const char *pathname) {
   int i = 0;
   for(; i < NR_FILES; i ++) {
@@ -93,9 +93,9 @@ size_t fs_read(int fd, void *buf, size_t count) {
 int fs_close(int fd) {
      return 0;
 }
+*/
 
-
-/*替换调试法
+//*替换调试法
 int fs_open(const char *pathname) {
     int i;
 	for(i = 0; i < NR_FILES; i ++) {
@@ -118,12 +118,12 @@ int fs_read(int fd, void* buf, size_t len) {
 		return ret;
 	}
 
-//	else {
+	else {
 	  size_t count = file_table[fd].open_offset + len >= file_table[fd].size ? file_table[fd].size - file_table[fd].open_offset : len;
 		ramdisk_read(buf, file_table[fd].open_offset + file_table[fd].disk_offset, count);
 		file_table[fd].open_offset += count;
 		return count;
-//	}
+	}
 }
 
 int fs_write(int fd, void* buf, size_t len) {
@@ -133,12 +133,12 @@ int fs_write(int fd, void* buf, size_t len) {
 		return ret;
 	}
 
-//	else {
+	else {
     size_t count = file_table[fd].open_offset + len >= file_table[fd].size ? file_table[fd].size - file_table[fd].open_offset : len;
 		ramdisk_write(buf, file_table[fd].open_offset + file_table[fd].disk_offset, count);
 		file_table[fd].open_offset += count;
 		return count;
-//	}
+	}
 }
 __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
   switch(whence) {
@@ -165,7 +165,7 @@ __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
   
 
 }
-*/
+//*/
 //
 void init_fs() {
   // TODO: initialize the size of /dev/fb

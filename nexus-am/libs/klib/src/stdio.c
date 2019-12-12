@@ -4,18 +4,34 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 //static int i = 0;
-/*
-int fac(int base, int exp) {
+//#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
+//#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
+
+
+size_t str_to_int(char* str) {
+    size_t value = 0;
+	while(*str != '\0') {
+		value = value * 10;
+		value += ((*str) - '0');
+		str ++;
+	}
+	return value;
+}
+
+
+
+   int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
 	    result *= base;
 	}
 	return result;
-
 }
 
 
+
 char* to_hex(int value, char* str) {
+	char table[17] = "0123456789abcdef";
 
 	unsigned int temp0 = (unsigned int)value;
 
@@ -31,7 +47,9 @@ char* to_hex(int value, char* str) {
 	while(temp1 / 16 > 0) {
 	    bit = temp1 % 16;
 		temp1 = temp1 / 16;
-		char c = '0' + bit;
+		//char c = '0' + bit;
+		str[len - count - 1] = table[bit];
+		/*
 		if ( c >= '0' && c <= '9' ) {
 		    str[len - count - 1] = c;
 		}
@@ -47,10 +65,13 @@ char* to_hex(int value, char* str) {
                 default: {assert(0); break;}
 		        }
 		}
+		*/
 
 		count ++;
 	}
 
+	str[0] = table[temp1];
+	/*
 	char first_c = '0' + temp1;
 	if( first_c >= '0' && first_c <= '9') {
 	    str[0] = first_c;
@@ -68,6 +89,7 @@ char* to_hex(int value, char* str) {
 		
 		}
 	}
+	*/
 
 	
 	str[len] = '\0';
@@ -106,18 +128,9 @@ char *int_to_str(int val, char* str) {
 
 }
 
-size_t str_to_int(char* str) {
-    size_t value = 0;
-	while(*str != '\0') {
-		value = value * 10;
-		value += ((*str) - '0');
-		str ++;
-	}
-	return value;
-}
-*/
 
-/*
+
+
 int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
@@ -379,9 +392,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-*/
 
 
+/*
 void my_itoa(char *str, unsigned digit, int base) {
     int count = 0;
 	char buffer[30];
@@ -490,6 +503,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 
 }
 
+*/
 int sprintf(char *out, const char *fmt, ...) {
   
   va_list ap;
@@ -502,7 +516,6 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
-
 /*
 int printf(const char *fmt, ...) {
     va_list ap;

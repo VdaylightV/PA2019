@@ -19,17 +19,17 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-   //int key = read_key();
+   int key = read_key();
    //if(key == _KEY_NONE) {
-       uint32_t time = uptime();
-	   int length = sprintf((char*)buf, "t %d\n", time);
-	   return length;
+   //    uint32_t time = uptime();
+//	   int length = sprintf((char*)buf, "t %d\n", time);
+//	   return length;
   // } 
 
    //else {
 	   
-//	   char status = key & 0x8000 ? 'd': 'u';
-//	   return sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
+	   char status = key & 0x8000 ? 'd': 'u';
+	   return sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
 	   
 	  /* 
        char flag;

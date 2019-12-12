@@ -4,7 +4,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 //static int i = 0;
-/*
+
 int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
@@ -115,9 +115,9 @@ size_t str_to_int(char* str) {
 	}
 	return value;
 }
-*/
 
-/*
+
+
 int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
@@ -379,7 +379,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-*/
+
 
 /*
 void my_itoa(char *str, unsigned digit, int base) {
@@ -489,7 +489,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 	return count;
 
 }
-
+*/
 int sprintf(char *out, const char *fmt, ...) {
   
   va_list ap;
@@ -502,8 +502,8 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
-*/
 
+/*
 int printf(const char *fmt, ...) {
     va_list ap;
 	va_start(ap, fmt);
@@ -639,7 +639,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 	return cnt-1;
 #undef output
 }
-
+*/
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
 }

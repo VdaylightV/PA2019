@@ -27,16 +27,16 @@ size_t events_read(void *buf, size_t offset, size_t len) {
    } 
 
    else {
-       char flag;
-	   const char *key_name = keyname[key & 0x7fff];
-	   if ((key & 0x8000) == 0x8000) {
-	       flag = 'd';
-	   }
-	   else 
-	   {
-	       flag = 'u';
-	   }
-	   int length = sprintf(buf, "k%c %s\n", flag, key_name);
+       //char flag;
+	   //const char *key_name = keyname[key & 0x7fff];
+	   //if ((key & 0x8000) == 0x8000) {
+	   //    flag = 'd';
+	   //}
+	   //else 
+	  // {
+	   //    flag = 'u';
+	   //}
+	   int length = sprintf(buf, "????????");
        return length;
    }
 

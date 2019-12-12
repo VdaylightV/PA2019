@@ -24,6 +24,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
       uint32_t time = uptime();
 	   sprintf((char*)buf, "t %d\n", time);
 	   int i = 0;
+	   _putc('\n');
 	   while(((char*)(buf))[i] != '\0') {
 	       _putc(((char*)(buf))[i]);
 		   i ++;
@@ -50,6 +51,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   }
 	   sprintf((char*)buf, "k%c %s\n", flag, key_name);
 	   int i = 0;
+	   _putc('\n');
 	   while(((char*)(buf))[i] != '\0') {
 	       _putc(((char*)(buf))[i]);
 		   i ++;

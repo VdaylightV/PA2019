@@ -21,10 +21,10 @@ static const char *keyname[256] __attribute__((used)) = {
 size_t events_read(void *buf, size_t offset, size_t len) {
    int key = read_key();
    if(key == _KEY_NONE) {
-	   char a = 't';
+	//   char a = 't';
       //uint32_t time = uptime();
-	  strcat((char*)buf, &a);
-	   //sprintf((char*)buf, "c %d", a);
+	  //strcat((char*)buf, &a);
+	  // sprintf((char*)buf, "c %d", a);
 	   /*
 	   int i = 0;
 	   _putc('\n');
@@ -33,16 +33,16 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 		   i ++;
 	   }
 	   */
+	   return sprintf((char*)buf, "t %d\n", uptime());
 	   int length = strlen(buf);
-	   // return sprintf((char*)buf, "t %d\n", uptime());
 	   return length;
    } 
 
    else {
 	   
-/*	   char status = key & 0x8000 ? 'd': 'u';
-	   return sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
-*/	   
+	   char status = key & 0x8000 ? 'd': 'u';
+	   sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
+	   
 	   
        //char flag;
 	   /*
@@ -56,8 +56,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   }
 	   */
 	   //flag = '*';
-	   char str[3] = "##";
-	   strcat((char*)buf, str);
+	   //char str[3] = "##";
+	   //strcat((char*)buf, str);
 	   //sprintf((char*)buf, "k%c %s\n", flag, str);
 	  /*
 	   int i = 0;

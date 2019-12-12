@@ -431,7 +431,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{ 
 				 int val = va_arg(ap, int);
 				 //char temp[65535] = "";
-				 char temp[32] = "";
+				 char temp[64] = "";
 				 char *head = temp;
 
 				 char *result = to_hex(val, head);

@@ -22,20 +22,22 @@ size_t events_read(void *buf, size_t offset, size_t len) {
    int key = read_key();
    if(key == _KEY_NONE) {
        uint32_t time = uptime();
-	   return time;
+	   int length = sprintf(buf, "t %d\n", time);
+	   return length;
    } 
 
    else {
        char flag;
 	   const char *key_name = keyname[key & 0x7fff];
-	   printf("????????%p\n", key_name);
 	   if ((key & 0x8000) == 0x8000) {
 	       flag = 'd';
 	   }
-	   else {
+	   else 
+	   {
 	       flag = 'u';
 	   }
-       return flag;
+	   int length = sprintf(buf, "k%c %s\n", flag, key_name);
+       return length;
    }
 
 

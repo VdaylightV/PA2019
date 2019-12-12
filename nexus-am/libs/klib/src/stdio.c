@@ -152,7 +152,7 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
-  char out[256];
+  char out[128];
 
   char* start = &out[0];
 
@@ -320,7 +320,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
                     size_t width = str_to_int(&width_num[0]);
 
-					char temp[64] = "";
+					char temp[32] = "";
 					char* p_temp = &temp[0];
 
 					char *result = NULL;
@@ -369,7 +369,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 //				 char* fill_width = "0";
 //				 size_t len_zero = strlen(fill_width);
-                 char val_str[64] = "";
+                 char val_str[32] = "";
 
 				 char* head_val_str = &val_str[0];
 

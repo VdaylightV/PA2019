@@ -40,7 +40,7 @@ static Finfo file_table[] __attribute__((used)) = {
 };
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
-/*
+
 int fs_open(const char *pathname) {
   int i = 0;
   for(; i < NR_FILES; i ++) {
@@ -93,9 +93,9 @@ size_t fs_read(int fd, void *buf, size_t count) {
 int fs_close(int fd) {
      return 0;
 }
-*/
 
-//*替换调试法
+
+/*替换调试法
 int fs_open(const char *pathname) {
     int i;
 	for(i = 0; i < NR_FILES; i ++) {
@@ -165,7 +165,7 @@ __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
   
 
 }
-//*/
+*/
 //
 void init_fs() {
   // TODO: initialize the size of /dev/fb

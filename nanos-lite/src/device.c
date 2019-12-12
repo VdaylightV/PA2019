@@ -23,7 +23,8 @@ size_t events_read(void *buf, size_t offset, size_t len) {
    if(key == _KEY_NONE) {
 	   char a = 't';
       //uint32_t time = uptime();
-	   sprintf((char*)buf, "c %d", a);
+	  strcat((char*)buf, &a);
+	   //sprintf((char*)buf, "c %d", a);
 	   /*
 	   int i = 0;
 	   _putc('\n');
@@ -43,7 +44,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   return sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
 */	   
 	   
-       char flag;
+       //char flag;
 	   /*
 	   const char *key_name = keyname[key & 0x7fff];
 	   if ((key & 0x8000) == 0x8000) {
@@ -54,9 +55,10 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	       flag = 'u';
 	   }
 	   */
-	   flag = '*';
+	   //flag = '*';
 	   char str[3] = "##";
-	   sprintf((char*)buf, "k%c %s\n", flag, str);
+	   strcat((char*)buf, str);
+	   //sprintf((char*)buf, "k%c %s\n", flag, str);
 	  /*
 	   int i = 0;
 	   _putc('\n');

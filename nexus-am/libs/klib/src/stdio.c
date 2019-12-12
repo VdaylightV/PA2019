@@ -564,6 +564,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 		}
 		fill_width=0;
 		fill = ' ';
+		p ++;
 		if(*p == '0') {
 		    fill = '0';
 			++p;

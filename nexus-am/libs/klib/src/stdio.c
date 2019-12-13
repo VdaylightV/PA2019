@@ -7,7 +7,7 @@
 //#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
-
+/*
 static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
@@ -396,7 +396,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-
+*/
 
 int sprintf(char *out, const char *fmt, ...) {
   
@@ -412,7 +412,7 @@ int sprintf(char *out, const char *fmt, ...) {
 }
 
 
-/*
+
 void my_itoa(char *str, unsigned digit, int base) {
     int count = 0;
 	char buffer[30];
@@ -521,7 +521,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 
 }
 
-*/
+
 
 
 /*

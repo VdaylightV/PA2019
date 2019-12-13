@@ -8,7 +8,7 @@
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
 
-size_t str_to_int(char* str) {
+static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
 		value = value * 10;
@@ -20,7 +20,7 @@ size_t str_to_int(char* str) {
 
 
 
-   int fac(int base, int exp) {
+static inline int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
 	    result *= base;
@@ -30,7 +30,7 @@ size_t str_to_int(char* str) {
 
 
 
-char* to_hex(int value, char* str) {
+static inline char* to_hex(int value, char* str) {
 	char table[17] = "0123456789abcdef";
 
 	unsigned int temp0 = (unsigned int)value;
@@ -99,7 +99,7 @@ char* to_hex(int value, char* str) {
 }
 
 
-char *int_to_str(int val, char* str) {
+static inline char *int_to_str(int val, char* str) {
     char *temp = str;
 	int num = val;
     

@@ -179,7 +179,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			case '0':
 				{    
                     char fill_content[2] = "0";
-					char whole_content[128];
+					char whole_content[100];
 
 					char* head = &whole_content[0];
 

@@ -3,6 +3,9 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 size_t strlen(const char *s) {
+	int i = 0;
+	while(s[i] != '\0') ++i;
+	return i;
 /******GC***
   size_t count = 0;
   while(s[count] != '\0') {
@@ -12,13 +15,13 @@ size_t strlen(const char *s) {
   return count;
 ************
 */
-
+/*
     size_t size = 0;
 	while(*(s++)) {
 	    size ++;
 	}
 	return size;
-
+*/
 }
 
 char *strcpy(char* dst,const char* src) {

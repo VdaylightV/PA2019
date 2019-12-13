@@ -19,7 +19,7 @@ static inline size_t str_to_int(char* str) {
 }
 
 
-/*
+
 static inline int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
@@ -127,7 +127,7 @@ static inline char *int_to_str(int val, char* str) {
 	return str;
 
 }
-*/
+
 
 
 
@@ -158,7 +158,7 @@ int printf(const char *fmt, ...) {
 }
 
 
-/*
+
 int vsprintf(char *out, const char *fmt, va_list ap) {
 	char *temp_out = out;
 
@@ -176,7 +176,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		//此时temp_out所指向的地方就是需要填参数的地方
 
 		switch(*fmt) {
-			case '0':
+/*			case '0':
 				{    
                     char fill_content[2] = "0";
 					char whole_content[100];
@@ -251,7 +251,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					break;
 
 				}
-
+*/
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);
@@ -396,7 +396,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-*/
+
 
 int sprintf(char *out, const char *fmt, ...) {
   
@@ -413,6 +413,7 @@ int sprintf(char *out, const char *fmt, ...) {
 
 
 
+/*
 void my_itoa(char *str, unsigned digit, int base) {
     int count = 0;
 	char buffer[30];
@@ -436,7 +437,6 @@ void my_itoa(char *str, unsigned digit, int base) {
 	str[count] = '\0';
 	return;
 }
-/*
 int printf(const char *fmt, ...) {
     char buf[200];
 	va_list(ap);
@@ -448,6 +448,7 @@ int printf(const char *fmt, ...) {
 	return res;
 }
 */
+/*
 int vsprintf(char *out, const char *fmt, va_list ap){
 	*out = '\0';
 	int index = 0;
@@ -603,7 +604,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 	return count;
 
 }
-
+*/
 
 
 

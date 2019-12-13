@@ -649,7 +649,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 			continue;
 		}
 		fill_width=0;
-		fill = ' ';
+		fill = '0';
 		//p ++;
 		if(*p == '0') {
 		    fill = '0';

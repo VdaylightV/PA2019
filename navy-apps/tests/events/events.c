@@ -18,13 +18,13 @@ int main() {
     int is_time = buf[0] == 't';
     time += is_time;
     if (!is_time) {
-//      printf("receive event: %s", buf);
-      printf("HHHHHHHHHHHHHHHHHHHHH\n", buf);
+      printf("receive event: %s", buf);
+//      printf("HHHHHHHHHHHHHHHHHHHHH\n", buf);
 //      printf("receive event: %s\n", buf);//我写的
     }
     else if (time % 1024 == 0) {
-      printf("receive time event for the th time: \n");
-//      printf("receive time event for the %dth time: %s", time, buf);
+//      printf("receive time event for the th time: \n");
+      printf("receive time event for the %dth time: %s", time, buf);
 //      printf("receive time event for the %dth time: %s\n", time, buf);//我写的
     }
   }

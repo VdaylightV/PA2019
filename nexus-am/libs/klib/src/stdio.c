@@ -135,7 +135,7 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
-  char out[158];
+  char out[200];
 
 
   char* start = &out[0];
@@ -152,7 +152,6 @@ int printf(const char *fmt, ...) {
   for( size_t i = 0; i < len; i ++ ) {
       _putc(start[i]);
   }
-
 
   return 0;
 

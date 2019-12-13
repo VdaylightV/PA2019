@@ -122,6 +122,9 @@ make_EHelper(movzx) {
 make_EHelper(movs) {
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_lm(&cpu.edi, &cpu.esi, id_dest->width);
+  s0 = id_dest->width;
+  rtl_add(&cpu.edi, &cpu.edi, &s0);  
+  rtl_add(&cpu.esi, &cpu.esi, &s0);  
   print_asm_template2(movs);
 }
 

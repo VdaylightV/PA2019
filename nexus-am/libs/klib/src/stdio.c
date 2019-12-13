@@ -135,7 +135,7 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
-  char out[280];
+  char out[270];
 
 
   char* start = &out[0];

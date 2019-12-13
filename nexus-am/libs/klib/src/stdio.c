@@ -127,7 +127,7 @@ static inline char *int_to_str(int val, char* str) {
 	return str;
 
 }
-
+*/
 
 
 
@@ -135,7 +135,7 @@ int printf(const char *fmt, ...) {
 	//我的代码：
   //i ++;
 
-  char out[190];
+  char out[200];
 
 
   char* start = &out[0];
@@ -158,7 +158,7 @@ int printf(const char *fmt, ...) {
 }
 
 
-
+/*
 int vsprintf(char *out, const char *fmt, va_list ap) {
 	char *temp_out = out;
 
@@ -436,7 +436,7 @@ void my_itoa(char *str, unsigned digit, int base) {
 	str[count] = '\0';
 	return;
 }
-
+/*
 int printf(const char *fmt, ...) {
     char buf[200];
 	va_list(ap);
@@ -447,7 +447,7 @@ int printf(const char *fmt, ...) {
 	}
 	return res;
 }
-
+*/
 int vsprintf(char *out, const char *fmt, va_list ap){
 	*out = '\0';
 	int index = 0;

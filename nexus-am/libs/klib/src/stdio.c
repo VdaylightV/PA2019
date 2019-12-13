@@ -7,7 +7,7 @@
 //#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
-/*
+
 static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
@@ -397,8 +397,20 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-*/
 
+
+int sprintf(char *out, const char *fmt, ...) {
+  
+  va_list ap;
+
+  va_start(ap, fmt);
+
+  int ret = vsprintf(out, fmt, ap);
+
+  va_end(ap);
+
+  return ret;
+}
 /*
 void my_itoa(char *str, unsigned digit, int base) {
     int count = 0;
@@ -509,21 +521,9 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 }
 
 */
+
+
 /*
-int sprintf(char *out, const char *fmt, ...) {
-  
-  va_list ap;
-
-  va_start(ap, fmt);
-
-  int ret = vsprintf(out, fmt, ap);
-
-  va_end(ap);
-
-  return ret;
-}
-*/
-
 int printf(const char *fmt, ...) {
     va_list ap;
 	va_start(ap, fmt);
@@ -660,7 +660,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 	return cnt-1;
 #undef output
 }
-
+*/
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
 }

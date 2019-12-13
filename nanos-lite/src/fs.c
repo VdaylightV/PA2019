@@ -35,7 +35,10 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, invalid_read, invalid_write},
   {"stdout", 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, invalid_read, serial_write},
-  {"/dev/events", 0, 0,events_read, invalid_write},
+  {"/dev/events", 0, 0, events_read, invalid_write},
+  {"/dev/fb", 0, 0, invalid_read, serial_write},
+  {"/dev/fbsync", 0, 0, invalid_read, serial_write},
+  {"/proc/dispinfo", 0, 0, events_read, invalid_write},
 #include "files.h"
 };
 
@@ -170,4 +173,5 @@ __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
 //
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+  
 }

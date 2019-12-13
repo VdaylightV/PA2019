@@ -256,7 +256,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{
 				 int val = va_arg(ap, int);
 
-                 char val_str[16] = "";
+                 char val_str[20] = "";
 
 				 char* head_val_str = &val_str[0];
 

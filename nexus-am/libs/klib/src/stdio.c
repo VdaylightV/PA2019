@@ -305,6 +305,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 //把字符串直接拷贝到temp_out之后
 				 for(size_t i = 0; i < len; i ++) {
 					 *temp_out = *c;
+					 _putc(*c);
 					 c ++;
 				     temp_out ++;
 				 }

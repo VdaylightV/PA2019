@@ -19,7 +19,7 @@ int main() {
     time += is_time;
     if (!is_time) {
 //      printf("receive event: %s", buf);
-      printf("HHHHHHHHHHHHHHHHHHHHH", buf);
+      printf("HHHHHHHHHHHHHHHHHHHHH\n", buf);
 //      printf("receive event: %s\n", buf);//我写的
     }
     else if (time % 1024 == 0) {

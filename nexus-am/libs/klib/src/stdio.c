@@ -257,7 +257,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{
 				 int val = va_arg(ap, int);
 
-                 char val_str[32] = "";
+                 char val_str[16] = "";
 
 				 char* head_val_str = &val_str[0];
 
@@ -266,9 +266,12 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				 //把整数直接换成字符串
 
 
-				temp_out = strcpy(temp_out, head_val_str);
+				//temp_out = strcpy(temp_out, head_val_str);
 				for(size_t i = 0; i < len; i ++) {
+					*temp_out = *head_val_str;
 					temp_out ++;
+					head_val_str ++;
+
 				}
 				//此时temp_out又指向一个空位置
 				fmt ++;

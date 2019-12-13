@@ -128,8 +128,8 @@ make_EHelper(movs) {
   rtl_lm(&cpu.edi, &cpu.esi, id_dest->width);
   s0 = cpu.edi;
   rtl_lm(&s0, &s1, id_dest->width);
-  rtl_add(&cpu.edi, &cpu.edi, &s0);  
-  rtl_add(&cpu.esi, &cpu.esi, &s0);  
+  rtl_addi(&cpu.edi, &cpu.edi, s0);  
+  rtl_addi(&cpu.esi, &cpu.esi, s0);  
   //cpu.esi += id_dest->width;
   //cpu.edi += id_dest->width;
 

@@ -7,7 +7,7 @@
 //#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
-
+/*
 static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
@@ -49,47 +49,47 @@ static inline char* to_hex(int value, char* str) {
 		temp1 = temp1 / 16;
 		//char c = '0' + bit;
 		str[len - count - 1] = table[bit];
-/*	
-		if ( c >= '0' && c <= '9' ) {
-		    str[len - count - 1] = c;
-		}
+//	
+//		if ( c >= '0' && c <= '9' ) {
+//		    str[len - count - 1] = c;
+//		}
+//
+//		else {
+//		    switch(bit) {
+//		        case 10: {c = 'a'; str[len - count - 1] = c; break;}
+//		        case 11: {c = 'b'; str[len - count - 1] = c; break;}
+//		        case 12: {c = 'c'; str[len - count - 1] = c; break;}
+//		        case 13: {c = 'd'; str[len - count - 1] = c; break;}
+//		        case 14: {c = 'e'; str[len - count - 1] = c; break;}
+//		        case 15: {c = 'f'; str[len - count - 1] = c; break;}
+//              default: {assert(0); break;}
+//	        }
+//		}
+//		
+//
 
-		else {
-		    switch(bit) {
-		        case 10: {c = 'a'; str[len - count - 1] = c; break;}
-		        case 11: {c = 'b'; str[len - count - 1] = c; break;}
-		        case 12: {c = 'c'; str[len - count - 1] = c; break;}
-		        case 13: {c = 'd'; str[len - count - 1] = c; break;}
-		        case 14: {c = 'e'; str[len - count - 1] = c; break;}
-		        case 15: {c = 'f'; str[len - count - 1] = c; break;}
-                default: {assert(0); break;}
-		        }
-		}
-		
-
-*/
 		count ++;
 	}
 	str[0] = table[temp1];
 	
 //	char first_c = '0' + temp1;
-/*	if( first_c >= '0' && first_c <= '9') {
-	    str[0] = first_c;
-	}
-
-	else{
-	    switch(temp1) {
-		    case 10: {first_c = 'a'; str[len - count - 1] = first_c; break;}
-		    case 11: {first_c = 'b'; str[len - count - 1] = first_c; break;}
-		    case 12: {first_c = 'c'; str[len - count - 1] = first_c; break;}
-		    case 13: {first_c = 'd'; str[len - count - 1] = first_c; break;}
-		    case 14: {first_c = 'e'; str[len - count - 1] = first_c; break;}
-		    case 15: {first_c = 'f'; str[len - count - 1] = first_c; break;}
-            default: {assert(0); break;}
-		
-		}
-	}
-*/	
+//	if( first_c >= '0' && first_c <= '9') {
+//	    str[0] = first_c;
+//	}
+//
+//	else{
+//	    switch(temp1) {
+//		    case 10: {first_c = 'a'; str[len - count - 1] = first_c; break;}
+//		    case 11: {first_c = 'b'; str[len - count - 1] = first_c; break;}
+//		    case 12: {first_c = 'c'; str[len - count - 1] = first_c; break;}
+//		    case 13: {first_c = 'd'; str[len - count - 1] = first_c; break;}
+//		    case 14: {first_c = 'e'; str[len - count - 1] = first_c; break;}
+//		    case 15: {first_c = 'f'; str[len - count - 1] = first_c; break;}
+//            default: {assert(0); break;}
+//		
+//		}
+//	}
+//	
 
 	
 	str[len] = '\0';
@@ -397,7 +397,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-
+*/
 
 /*
 void my_itoa(char *str, unsigned digit, int base) {
@@ -509,7 +509,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 }
 
 */
-
+/*
 int sprintf(char *out, const char *fmt, ...) {
   
   va_list ap;
@@ -522,8 +522,8 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
+*/
 
-/*
 int printf(const char *fmt, ...) {
     va_list ap;
 	va_start(ap, fmt);
@@ -660,7 +660,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 	return cnt-1;
 #undef output
 }
-*/
+
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
 }

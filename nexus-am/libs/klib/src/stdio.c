@@ -394,7 +394,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-
+*/
 
 int sprintf(char *out, const char *fmt, ...) {
   
@@ -408,7 +408,7 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
-*/
+
 
 
 /*
@@ -605,8 +605,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 */
 
 
-
-
+/*
 int printf(const char *fmt, ...) {
     va_list ap;
 	va_start(ap, fmt);
@@ -746,6 +745,124 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
+}
+*/
+
+int printf(const char* fmt, ...) {
+    va_list ap;
+	char out[200];
+	va_start(ap, fmt);
+	vsprintf(out, fmt, ap);
+	const char *s = out;
+	for(; *s; s++) {
+	    _putc(*s);
+	}
+	return strlen(s);
+}
+
+static inline void iu(char *temp, uint32_t d, int type) {
+	int j;
+	for(j = type; d >= j; j *= type);
+	int i;
+	for(i = 0; j >= type; j /= type, i ++) {
+	    int c = (d%j)/(j/type);
+		if(c <= 9)
+			temp[i] = c + '0';
+	    else
+			temp[i] = c + 'a' - 10;
+	}
+	temp[i] = '\0';
+}
+
+static inline  int get_width(const char *fmt, int *i, int *off) {
+    int n = *(fmt + *i + 1) - '0';
+	(*i) ++;
+	(*off) --;
+	while(*(fmt + *i + 1) >= '0' && *(fmt + *i + 1) <= '9') {
+	   n = n*10 + *(fmt + *i + 1) - '0';
+	   (*i)++;
+	   (*off)++;
+	}
+	return n;
+}
+
+int vsprintf(char *out, const char* fmt, va_list ap) {
+    int d, width = -1, l;
+	char c;
+
+	int off = 0;
+	int i;
+	char fill = '\0';
+	for(i = 0; *(fmt + i) != '\0'; i++) {
+	    if(*(fmt+i) == '%') {
+		   char temp[100] = "";
+		   c = *(fmt + i + 1);
+		   if(c >= '0' && c <= '9') {
+		       if(c == '0') {
+			       fill = '0';
+				   i ++;
+				   off --;
+				   c = *(fmt + i + 1);
+			   }
+			   else {
+			       fill = ' ';
+			   }
+			   width = get_width(fmt, &i, &off);
+			   c = *(fmt + i + 1);
+		   }
+		   switch(c) {
+		       case 'd':
+				   d = va_arg(ap, int);
+				   if(d < 0) {
+				       temp[0] = '-';
+					   iu(temp + 1, 0 - d , 10);
+				   }
+				   else {
+				       iu(temp, d, 10);
+				   }
+				   break;
+			   case 'u':
+				   d = va_arg(ap, int);
+				   iu(temp, d, 10);
+				   break;
+				case 'o':
+				   d = va_arg(ap, int);
+				   iu(temp, d, 8);
+				   break;
+               case 'p':
+               case 'x':
+               case 'X':
+				   d = va_arg(ap, int);
+				   iu(temp, d, 16);
+				   break;
+			   case 'c':
+				   temp[0] = va_arg(ap, int);
+				   temp[1] = '\0';
+				   break;
+				case '%':
+				   temp[0] = temp[1] = '%';
+				   temp[2] = '\0';
+				   break;
+				default:
+				   assert(0);
+		   }
+		   l = strlen(temp);
+		   int a = 0;
+		   while(width - l - a > 0) {
+		       *(out + i + off + width - l - a - 1) = fill;
+			   a ++;
+		   }
+		   strcpy(out + i + off + a, temp);
+		   off += l + a -2;
+		   i ++;
+		}
+		else {
+		    *(out + i + off) = *(fmt + i);
+		}
+	}
+        *(out + i + off) = '\0';
+	return 0;
+
 }
 
 #endif

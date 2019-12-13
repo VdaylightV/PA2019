@@ -394,7 +394,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   return 0;
 
 }
-*/
+
 
 int sprintf(char *out, const char *fmt, ...) {
   
@@ -408,7 +408,7 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
-
+*/
 
 
 /*
@@ -743,10 +743,11 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 #undef output
 }
 
+*/
+
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
 }
-*/
 
 int printf(const char* fmt, ...) {
     va_list ap;
@@ -821,6 +822,7 @@ int vsprintf(char *out, const char* fmt, va_list ap) {
 				       iu(temp, d, 10);
 				   }
 				   break;
+               case 'p':
 			   case 'u':
 				   d = va_arg(ap, int);
 				   iu(temp, d, 10);
@@ -829,17 +831,19 @@ int vsprintf(char *out, const char* fmt, va_list ap) {
 				   d = va_arg(ap, int);
 				   iu(temp, d, 8);
 				   break;
-               case 'p':
                case 'x':
                case 'X':
 				   d = va_arg(ap, int);
 				   iu(temp, d, 16);
 				   break;
+               case 's':
+			       strcpy(temp, va_arg(ap, char*));
+				   break;
 			   case 'c':
 				   temp[0] = va_arg(ap, int);
 				   temp[1] = '\0';
 				   break;
-				case '%':
+				case ('%'):
 				   temp[0] = temp[1] = '%';
 				   temp[2] = '\0';
 				   break;
@@ -863,6 +867,13 @@ int vsprintf(char *out, const char* fmt, va_list ap) {
         *(out + i + off) = '\0';
 	return 0;
 
+}
+
+int sprintf(char *out, const char *fmt, ...) {
+	va_list ap;
+	va_start(ap, fmt);
+	vsprintf(out, fmt, ap);
+	return strlen(out);
 }
 
 #endif

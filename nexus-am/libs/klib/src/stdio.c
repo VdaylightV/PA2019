@@ -253,7 +253,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 				{
 				 int val = va_arg(ap, int);
 
-                 char val_str[20] = "";
+                 char val_str[16] = "";
 
 				 char* head_val_str = &val_str[0];
 
@@ -337,7 +337,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			     {
 				    int val = va_arg(ap, int);
 				    //char temp[65535] = "";
-					char temp[32] = "";
+					char temp[20] = "";
 				    char *head = temp;
 
 					char *result = to_hex(val, head);

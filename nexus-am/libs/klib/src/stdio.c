@@ -7,7 +7,7 @@
 //#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
-
+/*
 static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
@@ -173,7 +173,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 		//此时temp_out所指向的地方就是需要填参数的地方
 
 		switch(*fmt) {
-/*			case '0':
+			case '0':
 				{    
                     char fill_content[2] = "0";
 					char whole_content[100];
@@ -248,7 +248,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					break;
 
 				}
-*/
+
 		    case 'd': 
 				{
 				 int val = va_arg(ap, int);
@@ -408,7 +408,7 @@ int sprintf(char *out, const char *fmt, ...) {
 
   return ret;
 }
-
+*/
 
 
 /*
@@ -606,7 +606,7 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 
 
 
-/*
+
 int printf(const char *fmt, ...) {
     va_list ap;
 	va_start(ap, fmt);
@@ -743,7 +743,7 @@ int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
 	return cnt-1;
 #undef output
 }
-*/
+
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   return 0;
 }

@@ -7,7 +7,7 @@
 //#define int fac(int base, int exp) {int result = 1; for(int i = 0; i < exp; i ++) {result*=base;} return result;}
 //#define size_t str_to_int(char* str) {size_t value = 0; while(*str != '\0') {value *= 10; value += ((*str) - '0'); str ++;} return value;}
 
-/*
+
 static inline size_t str_to_int(char* str) {
     size_t value = 0;
 	while(*str != '\0') {
@@ -19,7 +19,7 @@ static inline size_t str_to_int(char* str) {
 }
 
 
-
+/*
 static inline int fac(int base, int exp) {
     int result = 1;
 	for(int i = 0; i < exp; i ++) {
@@ -512,6 +512,89 @@ int vsprintf(char *out, const char *fmt, va_list ap){
 				}
 				break;
 
+			case '0':
+				{    
+                    char fill_content[2] = "0";
+					char whole_content[64];
+
+					//char* head = &whole_content[0];
+
+					int val = va_arg(ap, int);
+
+					index ++;
+					int temp_index = index;
+
+					size_t para_width = 0;
+
+					//const char* temp_fmt = fmt;
+					temp_index = index;
+
+					while(fmt[index] != 'd' && fmt[index] != 'x') {
+					    para_width ++;
+						index ++;
+					}
+
+					char type = fmt[index];
+        
+                    //temp_fmt = fmt;
+
+					char width_num[para_width];
+					for(size_t i = 0; i < para_width; i ++) {
+					    width_num[i] = fmt[temp_index];
+						temp_index ++;
+					}
+					width_num[para_width] = '\0';
+
+                    size_t width = str_to_int(&width_num[0]);
+
+					char temp[32] = "";
+					//char* p_temp = &temp[0];
+
+					//char *result = NULL;
+
+					switch(type) {
+					    case 'd':
+							{
+					            //result = int_to_str(val, p_temp);
+								my_itoa(temp, val, 10);
+								break;
+							}
+                        case 'x':
+							{
+					            //result = to_hex(val, p_temp);
+								my_itoa(temp, val, 16);
+								break;
+							}
+                        default: {assert(0); break;}
+					}
+
+					size_t len = strlen(temp);
+
+					for(size_t i = 0; i < width - len; i ++) {
+					    strcat(whole_content, fill_content);
+					}
+
+					strcat(whole_content, temp);
+  
+					//temp_out = strcpy(temp_out, head);
+					for(int i = 0; whole_content[i] != '\0'; i ++) {
+					    out[count] = whole_content[i];
+						count ++;
+					}
+
+//					for(size_t i = 0; i < width; i ++) {
+//					    temp_out ++;
+//					}
+//
+//					while(*fmt != 'd' && *fmt != 'x') {
+//					    fmt ++;
+//					}
+//
+//					fmt ++;
+
+					break;
+
+				}
 			default: assert(0);
 		}
 	}

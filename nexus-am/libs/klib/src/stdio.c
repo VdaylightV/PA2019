@@ -137,20 +137,17 @@ int printf(const char *fmt, ...) {
 
   char out[200];
 
-
-  char* start = &out[0];
-
   va_list ap;
 
   va_start(ap, fmt);
  
-  vsprintf(start, fmt, ap);
+  vsprintf(out, fmt, ap);
 
   va_end(ap);
 
-  size_t len = strlen(start);
+  size_t len = strlen(out);
   for( size_t i = 0; i < len; i ++ ) {
-      _putc(start[i]);
+      _putc(out[i]);
   }
 
   return 0;

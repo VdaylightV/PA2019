@@ -119,6 +119,12 @@ make_EHelper(movzx) {
   print_asm_template2(movzx);
 }
 
+make_EHelper(movs) {
+  id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
+  rtl_lm(&cpu.edi, &cpu.esi, id_dest->width);
+  print_asm_template2(movs);
+}
+
 make_EHelper(lea) {
   operand_write(id_dest, &id_src->addr);
   print_asm_template2(lea);

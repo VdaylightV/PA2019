@@ -316,7 +316,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				}
 		   
-		   case 'x':
+/*		   case 'x':
 				{ 
 				 int val = va_arg(ap, int);
 				 char temp[32] = "";
@@ -335,8 +335,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 				 break;
 				}
-
-/*		   case 'p':
+*/
+		   case 'p':
 			     {
 				    int val = va_arg(ap, int);
 				    //char temp[65535] = "";
@@ -386,7 +386,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 					}
 				 
 				 }
-*/
+
 
         default:{assert(0); break;}
 	   }

@@ -81,7 +81,7 @@ int sys_write(_Context *c) {
   int len = fs_write(temp[0], (void*)temp[1], temp[2]);
   
   //Log("abcdefghijklmnopqrstuvwxyz");
-  
+ /* 
   if(temp[0] == 1 || temp[0] == 2) {
     char *buf = (char*) temp[1];
     for(int i = 0; i < temp[2]; i ++) {
@@ -89,7 +89,7 @@ int sys_write(_Context *c) {
     }
   }
   
-
+*/
    return len; 
 
  //c->GPRx = fs_write(c->GPR2, (char*)c->GPR3, c->GPR4);

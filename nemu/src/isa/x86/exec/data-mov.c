@@ -120,6 +120,7 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(movs) {
+  
   if(id_dest->width != 1) {
     id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   }

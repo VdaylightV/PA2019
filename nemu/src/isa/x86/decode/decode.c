@@ -127,8 +127,8 @@ make_DHelper(E2G) {
 }
 
 make_DHelper(mov_E2G) {
-  printf("src:%d\n", decinfo.src.val);
-  printf("dest:%d\n", decinfo.dest.val);
+  printf("src:%x\n", decinfo.src.val);
+  printf("dest:%x\n", decinfo.dest.val);
   decode_op_rm(pc, id_src, true, id_dest, false);
 }
 

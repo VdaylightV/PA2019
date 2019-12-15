@@ -1,7 +1,9 @@
 #include "cpu/exec.h"
 
 make_EHelper(mov) {
+  printf("edx old:%x\n", cpu.edx);
   operand_write(id_dest, &id_src->val);
+  printf("edx new:%x\n", cpu.edx);
   print_asm_template2(mov);
 }
 

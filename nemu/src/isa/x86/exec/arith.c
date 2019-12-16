@@ -181,6 +181,7 @@ rtl_set_OF(&s1);
 }
 
 make_EHelper(neg) {
+  /*
   rtl_li(&id_src->val, 0);
   rtl_sub(&s0, &id_src->val, &id_dest->val);
   operand_write(id_dest, &s0);
@@ -195,9 +196,9 @@ make_EHelper(neg) {
   rtl_get_ZF(&s1);
   s1 = (s1 == 0); 
   rtl_set_CF(&s1);
-
-  /*
-   *My code!!!
+*/
+  
+  // *My code!!!
 	//s0 = id_dest->val;
 	s1 = 1;
 	rtl_not(&s3, &id_dest->val);
@@ -214,7 +215,7 @@ make_EHelper(neg) {
 		rtl_set_CF(&s1);
 	}
     operand_write(id_dest, &s2);
-  */
+  //*/
   //TODO();
 
   print_asm_template1(neg);

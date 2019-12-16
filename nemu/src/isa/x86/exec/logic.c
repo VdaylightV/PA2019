@@ -2,18 +2,20 @@
 #include "cc.h"
 
 make_EHelper(test) {
+  /*
   rtl_and(&s0, &id_dest->val, &id_src->val);
   s1 = 0;
   rtl_set_OF(&s1);
   rtl_set_CF(&s1);
   rtl_update_ZFSF(&s0, id_dest->width); 
-/*My code!!!
+  */
+//*My code!!!
   s2 = 0;
   rtl_and(&s0, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&s0, id_dest->width);
   rtl_set_CF(&s2);
   rtl_set_OF(&s2);
-*/
+//*/
 
 /*  printf("src:\n");
   printf("simm:0x%x\n", id_src->simm);
@@ -48,13 +50,14 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
+/*
   rtl_and(&s0, &id_dest->val, &id_src->val);
   operand_write(id_dest, &s0);
   s1 = 0;
   rtl_set_OF(&s1);
   rtl_set_CF(&s1);
   rtl_update_ZFSF(&s0, id_dest->width); 
-
+*/
   //id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   //rtl_sext(&s1, &id_src->val, id_src->width);
   
@@ -64,7 +67,7 @@ make_EHelper(and) {
   uint32_t rs = (uint32_t)temp;
   printf("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH%u\n",rs);
   */
- /*My code!!!
+// /*My code!!!
   s2 = 0;
   rtl_and(&s0, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&s0, id_dest->width);
@@ -73,7 +76,7 @@ make_EHelper(and) {
 
   operand_write(id_dest, &s0);
   //TODO();
-*/
+//*/
   print_asm_template2(and);
 }
 

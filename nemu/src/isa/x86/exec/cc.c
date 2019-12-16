@@ -40,6 +40,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_NLE:  *dest = ((cpu.eflags.SF == cpu.eflags.OF) && cpu.eflags.ZF == 0); break;
     */
    /* 
+	* My code !!!!!! 
     case CC_O: {if (cpu.eflags.OF == 1) (*dest) = 1; else (*dest) = 0; break; }
     case CC_B: {if (cpu.eflags.CF == 1 && cpu.eflags.ZF == 0) (*dest) = 1; else (*dest) = 0; break; }
     case CC_E: {*dest = cpu.eflags.ZF; break; }

@@ -1,6 +1,7 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
+  /*
     rtl_add(&s0, &id_dest->val, &id_src->val);
 	operand_write(id_dest, &s0);
 
@@ -15,8 +16,9 @@ make_EHelper(add) {
 
   rtl_is_add_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
   rtl_set_OF(&s1);
-/*
- * My code!!!
+*/
+
+// * My code!!!
   	rtl_add(&s0, &id_src->val, &id_dest->val);
   rtl_is_add_overflow(&s2, &s0, &id_src->val, &id_dest->val, id_src->width);
   rtl_set_OF(&s2);
@@ -24,7 +26,7 @@ make_EHelper(add) {
   rtl_set_CF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-*/
+
   //TODO();
 
   print_asm_template2(add);

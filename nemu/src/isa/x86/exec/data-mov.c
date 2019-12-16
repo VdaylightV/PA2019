@@ -106,23 +106,23 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decinfo.isa.is_operand_size_16) {
-    //cpu.gpr[R_DX]._16 = (cpu.gpr[R_AX]._16 & 0x8000)? 0xffff : 0;
-    
-    // * My code!!!
+    cpu.gpr[R_DX]._16 = (cpu.gpr[R_AX]._16 & 0x8000)? 0xffff : 0;
+    /*
+     * My code!!!
 	  rtl_sext(&s0, &reg_l(R_EAX), 2);
 	  rtl_shri(&reg_l(R_EDX), &s0, 16);
-    //*/
+    */
 /*	s0 = 15;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);
 */
     //TODO();
   }
   else {
-    //cpu.gpr[R_EDX]._32 = (cpu.gpr[R_EAX]._32 & 0x80000000) ? 0xffffffff : 0;
-    
-    // *My code!!!
+    cpu.gpr[R_EDX]._32 = (cpu.gpr[R_EAX]._32 & 0x80000000) ? 0xffffffff : 0;
+    /*
+     *My code!!!
 	  rtl_sari(&reg_l(R_EDX), &reg_l(R_EAX), 31);
-    //*/
+    */
 /*	s0 = 31;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);
 */  //TODO();

@@ -3,8 +3,16 @@
 void raise_intr(uint32_t, vaddr_t);
 
 make_EHelper(lidt) {
+  rtl_lm(&s0, &id_dest->addr, 2);
+  cpu.idtr.limit = s0;
+  s1 = id_dest->addr + 2;
+  rtl_lm(&s0, &s1, 4);
+  cpu.idtr.base = s0;
+  if (id_dest->width == 2)
+  cpu.idtr.base = s0 & 0xffffff;
   //TODO();
-  
+  /*
+   *My code!!! 
   s0 = id_dest->addr;
   if(id_dest->width == 2) {
       cpu.idtr.base = vaddr_read(s0 + 2, 3);
@@ -14,7 +22,8 @@ make_EHelper(lidt) {
       cpu.idtr.base = vaddr_read(s0 + 2, 4);
       cpu.idtr.limit = vaddr_read(s0, 2);
   }
-  
+  */
+
   /*
   rtl_li(&s0, id_dest->addr);
   rtl_li(&cpu.idtr.limit, vaddr_read(s0, 2));

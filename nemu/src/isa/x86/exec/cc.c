@@ -48,8 +48,8 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_S: {if (cpu.eflags.SF == 1) (*dest) = 1; else (*dest) = 0; break; }
     case CC_L: {if (cpu.eflags.OF != cpu.eflags.SF && cpu.eflags.ZF == 0) (*dest) = 1; else (*dest) = 0; break; }
     case CC_LE: {if (cpu.eflags.ZF == 1 || cpu.eflags.SF != cpu.eflags.OF) (*dest) = 1; else (*dest) = 0; break; }
-	  //case CC_NE: {*dest = ~cpu.eflags.ZF; break; }
-	  //case CC_NL: {if (cpu.eflags.SF == cpu.eflags.OF || cpu.eflags.ZF == 1) (*dest) = 1; else (*dest) = 0; break; }
+	  case CC_NE: {*dest = ~cpu.eflags.ZF; break; }
+	  case CC_NL: {if (cpu.eflags.SF == cpu.eflags.OF || cpu.eflags.ZF == 1) (*dest) = 1; else (*dest) = 0; break; }
      
 //      TODO();
     default: panic("should not reach here");

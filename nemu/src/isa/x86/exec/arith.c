@@ -31,7 +31,24 @@ make_EHelper(add) {
 }
 
 make_EHelper(sub) {
-  	
+  
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
+  operand_write(id_dest, &s0);
+
+  if(id_dest->width != 4) {
+      rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+
+  rtl_update_ZFSF(&s0, id_dest->width);
+
+  rtl_is_sub_carry(&s1, &s0, &id_dest->val);
+  rtl_set_CF(&s1);
+
+  rtl_is_sub_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
+  rtl_set_OF(&s1);
+
+ /* 	
+  * My code!!!
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
    
@@ -42,6 +59,8 @@ make_EHelper(sub) {
   rtl_set_OF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
+*/
+
 /*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus_before_extend:%x\n", id_src->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused_after_extend:%x\n", s1);
@@ -59,22 +78,38 @@ make_EHelper(sub) {
 }
 
 make_EHelper(cmp) {
-  
+
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
+
+  if(id_dest->width != 4) {
+      rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+
+  rtl_update_ZFSF(&s0, id_dest->width);
+
+  rtl_is_sub_carry(&s1, &s0, &id_dest->val);
+  rtl_set_CF(&s1);
+
+  rtl_is_sub_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
+  rtl_set_OF(&s1);
+  /*  
+   *My code !!!
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s1, &id_src->val, id_src->width);
   
   rtl_sub(&s0, &id_dest->val, &id_src->val);
   
-/*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus:%x\n", id_src->val);
-  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@result:%x\n", s0);
-*/  
   rtl_is_sub_carry(&s2, &s0, &id_dest->val);
   rtl_set_CF(&s2);
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &id_src->val, id_src->width);
   rtl_set_OF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
-/*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
+  */
+/*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus:%x\n", id_src->val);
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@result:%x\n", s0);
+  
+  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.CF:%x\n", cpu.eflags.CF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.OF:%x\n", cpu.eflags.OF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.ZF:%x\n", cpu.eflags.ZF);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@cpu.eflags.SF:%x\n", cpu.eflags.SF);
@@ -85,6 +120,19 @@ make_EHelper(cmp) {
 }
 
 make_EHelper(inc) {
+  rtl_li(&id_src->val, 1);
+  rtl_add(&s0, &id_dest->val, &id_src->val);
+  if (id_dest->width != 4) {
+    rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+  rtl_update_ZFSF(&s0, id_dest->width);
+
+  rtl_is_add_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
+  rtl_set_OF(&s1);
+
+  operand_write(id_dest, &s0);
+  /*
+   *My code!!!
   s1 = 1; 
   rtl_add(&s0, &s1, &id_dest->val);
   rtl_is_add_overflow(&s2, &s0, &s1, &id_dest->val, id_dest->width);
@@ -93,13 +141,26 @@ make_EHelper(inc) {
   rtl_set_CF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-   
+   */
   //TODO();
 
   print_asm_template1(inc);
 }
 
 make_EHelper(dec) {
+
+  rtl_li(&id_src->val, 1);
+  rtl_sub(&s0, &id_dest->val, &id_src->val);
+  operand_write(id_dest, &s0);
+  if (id_dest->width != 4) {
+    rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+  rtl_update_ZFSF(&s0, id_dest->width);
+
+  rtl_is_sub_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
+rtl_set_OF(&s1);
+  /*
+   *My code
   s1 = 1;
   rtl_sub(&s0, &id_dest->val, &s1);
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &s1, id_dest->width);
@@ -109,11 +170,28 @@ make_EHelper(dec) {
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
   //TODO();
-
+  */
   print_asm_template1(dec);
 }
 
 make_EHelper(neg) {
+  rtl_li(&id_src->val, 0);
+  rtl_sub(&s0, &id_src->val, &id_dest->val);
+  operand_write(id_dest, &s0);
+  if (id_dest->width != 4) {
+    rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+  rtl_update_ZFSF(&s0, id_dest->width);
+
+  rtl_is_sub_overflow(&s1, &s0, &id_src->val, &id_dest->val, id_dest->width);
+  rtl_set_OF(&s1);
+
+  rtl_get_ZF(&s1);
+  s1 = (s1 == 0); 
+  rtl_set_CF(&s1);
+
+  /*
+   *My code!!!
 	//s0 = id_dest->val;
 	s1 = 1;
 	rtl_not(&s3, &id_dest->val);
@@ -130,7 +208,7 @@ make_EHelper(neg) {
 		rtl_set_CF(&s1);
 	}
     operand_write(id_dest, &s2);
-
+  */
   //TODO();
 
   print_asm_template1(neg);

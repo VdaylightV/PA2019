@@ -153,7 +153,7 @@ make_EHelper(inc) {
 }
 
 make_EHelper(dec) {
-
+/*
   rtl_li(&id_src->val, 1);
   rtl_sub(&s0, &id_dest->val, &id_src->val);
   operand_write(id_dest, &s0);
@@ -164,8 +164,9 @@ make_EHelper(dec) {
 
   rtl_is_sub_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
 rtl_set_OF(&s1);
-  /*
-   *My code
+*/
+  
+  // *My code
   s1 = 1;
   rtl_sub(&s0, &id_dest->val, &s1);
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &s1, id_dest->width);
@@ -175,7 +176,7 @@ rtl_set_OF(&s1);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
   //TODO();
-  */
+  //*/
   print_asm_template1(dec);
 }
 

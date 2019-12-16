@@ -123,6 +123,7 @@ make_EHelper(cmp) {
 }
 
 make_EHelper(inc) {
+  /*
   rtl_li(&id_src->val, 1);
   rtl_add(&s0, &id_dest->val, &id_src->val);
   if (id_dest->width != 4) {
@@ -134,8 +135,9 @@ make_EHelper(inc) {
   rtl_set_OF(&s1);
 
   operand_write(id_dest, &s0);
-  /*
-   *My code!!!
+*/
+  
+  // *My code!!!
   s1 = 1; 
   rtl_add(&s0, &s1, &id_dest->val);
   rtl_is_add_overflow(&s2, &s0, &s1, &id_dest->val, id_dest->width);
@@ -144,7 +146,7 @@ make_EHelper(inc) {
   rtl_set_CF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-   */
+  // */
   //TODO();
 
   print_asm_template1(inc);

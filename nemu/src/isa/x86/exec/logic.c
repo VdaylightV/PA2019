@@ -176,34 +176,38 @@ make_EHelper(rol) {
 }
 
 make_EHelper(shl) {
+  /*
   rtl_shl(&s0, &id_dest->val, &id_src->val);
   operand_write(id_dest, &s0);
   
   rtl_update_ZFSF(&s0, id_dest->width);
+  */
   //TODO();
   // unnecessary to update CF and OF in NEMU
-  /*
-   *My code!!!
+  
+  // *My code!!!
   rtl_shl(&s0, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-  */
+  //*/
   print_asm_template2(shl);
 }
 
 make_EHelper(shr) {
+  /*
   rtl_shr(&s0, &id_dest->val, &id_src->val);
   operand_write(id_dest, &s0);
 
   rtl_update_ZFSF(&s0, id_dest->width);
+  */
   //TODO();
   // unnecessary to update CF and OF in NEMU
-  /*
-   *My code!!!
+  
+  // *My code!!!
   rtl_shr(&s0, &id_dest->val, &id_src->val);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-  */
+  //*/
   print_asm_template2(shr);
 }
 

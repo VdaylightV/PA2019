@@ -57,7 +57,7 @@ make_EHelper(sub) {
   rtl_sub(&s0, &id_dest->val, &id_src->val);
   operand_write(id_dest, &s0);
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
-  rtl_sext(&s0, &s0, id_src->width);
+  rtl_sext(&s0, &s0, id_dest->width);
   rtl_is_sub_carry(&s2, &s0, &id_dest->val);
   rtl_set_CF(&s2);
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &id_src->val, id_src->width);

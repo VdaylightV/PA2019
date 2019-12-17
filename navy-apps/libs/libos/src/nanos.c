@@ -79,10 +79,11 @@ extern char _end;
 char* end = &_end;
 */
 extern char _end;
-char *p_break = &_end;
+intptr_t p_break = (intptr_t)&_end;
 //放到_sbrk里会导致end时局部变量，就无法修改program_break的值
 void *_sbrk(intptr_t increment) {
-  char *old_break = p_break;
+  //char *old_break = p_break;
+  intptr_t old_break = p_break;
   p_break = old_break + increment;
   if (_syscall_(SYS_brk, p_break, 0, 0) == 0)
   {

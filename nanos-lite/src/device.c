@@ -95,18 +95,19 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 	int y = (offset / 4) / screen_width();
 	for(int i = 0; i < len / 4; i ++) {
 	   draw_rect(&fb[i], x, y, 1, 1);
-	  /* 
+	   
 	   if(x==screen_width()) {
 	       x = 0;
 		   y++;
-	   draw_rect(&fb[i], x, y, 1, 1);
+	  // draw_rect(&fb[i], x, y, 1, 1);
 	   }
 	   else{
-	   draw_rect(&fb[i], x, y, 1, 1);
+	  // draw_rect(&fb[i], x, y, 1, 1);
 	       x++;
 	   }
-	   */
+	   
 	  // x = ((x % screen_width())++);
+	  /*
 	  {
 	  int temp = x % screen_width();
 	  x = temp + 1;
@@ -114,6 +115,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 	 	   y ++;
 	   }
 	  }
+	  */
 	}
     return len;
 }
@@ -131,6 +133,6 @@ void init_device() {
   // described in the Navy-apps convention
   //int fd = fs_open("proc/dispinfo");
   //fs_read(fd, (void*)dispinfo,  128);
-  sprintf(dispinfo, "WIDTH : %d\nHEIGHT:%d\n", screen_width(), screen_height());
+  sprintf(dispinfo, "WIDTH:%d\nHEIGHT:%d\n", screen_width(), screen_height());
 
 }

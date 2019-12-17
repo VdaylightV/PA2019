@@ -54,8 +54,6 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   bmp->w = w;
   bmp->h = h;
   bmp->pixels = pixels;
-  assert(NULL);
-  assert(bmp->pixels != NULL);
   return 0;
 }
 

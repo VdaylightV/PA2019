@@ -99,10 +99,10 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 	   if(x==screen_width()) {
 	       x = 0;
 		   y++;
-	  // draw_rect(&fb[i], x, y, 1, 1);
+	 //  draw_rect(&fb[i], x, y, 1, 1);
 	   }
 	   else{
-	  // draw_rect(&fb[i], x, y, 1, 1);
+	 //  draw_rect(&fb[i], x, y, 1, 1);
 	       x++;
 	   }
 	   

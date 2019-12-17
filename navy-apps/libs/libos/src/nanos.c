@@ -54,13 +54,13 @@ void _exit(int status) {
 }
 
 int _open(const char *path, int flags, mode_t mode) {
-  return _syscall_(SYS_open, path, flags, mode);
+  return _syscall_(SYS_open, (uintptr_t)path, flags, mode);
   //_exit(SYS_open);
   //return 0;
 }
 
 int _write(int fd, void *buf, size_t count) {
-  return _syscall_(SYS_write, fd, (intptr_t)buf, count);
+  return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
   /*
   char *temp = (char*)buf;
   if (fd == 1 || fd == 2) {
@@ -114,7 +114,7 @@ void *_sbrk(intptr_t increment) {
 }
 
 int _read(int fd, void *buf, size_t count) {
-  return _syscall_(SYS_read, fd, (intptr_t)buf, count);
+  return _syscall_(SYS_read, fd, (uintptr_t)buf, count);
   //_exit(SYS_read);
   //return 0;
 }

@@ -176,7 +176,6 @@ __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
 //
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  assert(!strcmp(file_table[4].name, "/dev/fb"));
   file_table[4].size = screen_height() * screen_width() * 4; 
   
 }

@@ -89,10 +89,13 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 //  fs_lseek(fd, offset, SEEK_SET);
 //  fs_write(fd, buf, len);
 //void draw_rect(uint32_t *pixels, int x, int y, int w, int h);
+
     uint32_t *fb = (uint32_t*) buf;
     int x = (offset / 4) % screen_width();
 	int y = (offset / 4) / screen_width();
 	for(int i = 0; i < len / 4; i ++) {
+	   draw_rect(&fb[i], x, y, 1, 1);
+	  /* 
 	   if(x==screen_width()) {
 	       x = 0;
 		   y++;
@@ -102,14 +105,15 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 	   draw_rect(&fb[i], x, y, 1, 1);
 	       x++;
 	   }
+	   */
 	  // x = ((x % screen_width())++);
-	  /*{
+	  {
 	  int temp = x % screen_width();
 	  x = temp + 1;
 	   if(x == 0 && i > 0) {
-		   y ++;
+	 	   y ++;
 	   }
-	  }*/
+	  }
 	}
     return len;
 }

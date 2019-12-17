@@ -77,11 +77,15 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 static char dispinfo[128] __attribute__((used)) = {};
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
+	strncpy(buf, dispinfo + offset, len);
+	return len;
 	//strncpy((char*)buf, &(dispinfo[offset]), len);
   //return len;
+  /*
   size_t count = (len + offset) > strlen(dispinfo) ? strlen(dispinfo) - offset : len;
   memcpy(buf, &(dispinfo[offset]), count);
   return strlen(&(dispinfo[offset]));
+  */
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
@@ -126,6 +130,6 @@ void init_device() {
   // described in the Navy-apps convention
   //int fd = fs_open("proc/dispinfo");
   //fs_read(fd, (void*)dispinfo,  128);
-  sprintf(dispinfo, "WIDTH : %d\nHEIGHT:%d\n", screen_width(), screen_height());
+  sprintf(dispinfo, "WIDTH:%d\nHEIGHT:%d\n", screen_width(), screen_height());
 
 }

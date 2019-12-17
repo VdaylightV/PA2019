@@ -15,15 +15,16 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) {
-  /*
+  
   rtl_pop(&id_dest->val);
   operand_write(id_dest, &id_dest->val);
-  */
   
-  // *My code!!!
+  
+  /*My code!!!
   rtl_pop(&id_src->val);
   operand_write(id_dest, &id_src->val);
-  
+  */
+
   //printf("HHHHHHHHHHHHHHHHHHH___%d___ HHHHHHHHHHHHHHHHH\n_", id_dest->reg);
   //printf("HHHHHHHHHHHHHHHHHHH___0x%x___ HHHHHHHHHHHHHHHHH\n_", id_dest->val);
  // printf("HHHHHHHHHHHHHHHHHHH___%d___ HHHHHHHHHHHHHHHHH\n_", id_dest->type);
@@ -33,7 +34,7 @@ make_EHelper(pop) {
 }
 
 make_EHelper(pusha) {
-  /*
+  
   rtl_lr(&s0, 4, 4);
   rtl_push(&cpu.eax);
   rtl_push(&cpu.ecx);
@@ -43,9 +44,9 @@ make_EHelper(pusha) {
   rtl_push(&cpu.ebp);
   rtl_push(&cpu.esi);
   rtl_push(&cpu.edi);
-  */
   
-  // *My code!!!
+  
+  /*My code!!!
   rtl_li(&s0, cpu.esp);
   rtl_push(&cpu.eax);
   rtl_push(&cpu.ecx);
@@ -56,13 +57,13 @@ make_EHelper(pusha) {
   rtl_push(&cpu.esi);
   rtl_push(&cpu.edi);
   //TODO();
-  //*/
+  */
 
   print_asm("pusha");
 }
 
 make_EHelper(popa) {
-  /*
+  
   rtl_pop(&cpu.edi);
   rtl_pop(&cpu.esi);
   rtl_pop(&cpu.ebp);
@@ -71,9 +72,9 @@ make_EHelper(popa) {
   rtl_pop(&cpu.edx);
   rtl_pop(&cpu.ecx);
   rtl_pop(&cpu.eax);
-  */
   
-  // *My code!!!
+  
+  /*My code!!!
   uint32_t throwaway;
   rtl_pop(&cpu.edi);
   rtl_pop(&cpu.esi);
@@ -84,21 +85,21 @@ make_EHelper(popa) {
   rtl_pop(&cpu.ecx);
   rtl_pop(&cpu.eax);
   //TODO();
-  //*/
+  */
 
   print_asm("popa");
 }
 
 make_EHelper(leave) {
-  /*
+  
   rtl_sr(4, &cpu.ebp, 4);
   rtl_pop(&cpu.ebp);
-  */
-  //My code!!!
+  
+  /*/My code!!!
   // cpu.esp = cpu.ebp;
   rtl_mv(&cpu.esp, &cpu.ebp);
   rtl_pop(&cpu.ebp);
-  
+  */
   // TODO();
 
   print_asm("leave");
@@ -106,23 +107,23 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decinfo.isa.is_operand_size_16) {
-  //  cpu.gpr[R_DX]._16 = (cpu.gpr[R_AX]._16 & 0x8000)? 0xffff : 0;
+    cpu.gpr[R_DX]._16 = (cpu.gpr[R_AX]._16 & 0x8000)? 0xffff : 0;
     
-    // * My code!!!
+    /* My code!!!
 	  rtl_sext(&s0, &reg_l(R_EAX), 2);
 	  rtl_shri(&reg_l(R_EDX), &s0, 16);
-    //*/
+    */
 /*	s0 = 15;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);
 */
     //TODO();
   }
   else {
-  //  cpu.gpr[R_EDX]._32 = (cpu.gpr[R_EAX]._32 & 0x80000000) ? 0xffffffff : 0;
+    cpu.gpr[R_EDX]._32 = (cpu.gpr[R_EAX]._32 & 0x80000000) ? 0xffffffff : 0;
     
-    // *My code!!!
+    /*My code!!!
 	  rtl_sari(&reg_l(R_EDX), &reg_l(R_EAX), 31);
-    //*/
+    */
 /*	s0 = 31;
 	rtl_shr(&cpu.edx, &cpu.eax, &s0);
 */  //TODO();
@@ -134,33 +135,33 @@ make_EHelper(cltd) {
 make_EHelper(cwtl) {
 	
   if (decinfo.isa.is_operand_size_16) {
-    /*
+    
     rtl_lr(&s0, R_EAX, 1);
     s0 = (int32_t)(s0 << 24) >> 24;
     rtl_sr(R_EAX, &s0, 2);
-    */
+    
 /*	  if(((cpu.eax >> 15) & 1) == 1) {
 	      cpu.eax = cpu.eax | 0xffff0000;
 	  }
 */
     
-    // *My code!!!
+    /*My code!!!
 	  rtl_shli(&cpu.eax, &cpu.eax, 24);
 	  rtl_sari(&cpu.eax, &cpu.eax, 8);
 	  rtl_shri(&cpu.eax, &cpu.eax, 16);
-    //*/
+    */
   //  TODO();
   }
   else {
-    /*
+    
     rtl_lr(&s0, R_EAX, 2);
     s0 = (int32_t)(s0 << 16) >> 16;
     rtl_sr(R_EAX, &s0, 4);
-    */
     
-    // *My code!!!
+    
+    /*My code!!!
 	  rtl_sext(&cpu.eax, &cpu.eax, 2);
-    //*/
+    */
   //  TODO();
   }
 

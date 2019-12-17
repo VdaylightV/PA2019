@@ -95,11 +95,11 @@ int sys_write(_Context *c) {
  //c->GPRx = fs_write(c->GPR2, (char*)c->GPR3, c->GPR4);
 }
 
-void sys_brk(_Context *c) {
-//int sys_brk(_Context *c) {
+//void sys_brk(_Context *c) {
+int sys_brk(_Context *c) {
   
-    // return 0;
-   	c->GPRx = 0;
+     return 0;
+   	//c->GPRx = 0;
 }
 
 _Context* do_syscall(_Context *c) {
@@ -110,8 +110,8 @@ _Context* do_syscall(_Context *c) {
 	case SYS_yield: { c->GPRx = sys_yield(c); break;}
     case SYS_exit: { sys_exit(c); break;}
     case SYS_write: { c->GPRx = sys_write(c); break;}
-    //case SYS_brk: { c->GPRx = sys_brk(c); break;}
-    case SYS_brk: { sys_brk(c); break;}
+    case SYS_brk: { c->GPRx = sys_brk(c); break;}
+    //case SYS_brk: { sys_brk(c); break;}
     case SYS_open: { c->GPRx = sys_open(c); break;}
 	case SYS_read: { c->GPRx = sys_read(c); break;}
     case SYS_close: { c->GPRx = sys_close(c); break;}

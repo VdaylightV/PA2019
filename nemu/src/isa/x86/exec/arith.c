@@ -55,6 +55,7 @@ make_EHelper(sub) {
   //  rtl_sext(&s1, &id_src->val, id_src->width);
    
   rtl_sub(&s0, &id_dest->val, &id_src->val);
+  operand_write(id_dest, &s0);
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   rtl_sext(&s0, &s0, id_src->width);
   rtl_is_sub_carry(&s2, &s0, &id_dest->val);
@@ -62,7 +63,6 @@ make_EHelper(sub) {
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &id_src->val, id_src->width);
   rtl_set_OF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
-  operand_write(id_dest, &s0);
 //*/
 
 /*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);

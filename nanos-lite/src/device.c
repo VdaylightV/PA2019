@@ -90,6 +90,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 //  fs_write(fd, buf, len);
 //void draw_rect(uint32_t *pixels, int x, int y, int w, int h);
 
+	/*Code 1
     uint32_t *fb = (uint32_t*) buf;
     int x = (offset / 4) % screen_width();
 	int y = (offset / 4) / screen_width();
@@ -107,17 +108,21 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
 	   }
 	   
 	  // x = ((x % screen_width())++);
-	  /*
-	  {
-	  int temp = x % screen_width();
-	  x = temp + 1;
-	   if(x == 0 && i > 0) {
-	 	   y ++;
-	   }
-	  }
-	  */
+	 // 
+	 // {
+	 // int temp = x % screen_width();
+	 // x = temp + 1;
+	 //  if(x == 0 && i > 0) {
+	 //	   y ++;
+	 //  }
+	 // }
+	 // 
 	}
     return len;
+	*/
+	int off = (offset - 0xa0000000) / 4;
+	draw_rect((uint32_t*)buf, off % screen_width(), off / screen_width(), len / 4, 1);
+	return len;
 }
 
 size_t fbsync_write(const void *buf, size_t offset, size_t len) {

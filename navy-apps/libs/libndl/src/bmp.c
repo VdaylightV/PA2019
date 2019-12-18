@@ -34,12 +34,12 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   if (hdr.bitcount != 24) {
 	  
 	  printf("filename:%s\n",filename);
-	  printf("type:%u\n",hdr.type);
-	  printf("filesize:%u\n",hdr.filesize);
-	  printf("resv_1:%u\n",hdr.resv_1);
-	  printf("offset:%u\n",hdr.offset);
-	  printf("ih_size:%u\n",hdr.ih_size);
-	  printf("width:%u\n",hdr.width);
+	  printf("type:%d\n",hdr.type);
+	  printf("filesize:%udn",hdr.filesize);
+	  printf("resv_1:%d\n",hdr.resv_1);
+	  printf("offset:%d\n",hdr.offset);
+	  printf("ih_size:%d\n",hdr.ih_size);
+	  printf("width:%d\n",hdr.width);
 	  printf("height:%d\n",hdr.height);
 	  printf("planes:%d\n",hdr.planes);
 	  printf("bitcount:%d\n",hdr.bitcount);

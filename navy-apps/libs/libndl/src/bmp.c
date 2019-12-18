@@ -19,6 +19,8 @@ struct BitmapHeader {
   uint32_t clrused, clrimportant;
 } __attribute__((packed));
 
+extern char _end;
+
 int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   FILE *fp;
   int w = 0, h = 0;
@@ -32,6 +34,7 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   assert(1 == fread(&hdr, sizeof(struct BitmapHeader), 1, fp));
 
 	  printf("address:%p\n",&hdr);
+	  printf("brk:%p\n",(intptr_t)_end);
 	  printf("filename:%s\n",filename);
 	  printf("type:%d\n",hdr.type);
 	  printf("filesize:%d\n",hdr.filesize);

@@ -762,7 +762,7 @@ int printf(const char* fmt, ...) {
 }
 
 static inline void iu(char *temp, uint32_t d, int type) {
-	int j;
+	uint32_t j;
 	for(j = type; d / type >= j; j *= type);
 	int i;
 	for(i = 0; j >= 1; j /= type, i ++) {

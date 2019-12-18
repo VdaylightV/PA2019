@@ -76,7 +76,7 @@ int _write(int fd, void *buf, size_t count) {
 
 //My code!!!
 extern char _end;
-char* end = &_end;
+intptr_t end = &_end;
 
 /*
 extern char _end;

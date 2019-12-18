@@ -89,7 +89,7 @@ void *_sbrk(intptr_t increment) {
 	static void* end = &_end;
 	void* p_break = end;
 	p_break += increment;
-	if((void*)_syscall_(SYS_brk, (intptr_t)&_end, 0, 0)) {
+	if((void*)_syscall_(SYS_brk, &_end, 0, 0)) {
 	    return (void*)-1;
 	}
 	else {

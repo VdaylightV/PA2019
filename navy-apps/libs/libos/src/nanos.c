@@ -85,15 +85,14 @@ char* p_break = (char*)&_end;
 */
 //放到_sbrk里会导致end时局部变量，就无法修改program_break的值
 void *_sbrk(intptr_t increment) {
-	
-	static void* end = &_end;
-	void* p_break = end;
-	p_break += increment;
+	static void* pd = &_end;
+	void* pd_old = pd;
+	pd += increment;
 	if((void*)_syscall_(SYS_brk, &_end, 0, 0)) {
 	    return (void*)-1;
 	}
 	else {
-	    return (void*)end;
+	    return (void*)pd_old;
 	}
 	
 

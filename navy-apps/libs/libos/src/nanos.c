@@ -74,16 +74,26 @@ int _write(int fd, void *buf, size_t count) {
   //在return0时会输出很多“HHHHHH”
 }
 
-//My code!!!
 extern char _end;
-intptr_t end = &_end;
-
+/*//My code!!!
+extern char _end;
+char* end = &_end;
+*/
 /*
 extern char _end;
 intptr_t p_break = (intptr_t)&_end;
 */
 //放到_sbrk里会导致end时局部变量，就无法修改program_break的值
 void *_sbrk(intptr_t increment) {
+	static void* end = &_end;
+	void* p_break = end + increment;
+	if((void*)_syscall_(SYS_brk, (intptr_t)end, 0, 0)) {
+	    return (void*)-1;
+	}
+	else {
+	    return (void*)end;
+	}
+
  /*
   char *old_break = p_break;
   //intptr_t old_break = p_break;
@@ -94,10 +104,10 @@ void *_sbrk(intptr_t increment) {
   }
   return (void *)-1;
  */
-	
+/*	
   intptr_t program_break = end + increment;
      
-  int ret = _syscall_(SYS_brk, program_break, 0, 0);
+  int ret = _syscall_(SYS_brk, (intptr_t)end, 0, 0);
   if (ret == 0) {
     intptr_t temp = end;
     end = program_break;
@@ -106,7 +116,7 @@ void *_sbrk(intptr_t increment) {
   else{
     return (void *)-1;
   }
-  
+  */
  /*My code!!!
   char *old_break = end;
   end = old_break + increment;

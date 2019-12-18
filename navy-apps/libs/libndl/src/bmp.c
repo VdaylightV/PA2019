@@ -31,11 +31,9 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   assert(sizeof(hdr) == 54);
   assert(1 == fread(&hdr, sizeof(struct BitmapHeader), 1, fp));
 
-  if (hdr.bitcount != 24) {
-	  
 	  printf("filename:%s\n",filename);
 	  printf("type:%d\n",hdr.type);
-	  printf("filesize:%udn",hdr.filesize);
+	  printf("filesize:%d\n",hdr.filesize);
 	  printf("resv_1:%d\n",hdr.resv_1);
 	  printf("offset:%d\n",hdr.offset);
 	  printf("ih_size:%d\n",hdr.ih_size);
@@ -49,6 +47,8 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
 	  printf("yres:%d\n",hdr.yres);
 	  printf("clrused:%d\n",hdr.clrused);
 	  printf("clrimportant:%d\n",hdr.clrimportant);
+  if (hdr.bitcount != 24) {
+	  
 	  return -1;
   }
   if (hdr.compression != 0) return -1;

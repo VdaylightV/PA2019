@@ -763,10 +763,10 @@ int printf(const char* fmt, ...) {
 
 static inline void iu(char *temp, uint32_t d, int type) {
 	int j;
-	for(j = type; d >= j; j *= type);
+	for(j = type; d / type >= j; j *= type);
 	int i;
-	for(i = 0; j >= type; j /= type, i ++) {
-	    int c = (d%j)/(j/type);
+	for(i = 0; j >= 1; j /= type, i ++) {
+	    int c = (d / j) % type;
 		if(c <= 9)
 			temp[i] = c + '0';
 	    else

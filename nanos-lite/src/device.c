@@ -21,18 +21,6 @@ static const char *keyname[256] __attribute__((used)) = {
 size_t events_read(void *buf, size_t offset, size_t len) {
    int key = read_key();
    if(key == _KEY_NONE) {
-	//   char a = 't';
-      //uint32_t time = uptime();
-	  //strcat((char*)buf, &a);
-	  // sprintf((char*)buf, "c %d", a);
-	   /*
-	   int i = 0;
-	   _putc('\n');
-	   while(((char*)(buf))[i] != '\0') {
-	       _putc(((char*)(buf))[i]);
-		   i ++;
-	   }
-	   */
 	   return sprintf((char*)buf, "t %d\n", uptime());
 	   int length = strlen(buf);
 	   return length;
@@ -43,30 +31,6 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	   char status = key & 0x8000 ? 'd': 'u';
 	   sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
 	   
-	   
-       //char flag;
-	   /*
-	   const char *key_name = keyname[key & 0x7fff];
-	   if ((key & 0x8000) == 0x8000) {
-	       flag = 'd';
-	   }
-	   else 
-	   {
-	       flag = 'u';
-	   }
-	   */
-	   //flag = '*';
-	   //char str[3] = "##";
-	   //strcat((char*)buf, str);
-	   //sprintf((char*)buf, "k%c %s\n", flag, str);
-	  /*
-	   int i = 0;
-	   _putc('\n');
-	   while(((char*)(buf))[i] != '\0') {
-	       _putc(((char*)(buf))[i]);
-		   i ++;
-	   }
-	   */
 	   int length = strlen(buf);
        return length;
 	   
@@ -77,11 +41,13 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 static char dispinfo[128] __attribute__((used)) = {};
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
-	//strncpy((char*)buf, &(dispinfo[offset]), len);
-  //return len;
+	strncpy((char*)buf, &(dispinfo[offset]), len);
+    return strlen(&(dispinfo[offset]));
+	/*
   size_t count = (len + offset) > strlen(dispinfo) ? strlen(dispinfo) - offset : len;
   memcpy(buf, &(dispinfo[offset]), count);
   return strlen(&(dispinfo[offset]));
+  */
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {

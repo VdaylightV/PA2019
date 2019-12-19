@@ -41,13 +41,17 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 static char dispinfo[128] __attribute__((used)) = {};
 
 size_t dispinfo_read(void *buf, size_t offset, size_t len) {
-	strncpy((char*)buf, &(dispinfo[offset]), len);
-    return strlen(&(dispinfo[offset]));
-	/*
-  size_t count = (len + offset) > strlen(dispinfo) ? strlen(dispinfo) - offset : len;
-  memcpy(buf, &(dispinfo[offset]), count);
+	
+  /*	
+  printf("len:%d\n", len);
+  printf("offset:%d\n", offset);
+  printf("real len:%d\n", strlen(&(dispinfo[offset])));
+  */  
+
+  //assert( len <= strlen(&(dispinfo[offset])));
+  memcpy(buf, &(dispinfo[offset]), len);
   return strlen(&(dispinfo[offset]));
-  */
+  
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {

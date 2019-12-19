@@ -94,32 +94,19 @@ make_EHelper(cwtl) {
 	
   if (decinfo.isa.is_operand_size_16) {
     
-    rtl_lr(&s0, R_EAX, 1);
-    s0 = (int32_t)(s0 << 24) >> 24;
-    rtl_sr(R_EAX, &s0, 2);
-    
 /*	  if(((cpu.eax >> 15) & 1) == 1) {
 	      cpu.eax = cpu.eax | 0xffff0000;
 	  }
 */
     
-    /*My code!!!
 	  rtl_shli(&cpu.eax, &cpu.eax, 24);
 	  rtl_sari(&cpu.eax, &cpu.eax, 8);
 	  rtl_shri(&cpu.eax, &cpu.eax, 16);
-    */
   //  TODO();
   }
   else {
     
-    rtl_lr(&s0, R_EAX, 2);
-    s0 = (int32_t)(s0 << 16) >> 16;
-    rtl_sr(R_EAX, &s0, 4);
-    
-    
-    /*My code!!!
 	  rtl_sext(&cpu.eax, &cpu.eax, 2);
-    */
   //  TODO();
   }
 

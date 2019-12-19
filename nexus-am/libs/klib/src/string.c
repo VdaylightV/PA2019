@@ -483,25 +483,18 @@ void* memcpy(void* out, const void* in, size_t n) {
 	return out;
 
 *///##########
-/*****GC***
+//*****GC***
 
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
 
-  char store_in[n];
+  for(size_t i = 0; i < n; i ++)
+      ((char*)temp_out)[i] = ((char*)temp_in)[i];
 
-  for(size_t i = 0; i < n; i ++) {
-      store_in[i] = temp_in[i];
-  }
-  temp_in[n] = '\0';
-
-  for(size_t i = 0; i < n; i ++) {
-      temp_out[i] = store_in[i];
-  }
 //  temp_out[n] = '\0';
 
   return out;
-**********/
+//**********/
 /*
 */
 /*  

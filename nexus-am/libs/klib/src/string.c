@@ -429,10 +429,12 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 }
 
 void* memset(void* v,int c,size_t n) {
+	/*
 	for(int i = 0; i < n; i ++) {
 	    ((char*)v)[i] = (char)c;
 	}
 	return v;
+	*/
 /*//#####CO###
   if(v == NULL || n < 0) return NULL;
   char* temp = (char*) v;
@@ -441,13 +443,13 @@ void* memset(void* v,int c,size_t n) {
   }
   return v;
 *///##########
-/*****GC**	
+//*****GC**	
   char* temp_v = (char *)v;
   for(size_t i = 0; i < n; i ++) {
       temp_v[i] = c;
   }
   return v;
-**********/
+//**********/
 /*First version of co	
 	void* ret = v;
 	while(n--) {
@@ -459,10 +461,12 @@ void* memset(void* v,int c,size_t n) {
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
+	/*
 	for(int i=0; i<n; i++) {
 	    ((char*)out)[i] = ((char*)in)[i];
 	}
     return out;
+	*/
 /*//#####CO###
     if(out == NULL ||n < 0) {
 		assert(0);
@@ -479,7 +483,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 	return out;
 
 *///##########
-/*****GC***
+//*****GC***
 
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
@@ -497,7 +501,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 //  temp_out[n] = '\0';
 
   return out;
-**********/
+//**********/
 /*
 */
 /*  
@@ -527,6 +531,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 }
 
 int memcmp(const void* s1, const void* s2, size_t n) {
+	/*
   const char* left_ss=(const char*)s1;
   const char* right_ss=(const char*)s2;
   for(int i=0; i < n; i ++) {
@@ -540,6 +545,7 @@ int memcmp(const void* s1, const void* s2, size_t n) {
 	  }
   }
   return 0;
+  */
 /*//#####CO###
   char* c1 = (char*)s1;
   char* c2 = (char*)s2;
@@ -550,7 +556,7 @@ int memcmp(const void* s1, const void* s2, size_t n) {
   }
   return 0;
 *///##########
-/******GC***	
+//******GC***	
 	const char* temp_s1 = (char*)s1;
 	const char* temp_s2 = (char*)s2;
 
@@ -573,7 +579,7 @@ int memcmp(const void* s1, const void* s2, size_t n) {
 	{
 	    return flag;
 	}
-**********/
+//**********/
 
 /*	
   unsigned char* temp_s1 = (unsigned char *)s1;

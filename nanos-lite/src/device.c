@@ -29,7 +29,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
    else {
 	   
 	   char status = key & 0x8000 ? 'd': 'u';
-	   sprintf((char*)buf, "k%c %s\n", status, keyname[key]);
+	   sprintf((char*)buf, "k%c %s\n", status, keyname[key&0x7fff]);
 	   
 	   int length = strlen(buf);
        return length;

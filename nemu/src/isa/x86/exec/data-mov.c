@@ -16,9 +16,14 @@ make_EHelper(push) {
 
 make_EHelper(pop) {
   
-  
   rtl_pop(&id_dest->val);
+  operand_write(id_dest, &id_dest->val);
+  
+  
+  /*My code!!!
+  rtl_pop(&id_src->val);
   operand_write(id_dest, &id_src->val);
+  */
 
   //printf("HHHHHHHHHHHHHHHHHHH___%d___ HHHHHHHHHHHHHHHHH\n_", id_dest->reg);
   //printf("HHHHHHHHHHHHHHHHHHH___0x%x___ HHHHHHHHHHHHHHHHH\n_", id_dest->val);

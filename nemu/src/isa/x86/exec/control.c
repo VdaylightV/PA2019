@@ -37,14 +37,10 @@ make_EHelper(call) {
 
 make_EHelper(ret) {
   
-  rtl_pop(&s0);
-  rtl_j(s0); 
   
-  
-  /*My code !!! 
   rtl_pop(&decinfo.jmp_pc);
   rtl_j(decinfo.jmp_pc);
-  */
+
   //rtl_mv(&cpu.esp, &cpu.ebp);
   /* 
   rtl_lm(&s0, &cpu.esp, 4);
@@ -67,15 +63,10 @@ make_EHelper(ret_imm) {
 
 make_EHelper(call_rm) {
   
-  s0 = decinfo.seq_pc;
-  rtl_push(&s0);
-  rtl_j(id_dest->val);
-  
   //TODO();
   
-  /*My code!!!
   rtl_push(&decinfo.seq_pc);
   rtl_jr(&id_dest->val);
-  */
+
   print_asm("call *%s", id_dest->str);
 }

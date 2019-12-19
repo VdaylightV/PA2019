@@ -461,12 +461,12 @@ void* memset(void* v,int c,size_t n) {
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-	/*
+	
 	for(int i=0; i<n; i++) {
 	    ((char*)out)[i] = ((char*)in)[i];
 	}
     return out;
-	*/
+	
 /*//#####CO###
     if(out == NULL ||n < 0) {
 		assert(0);
@@ -483,7 +483,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 	return out;
 
 *///##########
-//*****GC***
+/*****GC***
 
   char* temp_out = (char *)out;
   char* temp_in = (char *)in;
@@ -501,7 +501,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 //  temp_out[n] = '\0';
 
   return out;
-//**********/
+**********/
 /*
 */
 /*  

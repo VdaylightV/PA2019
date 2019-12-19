@@ -118,6 +118,7 @@ int fs_close(int fd) {
   return 0;
 }
 
+
 int fs_read(int fd, void* buf, size_t len) {
     if(file_table[fd].read) {
 	    size_t ret = file_table[fd].read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
@@ -147,6 +148,7 @@ int fs_write(int fd, void* buf, size_t len) {
 		return count;
 	}
 }
+
 __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
   switch(whence) {
     case SEEK_SET:

@@ -85,46 +85,20 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
-//  int fd = fs_open("/dev/fb");
-//  fs_lseek(fd, offset, SEEK_SET);
-//  fs_write(fd, buf, len);
-//void draw_rect(uint32_t *pixels, int x, int y, int w, int h);
 
-	/*Code 1
     uint32_t *fb = (uint32_t*) buf;
     int x = (offset / 4) % screen_width();
 	int y = (offset / 4) / screen_width();
 	for(int i = 0; i < len / 4; i ++) {
 	   draw_rect(&fb[i], x, y, 1, 1);
 	   
-	   if(x==screen_width()) {
-	       x = 0;
-		   y++;
-	 //  draw_rect(&fb[i], x, y, 1, 1);
+	  int temp = x % screen_width();
+	  x = temp + 1;
+	   if(x == 0 && i > 0) {
+	 	   y ++;
 	   }
-	   else{
-	 //  draw_rect(&fb[i], x, y, 1, 1);
-	       x++;
-	   }
-	   
-	  // x = ((x % screen_width())++);
-	 // 
-	 // {
-	 // int temp = x % screen_width();
-	 // x = temp + 1;
-	 //  if(x == 0 && i > 0) {
-	 //	   y ++;
-	 //  }
-	 // }
-	 // 
 	}
     return len;
-    */	
-	
-	int off = (offset) / 4;
-	draw_rect((uint32_t*)buf, off % screen_width(), off / screen_width(), len / 4, 1);
-	return len;
-	
 }
 
 size_t fbsync_write(const void *buf, size_t offset, size_t len) {
@@ -137,9 +111,6 @@ void init_device() {
   _ioe_init();
 
   // TODO: print the string to array `dispinfo` with the format
-  // described in the Navy-apps convention
-  //int fd = fs_open("proc/dispinfo");
-  //fs_read(fd, (void*)dispinfo,  128);
   sprintf(dispinfo, "WIDTH:%d\nHEIGHT:%d\n", screen_width(), screen_height());
 
 }

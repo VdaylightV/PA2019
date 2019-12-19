@@ -1,32 +1,14 @@
 #include "cpu/exec.h"
 
 make_EHelper(add) {
-  
-    rtl_add(&s0, &id_dest->val, &id_src->val);
-	operand_write(id_dest, &s0);
 
-	if(id_dest->width != 4) {
-    rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
-  } 
-
-  rtl_update_ZFSF(&s0, id_dest->width);
-
-  rtl_is_add_carry(&s1, &s0, &id_dest->val);
-  rtl_set_CF(&s1);
-
-  rtl_is_add_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
-  rtl_set_OF(&s1);
-
-
- /* My code!!!
-  	rtl_add(&s0, &id_src->val, &id_dest->val);
+  rtl_add(&s0, &id_src->val, &id_dest->val);
   rtl_is_add_overflow(&s2, &s0, &id_src->val, &id_dest->val, id_src->width);
   rtl_set_OF(&s2);
   rtl_is_add_carry(&s2, &s0, &id_src->val);
   rtl_set_CF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
   operand_write(id_dest, &s0);
-*/
   //TODO();
 
   print_asm_template2(add);
@@ -34,23 +16,6 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   
-  rtl_sub(&s0, &id_dest->val, &id_src->val);
-  operand_write(id_dest, &s0);
-
-  if(id_dest->width != 4) {
-      rtl_andi(&s0, &s0, 0xffffffffu >> ((4 - id_dest->width) * 8));
-  }
-
-  rtl_update_ZFSF(&s0, id_dest->width);
-
-  rtl_is_sub_carry(&s1, &s0, &id_dest->val);
-  rtl_set_CF(&s1);
-
-  rtl_is_sub_overflow(&s1, &s0, &id_dest->val, &id_src->val, id_dest->width);
-  rtl_set_OF(&s1);
-
-  	
-  /* My code!!!
   //  id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;
   //  rtl_sext(&s1, &id_src->val, id_src->width);
    
@@ -63,7 +28,6 @@ make_EHelper(sub) {
   rtl_is_sub_overflow(&s2, &s0, &id_dest->val, &id_src->val, id_src->width);
   rtl_set_OF(&s2);
   rtl_update_ZFSF(&s0, id_dest->width);
-*/
 
 /*  printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minused:%x\n", id_dest->val);
   printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@minus_before_extend:%x\n", id_src->val);

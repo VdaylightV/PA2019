@@ -11,9 +11,7 @@ size_t fs_write(int fd, const void *buf, size_t count);
 size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 int sys_yield(_Context *c) {
-//void sys_yield(_Context *c) {
   _yield();
-//  c->GPRx = 0;
   return 0;
 }
 
@@ -22,9 +20,7 @@ void sys_exit(_Context *c) {
 }
 
 
-//void sys_open(_Context *c) {
 int sys_open(_Context *c) {
-  //c->GPRx = fs_open((char*)c->GPR2);
   
   uintptr_t temp[1];
   temp[0] = c->GPR2;
@@ -34,7 +30,6 @@ int sys_open(_Context *c) {
 }
 
 int sys_lseek(_Context *c) {
-//void sys_lseek(_Context *c) {
   
   uintptr_t temp[3];
   temp[0] = c->GPR2;
@@ -43,10 +38,8 @@ int sys_lseek(_Context *c) {
   size_t current_offset = fs_lseek(temp[0], temp[1], temp[2]);
   return current_offset;
   
- //c->GPRx = fs_lseek(c->GPR2, c->GPR3, c->GPR4);
 }
 
-//void sys_read(_Context *c) {
 int sys_read(_Context *c) {
   
   uintptr_t temp[3];
@@ -56,21 +49,17 @@ int sys_read(_Context *c) {
   size_t len = fs_read(temp[0], (void*)temp[1], temp[2]);
   return len;
   
- //c->GPRx = fs_read(c->GPR2, (char*)c->GPR3, c->GPR4);
 }
 
 int sys_close(_Context *c) {
-//void sys_close(_Context *c) {
   
   uintptr_t temp[1];
   temp[0] = c->GPR2;
   int code = fs_close(temp[0]);
   return code;
   
-  // c->GPRx = fs_close(c->GPR2);
 }
 
-//void sys_write(_Context *c) {
 int sys_write(_Context *c) {
   
   uintptr_t temp[3];
@@ -92,14 +81,11 @@ int sys_write(_Context *c) {
 */
    return len; 
 
- //c->GPRx = fs_write(c->GPR2, (char*)c->GPR3, c->GPR4);
 }
 
-//void sys_brk(_Context *c) {
 int sys_brk(_Context *c) {
   
     return 0;
-   	// c->GPRx = 0;
 }
 
 _Context* do_syscall(_Context *c) {

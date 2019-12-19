@@ -47,7 +47,7 @@ static Finfo file_table[] __attribute__((used)) = {
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
 
-/*
+
 int fs_open(const char *pathname) {
   int i = 0;
   for(; i < NR_FILES; i ++) {
@@ -60,31 +60,83 @@ int fs_open(const char *pathname) {
   return -1;
 }
 
+
 size_t fs_write(int fd, const void *buf, size_t count) {
-    size_t len;
-    if(file_table[fd].open_offset + count >= file_table[fd].size) {
-      len = file_table[fd].size - file_table[fd].open_offset;
-    }
-    else {
-      len = count;
-    }
-  ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-  file_table[fd].open_offset += len;
-  return len;
+    size_t len = count;
+	
+	//if(file_table[fd].open_offset >= file_table[fd].size) {
+//		printf("count:%d!!!!!!!!!!!!!!\n", count);
+//		printf("open offset:%d!!!!!!!!!!!!!!\n", file_table[fd].open_offset);
+//		printf("size:%d!!!!!!!!!!!!!!\n", file_table[fd].size);
+//		printf("Write None!!!!!!!!!!!!!!\n");
+	//    return 0;
+	//}
+
+    //if(file_table[fd].open_offset + count >= file_table[fd].size) {
+    //  len = file_table[fd].size - file_table[fd].open_offset;
+    //}
+    //else {
+    //  len = count;
+    //}
+	switch(fd) {
+		case 0: case 3: case 6: 
+			{
+			    panic("Invalid write!!!!!!!!!");
+			}
+		case 1: case 2: case 4: case 5:
+			{
+			    int ret = file_table[fd].write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+//		        printf("ret:%d!!!!!!!!!!!!!!\n", ret);
+                file_table[fd].open_offset += ret;
+				return ret;
+			}
+		default:
+			{
+                ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+                file_table[fd].open_offset += len;
+                return len;
+			}
+	}
 }
 
 size_t fs_read(int fd, void *buf, size_t count) {
-    size_t len;
-    if(file_table[fd].open_offset + count >= file_table[fd].size) {
-      len = file_table[fd].size - file_table[fd].open_offset;
-    }
-    else {
-      len = count;
-    }
-    ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-    file_table[fd].open_offset += len;
-    return len;
+    size_t len = count;
+	
+	//if(file_table[fd].open_offset >= file_table[fd].size) {
+//		printf("count:%d!!!!!!!!!!!!!!\n", count);
+//		printf("open offset:%d!!!!!!!!!!!!!!\n", file_table[fd].open_offset);
+//		printf("size:%d!!!!!!!!!!!!!!\n", file_table[fd].size);
+//		printf("Read None!!!!!!!!!!!!!!\n");
+	//    return 0;
+	//}
+	
+    //if(file_table[fd].open_offset + count >= file_table[fd].size) {
+    //  len = file_table[fd].size - file_table[fd].open_offset;
+    //}
+    //else {
+    //  len = count;
+    //}
+	switch(fd) {
+		case 0: case 1: case 2: case 4: case 5:
+			{
+			    panic("Invalid read!!!!!!!!!");
+			}
+		case 3: case 6:
+			{
+			    int ret = file_table[fd].read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+//		        printf("ret:%d!!!!!!!!!!!!!!\n", ret);
+                file_table[fd].open_offset += ret;
+				return ret;
+			}
+		default:
+			{
+                ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
+                file_table[fd].open_offset += len;
+                return len;
+			}
+	}
 }
+
 
  size_t fs_lseek(int fd, size_t offset, int whence) {
    switch(whence) {
@@ -93,16 +145,15 @@ size_t fs_read(int fd, void *buf, size_t count) {
      case SEEK_END: {assert(offset <= 0); file_table[fd].open_offset = offset + file_table[fd].size; return file_table[fd].open_offset;}
      default: assert(0);
    }
-
     
 }
 
 int fs_close(int fd) {
      return 0;
 }
-*/
 
-///*替换调试法
+
+/*替换调试法
 int fs_open(const char *pathname) {
     int i;
 	for(i = 0; i < NR_FILES; i ++) {
@@ -117,8 +168,9 @@ int fs_open(const char *pathname) {
 int fs_close(int fd) {
   return 0;
 }
+*/
 
-
+/*
 int fs_read(int fd, void* buf, size_t len) {
     if(file_table[fd].read) {
 	    size_t ret = file_table[fd].read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
@@ -174,7 +226,7 @@ __ssize_t fs_lseek(int fd, __ssize_t offset, int whence) {
   
 
 }
-//*/
+*/
 //
 void init_fs() {
   // TODO: initialize the size of /dev/fb

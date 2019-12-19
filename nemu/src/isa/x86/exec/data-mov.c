@@ -138,10 +138,11 @@ make_EHelper(movs) {
   rtl_lm(&s1, &s0, id_dest->width);
   s0 = cpu.edi;
   rtl_sm(&s0, &s1, id_dest->width);
-  //rtl_addi(&cpu.edi, &cpu.edi, s0);  
-  //rtl_addi(&cpu.esi, &cpu.esi, s0);  
-  cpu.esi += id_dest->width;
-  cpu.edi += id_dest->width;
+  s0 = id_dest->width;
+  rtl_addi(&cpu.edi, &cpu.edi, s0);  
+  rtl_addi(&cpu.esi, &cpu.esi, s0);  
+  //cpu.esi += id_dest->width;
+  //cpu.edi += id_dest->width;
 
   /*
   id_dest->width = decinfo.isa.is_operand_size_16 ? 2 : 4;

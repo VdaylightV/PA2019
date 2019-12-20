@@ -1,12 +1,15 @@
 #include "common.h"
 #include "syscall.h"
 #include "klib.h"
+#include "proc.h"
 
 int fs_open(const char *pathname);
 size_t fs_read(int fd, void *buf, size_t count);
 int fs_close(int fd);
 size_t fs_lseek(int fd, size_t offset, int whence);
 size_t fs_write(int fd, const void *buf, size_t count);
+
+void naive_uload(PCB *pcb, const char *filename);
 
 size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
@@ -20,7 +23,10 @@ void sys_exit(_Context *c) {
 }
 
 void sys_execve(_Context *c) {
-
+    
+	uintptr_t temp[1];
+	temp[0] = c->GPR2;
+	naive_uload(NULL, (const char*)temp[0]);
 	return;
 }
 

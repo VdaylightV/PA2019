@@ -54,7 +54,6 @@ int fs_open(const char *pathname) {
     if(strcmp(pathname, file_table[i].name) == 0) {
       file_table[i].open_offset = 0;
 	  printf("I am opened || name: %s || disk_offset:%d || open_offset: %d || size: %d\n ", file_table[i].name, file_table[i].disk_offset, file_table[i].open_offset, file_table[i].size);
-	  printf(" My open offset is %d\n", file_table[i].name);
       return i;
     }
   }

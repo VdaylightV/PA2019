@@ -4,7 +4,7 @@ extern uint8_t ramdisk_start;
 extern uint8_t ramdisk_end;
 #define RAMDISK_SIZE ((&ramdisk_end) - (&ramdisk_start))
 
-//static int i = 0;
+static int i = 0;
 
 /* The kernel is monolithic, therefore we do not need to
  * translate the address `buf' from the user process to
@@ -14,15 +14,15 @@ extern uint8_t ramdisk_end;
 /* read `len' bytes starting from `offset' of ramdisk into `buf' */
 size_t ramdisk_read(void *buf, size_t offset, size_t len) {
   printf("!!!!!!!!!!!!!!!!RAMDISK_SIZE:%d\n", RAMDISK_SIZE);
-//  i ++;
-/*if (i <= 100) {  
+  i ++;
+if (i <= 100) {  
   printf("############################################\n");
   printf("!!!!!!!!!!!!!!!!i:%d\n", i);
   printf("!!!!!!!!!!!!!!!!offset:%d\n", offset);
   printf("!!!!!!!!!!!!!!!!len:%d\n", len);
   printf("!!!!!!!!!!!!!!!!len + offset:%d\n", len + offset);
   printf("!!!!!!!!!!!!!!!!RAMDISK_SIZE:%d\n", RAMDISK_SIZE);
-}*/
+}
   assert(offset + len <= RAMDISK_SIZE);
   memcpy(buf, &ramdisk_start + offset, len);
   return len;

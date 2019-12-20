@@ -28,6 +28,8 @@ void sys_execve(_Context *c) {
 
 void sys_exit(_Context *c) {
  // _halt(c->GPR2);
+ const char* fname = "/bin/init";
+ c->GPR2 = (uintptr_t)fname;
  sys_execve(c);
 }
 

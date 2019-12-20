@@ -15,7 +15,6 @@ extern uint8_t ramdisk_end;
 size_t ramdisk_read(void *buf, size_t offset, size_t len) {
 //  i ++;
 //if (i <= 100) {  
-  printf("############################################\n");
   printf("offset:%d", offset);
   printf(" ||  len:%d", len);
   printf(" ||  len + offset:%d", len + offset);

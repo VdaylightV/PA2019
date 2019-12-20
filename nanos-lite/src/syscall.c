@@ -18,10 +18,6 @@ int sys_yield(_Context *c) {
   return 0;
 }
 
-void sys_exit(_Context *c) {
-  _halt(c->GPR2);
-}
-
 void sys_execve(_Context *c) {
     
 	uintptr_t temp[1];
@@ -30,6 +26,10 @@ void sys_execve(_Context *c) {
 	return;
 }
 
+void sys_exit(_Context *c) {
+ // _halt(c->GPR2);
+ sys_execve(c);
+}
 
 int sys_open(_Context *c) {
   

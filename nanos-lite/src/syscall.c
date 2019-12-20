@@ -19,6 +19,11 @@ void sys_exit(_Context *c) {
   _halt(c->GPR2);
 }
 
+void sys_execve(_Context *c) {
+
+	return;
+}
+
 
 int sys_open(_Context *c) {
   
@@ -101,6 +106,7 @@ _Context* do_syscall(_Context *c) {
 	case SYS_read: { c->GPRx = sys_read(c); break;}
     case SYS_close: { c->GPRx = sys_close(c); break;}
     case SYS_lseek: { c->GPRx = sys_lseek(c); break;}
+	case SYS_execve: { sys_execve(c); break;}
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 

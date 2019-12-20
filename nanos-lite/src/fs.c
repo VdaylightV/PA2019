@@ -103,10 +103,6 @@ size_t fs_read(int fd, void *buf, size_t count) {
     size_t len = count;
 	
 	//if(file_table[fd].open_offset >= file_table[fd].size) {
-	    printf("##################################################\n");
-		printf("count:%d!!!!!!!!!!!!!!\n", count);
-		printf("open offset:%d!!!!!!!!!!!!!!\n", file_table[fd].open_offset);
-		printf("size:%d!!!!!!!!!!!!!!\n", file_table[fd].size);
 //		printf("Read None!!!!!!!!!!!!!!\n");
 	//    return 0;
 	//}
@@ -133,7 +129,6 @@ size_t fs_read(int fd, void *buf, size_t count) {
 			{
                 size_t ret = ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
                 file_table[fd].open_offset += ret;
-		        printf("ret:%d!!!!!!!!!!!!!!\n", ret);
                 return ret;
 			}
 	}

@@ -79,8 +79,34 @@ int _write(int fd, void *buf, size_t count) {
 extern char _end;
 char* end = &_end;
 
+/*
+extern char _end;
+char* p_break = (char*)&_end;
+*/
 //放到_sbrk里会导致end时局部变量，就无法修改program_break的值
 void *_sbrk(intptr_t increment) {
+	/*
+	static void* pd = &_end;
+	void* pd_old = pd;
+	pd += increment;
+	if((void*)_syscall_(SYS_brk, (intptr_t)&_end, 0, 0)) {
+	    return (void*)-1;
+	}
+	else {
+	    return (void*)pd_old;
+	}
+	*/
+
+ /*
+  char *old_break = p_break;
+  //intptr_t old_break = p_break;
+  p_break = old_break + increment;
+  if (_syscall_(SYS_brk, (intptr_t)p_break , 0, 0) == 0)
+  {
+    return (void *)old_break;
+  }
+  return (void *)-1;
+ */
 	
   intptr_t program_break = end + increment;
      
@@ -94,6 +120,14 @@ void *_sbrk(intptr_t increment) {
     return (void *)-1;
   }
 
+ /*My code!!!
+  char *old_break = end;
+  end = old_break + increment;
+  if(_syscall_(SYS_brk, end, 0, 0) == 0) {
+      return (void*) old_break;
+  }
+  return (void*) -1;
+ */
 }
 
 int _read(int fd, void *buf, size_t count) {
@@ -115,9 +149,9 @@ off_t _lseek(int fd, off_t offset, int whence) {
 }
 
 int _execve(const char *fname, char * const argv[], char *const envp[]) {
-	return _syscall_(SYS_execve, fname, 0, 0);
-  //_exit(SYS_execve);
-  //return 0;
+ return _syscall_(SYS_execve, fname, 0, 0);
+ // _exit(SYS_execve);
+ // return 0;
 }
 
 // The code below is not used by Nanos-lite.
